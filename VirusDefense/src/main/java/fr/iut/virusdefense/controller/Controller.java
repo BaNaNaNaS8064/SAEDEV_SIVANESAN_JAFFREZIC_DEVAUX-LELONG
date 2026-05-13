@@ -1,22 +1,18 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.Main;
-import fr.iut.virusdefense.modele.Maladie;
+import fr.iut.virusdefense.modele.maladie.Maladie;
 import fr.iut.virusdefense.modele.Terrain;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {

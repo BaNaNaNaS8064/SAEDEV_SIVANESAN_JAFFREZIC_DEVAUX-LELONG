@@ -1,5 +1,6 @@
-package fr.iut.virusdefense.modele;
+package fr.iut.virusdefense.modele.maladie;
 
+import fr.iut.virusdefense.modele.Terrain;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
