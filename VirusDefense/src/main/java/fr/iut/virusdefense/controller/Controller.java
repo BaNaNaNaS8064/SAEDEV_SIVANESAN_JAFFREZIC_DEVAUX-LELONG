@@ -38,7 +38,7 @@ public class Controller implements Initializable {
     private void initGameLoop(){
         gameLoop = new Timeline();
         gameLoop.setCycleCount(Timeline.INDEFINITE);
-        gameLoop.getKeyFrames().add(new KeyFrame(Duration.seconds((double)1/16), e -> uneFrame()));
+        gameLoop.getKeyFrames().add(new KeyFrame(Duration.seconds(0.017), e -> uneFrame()));
     }
 
     private void initTuiles(){
@@ -46,9 +46,7 @@ public class Controller implements Initializable {
         tuiles.setMaxHeight(tailleTuiles * terrain.getHauteur());
         tuiles.setMinWidth(tailleTuiles * terrain.getLargeur());
         tuiles.setMinHeight(tailleTuiles * terrain.getHauteur());
-    }
 
-    private void updateTuiles(){
         tuiles.getChildren().clear();
         for (int i=0; i<terrain.getMap().length; i++) {
             for (int j = 0; j < terrain.getMap()[i].length; j++) {
@@ -58,6 +56,6 @@ public class Controller implements Initializable {
     }
 
     private void uneFrame(){
-        updateTuiles();
+        //updateTuiles();
     }
 }
