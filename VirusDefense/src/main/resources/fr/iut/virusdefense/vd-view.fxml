@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox prefHeight="55.0" prefWidth="1018.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="55.0" prefWidth="81.0" text="Vague" textFill="WHITE" />
+            <HBox maxHeight="-Infinity" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #4d6b7d;" translateY="7.0">
+               <children>
+                  <Label prefHeight="68.0" prefWidth="113.0" text="0/20" textFill="WHITE" />
+               </children>
+            </HBox>
+            <Label alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="43.0" text="PV" textFill="WHITE" />
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ProgressBar prefHeight="33.0" prefWidth="157.0" progress="0.28" />
+                  <Label text="500" translateX="-52.0" />
+                  <Label text="1000" translateX="55.0" />
+               </children>
+            </StackPane>
+            <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="90.0" translateY="10.0">
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button minWidth="43.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="110.0" translateY="10.0">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+          <Button minWidth="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="130.0" translateY="10.0">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <TilePane prefHeight="453.0" prefWidth="854.0" style="-fx-background-color: #441428;" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <VBox prefHeight="677.0" prefWidth="208.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <HBox prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #165c84;">
+               <children>
+                  <Label prefHeight="34.0" prefWidth="71.0" text="Cellules" textFill="WHITE" translateX="60.0" />
+               </children>
+            </HBox>
+            <HBox maxWidth="-Infinity" prefHeight="24.0" prefWidth="100.0" style="-fx-background-color: #42a3c2;" translateX="40.0" translateY="-10.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="131.0" text="Solde : " textFill="WHITE" />
+               </children>
+            </HBox>
+         </children></VBox>
+   </right>
+</BorderPane>
