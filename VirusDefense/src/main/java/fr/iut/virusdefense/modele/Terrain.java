@@ -1,10 +1,10 @@
 package fr.iut.virusdefense.modele;
 
 
+import fr.iut.virusdefense.modele.maladie.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Terrain {
@@ -42,8 +42,12 @@ public class Terrain {
         maladies.add(m);
     }
 
+    /*
+     * 1 = Mur
+     * 0 = Vide
+     */
     private void initMap(){
-        Arrays.fill(map[0], 1);
+        /*Arrays.fill(map[0], 1);
         Arrays.fill(map[getHauteur()-1], 1);
         map[3][16] = 1;
         map[4][4] = 1;
@@ -55,9 +59,20 @@ public class Terrain {
         map[6][0] = 1;
         map[7][0] = 1;
         map[8][0] = 1;
-        map[9][0] = 1;
+        map[9][0] = 1;*/
 
-
+        map= new int[][]{
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1},
+                {1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1},
+                {1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1},
+                {1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1},
+                {1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0},
+                {1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+        };
     }
 
     public void unTour(){

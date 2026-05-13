@@ -1,16 +1,19 @@
-package fr.iut.virusdefense.modele;
+package fr.iut.virusdefense.modele.maladie;
 
+import fr.iut.virusdefense.modele.Terrain;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
-public class Maladie {
+public abstract class Maladie {
     private Terrain terrain;
     private DoubleProperty xProperty;
     private DoubleProperty yProperty;
     private String id;
     private static int dernierId = 0;
+    private int pv;
+    private float vitesse;
 
-    public Maladie(Terrain terrain, double x, double y){
+    public Maladie(Terrain terrain, double x, double y, int pv, float vitesse){
         this.terrain = terrain;
         id = "" + ++dernierId;
         if (terrain.dansBornes(x, y)) {
@@ -21,6 +24,9 @@ public class Maladie {
             this.xProperty = new SimpleDoubleProperty(0);
             this.yProperty = new SimpleDoubleProperty(0);
         }
+
+        this.vitesse = vitesse;
+        this.pv = pv;
     }
 
     public String getId() {
@@ -52,7 +58,7 @@ public class Maladie {
     }
 
     public void agir(){
-        setX(Math.min(getX()+0.03, terrain.getLargeur()));
+        setX(Math.min(getX()+(0.03 * this.vitesse), terrain.getLargeur()));
         if (getX() >= terrain.getLargeur())
             setX(0);
     }
