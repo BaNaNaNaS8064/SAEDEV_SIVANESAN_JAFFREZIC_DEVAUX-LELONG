@@ -1,51 +1,59 @@
 package fr.iut.virusdefense.modele;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 
 public class Maladie {
     private Terrain terrain;
-    private IntegerProperty xProperty;
-    private IntegerProperty yProperty;
+    private DoubleProperty xProperty;
+    private DoubleProperty yProperty;
+    private String id;
+    private static int dernierId = 0;
 
-    public Maladie(Terrain terrain, int x, int y){
+    public Maladie(Terrain terrain, double x, double y){
         this.terrain = terrain;
-        terrain.ajouter(this);
+        id = "" + ++dernierId;
         if (terrain.dansBornes(x, y)) {
-            this.xProperty = new SimpleIntegerProperty(x);
-            this.yProperty = new SimpleIntegerProperty(y);
+            this.xProperty = new SimpleDoubleProperty(x);
+            this.yProperty = new SimpleDoubleProperty(y);
         }
         else {
-            this.xProperty = new SimpleIntegerProperty(0);
-            this.yProperty = new SimpleIntegerProperty(0);
+            this.xProperty = new SimpleDoubleProperty(0);
+            this.yProperty = new SimpleDoubleProperty(0);
         }
     }
 
-    public final int getX(){
+    public String getId() {
+        return id;
+    }
+
+    public final double getX(){
         return xProperty.getValue();
     }
 
-    public final void setX(int x){
+    public final void setX(double x){
         this.xProperty.setValue(x);
     }
 
-    public final IntegerProperty xProperty(){
+    public final DoubleProperty xProperty(){
         return xProperty;
     }
 
-    public final int getY(){
+    public final double getY(){
         return yProperty.getValue();
     }
 
-    public final void setY(int y){
+    public final void setY(double y){
         this.yProperty.setValue(y);
     }
 
-    public final IntegerProperty yProperty(){
+    public final DoubleProperty yProperty(){
         return yProperty;
     }
 
     public void agir(){
-        setX(Math.min(getX()+1, terrain.getLargeur()));
+        setX(Math.min(getX()+0.03, terrain.getLargeur()));
+        if (getX() >= terrain.getLargeur())
+            setX(0);
     }
 }

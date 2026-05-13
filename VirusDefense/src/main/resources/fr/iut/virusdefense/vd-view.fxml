@@ -70,8 +70,8 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="panemaladie" prefHeight="200.0" prefWidth="200.0" />
             <TilePane fx:id="tuiles" style="-fx-background-color: #441428;" />
+            <Pane fx:id="paneMaladie" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </StackPane>
    </center>

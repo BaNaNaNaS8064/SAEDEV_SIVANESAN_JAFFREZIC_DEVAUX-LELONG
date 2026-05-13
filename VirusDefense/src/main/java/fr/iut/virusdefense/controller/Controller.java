@@ -1,12 +1,15 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.Main;
+import fr.iut.virusdefense.modele.Maladie;
 import fr.iut.virusdefense.modele.Terrain;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -23,13 +26,20 @@ public class Controller implements Initializable {
     private int tailleTuiles;
 
     @FXML
+    public Pane paneMaladie;
+
+    @FXML
     public TilePane tuiles;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         terrain = new Terrain();
+        terrain.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
+
         tailleTuiles = 48;
         initTuiles();
+
+        terrain.ajouter(new Maladie(terrain, 0, 5.5));
 
         initGameLoop();
         gameLoop.play();
@@ -46,6 +56,10 @@ public class Controller implements Initializable {
         tuiles.setMaxHeight(tailleTuiles * terrain.getHauteur());
         tuiles.setMinWidth(tailleTuiles * terrain.getLargeur());
         tuiles.setMinHeight(tailleTuiles * terrain.getHauteur());
+        paneMaladie.setMaxWidth(tailleTuiles * terrain.getLargeur());
+        paneMaladie.setMaxHeight(tailleTuiles * terrain.getHauteur());
+        paneMaladie.setMinWidth(tailleTuiles * terrain.getLargeur());
+        paneMaladie.setMinHeight(tailleTuiles * terrain.getHauteur());
 
         tuiles.getChildren().clear();
         for (int i=0; i<terrain.getMap().length; i++) {
@@ -56,6 +70,6 @@ public class Controller implements Initializable {
     }
 
     private void uneFrame(){
-        //updateTuiles();
+        terrain.unTour();
     }
 }
