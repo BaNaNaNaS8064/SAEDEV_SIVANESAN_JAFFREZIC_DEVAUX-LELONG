@@ -1,11 +1,18 @@
 package fr.iut.virusdefense.modele;
 
+import fr.iut.virusdefense.controller.Maladie;
+import javafx.beans.property.IntegerProperty;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Terrain {
 
     private int[][] map;
+    private ArrayList<Maladie> maladies;
 
     public Terrain(){
-        map = new int[10][21];
+        map = new int[10][20];
         initMap();
     }
 
@@ -21,11 +28,29 @@ public class Terrain {
         return map[0].length;
     }
 
-    private void initMap(){
-        int v = 0;
-        for (int i=0; i<map.length; i++)
-            for (int j=0; j<map[i].length; j++)
-                map[i][j] = (v++ % 2);
+    public boolean dansBornes(int x, int y){
+        return (0 <= x && x < getLargeur()) && (0 <= y && y < getHauteur());
     }
+
+    public ArrayList<Maladie> getMaladies(){
+        return maladies;
+    }
+
+    public void ajouter(Maladie m){
+        maladies.add(m);
+    }
+
+    private void initMap(){
+        Arrays.fill(map[0], 1);
+        Arrays.fill(map[getHauteur()-1], 1);
+
+    }
+
+    public void unTour(){
+        for (Maladie m : maladies)
+            m.agir();
+    }
+
+
 
 }
