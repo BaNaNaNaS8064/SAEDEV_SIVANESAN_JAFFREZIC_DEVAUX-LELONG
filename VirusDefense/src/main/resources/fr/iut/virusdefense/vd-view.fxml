@@ -49,9 +49,6 @@
          </BorderPane.margin>
       </HBox>
    </top>
-   <center>
-      <TilePane fx:id="tuiles" style="-fx-background-color: #441428;" BorderPane.alignment="CENTER" />
-   </center>
    <right>
       <VBox prefHeight="677.0" prefWidth="208.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -70,4 +67,12 @@
             </HBox>
          </children></VBox>
    </right>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="panemaladie" prefHeight="200.0" prefWidth="200.0" />
+            <TilePane fx:id="tuiles" style="-fx-background-color: #441428;" />
+         </children>
+      </StackPane>
+   </center>
 </BorderPane>
