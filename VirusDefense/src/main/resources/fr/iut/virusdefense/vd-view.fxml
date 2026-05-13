@@ -50,7 +50,7 @@
       </HBox>
    </top>
    <right>
-      <VBox prefHeight="677.0" prefWidth="208.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="480" prefWidth="208.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
@@ -70,7 +70,7 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TilePane fx:id="tuiles" style="-fx-background-color: #441428;" />
+            <TilePane fx:id="tuiles" />
             <Pane fx:id="paneMaladie" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </StackPane>
