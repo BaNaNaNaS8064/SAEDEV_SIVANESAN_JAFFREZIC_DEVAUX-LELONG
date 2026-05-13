@@ -29,7 +29,9 @@ public class Controller implements Initializable {
         gameLoop.getKeyFrames().add(new KeyFrame(Duration.seconds((double)1/16), e -> uneFrame()));
     }
 
+
+
     private void uneFrame(){
-        
+
     }
 }
