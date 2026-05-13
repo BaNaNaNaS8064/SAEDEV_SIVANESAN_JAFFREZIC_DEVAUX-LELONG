@@ -50,7 +50,7 @@
       </HBox>
    </top>
    <center>
-      <TilePane prefHeight="453.0" prefWidth="854.0" style="-fx-background-color: #441428;" BorderPane.alignment="CENTER" />
+      <TilePane fx:id="tuiles" prefHeight="453.0" prefWidth="854.0" style="-fx-background-color: #441428;" BorderPane.alignment="CENTER" />
    </center>
    <right>
       <VBox prefHeight="677.0" prefWidth="208.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
@@ -58,14 +58,14 @@
             <Insets />
          </BorderPane.margin>
          <children>
-            <HBox prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #165c84;">
+            <HBox prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #165c84;" translateY="-55.0">
                <children>
                   <Label prefHeight="34.0" prefWidth="71.0" text="Cellules" textFill="WHITE" translateX="60.0" />
                </children>
             </HBox>
-            <HBox maxWidth="-Infinity" prefHeight="24.0" prefWidth="100.0" style="-fx-background-color: #42a3c2;" translateX="40.0" translateY="-10.0">
+            <HBox maxWidth="-Infinity" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #42a3c2;" translateX="40.0" translateY="-65.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="131.0" text="Solde : " textFill="WHITE" />
+                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="107.0" text="Solde : " textFill="WHITE" />
                </children>
             </HBox>
          </children></VBox>
