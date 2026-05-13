@@ -7,4 +7,5 @@ module fr.iut.virusdefense {
     opens fr.iut.virusdefense to javafx.fxml;
     exports fr.iut.virusdefense;
     exports fr.iut.virusdefense.controller;
+    exports fr.iut.virusdefense.modele;
 }

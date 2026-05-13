@@ -1,6 +1,5 @@
-package fr.iut.virusdefense.controller;
+package fr.iut.virusdefense.modele;
 
-import fr.iut.virusdefense.modele.Terrain;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 

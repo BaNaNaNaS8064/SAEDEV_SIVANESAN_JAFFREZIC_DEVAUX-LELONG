@@ -1,8 +1,5 @@
 package fr.iut.virusdefense.modele;
 
-import fr.iut.virusdefense.controller.Maladie;
-import javafx.beans.property.IntegerProperty;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
