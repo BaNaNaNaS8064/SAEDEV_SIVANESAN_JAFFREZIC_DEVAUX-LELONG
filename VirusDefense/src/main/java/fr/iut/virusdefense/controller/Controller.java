@@ -1,10 +1,12 @@
 package fr.iut.virusdefense.controller;
 
+import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.Terrain;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -18,6 +20,7 @@ public class Controller implements Initializable {
 
     private Timeline gameLoop;
     private Terrain terrain;
+    private int tailleTuiles;
 
     @FXML
     public TilePane tuiles;
@@ -25,7 +28,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         terrain = new Terrain();
-        System.out.println(Arrays.deepToString(terrain.getMap()));
+        tailleTuiles = 48;
         initTuiles();
 
         initGameLoop();
@@ -39,20 +42,22 @@ public class Controller implements Initializable {
     }
 
     private void initTuiles(){
-        int tailleTuiles = 32;
         tuiles.setMaxWidth(tailleTuiles * terrain.getLargeur());
         tuiles.setMaxHeight(tailleTuiles * terrain.getHauteur());
-        for (int i=0; i<terrain.getMap().length; i++)
-            for (int j=0; j<terrain.getMap()[i].length; j++)
-                tuiles.getChildren().add(new Rectangle(tailleTuiles, tailleTuiles, switch(terrain.getMap()[i][j]){
-                    case 0 -> Color.BLACK;
-                    case 1 -> Color.DARKRED;
-                    default -> Color.PURPLE;
-                }));
+        tuiles.setMinWidth(tailleTuiles * terrain.getLargeur());
+        tuiles.setMinHeight(tailleTuiles * terrain.getHauteur());
+    }
 
+    private void updateTuiles(){
+        tuiles.getChildren().clear();
+        for (int i=0; i<terrain.getMap().length; i++) {
+            for (int j = 0; j < terrain.getMap()[i].length; j++) {
+                tuiles.getChildren().add(new ImageView(String.valueOf(Main.class.getResource("tuiles/Tuile" + terrain.getMap()[i][j] + ".png"))));
+            }
+        }
     }
 
     private void uneFrame(){
-
+        updateTuiles();
     }
 }
