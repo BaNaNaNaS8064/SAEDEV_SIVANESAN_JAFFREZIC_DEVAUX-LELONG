@@ -11,9 +11,9 @@ public abstract class Maladie {
     private final String id;
     private static int dernierId = 0;
     private int pv;
-    private float vitesse;
+    private final double vitesse;
 
-    public Maladie(Terrain terrain, double x, double y, int pv, float vitesse){
+    public Maladie(Terrain terrain, double x, double y, int pv, double vitesse){
         this.terrain = terrain;
         id = "" + ++dernierId;
 
