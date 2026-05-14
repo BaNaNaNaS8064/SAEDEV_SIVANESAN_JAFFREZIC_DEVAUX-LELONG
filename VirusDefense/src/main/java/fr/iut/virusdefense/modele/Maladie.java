@@ -14,13 +14,12 @@ public class Maladie {
         this.terrain = terrain;
         id = "" + ++dernierId;
 
-        if (terrain.dansBornes(x, y)) {
-            this.xProperty = new SimpleDoubleProperty(x);
-            this.yProperty = new SimpleDoubleProperty(y);
-        }
-        else {
-            this.xProperty = new SimpleDoubleProperty(0);
-            this.yProperty = new SimpleDoubleProperty(0);
+        // Dans la plupart des cas x et y seront dans les bornes
+        xProperty = new SimpleDoubleProperty(x);
+        yProperty = new SimpleDoubleProperty(y);
+        if (!terrain.dansBornes(x, y)) {
+            setX(0);
+            setY(0);
         }
     }
 
