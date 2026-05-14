@@ -18,7 +18,6 @@ public class Terrain {
      * Créé un terrain sans maladies ni cellules
      */
     public Terrain(){
-        map = new int[10][20];
         maladies = FXCollections.observableArrayList();
         initMap();
     }
@@ -35,6 +34,14 @@ public class Terrain {
         return map[0].length;
     }
 
+    public ObservableList<Maladie> getMaladies(){
+        return maladies;
+    }
+
+    public void ajouter(Maladie m){
+        maladies.add(m);
+    }
+
     /**
      * Retourne vrai si (x;y) se trouve dans les bornes du terrain
      * @param x une position x
@@ -43,14 +50,6 @@ public class Terrain {
      */
     public boolean dansBornes(double x, double y){
         return (0 <= x && x < getLargeur()) && (0 <= y && y < getHauteur());
-    }
-
-    public ObservableList<Maladie> getMaladies(){
-        return maladies;
-    }
-
-    public void ajouter(Maladie m){
-        maladies.add(m);
     }
 
     /**
