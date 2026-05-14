@@ -6,6 +6,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+/**
+ * Observe la liste des maladies et se charge de créer et supprimer les sprites
+ */
 public class ObsListeMaladies implements ListChangeListener<Maladie> {
 
     private final Pane paneMaladies;
@@ -14,6 +17,10 @@ public class ObsListeMaladies implements ListChangeListener<Maladie> {
         paneMaladies = p;
     }
 
+    /**
+     * Créé un sprite pour m et l'ajoute dans paneMaladies
+     * @param m une maladie
+     */
     private void creerSprite(Maladie m){
         Circle c = new Circle(10);
 
