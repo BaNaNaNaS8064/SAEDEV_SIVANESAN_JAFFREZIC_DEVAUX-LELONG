@@ -39,22 +39,22 @@ public class Terrain {
         maladies.add(m);
     }
 
-    /*
-     * 1 = Mur
-     * 0 = Vide
-     */
     private void initMap(){
-        map= new int[][]{
-                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                {1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1},
-                {0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1},
-                {1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1},
-                {1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1},
-                {1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1},
-                {1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0},
-                {1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+        // des variables avec des noms plus courts pour la lisibilité
+        int v = Tuiles.VIDE;
+        int m = Tuiles.MUR;
+
+        map = new int[][]{
+                {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
+                {m, v, v, v, v, v, v, m, m, m, v, v, v, v, m, m, m, m, m, m},
+                {v, v, m, m, v, v, v, m, m, m, v, m, m, v, v, m, m, m, m, m},
+                {m, v, v, m, v, v, v, v, m, m, v, m, m, v, v, v, v, v, m, m},
+                {m, v, v, v, v, m, v, v, v, m, v, v, v, v, v, m, m, v, v, m},
+                {m, v, v, v, v, m, m, v, v, v, v, v, v, v, v, v, m, m, v, m},
+                {m, v, v, v, v, v, v, v, m, v, v, v, v, v, m, v, v, m, v, m},
+                {m, v, v, v, m, v, v, v, m, m, v, v, m, m, m, m, v, v, v, v},
+                {m, v, v, v, m, m, v, m, m, m, m, v, v, v, v, v, v, v, v, m},
+                {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
     }
 
