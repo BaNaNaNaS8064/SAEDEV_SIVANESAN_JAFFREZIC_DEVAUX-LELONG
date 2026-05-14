@@ -32,7 +32,7 @@ public class Controller implements Initializable {
         terrain.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
         tailleTuiles = 48;
-        initTuiles();
+        initTuilesEtPaneMaladies();
 
         terrain.ajouter(new BactérieBanale(terrain, 0, 5.5));
 
@@ -40,13 +40,19 @@ public class Controller implements Initializable {
         gameLoop.play();
     }
 
+    /**
+     * Créé et démmare la gameLoop
+     */
     private void initGameLoop(){
         gameLoop = new Timeline();
         gameLoop.setCycleCount(Timeline.INDEFINITE);
         gameLoop.getKeyFrames().add(new KeyFrame(Duration.seconds(0.017), e -> uneFrame()));
     }
 
-    private void initTuiles(){
+    /**
+     * Initialise tuiles et paneMaladie
+     */
+    private void initTuilesEtPaneMaladies(){
         initTailleTuilesEtPaneMaladies();
 
         for (int i=0; i<terrain.getMap().length; i++)
@@ -54,6 +60,9 @@ public class Controller implements Initializable {
                 tuiles.getChildren().add(new ImageView(Tuiles.imageDe(terrain.getMap()[i][j])));
     }
 
+    /**
+     * Fixe les tailles de tuiles et paneMaladie
+     */
     private void initTailleTuilesEtPaneMaladies(){
         double largeurVoulue = tailleTuiles * terrain.getLargeur();
         tuiles.setMaxWidth(largeurVoulue);
@@ -68,6 +77,9 @@ public class Controller implements Initializable {
         paneMaladie.setMinHeight(hauteurVoulue);
     }
 
+    /**
+     * Méthode exécutée à chaque tour
+     */
     private void uneFrame(){
         terrain.unTour();
     }
