@@ -42,10 +42,6 @@ public abstract class Cellule{
         return y;
     }
 
-    public int getFrequenceAttaque() {
-        return frequenceAttaque;
-    }
-
     public int getCout() {
         return cout;
     }
@@ -53,18 +49,5 @@ public abstract class Cellule{
     public String getId() {
         return id;
     }
-
-    public void setDegats(int degats) {
-        this.degats = degats;
-    }
-
-    public void setPortée(double portée) {
-        this.portée = portée;
-    }
-
-    public void setFrequenceAttaque(int frequenceAttaque) {
-        this.frequenceAttaque = frequenceAttaque;
-    }
-
-
+    
 }
