@@ -11,6 +11,7 @@ import javafx.scene.shape.Circle;
  */
 public class ObsListeMaladies implements ListChangeListener<Maladie> {
 
+    /// le pane dans lequel on ajoute et supprime des sprites
     private final Pane paneMaladies;
 
     public ObsListeMaladies(Pane p){
