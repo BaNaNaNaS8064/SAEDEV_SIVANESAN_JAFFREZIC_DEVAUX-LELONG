@@ -40,19 +40,19 @@ public class Terrain {
     }
 
     private void initMap(){
-        Arrays.fill(map[0], 1);
-        Arrays.fill(map[getHauteur()-1], 1);
-        map[3][16] = 1;
-        map[4][4] = 1;
-        map[8][13] = 1;
-        map[1][0] = 1;
-        map[2][0] = 1;
-        map[3][0] = 1;
-        map[4][0] = 1;
-        map[6][0] = 1;
-        map[7][0] = 1;
-        map[8][0] = 1;
-        map[9][0] = 1;
+        Arrays.fill(map[0], Tuiles.MUR);
+        Arrays.fill(map[getHauteur()-1], Tuiles.MUR);
+        map[3][16] = Tuiles.MUR;
+        map[4][4] = Tuiles.MUR;
+        map[8][13] = Tuiles.MUR;
+        map[1][0] = Tuiles.MUR;
+        map[2][0] = Tuiles.MUR;
+        map[3][0] = Tuiles.MUR;
+        map[4][0] = Tuiles.MUR;
+        map[6][0] = Tuiles.MUR;
+        map[7][0] = Tuiles.MUR;
+        map[8][0] = Tuiles.MUR;
+        map[9][0] = Tuiles.MUR;
 
 
     }
