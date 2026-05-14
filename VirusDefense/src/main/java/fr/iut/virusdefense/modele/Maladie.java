@@ -4,10 +4,10 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
 public class Maladie {
-    private Terrain terrain;
-    private DoubleProperty xProperty;
-    private DoubleProperty yProperty;
-    private String id;
+    private final Terrain terrain;
+    private final DoubleProperty xProperty;
+    private final DoubleProperty yProperty;
+    private final String id;
     private static int dernierId = 0;
 
     public Maladie(Terrain terrain, double x, double y){

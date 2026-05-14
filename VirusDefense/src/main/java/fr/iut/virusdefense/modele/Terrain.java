@@ -6,8 +6,8 @@ import java.util.Arrays;
 
 public class Terrain {
 
-    private int[][] map;
-    private ObservableList<Maladie> maladies;
+    private final int[][] map;
+    private final ObservableList<Maladie> maladies;
 
     public Terrain(){
         map = new int[10][20];

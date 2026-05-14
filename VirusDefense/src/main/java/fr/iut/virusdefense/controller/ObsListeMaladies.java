@@ -8,7 +8,7 @@ import javafx.scene.shape.Circle;
 
 public class ObsListeMaladies implements ListChangeListener<Maladie> {
 
-    private Pane paneMaladies;
+    private final Pane paneMaladies;
 
     public ObsListeMaladies(Pane p){
         paneMaladies = p;
