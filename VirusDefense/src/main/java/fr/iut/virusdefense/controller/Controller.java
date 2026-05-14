@@ -3,6 +3,7 @@ package fr.iut.virusdefense.controller;
 import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.Maladie;
 import fr.iut.virusdefense.modele.Terrain;
+import fr.iut.virusdefense.modele.Tuiles;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -59,7 +60,7 @@ public class Controller implements Initializable {
         tuiles.getChildren().clear();
         for (int i=0; i<terrain.getMap().length; i++) {
             for (int j = 0; j < terrain.getMap()[i].length; j++) {
-                tuiles.getChildren().add(new ImageView(String.valueOf(Main.class.getResource("tuiles/Tuile" + terrain.getMap()[i][j] + ".png"))));
+                tuiles.getChildren().add(new ImageView(Tuiles.imageDe(terrain.getMap()[i][j])));
             }
         }
     }
