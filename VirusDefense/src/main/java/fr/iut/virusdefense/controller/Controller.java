@@ -1,11 +1,8 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.Main;
-
-
-
 import fr.iut.virusdefense.modele.maladie.*;
 import fr.iut.virusdefense.modele.Terrain;
+import fr.iut.virusdefense.modele.Tuiles;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -14,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -51,21 +47,25 @@ public class Controller implements Initializable {
     }
 
     private void initTuiles(){
-        tuiles.setMaxWidth(tailleTuiles * terrain.getLargeur());
-        tuiles.setMaxHeight(tailleTuiles * terrain.getHauteur());
-        tuiles.setMinWidth(tailleTuiles * terrain.getLargeur());
-        tuiles.setMinHeight(tailleTuiles * terrain.getHauteur());
-        paneMaladie.setMaxWidth(tailleTuiles * terrain.getLargeur());
-        paneMaladie.setMaxHeight(tailleTuiles * terrain.getHauteur());
-        paneMaladie.setMinWidth(tailleTuiles * terrain.getLargeur());
-        paneMaladie.setMinHeight(tailleTuiles * terrain.getHauteur());
+        initTailleTuilesEtPaneMaladies();
 
-        tuiles.getChildren().clear();
-        for (int i=0; i<terrain.getMap().length; i++) {
-            for (int j = 0; j < terrain.getMap()[i].length; j++) {
-                tuiles.getChildren().add(new ImageView(String.valueOf(Main.class.getResource("tuiles/Tuile" + terrain.getMap()[i][j] + ".png"))));
-            }
-        }
+        for (int i=0; i<terrain.getMap().length; i++)
+            for (int j = 0; j < terrain.getMap()[i].length; j++)
+                tuiles.getChildren().add(new ImageView(Tuiles.imageDe(terrain.getMap()[i][j])));
+    }
+
+    private void initTailleTuilesEtPaneMaladies(){
+        double largeurVoulue = tailleTuiles * terrain.getLargeur();
+        tuiles.setMaxWidth(largeurVoulue);
+        tuiles.setMinWidth(largeurVoulue);
+        paneMaladie.setMaxWidth(largeurVoulue);
+        paneMaladie.setMinWidth(largeurVoulue);
+
+        double hauteurVoulue = tailleTuiles * terrain.getHauteur();
+        tuiles.setMaxHeight(hauteurVoulue);
+        tuiles.setMinHeight(hauteurVoulue);
+        paneMaladie.setMaxHeight(hauteurVoulue);
+        paneMaladie.setMinHeight(hauteurVoulue);
     }
 
     private void uneFrame(){

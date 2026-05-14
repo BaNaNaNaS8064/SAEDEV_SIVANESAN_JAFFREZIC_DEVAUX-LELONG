@@ -1,16 +1,13 @@
 package fr.iut.virusdefense.modele;
 
-
 import fr.iut.virusdefense.modele.maladie.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.Arrays;
-
 public class Terrain {
 
     private int[][] map;
-    private ObservableList<Maladie> maladies;
+    private final ObservableList<Maladie> maladies;
 
     public Terrain(){
         map = new int[10][20];
@@ -47,20 +44,6 @@ public class Terrain {
      * 0 = Vide
      */
     private void initMap(){
-        /*Arrays.fill(map[0], 1);
-        Arrays.fill(map[getHauteur()-1], 1);
-        map[3][16] = 1;
-        map[4][4] = 1;
-        map[8][13] = 1;
-        map[1][0] = 1;
-        map[2][0] = 1;
-        map[3][0] = 1;
-        map[4][0] = 1;
-        map[6][0] = 1;
-        map[7][0] = 1;
-        map[8][0] = 1;
-        map[9][0] = 1;*/
-
         map= new int[][]{
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1},
@@ -79,7 +62,5 @@ public class Terrain {
         for (Maladie m : maladies)
             m.agir();
     }
-
-
 
 }

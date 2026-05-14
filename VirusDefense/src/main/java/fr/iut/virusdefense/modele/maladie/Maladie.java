@@ -5,10 +5,10 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
 public abstract class Maladie {
-    private Terrain terrain;
-    private DoubleProperty xProperty;
-    private DoubleProperty yProperty;
-    private String id;
+    private final Terrain terrain;
+    private final DoubleProperty xProperty;
+    private final DoubleProperty yProperty;
+    private final String id;
     private static int dernierId = 0;
     private int pv;
     private float vitesse;
@@ -16,13 +16,13 @@ public abstract class Maladie {
     public Maladie(Terrain terrain, double x, double y, int pv, float vitesse){
         this.terrain = terrain;
         id = "" + ++dernierId;
-        if (terrain.dansBornes(x, y)) {
-            this.xProperty = new SimpleDoubleProperty(x);
-            this.yProperty = new SimpleDoubleProperty(y);
-        }
-        else {
-            this.xProperty = new SimpleDoubleProperty(0);
-            this.yProperty = new SimpleDoubleProperty(0);
+
+        // Dans la plupart des cas x et y seront dans les bornes
+        xProperty = new SimpleDoubleProperty(x);
+        yProperty = new SimpleDoubleProperty(y);
+        if (!terrain.dansBornes(x, y)) {
+            setX(0);
+            setY(0);
         }
 
         this.vitesse = vitesse;

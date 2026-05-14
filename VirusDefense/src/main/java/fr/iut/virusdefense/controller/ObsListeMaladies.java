@@ -8,7 +8,7 @@ import javafx.scene.shape.Circle;
 
 public class ObsListeMaladies implements ListChangeListener<Maladie> {
 
-    private Pane paneMaladies;
+    private final Pane paneMaladies;
 
     public ObsListeMaladies(Pane p){
         paneMaladies = p;
@@ -16,12 +16,12 @@ public class ObsListeMaladies implements ListChangeListener<Maladie> {
 
     private void creerSprite(Maladie m){
         Circle c = new Circle(10);
+
         c.setFill(Color.GREEN);
-        m.xProperty().addListener((obs, oldValue, newValue) -> c.setTranslateX(newValue.doubleValue() * 48));
-        m.yProperty().addListener((obs, oldValue, newValue) -> c.setTranslateY(newValue.doubleValue() * 48));
-        c.setTranslateX(m.getX() * 48);
-        c.setTranslateY(m.getY() * 48);
+        c.translateXProperty().bind(m.xProperty().multiply(48));
+        c.translateYProperty().bind(m.yProperty().multiply(48));
         c.setId(c.getId());
+
         paneMaladies.getChildren().add(c);
     }
 
