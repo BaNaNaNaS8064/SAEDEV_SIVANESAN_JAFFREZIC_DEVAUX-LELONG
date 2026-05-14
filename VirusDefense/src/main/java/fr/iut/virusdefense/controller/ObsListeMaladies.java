@@ -16,10 +16,12 @@ public class ObsListeMaladies implements ListChangeListener<Maladie> {
 
     private void creerSprite(Maladie m){
         Circle c = new Circle(10);
+
         c.setFill(Color.GREEN);
         c.translateXProperty().bind(m.xProperty().multiply(48));
         c.translateYProperty().bind(m.yProperty().multiply(48));
         c.setId(c.getId());
+
         paneMaladies.getChildren().add(c);
     }
 

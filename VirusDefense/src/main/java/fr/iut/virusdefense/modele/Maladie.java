@@ -13,6 +13,7 @@ public class Maladie {
     public Maladie(Terrain terrain, double x, double y){
         this.terrain = terrain;
         id = "" + ++dernierId;
+
         if (terrain.dansBornes(x, y)) {
             this.xProperty = new SimpleDoubleProperty(x);
             this.yProperty = new SimpleDoubleProperty(y);
@@ -53,6 +54,7 @@ public class Maladie {
 
     public void agir(){
         setX(Math.min(getX()+0.03, terrain.getLargeur()));
+
         if (getX() >= terrain.getLargeur())
             setX(0);
     }

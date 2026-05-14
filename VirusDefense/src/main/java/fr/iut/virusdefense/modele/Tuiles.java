@@ -1,9 +1,6 @@
 package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.Main;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 import java.util.HashMap;
 
 public class Tuiles {

@@ -1,6 +1,5 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.Maladie;
 import fr.iut.virusdefense.modele.Terrain;
 import fr.iut.virusdefense.modele.Tuiles;

@@ -53,15 +53,11 @@ public class Terrain {
         map[7][0] = Tuiles.MUR;
         map[8][0] = Tuiles.MUR;
         map[9][0] = Tuiles.MUR;
-
-
     }
 
     public void unTour(){
         for (Maladie m : maladies)
             m.agir();
     }
-
-
 
 }
