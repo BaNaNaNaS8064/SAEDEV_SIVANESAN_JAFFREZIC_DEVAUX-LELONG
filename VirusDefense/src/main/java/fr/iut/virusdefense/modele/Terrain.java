@@ -4,6 +4,8 @@ import fr.iut.virusdefense.modele.maladie.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.*;
+
 /**
  * Représente le terrain dans lequel il y aura les cellules et maladies
  */
@@ -12,14 +14,21 @@ public class Terrain {
     /// La carte, indique où sont les murs et emplacements vides
     private int[][] map;
 
+    private int[] objectif;
+
+    private Map<int[], int[]> predecesseurs;
+
     private final ObservableList<Maladie> maladies;
 
     /**
      * Créé un terrain sans maladies ni cellules
      */
-    public Terrain(){
+    public Terrain(int[] objectif){
         maladies = FXCollections.observableArrayList();
         initMap();
+        this.objectif = objectif;
+        predecesseurs = new HashMap<>();
+        algoBFS();
     }
 
     public int[][] getMap(){
@@ -43,13 +52,13 @@ public class Terrain {
     }
 
     /**
-     * Retourne vrai si (x;y) se trouve dans les bornes du terrain
-     * @param x une position x
-     * @param y une position y
-     * @return si (x;y) se trouve dans les bornes du terrain
+     * Retourne vrai si (ligne;colonne) se trouve dans les bornes du terrain
+     * @param ligne une ligne
+     * @param col une colonne
+     * @return si (i;y) se trouve dans les bornes du terrain
      */
-    public boolean dansBornes(double x, double y){
-        return (0 <= x && x < getLargeur()) && (0 <= y && y < getHauteur());
+    public boolean dansBornes(double ligne, double col){
+        return (0 <= ligne && ligne < getHauteur()) && (0 <= col && col < getLargeur());
     }
 
     /**
@@ -74,10 +83,62 @@ public class Terrain {
         };
     }
 
+    private void algoBFS() {
+        LinkedList<int[]> fifo = new LinkedList<>();
+        int[] s;
+        fifo.add(objectif);
+        predecesseurs.put(objectif, null);
+        while (!fifo.isEmpty()){
+            s = fifo.poll();
+            for (int[] t : adjacents(s)){
+                if (!predecesseurContient(t)){
+                    fifo.add(t);
+                    predecesseurs.put(t, s);
+                }
+            }
+        }
+    }
+
+    public int[] predecesseurDe(int[] coords){
+        for (int[] key : predecesseurs.keySet())
+            if (Arrays.equals(key, coords))
+                return predecesseurs.get(key);
+        return null;
+    }
+
+    private boolean predecesseurContient(int[] coords){
+        for (int[] key : predecesseurs.keySet())
+            if (Arrays.equals(key, coords))
+                return true;
+        return false;
+    }
+
+    private ArrayList<int[]> adjacents(int[] s){
+        ArrayList<int[]> adj = new ArrayList<>();
+
+        int[][] decalages = new int[][]{
+                {-1, 0},
+                {0, -1},
+                {+1, 0},
+                {0, +1}
+        };
+        int x, y;
+
+        for (int[] decalage : decalages){
+            x = s[0] + decalage[0];
+            y = s[1] + decalage[1];
+            if (dansBornes(x, y) && map[x][y] == Tuiles.VIDE)
+                adj.add(new int[]{x, y});
+        }
+
+        return adj;
+    }
+
     /**
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour(){
+        //algoBFS();
         for (Maladie m : maladies)
             m.agir();
     }

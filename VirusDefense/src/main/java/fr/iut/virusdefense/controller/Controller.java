@@ -28,7 +28,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        terrain = new Terrain();
+        terrain = new Terrain(new int[]{7, 19});
         terrain.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
         tailleTuiles = 48;
