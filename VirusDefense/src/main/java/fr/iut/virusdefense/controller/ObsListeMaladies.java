@@ -1,7 +1,9 @@
 package fr.iut.virusdefense.controller;
 
+import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.maladie.Maladie;
 import javafx.collections.ListChangeListener;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -23,14 +25,13 @@ public class ObsListeMaladies implements ListChangeListener<Maladie> {
      * @param m une maladie
      */
     private void creerSprite(Maladie m){
-        Circle c = new Circle(10);
+        ImageView img = new ImageView(String.valueOf(Main.class.getResource("maladies/BB.png")));
 
-        c.setFill(Color.GREEN);
-        c.translateXProperty().bind(m.xProperty().multiply(48));
-        c.translateYProperty().bind(m.yProperty().multiply(48));
-        c.setId(c.getId());
+        img.translateXProperty().bind(m.xProperty().multiply(48));
+        img.translateYProperty().bind(m.yProperty().multiply(48));
+        img.setId(m.getId());
 
-        paneMaladies.getChildren().add(c);
+        paneMaladies.getChildren().add(img);
     }
 
     @Override
