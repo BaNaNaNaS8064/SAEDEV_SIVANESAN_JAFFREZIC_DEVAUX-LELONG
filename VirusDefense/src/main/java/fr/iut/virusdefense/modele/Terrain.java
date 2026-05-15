@@ -20,6 +20,8 @@ public class Terrain {
 
     private final ObservableList<Maladie> maladies;
 
+    private int tour;
+
     /**
      * Créé un terrain sans maladies ni cellules
      */
@@ -29,6 +31,15 @@ public class Terrain {
         this.objectif = objectif;
         predecesseurs = new HashMap<>();
         algoBFS();
+        tour = 0;
+    }
+
+    public int[] getObjectif() {
+        return objectif;
+    }
+
+    public int getTour() {
+        return tour;
     }
 
     public int[][] getMap(){
@@ -141,6 +152,7 @@ public class Terrain {
         //algoBFS();
         for (Maladie m : maladies)
             m.agir();
+        tour++;
     }
 
 }

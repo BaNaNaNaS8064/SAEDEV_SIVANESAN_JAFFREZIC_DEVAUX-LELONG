@@ -34,7 +34,7 @@ public class Controller implements Initializable {
         tailleTuiles = 48;
         initTuilesEtPaneMaladies();
 
-        terrain.ajouter(new BactérieBanale(terrain, 0, 5.5));
+        terrain.ajouter(new BactérieBanale(terrain, 0, 2));
 
         initGameLoop();
         gameLoop.play();

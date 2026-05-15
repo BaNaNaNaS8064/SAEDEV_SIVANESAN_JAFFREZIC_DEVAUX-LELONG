@@ -4,6 +4,8 @@ import fr.iut.virusdefense.modele.Terrain;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
+import java.util.Arrays;
+
 /**
  * Représente une maladie
  */
@@ -14,7 +16,7 @@ public abstract class Maladie {
     private final String id;
     private static int dernierId = 0;
     private int pv;
-    private final double vitesse;
+    private final int vitesse;
 
     /**
      * Créé un nouvelle maladie
@@ -24,7 +26,7 @@ public abstract class Maladie {
      * @param pv ses points de vie initiaux
      * @param vitesse sa vitesse de déplacement
      */
-    public Maladie(Terrain terrain, double x, double y, int pv, double vitesse){
+    public Maladie(Terrain terrain, double x, double y, int pv, int vitesse){
         this.terrain = terrain;
         id = "" + ++dernierId;
 
@@ -73,8 +75,17 @@ public abstract class Maladie {
      * Par défaut elle ne se charge que du déplacement
      */
     public void agir(){
-        setX(Math.min(getX()+(0.03 * this.vitesse), terrain.getLargeur()));
-        if (getX() >= terrain.getLargeur())
+        if (terrain.getTour() % vitesse == 0)
+            bouger();
+        if (Arrays.equals(new int[]{(int) getY(), (int) getX()}, terrain.getObjectif())) {
+            setY(2);
             setX(0);
+        }
+    }
+
+    public void bouger(){
+        int[] prochainCase = terrain.predecesseurDe(new int[]{(int) getY(), (int) getX()});
+        setY(prochainCase[0] + 0.24);
+        setX(prochainCase[1] + 0.24);
     }
 }
