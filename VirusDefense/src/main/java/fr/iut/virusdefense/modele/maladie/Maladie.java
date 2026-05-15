@@ -16,7 +16,7 @@ public abstract class Maladie {
     private final String id;
     private static int dernierId = 0;
     private int pv;
-    private final int vitesse;
+    private final double vitesse;
 
     /**
      * Créé un nouvelle maladie
@@ -26,13 +26,13 @@ public abstract class Maladie {
      * @param pv ses points de vie initiaux
      * @param vitesse sa vitesse de déplacement
      */
-    public Maladie(Terrain terrain, double x, double y, int pv, int vitesse){
+    public Maladie(Terrain terrain, double x, double y, int pv, double vitesse){
         this.terrain = terrain;
         id = "" + ++dernierId;
 
         // Dans la plupart des cas x et y seront dans les bornes
-        xProperty = new SimpleDoubleProperty(x);
-        yProperty = new SimpleDoubleProperty(y);
+        xProperty = new SimpleDoubleProperty(x + 0.25);
+        yProperty = new SimpleDoubleProperty(y + 0.25);
         if (!terrain.dansBornes(x, y)) {
             setX(0);
             setY(0);
@@ -75,8 +75,7 @@ public abstract class Maladie {
      * Par défaut elle ne se charge que du déplacement
      */
     public void agir(){
-        if (terrain.getTour() % vitesse == 0)
-            bouger();
+        bouger();
         if (Arrays.equals(new int[]{(int) getY(), (int) getX()}, terrain.getObjectif())) {
             setY(2);
             setX(0);
@@ -84,8 +83,13 @@ public abstract class Maladie {
     }
 
     public void bouger(){
-        int[] prochainCase = terrain.predecesseurDe(new int[]{(int) getY(), (int) getX()});
-        setY(prochainCase[0] + 0.24);
-        setX(prochainCase[1] + 0.24);
+        int[] prochaineCase = terrain.predecesseurDe(new int[]{(int) getY(), (int) getX()});
+        int directionY, directionX;
+
+        directionY = Double.compare(prochaineCase[0]+0.25, getY());
+        directionX = Double.compare(prochaineCase[1]+0.25, getX());
+
+        setY(getY() + vitesse*directionY);
+        setX(getX() + vitesse*directionX);
     }
 }
