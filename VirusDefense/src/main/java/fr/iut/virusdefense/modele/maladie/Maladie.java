@@ -10,11 +10,14 @@ import java.util.Arrays;
  * Représente une maladie
  */
 public abstract class Maladie {
+    private static int dernierId = 0;
+    private final String id;
+
     private final Terrain terrain;
+
     private final DoubleProperty xProperty;
     private final DoubleProperty yProperty;
-    private final String id;
-    private static int dernierId = 0;
+
     private int pv;
     private final double vitesse;
 
@@ -26,7 +29,7 @@ public abstract class Maladie {
      * @param pv ses points de vie initiaux
      * @param vitesse sa vitesse de déplacement
      */
-    public Maladie(Terrain terrain, double x, double y, int pv, double vitesse){
+    public Maladie(Terrain terrain, int x, int y, int pv, double vitesse){
         this.terrain = terrain;
         id = "" + ++dernierId;
 
@@ -76,20 +79,18 @@ public abstract class Maladie {
      */
     public void agir(){
         bouger();
+
+        // pour boucler l'animation
         if (Arrays.equals(new int[]{(int) getY(), (int) getX()}, terrain.getObjectif())) {
-            setY(2);
-            setX(0);
+            setY(2.25);
+            setX(0.25);
         }
     }
 
     public void bouger(){
         int[] prochaineCase = terrain.predecesseurDe(new int[]{(int) getY(), (int) getX()});
-        int directionY, directionX;
 
-        directionY = Double.compare(prochaineCase[0]+0.25, getY());
-        directionX = Double.compare(prochaineCase[1]+0.25, getX());
-
-        setY(getY() + vitesse*directionY);
-        setX(getX() + vitesse*directionX);
+        setY(getY() + vitesse*Double.compare(prochaineCase[0]+0.25, getY()));
+        setX(getX() + vitesse*Double.compare(prochaineCase[1]+0.25, getX()));
     }
 }
