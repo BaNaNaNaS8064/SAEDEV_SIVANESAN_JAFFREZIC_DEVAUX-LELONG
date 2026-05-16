@@ -10,6 +10,7 @@ public class Tuiles {
 
     public final static int VIDE = 0;
     public final static int MUR = 1;
+    public final static int OBJECTIF = 2;
 
     /**
      * Associe à un code tuile le chemin de son image (à partir de tuiles/ dans les ressources)
@@ -24,6 +25,7 @@ public class Tuiles {
 
         temp.put(VIDE, "Vide.png");
         temp.put(MUR, "Mur.png");
+        temp.put(OBJECTIF, temp.get(VIDE));
 
         return temp;
     }

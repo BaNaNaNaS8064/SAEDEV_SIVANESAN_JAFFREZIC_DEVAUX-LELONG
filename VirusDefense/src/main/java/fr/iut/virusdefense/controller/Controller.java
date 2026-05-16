@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -34,7 +35,7 @@ public class Controller implements Initializable {
         tailleTuiles = 48;
         initTuilesEtPaneMaladies();
 
-        terrain.ajouter(new BactérieBanale(terrain, 0, 5.5));
+        terrain.ajouter(new BactérieBanale(terrain, 0, 2));
 
         initGameLoop();
         gameLoop.play();
