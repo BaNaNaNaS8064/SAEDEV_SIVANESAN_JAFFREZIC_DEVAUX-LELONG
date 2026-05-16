@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.maladie;
+package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Terrain;
 import javafx.beans.property.DoubleProperty;

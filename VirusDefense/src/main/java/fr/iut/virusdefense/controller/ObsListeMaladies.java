@@ -1,12 +1,10 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.Main;
-import fr.iut.virusdefense.modele.maladie.Maladie;
+import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.ListChangeListener;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 /**
  * Observe la liste des maladies et se charge de créer et supprimer les sprites

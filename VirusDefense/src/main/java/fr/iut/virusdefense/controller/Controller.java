@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.modele.maladie.*;
+import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.modele.Terrain;
 import fr.iut.virusdefense.modele.Tuiles;
 import javafx.animation.KeyFrame;
@@ -12,7 +12,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {

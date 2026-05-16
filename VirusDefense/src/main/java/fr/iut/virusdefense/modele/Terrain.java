@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele;
 
-import fr.iut.virusdefense.modele.maladie.Maladie;
+import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
