@@ -29,7 +29,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        terrain = new Terrain(List.of(7, 19));
+        terrain = new Terrain();
         terrain.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
         tailleTuiles = 48;

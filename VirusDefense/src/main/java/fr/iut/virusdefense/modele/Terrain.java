@@ -25,10 +25,10 @@ public class Terrain {
     /**
      * Créé un terrain sans maladies ni cellules
      */
-    public Terrain(List<Integer> objectif){
+    public Terrain(){
         maladies = FXCollections.observableArrayList();
         initMap();
-        this.objectif = objectif;
+        objectif = chercherObjectif();
         predecesseurs = new HashMap<>();
         faireBFS();
         tour = 0;
@@ -88,10 +88,19 @@ public class Terrain {
                 {m, v, v, v, v, m, v, v, v, m, v, v, v, v, v, m, m, v, v, m},
                 {m, v, v, v, v, m, m, v, v, v, v, v, v, v, v, v, m, m, v, m},
                 {m, v, v, v, v, v, v, v, m, v, v, v, v, v, m, v, v, m, v, m},
-                {m, v, v, v, m, v, v, v, m, m, v, v, m, m, m, m, v, v, v, v},
+                {m, v, v, v, m, v, v, v, m, m, v, v, m, m, m, m, v, v, v, Tuiles.OBJECTIF},
                 {m, v, v, v, m, m, v, m, m, m, m, v, v, v, v, v, v, v, v, m},
                 {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
         };
+    }
+
+    private List<Integer> chercherObjectif(){
+        for (int i = 0; i < getHauteur(); i++)
+            for (int j = 0; j < getLargeur(); j++)
+                if (map[i][j] == Tuiles.OBJECTIF)
+                    return List.of(i, j);
+
+        return null;
     }
 
     private void faireBFS() {
