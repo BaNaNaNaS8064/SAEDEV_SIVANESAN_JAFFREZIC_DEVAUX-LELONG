@@ -87,10 +87,14 @@ public abstract class Maladie {
         }
     }
 
+    /**
+     * Se déplace vers la prochaine case.
+     * La distance dépends de la vitesse
+     */
     public void bouger(){
         List<Integer> prochaineCase = terrain.prochaineCase(List.of((int)getY(), (int)getX()));
 
-        setY(getY() + vitesse*Double.compare(prochaineCase.get(0) +0.25, getY()));
-        setX(getX() + vitesse*Double.compare(prochaineCase.get(1) +0.25, getX()));
+        setY(getY() + vitesse*Double.compare(prochaineCase.get(0) + 0.25, getY()));
+        setX(getX() + vitesse*Double.compare(prochaineCase.get(1) + 0.25, getX()));
     }
 }
