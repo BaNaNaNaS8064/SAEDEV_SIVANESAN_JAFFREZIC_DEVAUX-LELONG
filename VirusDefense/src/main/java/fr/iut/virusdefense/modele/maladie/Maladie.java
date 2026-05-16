@@ -4,7 +4,6 @@ import fr.iut.virusdefense.modele.Terrain;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -89,7 +88,7 @@ public abstract class Maladie {
     }
 
     public void bouger(){
-        List<Integer> prochaineCase = terrain.predecesseurDe(List.of((int)getY(), (int)getX()));
+        List<Integer> prochaineCase = terrain.prochaineCase(List.of((int)getY(), (int)getX()));
 
         setY(getY() + vitesse*Double.compare(prochaineCase.get(0) +0.25, getY()));
         setX(getX() + vitesse*Double.compare(prochaineCase.get(1) +0.25, getX()));

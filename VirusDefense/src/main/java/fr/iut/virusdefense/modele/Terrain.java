@@ -14,16 +14,23 @@ public class Terrain {
     /// La carte, indique où sont les murs et emplacements vides
     private int[][] map;
 
+    /// L'endroit à protéger des maladies
     private List<Integer> objectif;
 
+    /** Associe à une case les coordonées de la prochaine
+     * dans le chemin optimal vers l'objectif
+     */
     private Map<List<Integer>, List<Integer>> predecesseurs;
 
+    /**
+     * La liste des maladies dans le terrain
+     */
     private final ObservableList<Maladie> maladies;
 
     private int tour;
 
     /**
-     * Créé un terrain sans maladies ni cellules
+     * Créé un terrain sans maladies
      */
     public Terrain(){
         maladies = FXCollections.observableArrayList();
@@ -58,6 +65,10 @@ public class Terrain {
         return maladies;
     }
 
+    /**
+     * Ajoute {@code m} à {@code maladies}
+     * @param m une maladie à ajouter
+     */
     public void ajouter(Maladie m){
         maladies.add(m);
     }
@@ -94,6 +105,13 @@ public class Terrain {
         };
     }
 
+    /**
+     * Cherche {@code Tuiles.OBJECTIF} dans la map et renvoie ses coords
+     * sous forme de List de [ligne, colonne]
+     *
+     * @return Les coords de la première occurence trouvée de
+     * {@code Tuiles.OBJECTIF}, null sinon
+     */
     private List<Integer> chercherObjectif(){
         for (int i = 0; i < getHauteur(); i++)
             for (int j = 0; j < getLargeur(); j++)
@@ -103,6 +121,9 @@ public class Terrain {
         return null;
     }
 
+    /**
+     * Remplit {@code predecesseurs} à l'aide de l'algorithme du BFS à partir de {@code objectif}
+     */
     private void faireBFS() {
         predecesseurs.clear();
 
@@ -123,11 +144,30 @@ public class Terrain {
         }
     }
 
-    public List<Integer> predecesseurDe(List<Integer> coords){
+    /**
+     * Retourne la prochaine case après {@code coords}
+     * dans le chemin optimal vers l'objectif
+     *
+     * @param coords Une liste sous forme [ligne, colonne]
+     *               qui représente les coordonnées d'un case
+     *
+     * @return Une liste sous forme [ligne, colonne]
+     * qui représente la prochaine case dans le chemin optimal vers l'objectif
+     */
+    public List<Integer> prochaineCase(List<Integer> coords){
         return predecesseurs.get(coords);
     }
 
-    private ArrayList<List<Integer>> voisins(List<Integer> s){
+    /**
+     * Retourne tous les voisins qui sont vides de uneCase
+     *
+     * @param uneCase Une liste sous forme [ligne, colonne]
+     *                qui représente les coordonnées d'un case
+     *
+     * @return une liste de listes (sous forme [[ligne, colonne], ...])
+     * qui représente une liste des voisins de {@code uneCase}
+     */
+    private ArrayList<List<Integer>> voisins(List<Integer> uneCase){
         ArrayList<List<Integer>> voisins = new ArrayList<>();
 
         int[][] decalages = new int[][]{
@@ -139,8 +179,8 @@ public class Terrain {
         int ligne, col;
 
         for (int[] decalage : decalages){
-            ligne = s.get(0) + decalage[0];
-            col = s.get(1) + decalage[1];
+            ligne = uneCase.get(0) + decalage[0];
+            col = uneCase.get(1) + decalage[1];
             if (dansBornes(ligne, col) && map[ligne][col] == Tuiles.VIDE)
                 voisins.add(List.of(ligne, col));
         }
@@ -152,7 +192,6 @@ public class Terrain {
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour(){
-        //algoBFS();
         for (Maladie m : maladies)
             m.agir();
         tour++;
