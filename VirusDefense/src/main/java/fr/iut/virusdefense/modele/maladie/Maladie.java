@@ -5,6 +5,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Représente une maladie
@@ -81,16 +82,16 @@ public abstract class Maladie {
         bouger();
 
         // pour boucler l'animation
-        if (Arrays.equals(new int[]{(int) getY(), (int) getX()}, terrain.getObjectif())) {
+        if (terrain.getObjectif().equals(List.of((int)getY(), (int)getX()))) {
             setY(2.25);
             setX(0.25);
         }
     }
 
     public void bouger(){
-        int[] prochaineCase = terrain.predecesseurDe(new int[]{(int) getY(), (int) getX()});
+        List<Integer> prochaineCase = terrain.predecesseurDe(List.of((int)getY(), (int)getX()));
 
-        setY(getY() + vitesse*Double.compare(prochaineCase[0]+0.25, getY()));
-        setX(getX() + vitesse*Double.compare(prochaineCase[1]+0.25, getX()));
+        setY(getY() + vitesse*Double.compare(prochaineCase.get(0) +0.25, getY()));
+        setX(getX() + vitesse*Double.compare(prochaineCase.get(1) +0.25, getX()));
     }
 }

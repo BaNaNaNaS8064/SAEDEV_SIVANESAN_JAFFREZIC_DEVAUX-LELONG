@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -28,7 +29,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        terrain = new Terrain(new int[]{7, 19});
+        terrain = new Terrain(List.of(7, 19));
         terrain.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
         tailleTuiles = 48;

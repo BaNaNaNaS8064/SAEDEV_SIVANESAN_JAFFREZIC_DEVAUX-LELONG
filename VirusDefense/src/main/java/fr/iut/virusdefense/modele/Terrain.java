@@ -14,9 +14,9 @@ public class Terrain {
     /// La carte, indique où sont les murs et emplacements vides
     private int[][] map;
 
-    private int[] objectif;
+    private List<Integer> objectif;
 
-    private Map<int[], int[]> predecesseurs;
+    private Map<List<Integer>, List<Integer>> predecesseurs;
 
     private final ObservableList<Maladie> maladies;
 
@@ -25,7 +25,7 @@ public class Terrain {
     /**
      * Créé un terrain sans maladies ni cellules
      */
-    public Terrain(int[] objectif){
+    public Terrain(List<Integer> objectif){
         maladies = FXCollections.observableArrayList();
         initMap();
         this.objectif = objectif;
@@ -34,7 +34,7 @@ public class Terrain {
         tour = 0;
     }
 
-    public int[] getObjectif() {
+    public List<Integer> getObjectif() {
         return objectif;
     }
 
@@ -95,14 +95,14 @@ public class Terrain {
     }
 
     private void algoBFS() {
-        LinkedList<int[]> fifo = new LinkedList<>();
-        int[] s;
-        fifo.add(objectif);
-        predecesseurs.put(objectif, null);
+        LinkedList<List<Integer>> fifo = new LinkedList<>();
+        List<Integer> s;
+        fifo.add(List.of(objectif.get(0), objectif.get(1)));
+        predecesseurs.put(List.of(objectif.get(0), objectif.get(1)), null);
         while (!fifo.isEmpty()){
             s = fifo.poll();
-            for (int[] t : adjacents(s)){
-                if (!predecesseurContient(t)){
+            for (List<Integer> t : adjacents(s)){
+                if (!predecesseurs.containsKey(t)){
                     fifo.add(t);
                     predecesseurs.put(t, s);
                 }
@@ -110,22 +110,12 @@ public class Terrain {
         }
     }
 
-    public int[] predecesseurDe(int[] coords){
-        for (int[] key : predecesseurs.keySet())
-            if (Arrays.equals(key, coords))
-                return predecesseurs.get(key);
-        return null;
+    public List<Integer> predecesseurDe(List<Integer> coords){
+        return predecesseurs.get(coords);
     }
 
-    private boolean predecesseurContient(int[] coords){
-        for (int[] key : predecesseurs.keySet())
-            if (Arrays.equals(key, coords))
-                return true;
-        return false;
-    }
-
-    private ArrayList<int[]> adjacents(int[] s){
-        ArrayList<int[]> adj = new ArrayList<>();
+    private ArrayList<List<Integer>> adjacents(List<Integer> s){
+        ArrayList<List<Integer>> adj = new ArrayList<>();
 
         int[][] decalages = new int[][]{
                 {-1, 0},
@@ -136,10 +126,10 @@ public class Terrain {
         int x, y;
 
         for (int[] decalage : decalages){
-            x = s[0] + decalage[0];
-            y = s[1] + decalage[1];
+            x = s.get(0) + decalage[0];
+            y = s.get(1) + decalage[1];
             if (dansBornes(x, y) && map[x][y] == Tuiles.VIDE)
-                adj.add(new int[]{x, y});
+                adj.add(List.of(x, y));
         }
 
         return adj;
