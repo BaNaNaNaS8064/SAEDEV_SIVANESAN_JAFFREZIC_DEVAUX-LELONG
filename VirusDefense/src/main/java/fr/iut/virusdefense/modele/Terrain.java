@@ -30,7 +30,7 @@ public class Terrain {
         initMap();
         this.objectif = objectif;
         predecesseurs = new HashMap<>();
-        algoBFS();
+        faireBFS();
         tour = 0;
     }
 
@@ -94,17 +94,21 @@ public class Terrain {
         };
     }
 
-    private void algoBFS() {
+    private void faireBFS() {
+        predecesseurs.clear();
+
         LinkedList<List<Integer>> fifo = new LinkedList<>();
-        List<Integer> s;
+        List<Integer> caseActuelle;
+
         fifo.add(List.of(objectif.get(0), objectif.get(1)));
         predecesseurs.put(List.of(objectif.get(0), objectif.get(1)), null);
+
         while (!fifo.isEmpty()){
-            s = fifo.poll();
-            for (List<Integer> t : adjacents(s)){
-                if (!predecesseurs.containsKey(t)){
-                    fifo.add(t);
-                    predecesseurs.put(t, s);
+            caseActuelle = fifo.poll();
+            for (List<Integer> voisin : voisins(caseActuelle)){
+                if (!predecesseurs.containsKey(voisin)){
+                    fifo.add(voisin);
+                    predecesseurs.put(voisin, caseActuelle);
                 }
             }
         }
@@ -114,8 +118,8 @@ public class Terrain {
         return predecesseurs.get(coords);
     }
 
-    private ArrayList<List<Integer>> adjacents(List<Integer> s){
-        ArrayList<List<Integer>> adj = new ArrayList<>();
+    private ArrayList<List<Integer>> voisins(List<Integer> s){
+        ArrayList<List<Integer>> voisins = new ArrayList<>();
 
         int[][] decalages = new int[][]{
                 {-1, 0},
@@ -123,16 +127,16 @@ public class Terrain {
                 {+1, 0},
                 {0, +1}
         };
-        int x, y;
+        int ligne, col;
 
         for (int[] decalage : decalages){
-            x = s.get(0) + decalage[0];
-            y = s.get(1) + decalage[1];
-            if (dansBornes(x, y) && map[x][y] == Tuiles.VIDE)
-                adj.add(List.of(x, y));
+            ligne = s.get(0) + decalage[0];
+            col = s.get(1) + decalage[1];
+            if (dansBornes(ligne, col) && map[ligne][col] == Tuiles.VIDE)
+                voisins.add(List.of(ligne, col));
         }
 
-        return adj;
+        return voisins;
     }
 
     /**
