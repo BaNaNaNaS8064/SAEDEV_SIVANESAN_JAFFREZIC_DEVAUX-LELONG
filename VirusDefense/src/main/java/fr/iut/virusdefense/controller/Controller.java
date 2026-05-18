@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.modele.maladie.*;
+import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.modele.Terrain;
 import fr.iut.virusdefense.modele.Tuiles;
 import javafx.animation.KeyFrame;
@@ -34,7 +34,7 @@ public class Controller implements Initializable {
         tailleTuiles = 48;
         initTuilesEtPaneMaladies();
 
-        terrain.ajouter(new BactérieBanale(terrain, 0, 5.5));
+        terrain.ajouter(new BactérieBanale(terrain, 0, 2));
 
         initGameLoop();
         gameLoop.play();
