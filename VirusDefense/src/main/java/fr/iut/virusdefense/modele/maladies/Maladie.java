@@ -77,6 +77,11 @@ public abstract class Maladie {
         return List.of((int)getY(), (int)getX());
     }
 
+    public int getPv() {
+        return pv;
+    }
+
+    
     /**
      * La méthode exécutée à chaque tour.
      * Par défaut elle ne se charge que du déplacement
@@ -100,5 +105,10 @@ public abstract class Maladie {
 
         setY(getY() + vitesse*Double.compare(prochaineCase.get(0) + 0.25, getY()));
         setX(getX() + vitesse*Double.compare(prochaineCase.get(1) + 0.25, getX()));
+    }
+
+    public void prendreDegats(int degats){
+        pv = pv-degats;
+        System.out.println(this.pv);
     }
 }

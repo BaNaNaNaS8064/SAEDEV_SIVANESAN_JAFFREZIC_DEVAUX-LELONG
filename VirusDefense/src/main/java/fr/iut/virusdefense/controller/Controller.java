@@ -1,5 +1,7 @@
 package fr.iut.virusdefense.controller;
 
+import fr.iut.virusdefense.modele.cellule.Cellule;
+import fr.iut.virusdefense.modele.cellule.Sainple;
 import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.modele.Terrain;
 import fr.iut.virusdefense.modele.Tuiles;
@@ -35,6 +37,8 @@ public class Controller implements Initializable {
         initTuilesEtPaneMaladies();
 
         terrain.ajouter(new BactérieBanale(terrain, 0, 2));
+        Cellule c1 = new Sainple(terrain , 3 , 2);
+        c1.reconnaissanceEnnemi();
 
         initGameLoop();
         gameLoop.play();
@@ -82,5 +86,6 @@ public class Controller implements Initializable {
      */
     private void uneFrame(){
         terrain.unTour();
+
     }
 }
