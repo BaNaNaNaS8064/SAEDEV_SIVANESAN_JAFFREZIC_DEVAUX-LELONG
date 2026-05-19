@@ -15,7 +15,7 @@ public class Carte {
     private Environnement env;
     private boolean[][] carteStatique;
     private List<Integer> objectif;
-    private final ObservableList<Cellule> cellules;
+
 
 
     public Carte(Environnement env){
@@ -23,7 +23,7 @@ public class Carte {
         // des variables avec des noms plus courts pour la lisibilité
         boolean f = false;
         boolean t = true;
-        cellules = FXCollections.observableArrayList();
+
 
         this.carteStatique = new boolean[][]{
                 {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t},
@@ -56,7 +56,7 @@ public class Carte {
         if (List.of(ligne, col).equals(objectif))
             return OBJECTIF;
 
-        for (Cellule c : cellules)
+        for (Cellule c : env.getCellules())
             if (c.getX() == col && c.getY() == ligne)
                 return SAINPLE;
 
@@ -71,9 +71,7 @@ public class Carte {
         return val == VIDE || val == OBJECTIF;
     }
 
-    public ObservableList<Cellule> getCellules() {
-        return cellules;
-    }
+
 
     /**
      * Retourne vrai si (ligne;colonne) se trouve dans les bornes du terrain
@@ -85,9 +83,7 @@ public class Carte {
         return (0 <= ligne && ligne < getHauteur()) && (0 <= col && col < getLargeur());
     }
 
-    public void ajouterCellule(Cellule c){
-        cellules.add(c);
-    }
+
 
 
 }

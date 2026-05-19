@@ -21,6 +21,8 @@ public class Environnement {
      */
     private final ObservableList<Maladie> maladies;
 
+    private final ObservableList<Cellule> cellules;
+
     private int tour;
 
     /**
@@ -28,6 +30,7 @@ public class Environnement {
      */
     public Environnement() {
         maladies = FXCollections.observableArrayList();
+        cellules = FXCollections.observableArrayList();
         carte = new Carte(this);
         deplacement = new Deplacement(carte);
         tour = 0;
@@ -49,6 +52,10 @@ public class Environnement {
         return maladies;
     }
 
+    public ObservableList<Cellule> getCellules() {
+        return cellules;
+    }
+
     /**
      * Ajoute {@code m} à {@code maladies}
      *
@@ -62,12 +69,15 @@ public class Environnement {
         maladies.remove(m);
     }
 
+    public void ajouterCellule(Cellule c){
+        cellules.add(c);
+    }
 
     /**
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        for (Cellule c : getCarte().getCellules()) {
+        for (Cellule c : cellules) {
             c.agir();
         }
         for (Maladie m : maladies) {
