@@ -1,15 +1,25 @@
 package fr.iut.virusdefense.modele;
 
+import fr.iut.virusdefense.modele.cellule.Cellule;
+import fr.iut.virusdefense.modele.maladies.Maladie;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.List;
 
 public class Carte {
+    private Environnement env;
     private boolean[][] carteStatique;
     private List<Integer> objectif;
+    private final ObservableList<Cellule> cellules;
 
-    public Carte(){
+
+    public Carte(Environnement env){
+        this.env = env;
         // des variables avec des noms plus courts pour la lisibilité
         boolean f = false;
         boolean t = true;
+        cellules = FXCollections.observableArrayList();
 
         this.carteStatique = new boolean[][]{
                 {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t},
@@ -45,6 +55,10 @@ public class Carte {
         return this.carteStatique[ligne][col];
     }
 
+    public ObservableList<Cellule> getCellules() {
+        return cellules;
+    }
+
     /**
      * Retourne vrai si (ligne;colonne) se trouve dans les bornes du terrain
      * @param ligne une ligne
@@ -54,4 +68,10 @@ public class Carte {
     public boolean dansBornes(double ligne, double col){
         return (0 <= ligne && ligne < getHauteur()) && (0 <= col && col < getLargeur());
     }
+
+    public void ajouterCellule(Cellule c){
+        cellules.add(c);
+    }
+
+
 }

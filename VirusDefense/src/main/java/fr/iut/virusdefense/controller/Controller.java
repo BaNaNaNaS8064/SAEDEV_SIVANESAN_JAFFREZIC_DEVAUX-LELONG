@@ -37,8 +37,8 @@ public class Controller implements Initializable {
         initTuilesEtPaneMaladies();
 
         environnement.ajouter(new BactérieBanale(environnement, 0, 2));
-        Cellule c1 = new Sainple(environnement , 3 , 2);
-        c1.reconnaissanceEnnemi();
+        environnement.getMap().ajouterCellule(new Sainple(environnement , 3 , 2));
+
 
         initGameLoop();
         gameLoop.play();

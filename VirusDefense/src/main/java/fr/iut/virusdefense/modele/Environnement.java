@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele;
 
+import fr.iut.virusdefense.modele.cellule.Cellule;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,9 +26,9 @@ public class Environnement {
     /**
      * Créé un terrain sans maladies
      */
-    public Environnement(){
+    public Environnement() {
         maladies = FXCollections.observableArrayList();
-        map = new Carte();
+        map = new Carte(this);
         dep = new Deplacement(map);
         tour = 0;
     }
@@ -44,27 +45,40 @@ public class Environnement {
         return dep;
     }
 
-    public ObservableList<Maladie> getMaladies(){
+    public ObservableList<Maladie> getMaladies() {
         return maladies;
     }
 
     /**
      * Ajoute {@code m} à {@code maladies}
+     *
      * @param m une maladie à ajouter
      */
-    public void ajouter(Maladie m){
+    public void ajouter(Maladie m) {
         maladies.add(m);
     }
 
+    public void retirer(Maladie m) {
+        maladies.remove(m);
+    }
 
 
     /**
      * La méthode qui s'éxécute à chaque tour
      */
-    public void unTour(){
-        for (Maladie m : maladies)
+    public void unTour() {
+
+        for (Cellule c : getMap().getCellules())
+            c.agir();
+
+        for (Maladie m : maladies) {
             m.agir();
+        }
+        for (int i = maladies.size()-1 ; i >= 0 ; i--){
+            if (!maladies.get(i).estVivant()) {
+                this.retirer(maladies.get(i));
+            }
+        }
         tour++;
     }
-
 }

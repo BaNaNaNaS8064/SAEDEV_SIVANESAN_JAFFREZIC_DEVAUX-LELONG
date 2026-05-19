@@ -64,6 +64,13 @@ public abstract class Cellule{
         return Math.sqrt(Math.pow((this.getX() - m.getX()),2) + Math.pow((this.getY() - m.getY()),2));
     }
 
+    public void agir(){
+        this.reconnaissanceEnnemi();
+        if (this.aCible()){
+            this.attaque();
+        }
+    }
+
     public Maladie reconnaissanceEnnemi(){
         for (Maladie m : env.getMaladies()){
             if (distanceEuclidienne(m)<this.getPortée()){
