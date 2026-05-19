@@ -60,31 +60,49 @@ public abstract class Cellule{
         return cible != null;
     }
 
+    /**
+     * Retourne la distance euclidienne entre une maladie et cette cellule
+     * @param m une maladie
+     * @return distance euclidienne
+     */
     public double distanceEuclidienne(Maladie m){
         return Math.sqrt(Math.pow((this.getX() - m.getX()),2) + Math.pow((this.getY() - m.getY()),2));
     }
 
+    /**
+     * Methode que fait une cellule chaque tour
+     */
     public void agir(){
-        this.reconnaissanceEnnemi();
+        cible = reconnaissanceEnnemi();
         if (this.aCible()){
             this.attaque();
         }
     }
 
+    /**
+     * Methode qui permet de reconnaitre une bacterie de la prendre comme cible
+     * @return return une maladie ou null si aucune maladie est trouvé
+     */
     public Maladie reconnaissanceEnnemi(){
         for (Maladie m : env.getMaladies()){
             if (distanceEuclidienne(m)<this.getPortée()){
                 System.out.println("Attaque");
-                cible = m;
+                return m;
             }
         }
         return null;
     }
 
+    /**
+     * Methode qui permet a la cellule de voir si sa cible est toujours dans sa portée
+     */
     public boolean aPorteeDeCible(){
         return distanceEuclidienne(cible) < this.getPortée();
     }
 
+    /**
+     * Methode qui attaque quand la cible est a portée et vivante
+     */
     public void attaque(){
         while (this.aPorteeDeCible() && cible.estVivant()){
             cible.prendreDegats(degats);
