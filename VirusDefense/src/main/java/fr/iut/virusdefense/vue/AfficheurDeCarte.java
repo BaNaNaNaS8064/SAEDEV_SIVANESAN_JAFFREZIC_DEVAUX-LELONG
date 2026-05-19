@@ -25,6 +25,8 @@ public class AfficheurDeCarte {
     public void resetCarte(){
         resetTailleCarte();
 
+        carte.getChildren().clear();
+
         for (int i = 0; i< environnement.getCarte().getHauteur(); i++)
             for (int j = 0; j < environnement.getCarte().getLargeur(); j++)
                 carte.getChildren().add(new ImageView(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(i,j))));

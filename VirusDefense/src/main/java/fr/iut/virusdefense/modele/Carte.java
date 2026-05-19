@@ -1,7 +1,6 @@
 package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.modele.cellule.Cellule;
-import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,6 +10,7 @@ public class Carte {
     public static final int VIDE = 0;
     public static final int MUR = 1;
     public static final int OBJECTIF = 2;
+    public static final int SAINPLE = 101;
 
     private Environnement env;
     private boolean[][] carteStatique;
@@ -48,11 +48,17 @@ public class Carte {
         return carteStatique[0].length;
     }
 
-    public List<Integer> getObjectif(){ return objectif; }
+    public List<Integer> getObjectif(){
+        return objectif;
+    }
 
     public int getValeurCase(int ligne, int col) {
         if (List.of(ligne, col).equals(objectif))
             return OBJECTIF;
+
+        for (Cellule c : cellules)
+            if (c.getX() == col && c.getY() == ligne)
+                return SAINPLE;
 
         if (this.carteStatique[ligne][col])
             return MUR;

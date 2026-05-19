@@ -1,14 +1,17 @@
 package fr.iut.virusdefense.controller;
 
+import fr.iut.virusdefense.modele.Carte;
 import fr.iut.virusdefense.modele.cellule.Cellule;
 import fr.iut.virusdefense.modele.cellule.Sainple;
 import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.vue.SpritesTuiles;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
@@ -32,11 +35,11 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
-        afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
 
         environnement.ajouter(new BactérieBanale(environnement, 0, 2));
         environnement.getCarte().ajouterCellule(new Sainple(environnement , 3 , 2));
 
+        afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
 
         initGameLoop();
         gameLoop.play();

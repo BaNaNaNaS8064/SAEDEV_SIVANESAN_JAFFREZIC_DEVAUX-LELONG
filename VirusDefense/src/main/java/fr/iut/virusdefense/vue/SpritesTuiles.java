@@ -23,6 +23,7 @@ public class SpritesTuiles {
 
         temp.put(Carte.VIDE, "Vide.png");
         temp.put(Carte.MUR, "Mur.png");
+        temp.put(Carte.SAINPLE, "cellules/Sainple.png");
 
         return temp;
     }
