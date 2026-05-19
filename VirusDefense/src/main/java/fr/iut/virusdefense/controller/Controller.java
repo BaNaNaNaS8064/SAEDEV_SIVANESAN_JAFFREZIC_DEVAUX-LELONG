@@ -3,13 +3,12 @@ package fr.iut.virusdefense.controller;
 import fr.iut.virusdefense.modele.cellule.Cellule;
 import fr.iut.virusdefense.modele.cellule.Sainple;
 import fr.iut.virusdefense.modele.maladies.*;
+import fr.iut.virusdefense.vue.AfficheurDeCarte;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.vue.Tuiles;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
@@ -19,6 +18,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private Timeline gameLoop;
+    private AfficheurDeCarte afficheurDeCarte;
     private Environnement environnement;
     private int tailleTuiles;
 
@@ -32,12 +32,10 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
-
-        tailleTuiles = 48;
-        initTuilesEtPaneMaladies();
+        afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
 
         environnement.ajouter(new BactérieBanale(environnement, 0, 2));
-        environnement.getMap().ajouterCellule(new Sainple(environnement , 3 , 2));
+        environnement.getCarte().ajouterCellule(new Sainple(environnement , 3 , 2));
 
 
         initGameLoop();
@@ -51,34 +49,6 @@ public class Controller implements Initializable {
         gameLoop = new Timeline();
         gameLoop.setCycleCount(Timeline.INDEFINITE);
         gameLoop.getKeyFrames().add(new KeyFrame(Duration.seconds(0.017), e -> uneFrame()));
-    }
-
-    /**
-     * Initialise tuiles et paneMaladie
-     */
-    private void initTuilesEtPaneMaladies(){
-        initTailleTuilesEtPaneMaladies();
-
-        for (int i = 0; i< environnement.getMap().getHauteur(); i++)
-            for (int j = 0; j < environnement.getMap().getLargeur(); j++)
-                tuiles.getChildren().add(new ImageView(Tuiles.imageDe(environnement.getMap().getValeurCase(i,j))));
-    }
-
-    /**
-     * Fixe les tailles de tuiles et paneMaladie
-     */
-    private void initTailleTuilesEtPaneMaladies(){
-        double largeurVoulue = tailleTuiles * environnement.getMap().getLargeur();
-        tuiles.setMaxWidth(largeurVoulue);
-        tuiles.setMinWidth(largeurVoulue);
-        paneMaladie.setMaxWidth(largeurVoulue);
-        paneMaladie.setMinWidth(largeurVoulue);
-
-        double hauteurVoulue = tailleTuiles * environnement.getMap().getHauteur();
-        tuiles.setMaxHeight(hauteurVoulue);
-        tuiles.setMinHeight(hauteurVoulue);
-        paneMaladie.setMaxHeight(hauteurVoulue);
-        paneMaladie.setMinHeight(hauteurVoulue);
     }
 
     /**

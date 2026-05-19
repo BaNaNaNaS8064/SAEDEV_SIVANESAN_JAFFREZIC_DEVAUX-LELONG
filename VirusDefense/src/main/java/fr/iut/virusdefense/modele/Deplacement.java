@@ -3,36 +3,38 @@ package fr.iut.virusdefense.modele;
 import java.util.*;
 
 public class Deplacement {
-    /** Associe à une case les coordonées de la prochaine
+    /**
+     * Associe à une case les coordonées de la prochaine
      * dans le chemin optimal vers l'objectif
      */
-    private Map<List<Integer>, List<Integer>> predecesseurs;
+    private Map<List<Integer>, List<Integer>> prochain;
+
     private Carte carte;
 
-    public Deplacement(Carte map){
-        predecesseurs = new HashMap<>();
-        carte = map;
-        faireBFS();
+    public Deplacement(Carte carte){
+        prochain = new HashMap<>();
+        this.carte = carte;
+        faireAlgo();
     }
 
     /**
-     * Remplit {@code predecesseurs} à l'aide de l'algorithme du BFS à partir de {@code objectif}
+     * Remplit {@code prochain} à l'aide de l'algorithme du BFS à partir de {@code objectif}
      */
-    private void faireBFS() {
-        predecesseurs.clear();
+    public void faireAlgo() {
+        prochain.clear();
 
         LinkedList<List<Integer>> fifo = new LinkedList<>();
-        List<Integer> caseActuelle;
+        List<Integer> caseActuelle = List.of(carte.getObjectif().get(0), carte.getObjectif().get(1));
 
-        fifo.add(List.of(carte.getObjectif().get(0), carte.getObjectif().get(1)));
-        predecesseurs.put(List.of(carte.getObjectif().get(0), carte.getObjectif().get(1)), null);
+        fifo.add(caseActuelle);
+        prochain.put(caseActuelle, null);
 
         while (!fifo.isEmpty()){
             caseActuelle = fifo.poll();
             for (List<Integer> voisin : voisins(caseActuelle)){
-                if (!predecesseurs.containsKey(voisin)){
+                if (!prochain.containsKey(voisin)){
                     fifo.add(voisin);
-                    predecesseurs.put(voisin, caseActuelle);
+                    prochain.put(voisin, caseActuelle);
                 }
             }
         }
@@ -49,7 +51,7 @@ public class Deplacement {
      * qui représente la prochaine case dans le chemin optimal vers l'objectif
      */
     public List<Integer> prochaineCase(List<Integer> coords){
-        return predecesseurs.get(coords);
+        return prochain.get(coords);
     }
 
     /**
@@ -75,7 +77,7 @@ public class Deplacement {
         for (int[] decalage : decalages){
             ligne = uneCase.get(0) + decalage[0];
             col = uneCase.get(1) + decalage[1];
-            if (carte.dansBornes(ligne, col) && !carte.getValeurCase(ligne, col))
+            if (carte.dansBornes(ligne, col) && carte.peutMarcher(ligne, col))
                 voisins.add(List.of(ligne, col));
         }
 
