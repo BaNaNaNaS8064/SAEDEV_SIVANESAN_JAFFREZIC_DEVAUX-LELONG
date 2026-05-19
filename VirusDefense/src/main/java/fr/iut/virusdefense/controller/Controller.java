@@ -55,22 +55,22 @@ public class Controller implements Initializable {
     private void initTuilesEtPaneMaladies(){
         initTailleTuilesEtPaneMaladies();
 
-        for (int i=0; i<terrain.getMap().length; i++)
-            for (int j = 0; j < terrain.getMap()[i].length; j++)
-                tuiles.getChildren().add(new ImageView(Tuiles.imageDe(terrain.getMap()[i][j])));
+        for (int i=0; i<terrain.getMap().getHauteur(); i++)
+            for (int j = 0; j < terrain.getMap().getLargeur(); j++)
+                tuiles.getChildren().add(new ImageView(Tuiles.imageDe(terrain.getMap())));
     }
 
     /**
      * Fixe les tailles de tuiles et paneMaladie
      */
     private void initTailleTuilesEtPaneMaladies(){
-        double largeurVoulue = tailleTuiles * terrain.getLargeur();
+        double largeurVoulue = tailleTuiles * terrain.getMap().getLargeur();
         tuiles.setMaxWidth(largeurVoulue);
         tuiles.setMinWidth(largeurVoulue);
         paneMaladie.setMaxWidth(largeurVoulue);
         paneMaladie.setMinWidth(largeurVoulue);
 
-        double hauteurVoulue = tailleTuiles * terrain.getHauteur();
+        double hauteurVoulue = tailleTuiles * terrain.getMap().getHauteur();
         tuiles.setMaxHeight(hauteurVoulue);
         tuiles.setMinHeight(hauteurVoulue);
         paneMaladie.setMaxHeight(hauteurVoulue);

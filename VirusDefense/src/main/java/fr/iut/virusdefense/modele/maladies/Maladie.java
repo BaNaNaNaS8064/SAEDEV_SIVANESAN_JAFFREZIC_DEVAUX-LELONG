@@ -36,7 +36,7 @@ public abstract class Maladie {
         // Dans la plupart des cas x et y seront dans les bornes
         xProperty = new SimpleDoubleProperty(x + 0.25);
         yProperty = new SimpleDoubleProperty(y + 0.25);
-        if (!terrain.dansBornes(x, y)) {
+        if (!terrain.getMap().dansBornes(x, y)) {
             setX(0);
             setY(0);
         }
@@ -85,7 +85,7 @@ public abstract class Maladie {
         bouger();
 
         // pour boucler l'animation
-        if (terrain.getObjectif().equals(position())) {
+        if (terrain.getMap().getObjectif().equals(position())) {
             setY(2.25);
             setX(0.25);
         }
@@ -96,7 +96,7 @@ public abstract class Maladie {
      * La distance dépends de la vitesse
      */
     public void bouger(){
-        List<Integer> prochaineCase = terrain.prochaineCase(position());
+        List<Integer> prochaineCase = terrain.getDep().prochaineCase(position());
 
         setY(getY() + vitesse*Double.compare(prochaineCase.get(0) + 0.25, getY()));
         setX(getX() + vitesse*Double.compare(prochaineCase.get(1) + 0.25, getX()));
