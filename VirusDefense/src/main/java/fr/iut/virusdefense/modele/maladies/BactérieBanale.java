@@ -1,10 +1,10 @@
 package fr.iut.virusdefense.modele.maladies;
 
-import fr.iut.virusdefense.modele.Terrain;
+import fr.iut.virusdefense.modele.Environnement;
 
 public class BactérieBanale extends Maladie{
 
-    public BactérieBanale(Terrain terrain, int x, int y){
-        super(terrain, x, y, 10, 0.03);
+    public BactérieBanale(Environnement environnement, int x, int y){
+        super(environnement, x, y, 10, 0.03);
     }
 }

@@ -4,12 +4,10 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.*;
-
 /**
  * Représente le terrain dans lequel il y aura les cellules et maladies
  */
-public class Terrain {
+public class Environnement {
 
     /// La carte, indique où sont les murs et emplacements vides
     private Carte map;
@@ -27,7 +25,7 @@ public class Terrain {
     /**
      * Créé un terrain sans maladies
      */
-    public Terrain(){
+    public Environnement(){
         maladies = FXCollections.observableArrayList();
         map = new Carte();
         dep = new Deplacement(map);
