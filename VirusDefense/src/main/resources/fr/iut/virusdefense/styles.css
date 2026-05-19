@@ -1,0 +1,47 @@
+*{
+    -bgcolor: #2D3D47;
+    -couleur1: #4D6D7D;
+    -couleur2: #165c84;
+}
+
+.bords{
+    -fx-background-color: -bgcolor;
+}
+
+.zoneHaut{
+    -fx-alignment: center;
+}
+
+#paneBarreVie{
+    -fx-fill-height: true;
+    -fx-alignment: center;
+}
+
+.button{
+    -fx-background-color: -couleur1;
+}
+
+.label{
+    -fx-content-display: center;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
+#labelVagues{
+    -fx-background-color: -couleur1;
+    -fx-padding: 10 20;
+}
+
+#labelBarrePVMax{
+    -fx-opacity: 0.75;
+}
+
+#barrePV .bar{
+    -fx-padding: 1px;
+    -fx-background-insets: 0;
+    -fx-background-color: green;
+}
+
+#barrePV .track{
+    -fx-background-color: red;
+}
