@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele.maladies;
 
-import fr.iut.virusdefense.modele.Terrain;
+import fr.iut.virusdefense.modele.Environnement;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
@@ -13,7 +13,7 @@ public abstract class Maladie {
     private static int dernierId = 0;
     private final String id;
 
-    private final Terrain terrain;
+    private final Environnement environnement;
 
     private final DoubleProperty xProperty;
     private final DoubleProperty yProperty;
@@ -23,20 +23,20 @@ public abstract class Maladie {
 
     /**
      * Créé un nouvelle maladie
-     * @param terrain le terrain dans lequel la maladie se trouve
+     * @param environnement le terrain dans lequel la maladie se trouve
      * @param x sa position x dans {@code terrain}
      * @param y sa position y dans {@code terrain}
      * @param pv ses points de vie initiaux
      * @param vitesse sa vitesse de déplacement
      */
-    public Maladie(Terrain terrain, int x, int y, int pv, double vitesse){
-        this.terrain = terrain;
+    public Maladie(Environnement environnement, int x, int y, int pv, double vitesse){
+        this.environnement = environnement;
         id = "" + ++dernierId;
 
         // Dans la plupart des cas x et y seront dans les bornes
         xProperty = new SimpleDoubleProperty(x + 0.25);
         yProperty = new SimpleDoubleProperty(y + 0.25);
-        if (!terrain.dansBornes(x, y)) {
+        if (!environnement.getMap().dansBornes(x, y)) {
             setX(0);
             setY(0);
         }
@@ -90,7 +90,7 @@ public abstract class Maladie {
         bouger();
 
         // pour boucler l'animation
-        if (terrain.getObjectif().equals(position())) {
+        if (environnement.getMap().getObjectif().equals(position())) {
             setY(2.25);
             setX(0.25);
         }
@@ -101,7 +101,7 @@ public abstract class Maladie {
      * La distance dépends de la vitesse
      */
     public void bouger(){
-        List<Integer> prochaineCase = terrain.prochaineCase(position());
+        List<Integer> prochaineCase = environnement.getDep().prochaineCase(position());
 
         setY(getY() + vitesse*Double.compare(prochaineCase.get(0) + 0.25, getY()));
         setX(getX() + vitesse*Double.compare(prochaineCase.get(1) + 0.25, getX()));

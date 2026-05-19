@@ -1,12 +1,10 @@
 package fr.iut.virusdefense.modele.cellule;
 
-import fr.iut.virusdefense.modele.Terrain;
+import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 
 public abstract class Cellule{
-    private Terrain terrain;
+    private Environnement env;
     private int x;
     private int y;
     private String id;
@@ -18,8 +16,8 @@ public abstract class Cellule{
     private int cout ;
     private Maladie cible;
 
-    public Cellule(Terrain terrain, int  x , int  y , int degats , double portée , int frequenceAttaque ,int cout ){
-        this.terrain = terrain;
+    public Cellule(Environnement env, int  x , int  y , int degats , double portée , int frequenceAttaque , int cout ){
+        this.env = env;
         id = "" + ++dernierId;
         this.x = x;
         this.y = y;
@@ -67,7 +65,7 @@ public abstract class Cellule{
     }
 
     public Maladie reconnaissanceEnnemi(){
-        for (Maladie m : terrain.getMaladies()){
+        for (Maladie m : env.getMaladies()){
             if (distanceEuclidienne(m)<this.getPortée()){
                 System.out.println("Attaque");
                 cible = m;

@@ -9,4 +9,5 @@ module fr.iut.virusdefense {
     exports fr.iut.virusdefense.controller;
     exports fr.iut.virusdefense.modele;
     exports fr.iut.virusdefense.modele.maladies;
+    exports fr.iut.virusdefense.vue;
 }
