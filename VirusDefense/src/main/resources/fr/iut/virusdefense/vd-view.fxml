@@ -15,34 +15,38 @@
       <HBox prefHeight="55.0" prefWidth="1018.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" prefHeight="55.0" prefWidth="81.0" text="Vague" textFill="WHITE" />
-            <HBox maxHeight="-Infinity" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #4d6b7d;" translateY="7.0">
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #4d6b7d;" translateY="7.0">
                <children>
-                  <Label prefHeight="68.0" prefWidth="113.0" text="0/20" textFill="WHITE" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="113.0" text="0/20" textAlignment="CENTER" textFill="WHITE" />
                </children>
             </HBox>
             <Label alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="43.0" text="PV" textFill="WHITE" />
-            <StackPane prefHeight="150.0" prefWidth="200.0">
+            <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ProgressBar prefHeight="33.0" prefWidth="157.0" progress="0.28" />
-                  <Label text="500" translateX="-52.0" />
-                  <Label text="1000" translateX="55.0" />
+                  <ProgressBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="157.0" progress="0.28" translateX="10.0" translateY="10.0" />
+                  <Label alignment="CENTER" text="500" translateX="20.0" translateY="17.0" />
+                  <Label alignment="CENTER" text="1000" translateX="125.0" translateY="17.0" />
                </children>
-            </StackPane>
-            <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="90.0" translateY="10.0">
-               <graphic>
-                  <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button minWidth="43.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="110.0" translateY="10.0">
-               <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-          <Button minWidth="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="130.0" translateY="10.0">
-               <graphic>
-                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
+            </Pane>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button minWidth="43.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;">
+                     <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                <Button minWidth="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="10.0">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="20.0">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
          </children>
          <BorderPane.margin>
             <Insets />
