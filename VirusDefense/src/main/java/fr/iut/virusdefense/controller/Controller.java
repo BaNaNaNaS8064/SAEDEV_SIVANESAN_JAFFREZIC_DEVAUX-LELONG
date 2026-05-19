@@ -2,7 +2,7 @@ package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.modele.Terrain;
-import fr.iut.virusdefense.vue.AffichageCarte;
+import fr.iut.virusdefense.vue.AfficheurDeCarte;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ public class Controller implements Initializable {
 
     private Timeline gameLoop;
     private Terrain terrain;
-    private AffichageCarte affichageCarte;
+    private AfficheurDeCarte afficheurDeCarte;
 
     @FXML
     public Pane paneMaladie;
@@ -29,7 +29,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         terrain = new Terrain();
         terrain.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
-        affichageCarte = new AffichageCarte(terrain, tuiles);
+        afficheurDeCarte = new AfficheurDeCarte(terrain, tuiles);
 
         terrain.ajouter(new BactérieBanale(terrain, 0, 2));
 

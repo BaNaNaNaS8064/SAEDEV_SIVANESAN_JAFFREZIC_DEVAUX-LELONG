@@ -4,12 +4,16 @@ import fr.iut.virusdefense.modele.Terrain;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 
-public class AffichageCarte {
+/**
+ * Un afficheur de carte se charge de lire la carte dans le modèle puisde l'afficher
+ * dans le TilePane dans la vue
+ */
+public class AfficheurDeCarte {
 
     private Terrain terrain;
     private TilePane carte;
 
-    public AffichageCarte(Terrain terrain, TilePane carte) {
+    public AfficheurDeCarte(Terrain terrain, TilePane carte) {
         this.terrain = terrain;
         this.carte = carte;
         resetCarte();
