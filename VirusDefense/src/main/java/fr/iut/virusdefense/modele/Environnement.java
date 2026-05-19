@@ -67,10 +67,9 @@ public class Environnement {
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-
-        for (Cellule c : getCarte().getCellules())
+        for (Cellule c : getCarte().getCellules()) {
             c.agir();
-
+        }
         for (Maladie m : maladies) {
             m.agir();
         }

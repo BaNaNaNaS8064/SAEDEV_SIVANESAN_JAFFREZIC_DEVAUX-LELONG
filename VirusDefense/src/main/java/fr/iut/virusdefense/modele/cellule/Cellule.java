@@ -12,6 +12,7 @@ public abstract class Cellule{
     private int degats ;
     private double portée;
     private int frequenceAttaque;
+    private int delaiAttaque;
     private int niveau;
     private int cout ;
     private Maladie cible;
@@ -24,6 +25,7 @@ public abstract class Cellule{
         this.degats = degats;
         this.portée = portée;
         this.frequenceAttaque = frequenceAttaque;
+        this.delaiAttaque = frequenceAttaque;
         this.niveau = 1 ;
         this.cout = cout;
     }
@@ -73,9 +75,16 @@ public abstract class Cellule{
      * Methode que fait une cellule chaque tour
      */
     public void agir(){
-        cible = reconnaissanceEnnemi();
-        if (this.aCible()){
-            this.attaque();
+        delaiAttaque--;
+
+        if (delaiAttaque<=0){
+            if (!aCible())
+                cible = reconnaissanceEnnemi();
+
+            if (aCible()) {
+                attaque();
+                delaiAttaque = frequenceAttaque;
+            }
         }
     }
 
@@ -86,7 +95,6 @@ public abstract class Cellule{
     public Maladie reconnaissanceEnnemi(){
         for (Maladie m : env.getMaladies()){
             if (distanceEuclidienne(m)<this.getPortée()){
-                System.out.println("Attaque");
                 return m;
             }
         }
@@ -104,7 +112,7 @@ public abstract class Cellule{
      * Methode qui attaque quand la cible est a portée et vivante
      */
     public void attaque(){
-        while (this.aPorteeDeCible() && cible.estVivant()){
+        if (this.aPorteeDeCible() && cible.estVivant()){
             cible.prendreDegats(degats);
         }
     }
