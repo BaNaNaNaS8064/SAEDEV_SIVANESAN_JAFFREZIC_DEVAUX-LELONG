@@ -24,8 +24,7 @@ public class Carte {
                 {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t}
         };
 
-        objectif.add(7);
-        objectif.add(19);
+        objectif = List.of(7, 19);
     }
 
     public boolean[][] getMap(){

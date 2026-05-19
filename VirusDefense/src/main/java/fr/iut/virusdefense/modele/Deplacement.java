@@ -12,6 +12,7 @@ public class Deplacement {
     public Deplacement(Carte map){
         predecesseurs = new HashMap<>();
         carte = map;
+        faireBFS();
     }
 
     /**
