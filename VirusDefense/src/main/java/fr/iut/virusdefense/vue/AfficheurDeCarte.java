@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.vue;
 
-import fr.iut.virusdefense.modele.Terrain;
+import fr.iut.virusdefense.modele.Environnement;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 
@@ -10,11 +10,11 @@ import javafx.scene.layout.TilePane;
  */
 public class AfficheurDeCarte {
 
-    private Terrain terrain;
+    private Environnement environnement;
     private TilePane carte;
 
-    public AfficheurDeCarte(Terrain terrain, TilePane carte) {
-        this.terrain = terrain;
+    public AfficheurDeCarte(Environnement environnement, TilePane carte) {
+        this.environnement = environnement;
         this.carte = carte;
         resetCarte();
     }
@@ -25,20 +25,20 @@ public class AfficheurDeCarte {
     public void resetCarte(){
         resetTailleCarte();
 
-        for (int i=0; i<terrain.getMap().length; i++)
-            for (int j = 0; j < terrain.getMap()[i].length; j++)
-                carte.getChildren().add(new ImageView(SpritesTuiles.imageDe(terrain.getMap()[i][j])));
+        for (int i = 0; i< environnement.getMap().getHauteur(); i++)
+            for (int j = 0; j < environnement.getMap().getLargeur(); j++)
+                carte.getChildren().add(new ImageView(SpritesTuiles.imageDe(environnement.getMap().getValeurCase(i,j))));
     }
 
     /**
      * Fixe la taille de la carte dans la vue
      */
     private void resetTailleCarte(){
-        double largeurVoulue = 48 * terrain.getLargeur();
+        double largeurVoulue = 48 * environnement.getMap().getLargeur();
         carte.setMaxWidth(largeurVoulue);
         carte.setMinWidth(largeurVoulue);
 
-        double hauteurVoulue = 48 * terrain.getHauteur();
+        double hauteurVoulue = 48 * environnement.getMap().getHauteur();
         carte.setMaxHeight(hauteurVoulue);
         carte.setMinHeight(hauteurVoulue);
     }

@@ -1,8 +1,8 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.maladies.*;
-import fr.iut.virusdefense.modele.Terrain;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
+import fr.iut.virusdefense.modele.Environnement;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -16,8 +16,9 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private Timeline gameLoop;
-    private Terrain terrain;
     private AfficheurDeCarte afficheurDeCarte;
+    private Environnement environnement;
+    private int tailleTuiles;
 
     @FXML
     public Pane paneMaladie;
@@ -27,11 +28,11 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        terrain = new Terrain();
-        terrain.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
-        afficheurDeCarte = new AfficheurDeCarte(terrain, tuiles);
+        environnement = new Environnement();
+        environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
+        afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
 
-        terrain.ajouter(new BactérieBanale(terrain, 0, 2));
+        environnement.ajouter(new BactérieBanale(environnement, 0, 2));
 
         initGameLoop();
         gameLoop.play();
@@ -50,6 +51,6 @@ public class Controller implements Initializable {
      * Méthode exécutée à chaque tour
      */
     private void uneFrame(){
-        terrain.unTour();
+        environnement.unTour();
     }
 }
