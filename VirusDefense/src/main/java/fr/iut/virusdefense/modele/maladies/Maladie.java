@@ -111,4 +111,8 @@ public abstract class Maladie {
         pv = pv-degats;
         System.out.println(this.pv);
     }
+
+    public boolean estVivant(){
+        return pv > 0;
+    }
 }

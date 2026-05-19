@@ -76,8 +76,13 @@ public abstract class Cellule{
         return null;
     }
 
-    public void attaque(){
-        cible.prendreDegats(degats);
+    public boolean aPorteeDeCible(){
+        return distanceEuclidienne(cible) < this.getPortée();
     }
 
+    public void attaque(){
+        while (this.aPorteeDeCible() && cible.estVivant()){
+            cible.prendreDegats(degats);
+        }
+    }
 }
