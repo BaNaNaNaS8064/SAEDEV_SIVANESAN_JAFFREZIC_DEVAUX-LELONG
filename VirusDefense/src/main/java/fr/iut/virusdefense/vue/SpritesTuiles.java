@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele;
+package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.Main;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 /**
  * La classe Tuiles gère les constantes de code tuiles et leur association avec les images
  */
-public class Tuiles {
+public class SpritesTuiles {
 
     public final static int VIDE = 0;
     public final static int MUR = 1;

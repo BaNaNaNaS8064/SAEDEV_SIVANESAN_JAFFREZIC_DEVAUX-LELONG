@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.modele.maladies.Maladie;
+import fr.iut.virusdefense.vue.SpritesTuiles;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -87,21 +88,17 @@ public class Terrain {
      * Créé la map (pour l'instant une seul map possible faite à la main)
      */
     private void initMap(){
-        // des variables avec des noms plus courts pour la lisibilité
-        int v = Tuiles.VIDE;
-        int m = Tuiles.MUR;
-
         map = new int[][]{
-                {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m},
-                {m, v, v, v, v, v, v, m, m, m, v, v, v, v, m, m, m, m, m, m},
-                {v, v, m, m, v, v, v, m, m, m, v, m, m, v, v, m, m, m, m, m},
-                {m, v, v, m, v, v, v, v, m, m, v, m, m, v, v, v, v, v, m, m},
-                {m, v, v, v, v, m, v, v, v, m, v, v, v, v, v, m, m, v, v, m},
-                {m, v, v, v, v, m, m, v, v, v, v, v, v, v, v, v, m, m, v, m},
-                {m, v, v, v, v, v, v, v, m, v, v, v, v, v, m, v, v, m, v, m},
-                {m, v, v, v, m, v, v, v, m, m, v, v, m, m, m, m, v, v, v, Tuiles.OBJECTIF},
-                {m, v, v, v, m, m, v, m, m, m, m, v, v, v, v, v, v, v, v, m},
-                {m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m}
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1},
+                {0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1},
+                {1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1},
+                {1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1},
+                {1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1},
+                {1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 2},
+                {1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
     }
 
@@ -115,7 +112,7 @@ public class Terrain {
     private List<Integer> chercherObjectif(){
         for (int i = 0; i < getHauteur(); i++)
             for (int j = 0; j < getLargeur(); j++)
-                if (map[i][j] == Tuiles.OBJECTIF)
+                if (map[i][j] == 2)
                     return List.of(i, j);
 
         return null;
@@ -181,7 +178,7 @@ public class Terrain {
         for (int[] decalage : decalages){
             ligne = uneCase.get(0) + decalage[0];
             col = uneCase.get(1) + decalage[1];
-            if (dansBornes(ligne, col) && map[ligne][col] == Tuiles.VIDE)
+            if (dansBornes(ligne, col) && map[ligne][col] == 0)
                 voisins.add(List.of(ligne, col));
         }
 
