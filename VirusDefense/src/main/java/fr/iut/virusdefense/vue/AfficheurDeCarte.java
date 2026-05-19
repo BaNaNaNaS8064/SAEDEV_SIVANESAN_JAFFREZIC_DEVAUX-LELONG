@@ -25,20 +25,20 @@ public class AfficheurDeCarte {
     public void resetCarte(){
         resetTailleCarte();
 
-        for (int i = 0; i< environnement.getMap().getHauteur(); i++)
-            for (int j = 0; j < environnement.getMap().getLargeur(); j++)
-                carte.getChildren().add(new ImageView(SpritesTuiles.imageDe(environnement.getMap().getValeurCase(i,j))));
+        for (int i = 0; i< environnement.getCarte().getHauteur(); i++)
+            for (int j = 0; j < environnement.getCarte().getLargeur(); j++)
+                carte.getChildren().add(new ImageView(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(i,j))));
     }
 
     /**
      * Fixe la taille de la carte dans la vue
      */
     private void resetTailleCarte(){
-        double largeurVoulue = 48 * environnement.getMap().getLargeur();
+        double largeurVoulue = 48 * environnement.getCarte().getLargeur();
         carte.setMaxWidth(largeurVoulue);
         carte.setMinWidth(largeurVoulue);
 
-        double hauteurVoulue = 48 * environnement.getMap().getHauteur();
+        double hauteurVoulue = 48 * environnement.getCarte().getHauteur();
         carte.setMaxHeight(hauteurVoulue);
         carte.setMinHeight(hauteurVoulue);
     }

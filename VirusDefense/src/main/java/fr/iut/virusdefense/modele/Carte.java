@@ -3,10 +3,18 @@ package fr.iut.virusdefense.modele;
 import java.util.List;
 
 public class Carte {
+
+    public static final int VIDE = 0;
+    public static final int MUR = 1;
+    public static final int OBJECTIF = 2;
+
+    private Environnement env;
     private boolean[][] carteStatique;
     private List<Integer> objectif;
 
-    public Carte(){
+    public Carte(Environnement env){
+        this.env = env;
+
         // des variables avec des noms plus courts pour la lisibilité
         boolean f = false;
         boolean t = true;
@@ -26,11 +34,6 @@ public class Carte {
 
         objectif = List.of(7, 19);
     }
-
-    public boolean[][] getMap(){
-        return carteStatique;
-    }
-
     public int getHauteur(){
         return carteStatique.length;
     }
@@ -41,8 +44,19 @@ public class Carte {
 
     public List<Integer> getObjectif(){ return objectif; }
 
-    public boolean getValeurCase(int ligne, int col) {
-        return this.carteStatique[ligne][col];
+    public int getValeurCase(int ligne, int col) {
+        if (List.of(ligne, col).equals(objectif))
+            return OBJECTIF;
+
+        if (this.carteStatique[ligne][col])
+            return MUR;
+        else
+            return VIDE;
+    }
+
+    public boolean peutMarcher(int ligne, int colonne){
+        int val = getValeurCase(ligne, colonne);
+        return val == VIDE || val == OBJECTIF;
     }
 
     /**

@@ -10,9 +10,9 @@ import javafx.collections.ObservableList;
 public class Environnement {
 
     /// La carte, indique où sont les murs et emplacements vides
-    private Carte map;
+    private Carte carte;
 
-    private Deplacement dep;
+    private Deplacement deplacement;
 
 
     /**
@@ -27,8 +27,8 @@ public class Environnement {
      */
     public Environnement(){
         maladies = FXCollections.observableArrayList();
-        map = new Carte();
-        dep = new Deplacement(map);
+        carte = new Carte(this);
+        deplacement = new Deplacement(carte);
         tour = 0;
     }
 
@@ -36,12 +36,12 @@ public class Environnement {
         return tour;
     }
 
-    public Carte getMap() {
-        return map;
+    public Carte getCarte() {
+        return carte;
     }
 
-    public Deplacement getDep() {
-        return dep;
+    public Deplacement getDeplacement() {
+        return deplacement;
     }
 
     public ObservableList<Maladie> getMaladies(){
@@ -55,8 +55,6 @@ public class Environnement {
     public void ajouter(Maladie m){
         maladies.add(m);
     }
-
-
 
     /**
      * La méthode qui s'éxécute à chaque tour
