@@ -4,7 +4,7 @@ import fr.iut.virusdefense.Main;
 import java.util.HashMap;
 
 /**
- * La classe Tuiles gère les constantes de code tuiles et leur association avec les images
+ * La classe SpritesTuiles gère l'association entre les codes de Tuiles et les images
  */
 public class SpritesTuiles {
 
@@ -32,8 +32,8 @@ public class SpritesTuiles {
 
     /**
      * Fait le lien entre un code de tuile et son image.
-     * Si le code est invalide retourne l'image de Tuiles.VIDE
-     * @param codeTuile le code de la tuile dont on cherche l'image (par exemple Tuiles.MUR)
+     * Si le code est invalide retourne l'image de VIDE
+     * @param codeTuile le code de la tuile dont on cherche l'image (par exemple MUR)
      * @return le chemin vers l'image qui correspond à codeTuile
      */
     public static String imageDe(int codeTuile){
