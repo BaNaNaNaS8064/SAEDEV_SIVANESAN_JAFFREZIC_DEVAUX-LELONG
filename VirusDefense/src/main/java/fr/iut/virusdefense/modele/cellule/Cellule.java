@@ -44,7 +44,7 @@ public abstract class Cellule extends Entite {
         delaiAttaque--;
 
         if (delaiAttaque<=0){
-            if (!aCible())
+            if (!aCible() || !cible.estVivant())
                 cible = reconnaissanceEnnemi();
 
             if (aCible()) {
