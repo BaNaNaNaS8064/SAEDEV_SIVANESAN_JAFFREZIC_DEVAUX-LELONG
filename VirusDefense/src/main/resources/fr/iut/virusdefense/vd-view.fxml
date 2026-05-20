@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.Controller">
    <top>
       <HBox prefHeight="55.0" prefWidth="1018.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
          <children>
@@ -65,14 +66,26 @@
                   <Label alignment="CENTER" prefHeight="28.0" prefWidth="107.0" text="Solde : " textFill="WHITE" />
                </children>
             </HBox>
+            <VBox prefHeight="398.0" prefWidth="208.0">
+               <children>
+                  <Group>
+                     <children>
+                        <RadioButton id="RbSainple" mnemonicParsing="false" selected="true" text="Sainple" textFill="WHITE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="cellules" />
+                           </toggleGroup>
+                        </RadioButton>
+                     </children>
+                  </Group>
+               </children>
+            </VBox>
          </children></VBox>
    </right>
    <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="paneMaladie" prefHeight="480.0" prefWidth="810.0" BorderPane.alignment="CENTER">
          <children>
             <TilePane fx:id="tuiles" />
-            <Pane fx:id="paneMaladie" prefHeight="200.0" prefWidth="200.0" />
          </children>
-      </StackPane>
+      </Pane>
    </center>
 </BorderPane>

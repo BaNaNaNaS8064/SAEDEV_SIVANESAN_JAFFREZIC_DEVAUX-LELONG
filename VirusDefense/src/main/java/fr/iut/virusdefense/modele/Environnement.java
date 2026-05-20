@@ -64,6 +64,9 @@ public class Environnement {
     public void ajouterCellule(Cellule c){
         carte.getCellules().add(c);
     }
+    public void retirerCellule(Cellule c){
+        carte.getCellules().remove(c);
+    }
 
     /**
      * La méthode qui s'éxécute à chaque tour
@@ -82,4 +85,6 @@ public class Environnement {
         }
         tour++;
     }
+
+
 }

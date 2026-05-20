@@ -47,8 +47,8 @@ public abstract class Maladie extends Entite {
     public void bouger(){
         List<Integer> prochaineCase = getEnvironnement().getDeplacement().prochaineCase(position());
 
-        setY(getY() + vitesse*Double.compare(prochaineCase.get(0) + 0.25, getY()));
-        setX(getX() + vitesse*Double.compare(prochaineCase.get(1) + 0.25, getX()));
+        setY(getY() + vitesse * Double.compare(prochaineCase.get(0) + 0.25, getY()));
+        setX(getX() + vitesse * Double.compare(prochaineCase.get(1) + 0.25, getX()));
     }
 
     public void prendreDegats(int degats){

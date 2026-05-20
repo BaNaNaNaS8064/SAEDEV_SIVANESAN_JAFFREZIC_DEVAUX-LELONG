@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.vue;
 
+import fr.iut.virusdefense.controller.Controller;
 import fr.iut.virusdefense.modele.Environnement;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
@@ -28,9 +29,12 @@ public class AfficheurDeCarte {
         carte.getChildren().clear();
 
         for (int i = 0; i< environnement.getCarte().getHauteur(); i++)
-            for (int j = 0; j < environnement.getCarte().getLargeur(); j++)
-                carte.getChildren().add(new ImageView(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(i,j))));
+            for (int j = 0; j < environnement.getCarte().getLargeur(); j++) {
+                carte.getChildren().add(new Tuiles(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(i, j)), i, j));
+            }
     }
+
+
 
     /**
      * Fixe la taille de la carte dans la vue
