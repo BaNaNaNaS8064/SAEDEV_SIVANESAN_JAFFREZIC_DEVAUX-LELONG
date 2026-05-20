@@ -5,81 +5,80 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public abstract class Cellule extends Entite {
-    private int degats ;
-    private double portée;
-    private int frequenceAttaque;
-    private int delaiAttaque;
-    private int niveau;
-    private int cout ;
+    private final double portee;
     private Maladie cible;
 
-    public Cellule(Environnement environnement, int ligne, int colonne, int degats, double portée, int frequenceAttaque , int cout ){
+    private int degats ;
+
+    private final int frequenceAttaque;
+    private int delai;
+
+    private int niveau;
+    private final int cout;
+
+    public Cellule(Environnement environnement, int ligne, int colonne, int degats, double portee, int frequenceAttaque , int cout ){
         super(environnement, ligne, colonne);
         this.degats = degats;
-        this.portée = portée;
+        this.portee = portee;
         this.frequenceAttaque = frequenceAttaque;
-        this.delaiAttaque = frequenceAttaque;
+        this.delai = frequenceAttaque;
         this.niveau = 1 ;
         this.cout = cout;
     }
 
-    public double getPortée() {
-        return portée;
+    public double getPortee() {
+        return portee;
     }
 
-    public int getCout() {
-        return cout;
-    }
-
-    public int getNiveau() {
-        return niveau;
-    }
-
-    public boolean aCible(){
+    public boolean aUneCible(){
         return cible != null;
     }
 
     @Override
     public void agir(){
-        delaiAttaque--;
+        delai--;
 
-        if (delaiAttaque<=0){
-            if (!aCible() || !cible.estVivant() || !aPorteeDeCible())
-                cible = reconnaissanceEnnemi();
+        if (delai <=0){
+            if (!aUneCible() || !cible.estVivant() || !aPortee(cible))
+                changerCible();
 
-            if (aCible()) {
+            if (aUneCible()) {
                 attaque();
-                delaiAttaque = frequenceAttaque;
+                delai = frequenceAttaque;
             }
         }
     }
 
     /**
      * Methode qui permet de reconnaitre une bacterie de la prendre comme cible
-     * @return return une maladie ou null si aucune maladie est trouvé
      */
-    public Maladie reconnaissanceEnnemi(){
-        for (Maladie m : getEnvironnement().getMaladies()){
-            if (distanceEuclidienne(m)<this.getPortée() && m.estVivant()){
-                return m;
-            }
+    public void changerCible(){
+        int i = 0;
+        Maladie m;
+
+        cible = null;
+
+        while (!aUneCible() && i < getEnvironnement().getMaladies().size()){
+            m = getEnvironnement().getMaladies().get(i);
+
+            if (m.estVivant() && aPortee(m))
+                cible = m;
+
+            i++;
         }
-        return null;
     }
 
     /**
      * Methode qui permet a la cellule de voir si sa cible est toujours dans sa portée
      */
-    public boolean aPorteeDeCible(){
-        return distanceEuclidienne(cible) < this.getPortée();
+    public boolean aPortee(Maladie m){
+        return distanceEuclidienne(m) <= getPortee();
     }
 
     /**
      * Methode qui attaque quand la cible est a portée et vivante
      */
     public void attaque(){
-        if (this.aPorteeDeCible() && cible.estVivant()){
-            cible.prendreDegats(degats);
-        }
+        cible.prendreDegats(degats);
     }
 }
