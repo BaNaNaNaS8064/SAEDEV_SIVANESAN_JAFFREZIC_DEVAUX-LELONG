@@ -52,8 +52,6 @@ public class Controller implements Initializable {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
-        environnement.getDefaite().addListener(((obs , old , nouv) -> System.out.println("defaite")));
-
         gestionBarreDeVie();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
@@ -83,11 +81,11 @@ public class Controller implements Initializable {
      * Méthode qui gere tout ce qui concerne la Barre de Vie et qui lie les listeners et les binds
      */
     public void gestionBarreDeVie() {
-        int pvTotal = environnement.getPvVal();
+        int pvTotal = environnement.getPv();
         totalpv.setText("" + pvTotal);
-        pvActuel.textProperty().bind(environnement.getPv().asString());
+        pvActuel.textProperty().bind(environnement.pvProperty().asString());
         ChangeListener<Number> pv = ((obs, old, nouv) -> barredevie.setProgress(nouv.doubleValue() / pvTotal));
-        environnement.getPv().addListener(pv);
+        environnement.pvProperty().addListener(pv);
     }
 
     public void poserCellules(int ligne, int colonne) {

@@ -16,20 +16,16 @@ import javafx.collections.ObservableList;
 public class Environnement {
 
     /// La carte, indique où sont les murs et emplacements vides
-    private Carte carte;
+    private final Carte carte;
 
-    private Deplacement deplacement;
+    private final Deplacement deplacement;
 
     /**
      * La liste des maladies dans le terrain
      */
     private final ObservableList<Maladie> maladies;
 
-    private int tour;
-
-    private IntegerProperty pv;
-
-    private BooleanProperty defaite;
+    private final IntegerProperty pvProperty;
 
     /**
      * Créé un terrain sans maladies
@@ -39,13 +35,7 @@ public class Environnement {
         carte = new Carte(this);
         carte.initGenerateurs();
         deplacement = new Deplacement(carte);
-        tour = 0;
-        pv = new SimpleIntegerProperty(25);
-        defaite = new SimpleBooleanProperty(false);
-    }
-
-    public int getTour() {
-        return tour;
+        pvProperty = new SimpleIntegerProperty(25);
     }
 
     public Carte getCarte() {
@@ -60,19 +50,17 @@ public class Environnement {
         return maladies;
     }
 
-    public int getPvVal() {
-        return pv.get();
+    public final int getPv() {
+        return pvProperty.get();
     }
 
-    public IntegerProperty getPv(){
-        return pv;
+    public final IntegerProperty pvProperty(){
+        return pvProperty;
     }
 
-    public BooleanProperty getDefaite(){
-        return defaite;
+    public final void setPv(int pv){
+        pvProperty.setValue(pv);
     }
-
-
 
     /**
      * Ajoute {@code m} à {@code maladies}
@@ -86,6 +74,7 @@ public class Environnement {
     public void ajouterCellule(Cellule c){
         carte.getCellules().add(c);
     }
+
     public void retirerCellule(Cellule c){
         carte.getCellules().remove(c);
     }
@@ -95,18 +84,14 @@ public class Environnement {
      * @param degats les degats qu'il va subir
      */
     public void subisDegats(int degats){
-        this.pv.setValue(Math.max(0, this.getPvVal() - degats));
-        System.out.println(pv);
+        setPv(Math.max(0, getPv() - degats));
     }
 
     /**
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        if (getPvVal() == 0){
-            defaite.setValue(true);
-        }
-        else {
+        if (getPv() != 0) {
             for (Cellule c : carte.getCellules())
                 c.agir();
 
@@ -116,12 +101,9 @@ public class Environnement {
             for (Maladie m : maladies)
                 m.agir();
 
-            for (int i = maladies.size()-1 ; i >= 0 ; i--){
-                if (!maladies.get(i).estVivant()) {
+            for (int i=maladies.size()-1; i >= 0; i--)
+                if (!maladies.get(i).estVivant())
                     maladies.remove(i);
-                }
-            }
-            tour++;
         }
     }
 
