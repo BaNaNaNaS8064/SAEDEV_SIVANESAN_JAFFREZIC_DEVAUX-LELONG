@@ -23,7 +23,7 @@
             <Label alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="43.0" text="PV" textFill="WHITE" />
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <ProgressBar prefHeight="33.0" prefWidth="157.0" progress="0.28" fx:id="barredevie"/>
+                  <ProgressBar prefHeight="33.0" prefWidth="157.0" progress="1" fx:id="barredevie"/>
                   <Label text="500" translateX="-52.0" fx:id="pvActuel"/>
                   <Label text="1000" translateX="55.0" fx:id="totalpv"/>
                </children>

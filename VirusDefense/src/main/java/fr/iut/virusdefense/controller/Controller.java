@@ -9,6 +9,7 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.vue.SpritesTuiles;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -48,7 +49,10 @@ public class Controller implements Initializable {
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
         environnement.ajouter(new BactérieBanale(environnement, 0, 2));
+
+
 //        environnement.ajouterCellule(new Sainple(environnement , 5 , 2));
+        gestionBarreDeVie();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
 
@@ -70,5 +74,13 @@ public class Controller implements Initializable {
      */
     private void uneFrame(){
         environnement.unTour();
+    }
+
+    public void gestionBarreDeVie(){
+        int pvTotal = environnement.getPvVal();
+        totalpv.setText(""+pvTotal);
+        pvActuel.textProperty().bind(environnement.getPv().asString());
+        ChangeListener<Number> pv = ((obs , old , nouv) -> barredevie.setProgress(nouv.doubleValue()/pvTotal));
+        environnement.getPv().addListener(pv);
     }
 }
