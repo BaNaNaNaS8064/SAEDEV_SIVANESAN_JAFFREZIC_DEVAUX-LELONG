@@ -12,22 +12,17 @@ public class ListeSpawn {
         curseur = 0;
         listeMaladies = new ArrayList<>();
         listeDelais = new ArrayList<>();
-        initMaladies();
-        initDelais();
+        initListes();
     }
 
-    private void initMaladies(){
-        listeMaladies.add("BB");
-        listeMaladies.add("BB");
-        listeMaladies.add("BB");
-        listeMaladies.add("BB");
+    private void initListes(){
+        for (int i=0; i<30; i++)
+            ajouter("BB", (int)(Math.random()*90+30));
     }
 
-    private void initDelais(){
-        listeDelais.add(60);
-        listeDelais.add(180);
-        listeDelais.add(0);
-        listeDelais.add(10);
+    public void ajouter(String codeMaladie, int delai){
+        listeMaladies.add(codeMaladie);
+        listeDelais.add(delai);
     }
 
     public boolean resteProchain(){

@@ -30,9 +30,7 @@ public class Environnement {
     public Environnement() {
         maladies = FXCollections.observableArrayList();
         carte = new Carte(this);
-        carte.getGenerateurs().add(new Generateur(this, 0, 2));
-        carte.getGenerateurs().add(new Generateur(this, 1, 8));
-        carte.getGenerateurs().add(new Generateur(this, 2, 3));
+        carte.initGenerateurs();
         deplacement = new Deplacement(carte);
         tour = 0;
     }

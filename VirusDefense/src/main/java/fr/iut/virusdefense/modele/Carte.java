@@ -30,6 +30,10 @@ public class Carte {
         generateurs = FXCollections.observableArrayList();
     }
 
+    public void initGenerateurs(){
+        getGenerateurs().add(new Generateur(environnement, 0, 2));
+    }
+
     private void initCarteStatique(){
         // des variables avec des noms plus courts pour la lisibilité
         boolean f = false;
