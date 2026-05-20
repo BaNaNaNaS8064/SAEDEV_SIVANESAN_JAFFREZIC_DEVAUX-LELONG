@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele;
 import fr.iut.virusdefense.modele.cellule.Cellule;
 import fr.iut.virusdefense.modele.maladies.BactérieBanale;
 import fr.iut.virusdefense.modele.maladies.Maladie;
+import fr.iut.virusdefense.modele.spawn.Generateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -28,7 +29,10 @@ public class Environnement {
      */
     public Environnement() {
         maladies = FXCollections.observableArrayList();
-        carte = new Carte();
+        carte = new Carte(this);
+        carte.getGenerateurs().add(new Generateur(this, 0, 2));
+        carte.getGenerateurs().add(new Generateur(this, 1, 8));
+        carte.getGenerateurs().add(new Generateur(this, 2, 3));
         deplacement = new Deplacement(carte);
         tour = 0;
     }
@@ -69,15 +73,15 @@ public class Environnement {
         for (Cellule c : carte.getCellules())
             c.agir();
 
+        for (Generateur g : carte.getGenerateurs())
+            g.agir();
+
         for (Maladie m : maladies)
             m.agir();
 
         for (int i = maladies.size()-1 ; i >= 0 ; i--)
             if (!maladies.get(i).estVivant())
                 maladies.remove(maladies.get(i));
-
-        if (tour % 60 == 0)
-            ajouter(new BactérieBanale(this, 0, 2));
 
         tour++;
     }
