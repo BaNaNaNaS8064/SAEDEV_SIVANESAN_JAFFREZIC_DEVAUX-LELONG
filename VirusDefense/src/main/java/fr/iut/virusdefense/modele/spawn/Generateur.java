@@ -7,12 +7,12 @@ import fr.iut.virusdefense.modele.maladies.BactérieBanale;
 public class Generateur extends Entite {
 
     private int delai;
-    private ListeSpawn liste;
+    private ListeApparition liste;
 
     public Generateur(Environnement environnement, int ligne, int colonne){
         super(environnement, ligne, colonne);
         delai = 0;
-        liste = new ListeSpawn();
+        liste = new ListeApparition();
     }
 
     @Override

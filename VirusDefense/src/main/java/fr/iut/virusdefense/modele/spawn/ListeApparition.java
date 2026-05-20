@@ -2,13 +2,13 @@ package fr.iut.virusdefense.modele.spawn;
 
 import java.util.ArrayList;
 
-public class ListeSpawn {
+public class ListeApparition {
 
     private int curseur;
     private ArrayList<String> listeMaladies;
     private ArrayList<Integer> listeDelais;
 
-    public ListeSpawn(){
+    public ListeApparition(){
         curseur = 0;
         listeMaladies = new ArrayList<>();
         listeDelais = new ArrayList<>();
