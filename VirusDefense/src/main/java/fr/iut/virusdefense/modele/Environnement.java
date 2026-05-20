@@ -91,6 +91,10 @@ public class Environnement {
         carte.getCellules().add(c);
     }
 
+    /**
+     * Méthode qui enleve les pv quand le joueur subis des degats
+     * @param degats les degats qu'il va subir
+     */
     public void subisDegats(int degats){
         this.pv.setValue(Math.max(0, this.getPvVal() - degats));
         System.out.println(pv);

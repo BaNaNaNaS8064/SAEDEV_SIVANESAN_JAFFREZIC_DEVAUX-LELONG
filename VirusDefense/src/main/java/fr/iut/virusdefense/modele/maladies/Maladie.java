@@ -52,6 +52,10 @@ public abstract class Maladie extends Entite {
         setX(getX() + vitesse*Double.compare(prochaineCase.get(1) + 0.25, getX()));
     }
 
+    /**
+     * Méthode qui calcule les PV de la maladie apres avoir subis des degats de la cellule
+     * @param degats degats subis par la maladie
+     */
     public void prendreDegats(int degats){
         pv = pv-degats;
         System.out.println(this.pv);

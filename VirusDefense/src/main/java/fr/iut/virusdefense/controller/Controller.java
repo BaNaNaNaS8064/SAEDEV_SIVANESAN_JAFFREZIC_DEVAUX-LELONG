@@ -78,6 +78,9 @@ public class Controller implements Initializable {
         environnement.unTour();
     }
 
+    /**
+     * Méthode qui gere tout ce qui concerne la Barre de Vie et qui lie les listeners et les binds
+     */
     public void gestionBarreDeVie(){
         int pvTotal = environnement.getPvVal();
         totalpv.setText(""+pvTotal);
