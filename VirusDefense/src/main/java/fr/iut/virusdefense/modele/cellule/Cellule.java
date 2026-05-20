@@ -60,7 +60,7 @@ public abstract class Cellule extends Entite {
      */
     public Maladie reconnaissanceEnnemi(){
         for (Maladie m : getEnvironnement().getMaladies()){
-            if (distanceEuclidienne(m)<this.getPortée()){
+            if (distanceEuclidienne(m)<this.getPortée() && m.estVivant()){
                 return m;
             }
         }
