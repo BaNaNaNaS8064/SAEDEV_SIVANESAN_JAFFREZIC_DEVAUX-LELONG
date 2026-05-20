@@ -22,7 +22,7 @@ public abstract class Entite {
         // Dans la plupart des cas x et y seront dans les bornes
         xProperty = new SimpleDoubleProperty(x);
         yProperty = new SimpleDoubleProperty(y);
-        if (!environnement.getCarte().dansBornes(x, y)) {
+        if (!environnement.getCarte().dansBornes(y, x)) {
             setX(0);
             setY(0);
         }

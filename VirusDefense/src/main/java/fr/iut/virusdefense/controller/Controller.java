@@ -48,8 +48,6 @@ public class Controller implements Initializable {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
-        environnement.ajouter(new BactérieBanale(environnement, 0, 2));
-
         ChangeListener<Boolean> defaite = ((obs , old , nouv) -> System.out.println("defaite"));
         environnement.getDefaite().addListener(defaite);
 

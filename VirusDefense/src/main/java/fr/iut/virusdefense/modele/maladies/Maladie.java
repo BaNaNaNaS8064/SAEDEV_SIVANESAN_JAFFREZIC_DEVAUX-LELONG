@@ -33,7 +33,6 @@ public abstract class Maladie extends Entite {
     public void agir(){
         bouger();
 
-        // pour boucler l'animation
         if (getEnvironnement().getCarte().getObjectif().equals(position())) {
             faireDegats();
             tuer();

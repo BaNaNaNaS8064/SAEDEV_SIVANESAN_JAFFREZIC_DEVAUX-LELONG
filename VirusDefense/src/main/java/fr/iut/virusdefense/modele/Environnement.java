@@ -8,6 +8,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import fr.iut.virusdefense.modele.spawn.Generateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -37,7 +38,8 @@ public class Environnement {
      */
     public Environnement() {
         maladies = FXCollections.observableArrayList();
-        carte = new Carte();
+        carte = new Carte(this);
+        carte.initGenerateurs();
         deplacement = new Deplacement(carte);
         tour = 0;
         pv = new SimpleIntegerProperty(25);
@@ -83,10 +85,6 @@ public class Environnement {
         maladies.add(m);
     }
 
-    public void retirer(Maladie m) {
-        maladies.remove(m);
-    }
-
     public void ajouterCellule(Cellule c){
         carte.getCellules().add(c);
     }
@@ -108,15 +106,18 @@ public class Environnement {
             defaite.setValue(true);
         }
         else {
-            for (Cellule c : carte.getCellules()) {
+            for (Cellule c : carte.getCellules())
                 c.agir();
-            }
-            for (Maladie m : maladies) {
+
+            for (Generateur g : carte.getGenerateurs())
+                g.agir();
+
+            for (Maladie m : maladies)
                 m.agir();
-            }
+
             for (int i = maladies.size()-1 ; i >= 0 ; i--){
                 if (!maladies.get(i).estVivant()) {
-                    this.retirer(maladies.get(i));
+                    maladies.remove(i);
                 }
             }
             tour++;
