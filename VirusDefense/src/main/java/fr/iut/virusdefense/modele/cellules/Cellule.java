@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.cellule;
+package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Entite;
 import fr.iut.virusdefense.modele.Environnement;

@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele;
 
-import fr.iut.virusdefense.modele.cellule.Cellule;
-import fr.iut.virusdefense.modele.spawn.Generateur;
+import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.apparition.Generateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

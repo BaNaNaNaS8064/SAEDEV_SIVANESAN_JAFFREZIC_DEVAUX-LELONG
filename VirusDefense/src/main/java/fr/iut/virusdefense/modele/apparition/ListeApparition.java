@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.spawn;
+package fr.iut.virusdefense.modele.apparition;
 
 import java.util.ArrayList;
 
