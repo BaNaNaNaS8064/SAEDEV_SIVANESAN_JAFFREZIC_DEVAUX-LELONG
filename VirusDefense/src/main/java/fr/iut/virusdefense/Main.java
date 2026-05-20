@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("vd-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1168, 535);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(false);
         stage.setTitle("Virus Defense");
         stage.setScene(scene);
