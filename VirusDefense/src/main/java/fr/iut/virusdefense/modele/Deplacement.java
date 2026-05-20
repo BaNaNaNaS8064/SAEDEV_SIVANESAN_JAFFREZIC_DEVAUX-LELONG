@@ -50,9 +50,7 @@ public class Deplacement {
      * @return Une liste sous forme [ligne, colonne]
      * qui représente la prochaine case dans le chemin optimal vers l'objectif
      */
-    public List<Integer> prochaineCase(List<Integer> coords){
-        return prochain.get(coords);
-    }
+    public List<Integer> prochaineCase(List<Integer> coords){ return prochain.get(coords); }
 
     /**
      * Retourne tous les voisins qui sont vides de uneCase

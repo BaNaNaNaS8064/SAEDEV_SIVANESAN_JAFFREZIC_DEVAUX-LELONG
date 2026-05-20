@@ -88,6 +88,9 @@ public class Environnement {
     public void ajouterCellule(Cellule c){
         carte.getCellules().add(c);
     }
+    public void retirerCellule(Cellule c){
+        carte.getCellules().remove(c);
+    }
 
     /**
      * Méthode qui enleve les pv quand le joueur subis des degats
@@ -123,4 +126,6 @@ public class Environnement {
             tour++;
         }
     }
+
+
 }

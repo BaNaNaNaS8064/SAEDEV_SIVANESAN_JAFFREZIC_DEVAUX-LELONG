@@ -1,12 +1,14 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Carte;
+import fr.iut.virusdefense.modele.Deplacement;
 import fr.iut.virusdefense.modele.cellule.Cellule;
 import fr.iut.virusdefense.modele.cellule.Sainple;
 import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.vue.SpritesTuiles;
+import fr.iut.virusdefense.vue.Tuiles;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
@@ -14,11 +16,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Cell;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -26,7 +32,6 @@ public class Controller implements Initializable {
     private Timeline gameLoop;
     private AfficheurDeCarte afficheurDeCarte;
     private Environnement environnement;
-    private int tailleTuiles;
 
     @FXML
     public Pane paneMaladie;
@@ -43,18 +48,20 @@ public class Controller implements Initializable {
     @FXML
     public Label totalpv;
 
+    @FXML
+    public ToggleGroup cellules;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
-        ChangeListener<Boolean> defaite = ((obs , old , nouv) -> System.out.println("defaite"));
-        environnement.getDefaite().addListener(defaite);
+        environnement.getDefaite().addListener(((obs , old , nouv) -> System.out.println("defaite")));
 
-        environnement.ajouterCellule(new Sainple(environnement , 5 , 2));
         gestionBarreDeVie();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
+        ajouterEventTuile();
 
         initGameLoop();
         gameLoop.play();
@@ -79,11 +86,51 @@ public class Controller implements Initializable {
     /**
      * Méthode qui gere tout ce qui concerne la Barre de Vie et qui lie les listeners et les binds
      */
-    public void gestionBarreDeVie(){
+    public void gestionBarreDeVie() {
         int pvTotal = environnement.getPvVal();
-        totalpv.setText(""+pvTotal);
+        totalpv.setText("" + pvTotal);
         pvActuel.textProperty().bind(environnement.getPv().asString());
-        ChangeListener<Number> pv = ((obs , old , nouv) -> barredevie.setProgress(nouv.doubleValue()/pvTotal));
+        ChangeListener<Number> pv = ((obs, old, nouv) -> barredevie.setProgress(nouv.doubleValue() / pvTotal));
         environnement.getPv().addListener(pv);
+    }
+
+    public void poserCellules(int ligne, int colonne) {
+        Cellule c = null;
+        boolean maladiePeutPasFinir = false;
+        if (((RadioButton) cellules.getSelectedToggle()).getId().equals("RbSainple")) {
+            c = new Sainple(environnement, colonne, ligne);
+
+            environnement.ajouterCellule(c);
+            ((Tuiles) tuiles.getChildren().get(ligne * 20 + colonne)).setImagePath(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
+
+        }
+
+        //Permet de vérifier que un chemin et possible, sinon ne pose pas la tour
+        environnement.getDeplacement().faireAlgo();
+        int i = 0;
+        while(!maladiePeutPasFinir && i < environnement.getMaladies().size()){
+            if(!environnement.getDeplacement().peutAllerALObjectif(environnement.getMaladies().get(i).position()))
+                maladiePeutPasFinir = true;
+            i++;
+        }
+
+        if (!environnement.getDeplacement().peutAllerALObjectif(List.of(2,0)) || maladiePeutPasFinir){
+            environnement.retirerCellule(c);
+            ((Tuiles)tuiles.getChildren().get(ligne*20 + colonne)).setImagePath(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
+            environnement.getDeplacement().faireAlgo();
+        }
+
+    }
+
+    private void ajouterEventTuile(){
+        for (int i = 0; i<(environnement.getCarte().getHauteur() * environnement.getCarte().getLargeur()); i++) {
+            Tuiles t = (Tuiles) tuiles.getChildren().get(i);
+
+
+            if(environnement.getCarte().getValeurCase(t.getLigne(), t.getColonne()) == Carte.VIDE)
+                t.setOnMousePressed(mouseEvent -> {
+                        poserCellules(t.getLigne(), t.getColonne());
+                });
+        }
     }
 }
