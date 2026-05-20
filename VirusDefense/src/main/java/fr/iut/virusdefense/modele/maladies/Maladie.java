@@ -35,9 +35,10 @@ public abstract class Maladie extends Entite {
 
         // pour boucler l'animation
         if (getEnvironnement().getCarte().getObjectif().equals(position())) {
-            setY(2.25);
-            setX(0.25);
+            faireDegats();
+            tuer();
         }
+
     }
 
     /**
@@ -58,5 +59,13 @@ public abstract class Maladie extends Entite {
 
     public boolean estVivant(){
         return pv > 0;
+    }
+
+    public void faireDegats(){
+        getEnvironnement().subisDegats(this.pv);
+    }
+
+    public void tuer(){
+        this.pv = 0;
     }
 }

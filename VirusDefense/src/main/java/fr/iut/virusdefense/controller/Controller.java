@@ -11,6 +11,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
@@ -31,13 +33,22 @@ public class Controller implements Initializable {
     @FXML
     public TilePane tuiles;
 
+    @FXML
+    public ProgressBar barredevie;
+
+    @FXML
+    public Label pvActuel;
+
+    @FXML
+    public Label totalpv;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
         environnement.ajouter(new BactérieBanale(environnement, 0, 2));
-        environnement.ajouterCellule(new Sainple(environnement , 5 , 2));
+//        environnement.ajouterCellule(new Sainple(environnement , 5 , 2));
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
 
