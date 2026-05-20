@@ -2,8 +2,6 @@ package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Entite;
 import fr.iut.virusdefense.modele.Environnement;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 
 import java.util.List;
 
@@ -17,13 +15,13 @@ public abstract class Maladie extends Entite {
     /**
      * Créé un nouvelle maladie
      * @param environnement le terrain dans lequel la maladie se trouve
-     * @param x sa position x dans {@code terrain}
-     * @param y sa position y dans {@code terrain}
+     * @param ligne sa position x dans {@code terrain}
+     * @param colonne sa position y dans {@code terrain}
      * @param pv ses points de vie initiaux
      * @param vitesse sa vitesse de déplacement
      */
-    public Maladie(Environnement environnement, int x, int y, int pv, double vitesse){
-        super(environnement, x+0.25, y+0.25);
+    public Maladie(Environnement environnement, int ligne, int colonne, int pv, double vitesse){
+        super(environnement, ligne+0.25, colonne+0.25);
 
         this.vitesse = vitesse;
         this.pv = pv;
@@ -47,8 +45,8 @@ public abstract class Maladie extends Entite {
     public void bouger(){
         List<Integer> prochaineCase = getEnvironnement().getDeplacement().prochaineCase(position());
 
-        setY(getY() + vitesse * Double.compare(prochaineCase.get(0) + 0.25, getY()));
-        setX(getX() + vitesse * Double.compare(prochaineCase.get(1) + 0.25, getX()));
+        setLigne(getLigne() + vitesse * Double.compare(prochaineCase.get(0) + 0.25, getLigne()));
+        setColonne(getColonne() + vitesse * Double.compare(prochaineCase.get(1) + 0.25, getColonne()));
     }
 
     /**

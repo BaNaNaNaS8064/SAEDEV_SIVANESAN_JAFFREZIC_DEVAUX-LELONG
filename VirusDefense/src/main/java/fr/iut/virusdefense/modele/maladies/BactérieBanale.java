@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.Environnement;
 
 public class BactérieBanale extends Maladie{
 
-    public BactérieBanale(Environnement environnement, int x, int y){
-        super(environnement, x, y, 10, 0.03);
+    public BactérieBanale(Environnement environnement, int ligne, int colonne){
+        super(environnement, ligne, colonne, 10, 0.03);
     }
 }

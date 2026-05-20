@@ -94,7 +94,7 @@ public class Controller implements Initializable {
         Cellule c = null;
         boolean maladiePeutPasFinir = false;
         if (((RadioButton) cellules.getSelectedToggle()).getId().equals("RbSainple")) {
-            c = new Sainple(environnement, colonne, ligne);
+            c = new Sainple(environnement, ligne, colonne);
 
             environnement.ajouterCellule(c);
             ((Tuile) tuiles.getChildren().get(ligne * 20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));

@@ -12,19 +12,19 @@ public abstract class Entite {
 
     private final Environnement environnement;
 
-    private final DoubleProperty xProperty;
-    private final DoubleProperty yProperty;
+    private final DoubleProperty ligneProperty;
+    private final DoubleProperty colonneProperty;
 
-    public Entite(Environnement environnement, double x, double y){
+    public Entite(Environnement environnement, double ligne, double colonne){
         id = "" + ++dernierID;
         this.environnement = environnement;
 
-        // Dans la plupart des cas x et y seront dans les bornes
-        xProperty = new SimpleDoubleProperty(x);
-        yProperty = new SimpleDoubleProperty(y);
-        if (!environnement.getCarte().dansBornes(y, x)) {
-            setX(0);
-            setY(0);
+        // Dans la plupart des cas ligne et colonne seront dans les bornes
+        ligneProperty = new SimpleDoubleProperty(ligne);
+        colonneProperty = new SimpleDoubleProperty(colonne);
+        if (!environnement.getCarte().dansBornes(ligne, colonne)) {
+            setColonne(0);
+            setLigne(0);
         }
     }
 
@@ -36,32 +36,32 @@ public abstract class Entite {
         return environnement;
     }
 
-    public final double getX(){
-        return xProperty.getValue();
+    public final double getLigne(){
+        return ligneProperty.getValue();
     }
 
-    public final void setX(double x){
-        this.xProperty.setValue(x);
+    public final void setLigne(double y){
+        this.ligneProperty.setValue(y);
     }
 
-    public final DoubleProperty xProperty(){
-        return xProperty;
+    public final DoubleProperty ligneProperty(){
+        return ligneProperty;
     }
 
-    public final double getY(){
-        return yProperty.getValue();
+    public final double getColonne(){
+        return colonneProperty.getValue();
     }
 
-    public final void setY(double y){
-        this.yProperty.setValue(y);
+    public final void setColonne(double colonne){
+        this.colonneProperty.setValue(colonne);
     }
 
-    public final DoubleProperty yProperty(){
-        return yProperty;
+    public final DoubleProperty colonneProperty(){
+        return colonneProperty;
     }
 
     public List<Integer> position(){
-        return List.of((int)getY(), (int)getX());
+        return List.of((int) getLigne(), (int) getColonne());
     }
 
     /**
@@ -70,7 +70,7 @@ public abstract class Entite {
      * @return distance euclidienne
      */
     public double distanceEuclidienne(Entite e){
-        return Math.sqrt(Math.pow((getX() - e.getX()), 2) + Math.pow((getY() - e.getY()), 2));
+        return Math.sqrt(Math.pow((getLigne() - e.getLigne()), 2) + Math.pow((getColonne() - e.getColonne()), 2));
     }
 
     /**

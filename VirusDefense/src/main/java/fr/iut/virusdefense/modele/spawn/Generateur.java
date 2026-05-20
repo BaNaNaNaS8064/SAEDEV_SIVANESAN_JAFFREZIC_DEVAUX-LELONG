@@ -9,8 +9,8 @@ public class Generateur extends Entite {
     private int delai;
     private ListeSpawn liste;
 
-    public Generateur(Environnement environnement, int x, int y){
-        super(environnement, x, y);
+    public Generateur(Environnement environnement, int ligne, int colonne){
+        super(environnement, ligne, colonne);
         delai = 0;
         liste = new ListeSpawn();
     }
@@ -31,7 +31,7 @@ public class Generateur extends Entite {
     public void ajouterMaladie(String codeMaladie){
         switch (codeMaladie){
             case "BB":
-                getEnvironnement().ajouter(new BactérieBanale(getEnvironnement(), (int)getX(), (int)getY()));
+                getEnvironnement().ajouter(new BactérieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
         }
     }

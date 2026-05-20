@@ -13,8 +13,8 @@ public abstract class Cellule extends Entite {
     private int cout ;
     private Maladie cible;
 
-    public Cellule(Environnement environnement, int x, int y, int degats, double portée, int frequenceAttaque , int cout ){
-        super(environnement, x, y);
+    public Cellule(Environnement environnement, int ligne, int colonne, int degats, double portée, int frequenceAttaque , int cout ){
+        super(environnement, ligne, colonne);
         this.degats = degats;
         this.portée = portée;
         this.frequenceAttaque = frequenceAttaque;

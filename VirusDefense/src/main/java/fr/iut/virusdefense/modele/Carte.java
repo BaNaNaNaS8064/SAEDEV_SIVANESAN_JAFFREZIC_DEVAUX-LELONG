@@ -31,7 +31,7 @@ public class Carte {
     }
 
     public void initGenerateurs(){
-        getGenerateurs().add(new Generateur(environnement, 0, 2));
+        getGenerateurs().add(new Generateur(environnement, 2, 0));
     }
 
     private void initCarteStatique(){
@@ -78,11 +78,11 @@ public class Carte {
             return OBJECTIF;
 
         for (Generateur g : generateurs)
-            if (g.getX() == col && g.getY() == ligne)
+            if (g.getLigne() == ligne && g.getColonne() == col)
                 return GENERATEUR;
 
         for (Cellule c : cellules)
-            if (c.getX() == col && c.getY() == ligne)
+            if (c.getLigne() == ligne && c.getColonne() == col)
                 return SAINPLE;
 
         if (this.carteStatique[ligne][col])
