@@ -105,12 +105,12 @@ public class Controller implements Initializable {
         environnement.getDeplacement().faireAlgo();
         int i = 0;
         while(!maladiePeutPasFinir && i < environnement.getMaladies().size()){
-            if(!environnement.getDeplacement().peutAllerALObjectif(environnement.getMaladies().get(i).position()))
+            if(environnement.getDeplacement().estBloquée(environnement.getMaladies().get(i).position()))
                 maladiePeutPasFinir = true;
             i++;
         }
 
-        if (!environnement.getDeplacement().peutAllerALObjectif(List.of(2,0)) || maladiePeutPasFinir){
+        if (environnement.getDeplacement().estBloquée(List.of(2, 0)) || maladiePeutPasFinir){
             environnement.retirerCellule(c);
             ((Tuile)tuiles.getChildren().get(ligne*20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
             environnement.getDeplacement().faireAlgo();

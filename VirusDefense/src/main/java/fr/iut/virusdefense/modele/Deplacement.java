@@ -7,12 +7,12 @@ public class Deplacement {
      * Associe à une case les coordonées de la prochaine
      * dans le chemin optimal vers l'objectif
      */
-    private Map<List<Integer>, List<Integer>> prochain;
+    private Map<List<Integer>, List<Integer>> prochaineCase;
 
     private Carte carte;
 
     public Deplacement(Carte carte){
-        prochain = new HashMap<>();
+        prochaineCase = new HashMap<>();
         this.carte = carte;
         faireAlgo();
     }
@@ -21,20 +21,20 @@ public class Deplacement {
      * Remplit {@code prochain} à l'aide de l'algorithme du BFS à partir de {@code objectif}
      */
     public void faireAlgo() {
-        prochain.clear();
+        prochaineCase.clear();
 
         LinkedList<List<Integer>> fifo = new LinkedList<>();
         List<Integer> caseActuelle = List.of(carte.getObjectif().get(0), carte.getObjectif().get(1));
 
         fifo.add(caseActuelle);
-        prochain.put(caseActuelle, null);
+        prochaineCase.put(caseActuelle, null);
 
         while (!fifo.isEmpty()){
             caseActuelle = fifo.poll();
             for (List<Integer> voisin : voisins(caseActuelle)){
-                if (!prochain.containsKey(voisin)){
+                if (!prochaineCase.containsKey(voisin)){
                     fifo.add(voisin);
-                    prochain.put(voisin, caseActuelle);
+                    prochaineCase.put(voisin, caseActuelle);
                 }
             }
         }
@@ -44,24 +44,24 @@ public class Deplacement {
      * Retourne la prochaine case après {@code coords}
      * dans le chemin optimal vers l'objectif
      *
-     * @param coords Une liste sous forme [ligne, colonne]
+     * @param coordsCase Une liste sous forme [ligne, colonne]
      *               qui représente les coordonnées d'un case
      *
      * @return Une liste sous forme [ligne, colonne]
      * qui représente la prochaine case dans le chemin optimal vers l'objectif
      */
-    public List<Integer> prochaineCase(List<Integer> coords){ return prochain.get(coords); }
+    public List<Integer> prochaineCase(List<Integer> coordsCase){ return prochaineCase.get(coordsCase); }
 
     /**
      * Retourne tous les voisins qui sont vides de uneCase
      *
-     * @param uneCase Une liste sous forme [ligne, colonne]
+     * @param coordsCase Une liste sous forme [ligne, colonne]
      *                qui représente les coordonnées d'un case
      *
      * @return une liste de listes (sous forme [[ligne, colonne], ...])
      * qui représente une liste des voisins de {@code uneCase}
      */
-    private ArrayList<List<Integer>> voisins(List<Integer> uneCase){
+    private ArrayList<List<Integer>> voisins(List<Integer> coordsCase){
         ArrayList<List<Integer>> voisins = new ArrayList<>();
 
         int[][] decalages = new int[][]{
@@ -73,8 +73,8 @@ public class Deplacement {
         int ligne, col;
 
         for (int[] decalage : decalages){
-            ligne = uneCase.get(0) + decalage[0];
-            col = uneCase.get(1) + decalage[1];
+            ligne = coordsCase.get(0) + decalage[0];
+            col = coordsCase.get(1) + decalage[1];
             if (carte.dansBornes(ligne, col) && carte.peutMarcher(ligne, col))
                 voisins.add(List.of(ligne, col));
         }
@@ -82,7 +82,7 @@ public class Deplacement {
         return voisins;
     }
     
-    public boolean peutAllerALObjectif(List<Integer> coords){
-        return prochain.containsKey(coords);
+    public boolean estBloquée(List<Integer> coordsCase){
+        return !prochaineCase.containsKey(coordsCase);
     }
 }
