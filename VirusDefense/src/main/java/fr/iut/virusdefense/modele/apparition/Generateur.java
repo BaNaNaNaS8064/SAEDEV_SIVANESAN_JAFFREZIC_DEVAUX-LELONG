@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.apparition;
 
 import fr.iut.virusdefense.modele.Entite;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.maladies.BactérieBanale;
+import fr.iut.virusdefense.modele.maladies.BacterieBanale;
 
 public class Generateur extends Entite {
 
@@ -31,7 +31,7 @@ public class Generateur extends Entite {
     public void ajouterMaladie(String codeMaladie){
         switch (codeMaladie){
             case "BB":
-                getEnvironnement().ajouter(new BactérieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                getEnvironnement().ajouter(new BacterieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
         }
     }

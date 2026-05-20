@@ -2,9 +2,9 @@ package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
 
-public class BactérieBanale extends Maladie{
+public class BacterieBanale extends Maladie{
 
-    public BactérieBanale(Environnement environnement, int ligne, int colonne){
+    public BacterieBanale(Environnement environnement, int ligne, int colonne){
         super(environnement, ligne, colonne, 10, 0.03);
     }
 }
