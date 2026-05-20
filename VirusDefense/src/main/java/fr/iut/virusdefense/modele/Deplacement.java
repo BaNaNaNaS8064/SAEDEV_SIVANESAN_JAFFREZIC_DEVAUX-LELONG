@@ -83,4 +83,8 @@ public class Deplacement {
 
         return voisins;
     }
+    
+    public boolean peutAllerALObjectif(List<Integer> coords){
+        return prochain.containsKey(coords);
+    }
 }
