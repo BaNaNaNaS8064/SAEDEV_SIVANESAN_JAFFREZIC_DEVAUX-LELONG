@@ -72,15 +72,25 @@ public class Controller implements Initializable {
 
     public void poserCellules(int ligne, int colonne) {
         Cellule c = null;
+        boolean maladiePeutPasFinir = false;
         if (((RadioButton) cellules.getSelectedToggle()).getId().equals("RbSainple")) {
             c = new Sainple(environnement, colonne, ligne);
+
             environnement.ajouterCellule(c);
-            ((Tuiles)tuiles.getChildren().get(ligne*20 + colonne)).setImagePath(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
+            ((Tuiles) tuiles.getChildren().get(ligne * 20 + colonne)).setImagePath(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
+
         }
 
         //Permet de vérifier que un chemin et possible, sinon ne pose pas la tour
         environnement.getDeplacement().faireAlgo();
-        if (!environnement.getDeplacement().peutAllerALObjectif(List.of(2,0))){
+        int i = 0;
+        while(!maladiePeutPasFinir && i < environnement.getMaladies().size()){
+            if(!environnement.getDeplacement().peutAllerALObjectif(environnement.getMaladies().get(i).position()))
+                maladiePeutPasFinir = true;
+            i++;
+        }
+
+        if (!environnement.getDeplacement().peutAllerALObjectif(List.of(2,0)) || maladiePeutPasFinir){
             environnement.retirerCellule(c);
             ((Tuiles)tuiles.getChildren().get(ligne*20 + colonne)).setImagePath(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
             environnement.getDeplacement().faireAlgo();
