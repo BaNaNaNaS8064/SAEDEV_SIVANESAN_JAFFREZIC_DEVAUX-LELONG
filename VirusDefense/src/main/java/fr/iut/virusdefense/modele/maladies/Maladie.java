@@ -21,10 +21,26 @@ public abstract class Maladie extends Entite {
      * @param vitesse sa vitesse de déplacement
      */
     public Maladie(Environnement environnement, int ligne, int colonne, int pv, double vitesse){
-        super(environnement, ligne+0.25, colonne+0.25);
+        super(environnement, ligne, colonne);
 
         this.vitesse = vitesse;
         this.pv = pv;
+    }
+
+    public boolean estVivant(){
+        return pv > 0;
+    }
+
+    public void tuer(){
+        this.pv = 0;
+    }
+
+    /**
+     * Méthode qui calcule les PV de la maladie apres avoir subis des degats de la cellule
+     * @param degats degats subis par la maladie
+     */
+    public void prendreDegats(int degats){
+        pv -= degats;
     }
 
     @Override
@@ -32,10 +48,9 @@ public abstract class Maladie extends Entite {
         bouger();
 
         if (getEnvironnement().getCarte().getObjectif().equals(position())) {
-            faireDegats();
+            infligerDegats();
             tuer();
         }
-
     }
 
     /**
@@ -49,24 +64,7 @@ public abstract class Maladie extends Entite {
         setColonne(getColonne() + vitesse * Double.compare(prochaineCase.get(1) + 0.25, getColonne()));
     }
 
-    /**
-     * Méthode qui calcule les PV de la maladie apres avoir subis des degats de la cellule
-     * @param degats degats subis par la maladie
-     */
-    public void prendreDegats(int degats){
-        pv = pv-degats;
-        System.out.println(this.pv);
-    }
-
-    public boolean estVivant(){
-        return pv > 0;
-    }
-
-    public void faireDegats(){
-        getEnvironnement().subisDegats(this.pv);
-    }
-
-    public void tuer(){
-        this.pv = 0;
+    public void infligerDegats(){
+        getEnvironnement().subisDegats(pv);
     }
 }
