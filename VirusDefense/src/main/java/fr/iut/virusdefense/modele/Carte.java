@@ -73,37 +73,37 @@ public class Carte {
         return generateurs;
     }
 
-    public int getValeurCase(int ligne, int col) {
-        if (List.of(ligne, col).equals(objectif))
+    public int getCode(int ligne, int colonne) {
+        if (List.of(ligne, colonne).equals(objectif))
             return OBJECTIF;
 
         for (Generateur g : generateurs)
-            if (g.getLigne() == ligne && g.getColonne() == col)
+            if (g.getLigne() == ligne && g.getColonne() == colonne)
                 return GENERATEUR;
 
         for (Cellule c : cellules)
-            if (c.getLigne() == ligne && c.getColonne() == col)
+            if (c.getLigne() == ligne && c.getColonne() == colonne)
                 return SAINPLE;
 
-        if (this.carteStatique[ligne][col])
+        if (this.carteStatique[ligne][colonne])
             return MUR;
         else
             return VIDE;
     }
 
     public boolean peutMarcher(int ligne, int colonne){
-        int val = getValeurCase(ligne, colonne);
+        int val = getCode(ligne, colonne);
         return val == VIDE || val == OBJECTIF || val == GENERATEUR;
     }
 
     /**
      * Retourne vrai si (ligne;colonne) se trouve dans les bornes du terrain
      * @param ligne une ligne
-     * @param col une colonne
+     * @param colonne une colonne
      * @return si (i;y) se trouve dans les bornes du terrain
      */
-    public boolean dansBornes(double ligne, double col){
-        return (0 <= ligne && ligne < getHauteur()) && (0 <= col && col < getLargeur());
+    public boolean dansBornes(double ligne, double colonne){
+        return (0 <= ligne && ligne < getHauteur()) && (0 <= colonne && colonne < getLargeur());
     }
 
 

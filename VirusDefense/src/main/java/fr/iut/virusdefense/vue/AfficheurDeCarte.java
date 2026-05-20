@@ -28,7 +28,7 @@ public class AfficheurDeCarte {
 
         for (int i = 0; i< environnement.getCarte().getHauteur(); i++)
             for (int j = 0; j < environnement.getCarte().getLargeur(); j++) {
-                carte.getChildren().add(new Tuile(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(i, j)), i, j));
+                carte.getChildren().add(new Tuile(SpritesTuiles.imageDe(environnement.getCarte().getCode(i, j)), i, j));
             }
     }
 

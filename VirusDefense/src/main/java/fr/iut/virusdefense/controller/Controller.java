@@ -97,7 +97,7 @@ public class Controller implements Initializable {
             c = new Sainple(environnement, ligne, colonne);
 
             environnement.ajouterCellule(c);
-            ((Tuile) tuiles.getChildren().get(ligne * 20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
+            ((Tuile) tuiles.getChildren().get(ligne * 20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
 
         }
 
@@ -112,7 +112,7 @@ public class Controller implements Initializable {
 
         if (environnement.getDeplacement().estBloquée(List.of(2, 0)) || maladiePeutPasFinir){
             environnement.retirerCellule(c);
-            ((Tuile)tuiles.getChildren().get(ligne*20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
+            ((Tuile)tuiles.getChildren().get(ligne*20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
             environnement.getDeplacement().faireAlgo();
         }
 
@@ -123,7 +123,7 @@ public class Controller implements Initializable {
             Tuile t = (Tuile) tuiles.getChildren().get(i);
 
 
-            if(environnement.getCarte().getValeurCase(t.getLigne(), t.getColonne()) == Carte.VIDE)
+            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Carte.VIDE)
                 t.setOnMousePressed(mouseEvent -> {
                         poserCellules(t.getLigne(), t.getColonne());
                 });
