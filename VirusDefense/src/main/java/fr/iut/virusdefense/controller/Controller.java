@@ -1,14 +1,12 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Carte;
-import fr.iut.virusdefense.modele.Deplacement;
 import fr.iut.virusdefense.modele.cellule.Cellule;
 import fr.iut.virusdefense.modele.cellule.Sainple;
-import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.vue.SpritesTuiles;
-import fr.iut.virusdefense.vue.Tuiles;
+import fr.iut.virusdefense.vue.Tuile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
@@ -16,10 +14,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Cell;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
@@ -101,7 +97,7 @@ public class Controller implements Initializable {
             c = new Sainple(environnement, colonne, ligne);
 
             environnement.ajouterCellule(c);
-            ((Tuiles) tuiles.getChildren().get(ligne * 20 + colonne)).setImagePath(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
+            ((Tuile) tuiles.getChildren().get(ligne * 20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
 
         }
 
@@ -116,7 +112,7 @@ public class Controller implements Initializable {
 
         if (!environnement.getDeplacement().peutAllerALObjectif(List.of(2,0)) || maladiePeutPasFinir){
             environnement.retirerCellule(c);
-            ((Tuiles)tuiles.getChildren().get(ligne*20 + colonne)).setImagePath(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
+            ((Tuile)tuiles.getChildren().get(ligne*20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getValeurCase(ligne, colonne)));
             environnement.getDeplacement().faireAlgo();
         }
 
@@ -124,7 +120,7 @@ public class Controller implements Initializable {
 
     private void ajouterEventTuile(){
         for (int i = 0; i<(environnement.getCarte().getHauteur() * environnement.getCarte().getLargeur()); i++) {
-            Tuiles t = (Tuiles) tuiles.getChildren().get(i);
+            Tuile t = (Tuile) tuiles.getChildren().get(i);
 
 
             if(environnement.getCarte().getValeurCase(t.getLigne(), t.getColonne()) == Carte.VIDE)
