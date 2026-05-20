@@ -14,9 +14,9 @@ public class Carte {
     public static final int GENERATEUR = 15;
     public static final int SAINPLE = 101;
 
-    private Environnement environnement;
+    private final Environnement environnement;
     private boolean[][] carteStatique;
-    private List<Integer> objectif;
+    private final List<Integer> objectif;
     private final ObservableList<Cellule> cellules;
     private final ObservableList<Generateur> generateurs;
 
@@ -25,7 +25,7 @@ public class Carte {
 
         initCarteStatique();
         cellules = FXCollections.observableArrayList();
-        objectif = List.of(7, 19);
+        objectif = List.of(7, 19); // hard coded pour l'instant
 
         generateurs = FXCollections.observableArrayList();
     }
@@ -35,6 +35,7 @@ public class Carte {
     }
 
     private void initCarteStatique(){
+        // hard coded pour l'instant
         // des variables avec des noms plus courts pour la lisibilité
         boolean f = false;
         boolean t = true;
