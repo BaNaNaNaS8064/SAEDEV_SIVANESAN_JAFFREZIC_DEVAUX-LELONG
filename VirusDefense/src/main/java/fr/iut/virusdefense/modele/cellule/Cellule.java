@@ -1,14 +1,10 @@
 package fr.iut.virusdefense.modele.cellule;
 
+import fr.iut.virusdefense.modele.Entite;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
-public abstract class Cellule{
-    private Environnement env;
-    private int x;
-    private int y;
-    private String id;
-    private static int dernierId = 0;
+public abstract class Cellule extends Entite {
     private int degats ;
     private double portée;
     private int frequenceAttaque;
@@ -17,11 +13,8 @@ public abstract class Cellule{
     private int cout ;
     private Maladie cible;
 
-    public Cellule(Environnement env, int  x , int  y , int degats , double portée , int frequenceAttaque , int cout ){
-        this.env = env;
-        id = "" + ++dernierId;
-        this.x = x;
-        this.y = y;
+    public Cellule(Environnement environnement, int x, int y, int degats, double portée, int frequenceAttaque , int cout ){
+        super(environnement, x, y);
         this.degats = degats;
         this.portée = portée;
         this.frequenceAttaque = frequenceAttaque;
@@ -34,24 +27,8 @@ public abstract class Cellule{
         return portée;
     }
 
-    public int getDegats() {
-        return degats;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
     public int getCout() {
         return cout;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public int getNiveau() {
@@ -62,18 +39,7 @@ public abstract class Cellule{
         return cible != null;
     }
 
-    /**
-     * Retourne la distance euclidienne entre une maladie et cette cellule
-     * @param m une maladie
-     * @return distance euclidienne
-     */
-    public double distanceEuclidienne(Maladie m){
-        return Math.sqrt(Math.pow((this.getX() - m.getX()),2) + Math.pow((this.getY() - m.getY()),2));
-    }
-
-    /**
-     * Methode que fait une cellule chaque tour
-     */
+    @Override
     public void agir(){
         delaiAttaque--;
 
@@ -93,7 +59,7 @@ public abstract class Cellule{
      * @return return une maladie ou null si aucune maladie est trouvé
      */
     public Maladie reconnaissanceEnnemi(){
-        for (Maladie m : env.getMaladies()){
+        for (Maladie m : getEnvironnement().getMaladies()){
             if (distanceEuclidienne(m)<this.getPortée()){
                 return m;
             }

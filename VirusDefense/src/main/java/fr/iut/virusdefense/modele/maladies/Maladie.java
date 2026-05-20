@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.maladies;
 
+import fr.iut.virusdefense.modele.Entite;
 import fr.iut.virusdefense.modele.Environnement;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -9,15 +10,7 @@ import java.util.List;
 /**
  * Représente une maladie
  */
-public abstract class Maladie {
-    private static int dernierId = 0;
-    private final String id;
-
-    private final Environnement environnement;
-
-    private final DoubleProperty xProperty;
-    private final DoubleProperty yProperty;
-
+public abstract class Maladie extends Entite {
     private int pv;
     private final double vitesse;
 
@@ -30,67 +23,18 @@ public abstract class Maladie {
      * @param vitesse sa vitesse de déplacement
      */
     public Maladie(Environnement environnement, int x, int y, int pv, double vitesse){
-        this.environnement = environnement;
-        id = "" + ++dernierId;
-
-        // Dans la plupart des cas x et y seront dans les bornes
-        xProperty = new SimpleDoubleProperty(x + 0.25);
-        yProperty = new SimpleDoubleProperty(y + 0.25);
-        if (!environnement.getCarte().dansBornes(x, y)) {
-            setX(0);
-            setY(0);
-        }
+        super(environnement, x+0.25, y+0.25);
 
         this.vitesse = vitesse;
         this.pv = pv;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public final double getX(){
-        return xProperty.getValue();
-    }
-
-    public final void setX(double x){
-        this.xProperty.setValue(x);
-    }
-
-    public final DoubleProperty xProperty(){
-        return xProperty;
-    }
-
-    public final double getY(){
-        return yProperty.getValue();
-    }
-
-    public final void setY(double y){
-        this.yProperty.setValue(y);
-    }
-
-    public final DoubleProperty yProperty(){
-        return yProperty;
-    }
-
-    public List<Integer> position(){
-        return List.of((int)getY(), (int)getX());
-    }
-
-    public int getPv() {
-        return pv;
-    }
-
-    
-    /**
-     * La méthode exécutée à chaque tour.
-     * Par défaut elle ne se charge que du déplacement
-     */
+    @Override
     public void agir(){
         bouger();
 
         // pour boucler l'animation
-        if (environnement.getCarte().getObjectif().equals(position())) {
+        if (getEnvironnement().getCarte().getObjectif().equals(position())) {
             setY(2.25);
             setX(0.25);
         }
@@ -101,7 +45,7 @@ public abstract class Maladie {
      * La distance dépends de la vitesse
      */
     public void bouger(){
-        List<Integer> prochaineCase = environnement.getDeplacement().prochaineCase(position());
+        List<Integer> prochaineCase = getEnvironnement().getDeplacement().prochaineCase(position());
 
         setY(getY() + vitesse*Double.compare(prochaineCase.get(0) + 0.25, getY()));
         setX(getX() + vitesse*Double.compare(prochaineCase.get(1) + 0.25, getX()));
