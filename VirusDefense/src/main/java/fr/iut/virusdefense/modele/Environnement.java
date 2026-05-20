@@ -15,13 +15,10 @@ public class Environnement {
 
     private Deplacement deplacement;
 
-
     /**
      * La liste des maladies dans le terrain
      */
     private final ObservableList<Maladie> maladies;
-
-    private final ObservableList<Cellule> cellules;
 
     private int tour;
 
@@ -30,8 +27,7 @@ public class Environnement {
      */
     public Environnement() {
         maladies = FXCollections.observableArrayList();
-        cellules = FXCollections.observableArrayList();
-        carte = new Carte(this);
+        carte = new Carte();
         deplacement = new Deplacement(carte);
         tour = 0;
     }
@@ -52,10 +48,6 @@ public class Environnement {
         return maladies;
     }
 
-    public ObservableList<Cellule> getCellules() {
-        return cellules;
-    }
-
     /**
      * Ajoute {@code m} à {@code maladies}
      *
@@ -70,14 +62,14 @@ public class Environnement {
     }
 
     public void ajouterCellule(Cellule c){
-        cellules.add(c);
+        carte.getCellules().add(c);
     }
 
     /**
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        for (Cellule c : cellules) {
+        for (Cellule c : carte.getCellules()) {
             c.agir();
         }
         for (Maladie m : maladies) {

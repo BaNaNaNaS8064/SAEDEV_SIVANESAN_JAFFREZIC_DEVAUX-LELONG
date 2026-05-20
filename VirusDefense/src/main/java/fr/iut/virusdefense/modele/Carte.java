@@ -9,21 +9,23 @@ import java.util.List;
 public class Carte {
     public static final int VIDE = 0;
     public static final int MUR = 1;
-    public static final int OBJECTIF = 2;
+    public static final int OBJECTIF = 12;
     public static final int SAINPLE = 101;
 
-    private Environnement env;
     private boolean[][] carteStatique;
     private List<Integer> objectif;
+    private final ObservableList<Cellule> cellules;
 
+    public Carte(){
+        initCarteStatique();
+        cellules = FXCollections.observableArrayList();
+        objectif = List.of(7, 19);
+    }
 
-
-    public Carte(Environnement env){
-        this.env = env;
+    private void initCarteStatique(){
         // des variables avec des noms plus courts pour la lisibilité
         boolean f = false;
         boolean t = true;
-
 
         this.carteStatique = new boolean[][]{
                 {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t},
@@ -37,9 +39,8 @@ public class Carte {
                 {t, f, f, f, t, t, f, t, t, t, t, f, f, f, f, f, f, f, f, t},
                 {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t}
         };
-
-        objectif = List.of(7, 19);
     }
+
     public int getHauteur(){
         return carteStatique.length;
     }
@@ -52,11 +53,15 @@ public class Carte {
         return objectif;
     }
 
+    public ObservableList<Cellule> getCellules() {
+        return cellules;
+    }
+
     public int getValeurCase(int ligne, int col) {
         if (List.of(ligne, col).equals(objectif))
             return OBJECTIF;
 
-        for (Cellule c : env.getCellules())
+        for (Cellule c : cellules)
             if (c.getX() == col && c.getY() == ligne)
                 return SAINPLE;
 
@@ -70,8 +75,6 @@ public class Carte {
         int val = getValeurCase(ligne, colonne);
         return val == VIDE || val == OBJECTIF;
     }
-
-
 
     /**
      * Retourne vrai si (ligne;colonne) se trouve dans les bornes du terrain
