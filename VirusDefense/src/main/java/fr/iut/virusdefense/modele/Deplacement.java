@@ -7,9 +7,9 @@ public class Deplacement {
      * Associe à une case les coordonées de la prochaine
      * dans le chemin optimal vers l'objectif
      */
-    private Map<List<Integer>, List<Integer>> prochaineCase;
+    private final Map<List<Integer>, List<Integer>> prochaineCase;
 
-    private Carte carte;
+    private final Carte carte;
 
     public Deplacement(Carte carte){
         prochaineCase = new HashMap<>();
@@ -41,18 +41,6 @@ public class Deplacement {
     }
 
     /**
-     * Retourne la prochaine case après {@code coords}
-     * dans le chemin optimal vers l'objectif
-     *
-     * @param coordsCase Une liste sous forme [ligne, colonne]
-     *               qui représente les coordonnées d'un case
-     *
-     * @return Une liste sous forme [ligne, colonne]
-     * qui représente la prochaine case dans le chemin optimal vers l'objectif
-     */
-    public List<Integer> prochaineCase(List<Integer> coordsCase){ return prochaineCase.get(coordsCase); }
-
-    /**
      * Retourne tous les voisins qui sont vides de uneCase
      *
      * @param coordsCase Une liste sous forme [ligne, colonne]
@@ -63,14 +51,13 @@ public class Deplacement {
      */
     private ArrayList<List<Integer>> voisins(List<Integer> coordsCase){
         ArrayList<List<Integer>> voisins = new ArrayList<>();
-
+        int ligne, col;
         int[][] decalages = new int[][]{
                 {-1, 0},
                 {0, -1},
                 {+1, 0},
                 {0, +1}
         };
-        int ligne, col;
 
         for (int[] decalage : decalages){
             ligne = coordsCase.get(0) + decalage[0];
@@ -81,8 +68,22 @@ public class Deplacement {
 
         return voisins;
     }
+
+    /**
+     * Retourne la prochaine case après {@code coords}
+     * dans le chemin optimal vers l'objectif
+     *
+     * @param coordsCase Une liste sous forme [ligne, colonne]
+     *               qui représente les coordonnées d'un case
+     *
+     * @return Une liste sous forme [ligne, colonne]
+     * qui représente la prochaine case dans le chemin optimal vers l'objectif
+     */
+    public List<Integer> prochaineCase(List<Integer> coordsCase){
+        return prochaineCase.get(coordsCase);
+    }
     
-    public boolean estBloquée(List<Integer> coordsCase){
+    public boolean estBloquee(List<Integer> coordsCase){
         return !prochaineCase.containsKey(coordsCase);
     }
 }
