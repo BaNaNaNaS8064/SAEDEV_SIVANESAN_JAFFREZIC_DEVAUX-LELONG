@@ -1,8 +1,12 @@
 package fr.iut.virusdefense.modele;
 
+import fr.iut.virusdefense.controller.ObsListeMaladies;
 import fr.iut.virusdefense.modele.cellule.Cellule;
+import fr.iut.virusdefense.modele.maladies.BactérieBanale;
 import fr.iut.virusdefense.modele.maladies.Maladie;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +30,8 @@ public class Environnement {
 
     private IntegerProperty pv;
 
+    private BooleanProperty defaite;
+
     /**
      * Créé un terrain sans maladies
      */
@@ -34,7 +40,8 @@ public class Environnement {
         carte = new Carte();
         deplacement = new Deplacement(carte);
         tour = 0;
-        pv = new SimpleIntegerProperty(1000);
+        pv = new SimpleIntegerProperty(25);
+        defaite = new SimpleBooleanProperty(false);
     }
 
     public int getTour() {
@@ -61,6 +68,10 @@ public class Environnement {
         return pv;
     }
 
+    public BooleanProperty getDefaite(){
+        return defaite;
+    }
+
 
 
     /**
@@ -81,7 +92,7 @@ public class Environnement {
     }
 
     public void subisDegats(int degats){
-        this.pv.setValue(this.getPvVal() - degats);
+        this.pv.setValue(Math.max(0, this.getPvVal() - degats));
         System.out.println(pv);
     }
 
@@ -89,19 +100,22 @@ public class Environnement {
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        for (Cellule c : carte.getCellules()) {
-            c.agir();
+        if (getPvVal() == 0){
+            defaite.setValue(true);
         }
-        for (Maladie m : maladies) {
-            m.agir();
-        }
-        for (int i = maladies.size()-1 ; i >= 0 ; i--){
-            if (!maladies.get(i).estVivant()) {
-                this.retirer(maladies.get(i));
+        else {
+            for (Cellule c : carte.getCellules()) {
+                c.agir();
             }
+            for (Maladie m : maladies) {
+                m.agir();
+            }
+            for (int i = maladies.size()-1 ; i >= 0 ; i--){
+                if (!maladies.get(i).estVivant()) {
+                    this.retirer(maladies.get(i));
+                }
+            }
+            tour++;
         }
-        tour++;
     }
-
-
 }

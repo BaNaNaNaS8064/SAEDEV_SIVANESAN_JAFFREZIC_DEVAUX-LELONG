@@ -50,8 +50,10 @@ public class Controller implements Initializable {
 
         environnement.ajouter(new BactérieBanale(environnement, 0, 2));
 
+        ChangeListener<Boolean> defaite = ((obs , old , nouv) -> System.out.println("defaite"));
+        environnement.getDefaite().addListener(defaite);
 
-//        environnement.ajouterCellule(new Sainple(environnement , 5 , 2));
+        environnement.ajouterCellule(new Sainple(environnement , 5 , 2));
         gestionBarreDeVie();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
