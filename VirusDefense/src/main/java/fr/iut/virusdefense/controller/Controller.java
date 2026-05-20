@@ -1,10 +1,10 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Carte;
+import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
-import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.vue.SpritesTuiles;
 import fr.iut.virusdefense.vue.Tuile;
 import javafx.animation.KeyFrame;
@@ -18,6 +18,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
+
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;

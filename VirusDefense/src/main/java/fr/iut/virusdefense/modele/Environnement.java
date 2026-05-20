@@ -1,12 +1,8 @@
 package fr.iut.virusdefense.modele;
 
+import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.maladies.Maladie;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import fr.iut.virusdefense.modele.apparition.Generateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
