@@ -11,6 +11,7 @@ public class Carte {
     public static final int VIDE = 0;
     public static final int MUR = 1;
     public static final int OBJECTIF = 12;
+    public static final int GENERATEUR = 15;
     public static final int SAINPLE = 101;
 
     private Environnement environnement;
@@ -72,6 +73,10 @@ public class Carte {
         if (List.of(ligne, col).equals(objectif))
             return OBJECTIF;
 
+        for (Generateur g : generateurs)
+            if (g.getX() == col && g.getY() == ligne)
+                return GENERATEUR;
+
         for (Cellule c : cellules)
             if (c.getX() == col && c.getY() == ligne)
                 return SAINPLE;
@@ -84,7 +89,7 @@ public class Carte {
 
     public boolean peutMarcher(int ligne, int colonne){
         int val = getValeurCase(ligne, colonne);
-        return val == VIDE || val == OBJECTIF;
+        return val == VIDE || val == OBJECTIF || val == GENERATEUR;
     }
 
     /**

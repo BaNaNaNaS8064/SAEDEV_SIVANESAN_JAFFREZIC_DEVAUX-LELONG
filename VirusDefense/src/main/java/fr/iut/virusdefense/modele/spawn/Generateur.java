@@ -18,7 +18,6 @@ public class Generateur extends Entite {
     @Override
     public void agir() {
         delai--;
-        System.out.println(delai);
 
         if (delai<=0){
             if (liste.resteProchain()) {
