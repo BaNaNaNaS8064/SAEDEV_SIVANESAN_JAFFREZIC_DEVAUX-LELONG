@@ -9,7 +9,6 @@ import fr.iut.virusdefense.vue.SpritesTuiles;
 import fr.iut.virusdefense.vue.Tuile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -36,13 +35,13 @@ public class Controller implements Initializable {
     public TilePane tuiles;
 
     @FXML
-    public ProgressBar barredevie;
+    public ProgressBar barreDeVie;
 
     @FXML
-    public Label pvActuel;
+    public Label labelPvActuels;
 
     @FXML
-    public Label totalpv;
+    public Label labelTotalPV;
 
     @FXML
     public ToggleGroup cellules;
@@ -52,7 +51,7 @@ public class Controller implements Initializable {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
-        gestionBarreDeVie();
+        initBarreVie();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
         ajouterEventTuile();
@@ -80,12 +79,13 @@ public class Controller implements Initializable {
     /**
      * Méthode qui gere tout ce qui concerne la Barre de Vie et qui lie les listeners et les binds
      */
-    public void gestionBarreDeVie() {
-        int pvTotal = environnement.getPv();
-        totalpv.setText("" + pvTotal);
-        pvActuel.textProperty().bind(environnement.pvProperty().asString());
-        ChangeListener<Number> pv = ((obs, old, nouv) -> barredevie.setProgress(nouv.doubleValue() / pvTotal));
-        environnement.pvProperty().addListener(pv);
+    public void initBarreVie() {
+        int pvTotaux = environnement.getJoueur().getPv();
+        labelTotalPV.setText("" + pvTotaux);
+
+        labelPvActuels.textProperty().bind(environnement.getJoueur().pvProperty().asString());
+
+        environnement.getJoueur().pvProperty().addListener(((observable, oldValue, newValue) -> barreDeVie.setProgress(newValue.doubleValue() / pvTotaux)));
     }
 
     public void poserCellules(int ligne, int colonne) {

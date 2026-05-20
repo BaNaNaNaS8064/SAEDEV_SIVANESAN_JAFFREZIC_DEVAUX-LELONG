@@ -65,6 +65,6 @@ public abstract class Maladie extends Entite {
     }
 
     public void infligerDegats(){
-        getEnvironnement().subisDegats(pv);
+        getEnvironnement().getJoueur().subisDegats(pv);
     }
 }

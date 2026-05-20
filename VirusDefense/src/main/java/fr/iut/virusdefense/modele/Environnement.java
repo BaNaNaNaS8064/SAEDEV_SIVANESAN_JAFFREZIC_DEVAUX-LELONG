@@ -20,12 +20,12 @@ public class Environnement {
 
     private final Deplacement deplacement;
 
+    private final Joueur joueur;
+
     /**
      * La liste des maladies dans le terrain
      */
     private final ObservableList<Maladie> maladies;
-
-    private final IntegerProperty pvProperty;
 
     /**
      * Créé un terrain sans maladies
@@ -35,7 +35,7 @@ public class Environnement {
         carte = new Carte(this);
         carte.initGenerateurs();
         deplacement = new Deplacement(carte);
-        pvProperty = new SimpleIntegerProperty(25);
+        joueur = new Joueur();
     }
 
     public Carte getCarte() {
@@ -50,16 +50,8 @@ public class Environnement {
         return maladies;
     }
 
-    public final int getPv() {
-        return pvProperty.get();
-    }
-
-    public final IntegerProperty pvProperty(){
-        return pvProperty;
-    }
-
-    public final void setPv(int pv){
-        pvProperty.setValue(pv);
+    public Joueur getJoueur() {
+        return joueur;
     }
 
     /**
@@ -80,18 +72,10 @@ public class Environnement {
     }
 
     /**
-     * Méthode qui enleve les pv quand le joueur subis des degats
-     * @param degats les degats qu'il va subir
-     */
-    public void subisDegats(int degats){
-        setPv(Math.max(0, getPv() - degats));
-    }
-
-    /**
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        if (getPv() != 0) {
+        if (joueur.getPv() != 0) {
             for (Cellule c : carte.getCellules())
                 c.agir();
 

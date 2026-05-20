@@ -24,9 +24,9 @@
             <Label alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="43.0" text="PV" textFill="WHITE" />
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <ProgressBar prefHeight="33.0" prefWidth="157.0" progress="1" fx:id="barredevie"/>
-                  <Label text="500" translateX="-52.0" fx:id="pvActuel"/>
-                  <Label text="1000" translateX="55.0" fx:id="totalpv"/>
+                  <ProgressBar prefHeight="33.0" prefWidth="157.0" progress="1" fx:id="barreDeVie"/>
+                  <Label text="500" translateX="-52.0" fx:id="labelPvActuels"/>
+                  <Label text="1000" translateX="55.0" fx:id="labelTotalPV"/>
                </children>
             </StackPane>
             <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="90.0" translateY="10.0">
