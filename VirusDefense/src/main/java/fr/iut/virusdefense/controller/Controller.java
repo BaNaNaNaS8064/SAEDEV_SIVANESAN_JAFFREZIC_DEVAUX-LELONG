@@ -36,7 +36,6 @@ public class Controller implements Initializable {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
 
-        environnement.ajouter(new BactérieBanale(environnement, 0, 2));
         environnement.ajouterCellule(new Sainple(environnement , 5 , 2));
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);

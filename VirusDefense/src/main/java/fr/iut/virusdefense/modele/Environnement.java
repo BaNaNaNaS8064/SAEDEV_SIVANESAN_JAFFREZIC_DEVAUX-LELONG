@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.modele.cellule.Cellule;
+import fr.iut.virusdefense.modele.maladies.BactérieBanale;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,10 +58,6 @@ public class Environnement {
         maladies.add(m);
     }
 
-    public void retirer(Maladie m) {
-        maladies.remove(m);
-    }
-
     public void ajouterCellule(Cellule c){
         carte.getCellules().add(c);
     }
@@ -69,17 +66,19 @@ public class Environnement {
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        for (Cellule c : carte.getCellules()) {
+        for (Cellule c : carte.getCellules())
             c.agir();
-        }
-        for (Maladie m : maladies) {
+
+        for (Maladie m : maladies)
             m.agir();
-        }
-        for (int i = maladies.size()-1 ; i >= 0 ; i--){
-            if (!maladies.get(i).estVivant()) {
-                this.retirer(maladies.get(i));
-            }
-        }
+
+        for (int i = maladies.size()-1 ; i >= 0 ; i--)
+            if (!maladies.get(i).estVivant())
+                maladies.remove(maladies.get(i));
+
+        if (tour % 60 == 0)
+            ajouter(new BactérieBanale(this, 0, 2));
+
         tour++;
     }
 }
