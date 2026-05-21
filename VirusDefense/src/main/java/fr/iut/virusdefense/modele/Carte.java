@@ -8,12 +8,6 @@ import javafx.collections.ObservableList;
 import java.util.List;
 
 public class Carte {
-    public static final int VIDE = 0;
-    public static final int MUR = 1;
-    public static final int OBJECTIF = 12;
-    public static final int GENERATEUR = 15;
-    public static final int SAINPLE = 101;
-
     private final Environnement environnement;
     private boolean[][] carteStatique;
     private final List<Integer> objectif;
@@ -76,25 +70,27 @@ public class Carte {
 
     public int getCode(int ligne, int colonne) {
         if (List.of(ligne, colonne).equals(objectif))
-            return OBJECTIF;
+            return Params.codeTuile.OBJECTIF;
 
         for (Generateur g : generateurs)
             if (g.getLigne() == ligne && g.getColonne() == colonne)
-                return GENERATEUR;
+                return Params.codeTuile.GENERATEUR;
 
         for (Cellule c : cellules)
             if (c.getLigne() == ligne && c.getColonne() == colonne)
-                return SAINPLE;
+                return Params.codeTuile.SAINPLE;
 
         if (this.carteStatique[ligne][colonne])
-            return MUR;
+            return Params.codeTuile.MUR;
         else
-            return VIDE;
+            return Params.codeTuile.VIDE;
     }
 
     public boolean peutMarcher(int ligne, int colonne){
         int val = getCode(ligne, colonne);
-        return val == VIDE || val == OBJECTIF || val == GENERATEUR;
+        return val == Params.codeTuile.VIDE
+            || val == Params.codeTuile.OBJECTIF
+            || val == Params.codeTuile.GENERATEUR;
     }
 
     /**

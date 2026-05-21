@@ -2,6 +2,7 @@ package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Carte;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.Params;
 import fr.iut.virusdefense.modele.Tir;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
@@ -139,7 +140,7 @@ public class Controller implements Initializable {
 
             t.setOnMousePressed(event -> {});
 
-            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Carte.VIDE)
+            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Params.codeTuile.VIDE)
                 t.setOnMousePressed(mouseEvent -> {
                         poserCellules(t.getLigne(), t.getColonne());
                 });
