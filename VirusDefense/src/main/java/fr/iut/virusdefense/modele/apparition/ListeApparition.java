@@ -12,12 +12,6 @@ public class ListeApparition {
         curseur = 0;
         listeMaladies = new ArrayList<>();
         listeDelais = new ArrayList<>();
-        initListes();
-    }
-
-    private void initListes(){
-        for (int i=0; i<30; i++)
-            ajouter("BB", (int)(Math.random()*90+30));
     }
 
     public void ajouter(String codeMaladie, int delai){

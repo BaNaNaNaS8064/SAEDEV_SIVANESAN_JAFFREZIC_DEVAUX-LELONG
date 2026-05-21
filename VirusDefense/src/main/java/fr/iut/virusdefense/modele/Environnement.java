@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.modele.apparition.Generateur;
+import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.FXCollections;
@@ -17,6 +18,8 @@ public class Environnement {
     private final Deplacement deplacement;
 
     private final Joueur joueur;
+
+    private final Niveau niveau;
 
     /**
      * La liste des maladies dans le terrain
@@ -35,6 +38,7 @@ public class Environnement {
         carte.initGenerateurs();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
+        niveau = new Niveau(this);
     }
 
     public Carte getCarte() {
@@ -95,6 +99,8 @@ public class Environnement {
 
             for (Cellule c : carte.getCellules())
                 c.agir();
+
+            niveau.update();
 
             for (Generateur g : carte.getGenerateurs())
                 g.agir();
