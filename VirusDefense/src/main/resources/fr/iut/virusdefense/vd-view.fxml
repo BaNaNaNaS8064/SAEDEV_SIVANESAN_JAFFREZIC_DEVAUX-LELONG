@@ -69,15 +69,21 @@
             </HBox>
             <VBox prefHeight="398.0" prefWidth="208.0">
                <children>
-                  <Group>
+                  <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="208.0">
                      <children>
-                        <RadioButton id="RbSainple" mnemonicParsing="false" selected="true" text="Sainple" textFill="WHITE">
+                        <RadioButton id="RbSainple" mnemonicParsing="false" selected="true" textFill="WHITE">
                            <toggleGroup>
                               <ToggleGroup fx:id="cellules" />
                            </toggleGroup>
                         </RadioButton>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@tuiles/cellules/Sainple.png" />
+                           </image></ImageView>
+                        <Label alignment="CENTER" prefHeight="16.0" prefWidth="106.0" text="Sainple" textFill="WHITE" />
+                        <Label fx:id="lbCoutSainple" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="50" textAlignment="RIGHT" textFill="WHITE" />
                      </children>
-                  </Group>
+                  </HBox>
                </children>
             </VBox>
          </children></VBox>

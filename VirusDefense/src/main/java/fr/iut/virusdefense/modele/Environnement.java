@@ -85,7 +85,7 @@ public class Environnement {
 
             for (int i=maladies.size()-1; i >= 0; i--)
                 if (!maladies.get(i).estVivant()) {
-                    this.joueur.ajouterPC(maladies.get(i).getPcMort());
+                    this.joueur.ajouterPC(maladies.get(i).getPcMortValue());
                     maladies.remove(i);
                 }
         }
