@@ -23,8 +23,9 @@ public class Niveau {
         for (int i=0; i<10; i++){
             vagues.add(new Vague());
             vagues.get(i).ajouter(new ListeApparition());
-            for (int j=0; j<5; j++)
+            for (int j=0; j<4; j++)
                 vagues.get(i).getListeApparitions().get(0).ajouter("BB", (int)((Math.random()*90+30)) / (i+1));
+            vagues.get(i).getListeApparitions().get(0).ajouter("BB", 600);
         }
     }
 
