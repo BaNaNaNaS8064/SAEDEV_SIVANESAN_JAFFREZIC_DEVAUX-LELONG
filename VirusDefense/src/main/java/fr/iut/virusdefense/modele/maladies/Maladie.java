@@ -11,6 +11,7 @@ import java.util.List;
 public abstract class Maladie extends Entite {
     private int pv;
     private final double vitesse;
+    private final int pcMort;
 
     /**
      * Créé un nouvelle maladie
@@ -20,12 +21,15 @@ public abstract class Maladie extends Entite {
      * @param pv ses points de vie initiaux
      * @param vitesse sa vitesse de déplacement
      */
-    public Maladie(Environnement environnement, int ligne, int colonne, int pv, double vitesse){
+    public Maladie(Environnement environnement, int ligne, int colonne, int pv, double vitesse, int pc){
         super(environnement, ligne, colonne);
 
         this.vitesse = vitesse;
         this.pv = pv;
+        this.pcMort = pc;
     }
+
+    public int getPcMort(){ return this.pcMort;}
 
     public boolean estVivant(){
         return pv > 0;

@@ -45,6 +45,9 @@ public class Controller implements Initializable {
     public Label labelTotalPV;
 
     @FXML
+    public Label soldeNb;
+
+    @FXML
     public ToggleGroup cellules;
 
     @Override
@@ -56,6 +59,9 @@ public class Controller implements Initializable {
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
         ajouterEventTuile();
+
+        soldeNb.textProperty().bind(environnement.getJoueur().pcProperty().asString());
+
 
         initGameLoop();
         gameLoop.play();
