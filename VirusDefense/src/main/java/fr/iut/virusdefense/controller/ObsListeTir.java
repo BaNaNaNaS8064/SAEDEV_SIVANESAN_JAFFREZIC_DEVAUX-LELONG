@@ -19,7 +19,7 @@ public class ObsListeTir implements ListChangeListener<Rayon> {
     }
 
     public void creerSprite(Rayon t){
-        Line spriteTir = new Line(t.getColonne()*48, t.getLigne()*48, t.getColonneArrivee()*48, t.getLigneArrivee()*48);
+        Line spriteTir = new Line(t.getColonne()*32, t.getLigne()*32, t.getColonneArrivee()*32, t.getLigneArrivee()*32);
         spriteTir.setStroke(Color.WHITE);
         spriteTir.setId(t.getId());
         paneDessin.getChildren().add(spriteTir);

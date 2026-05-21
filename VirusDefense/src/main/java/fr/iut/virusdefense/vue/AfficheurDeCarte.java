@@ -43,11 +43,11 @@ public class AfficheurDeCarte {
      * Fixe la taille de la carte dans la vue
      */
     private void resetTailleCarte(){
-        double largeurVoulue = Params.TAILLETUILE * environnement.getCarte().getLargeur();
+        double largeurVoulue = 32 * environnement.getCarte().getLargeur();
         carte.setMaxWidth(largeurVoulue);
         carte.setMinWidth(largeurVoulue);
 
-        double hauteurVoulue = Params.TAILLETUILE * environnement.getCarte().getHauteur();
+        double hauteurVoulue = 32 * environnement.getCarte().getHauteur();
         carte.setMaxHeight(hauteurVoulue);
         carte.setMinHeight(hauteurVoulue);
     }
