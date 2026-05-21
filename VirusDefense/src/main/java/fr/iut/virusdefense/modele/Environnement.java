@@ -79,9 +79,21 @@ public class Environnement {
         this.joueur.retirerPC(c.getCout());
     }
 
-    public void retirerCellule(Cellule c){
+    public void retirerCellule(Cellule c, boolean rendrePC){
         carte.getCellules().remove(c);
-        this.joueur.ajouterPC(c.getCout());
+        if (rendrePC) this.joueur.ajouterPC(c.getCout());
+    }
+
+    public void retirerCelluleA(int ligne, int colonne, boolean rendrePC){
+        int i=0;
+        boolean trouvé = false;
+        while (i<carte.getCellules().size() || !trouvé){
+            if (carte.getCellules().get(i).getLigne() == ligne && carte.getCellules().get(i).getColonne() == colonne){
+                trouvé = true;
+                retirerCellule(carte.getCellules().get(i), rendrePC);
+            }
+            i++;
+        }
     }
 
     public void ajouterTir(Tir t){

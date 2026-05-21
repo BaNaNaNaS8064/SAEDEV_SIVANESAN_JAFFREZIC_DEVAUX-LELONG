@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
@@ -126,7 +127,7 @@ public class Controller implements Initializable {
         }
 
         if (environnement.getDeplacement().estBloquee(List.of(2, 0)) || maladiePeutPasFinir){
-            environnement.retirerCellule(c);
+            environnement.retirerCellule(c, true);
             ((Tuile)tuiles.getChildren().get(ligne*20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
             environnement.getDeplacement().faireAlgo();
         }else{
@@ -143,7 +144,12 @@ public class Controller implements Initializable {
 
             if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Params.codeTuile.VIDE)
                 t.setOnMousePressed(mouseEvent -> {
+                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY))
                         poserCellules(t.getLigne(), t.getColonne());
+                    else if (mouseEvent.getButton().equals(MouseButton.SECONDARY)) {
+                        environnement.retirerCelluleA(t.getLigne(), t.getColonne(), false);
+                        afficheurDeCarte.reloadEmplacementCarte(t.getLigne(), t.getColonne());
+                    }
                 });
         }
     }
