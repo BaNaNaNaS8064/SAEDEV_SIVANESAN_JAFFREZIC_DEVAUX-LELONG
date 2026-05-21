@@ -18,4 +18,12 @@ public class Vague {
         listeApparitions.add(listeApparition);
     }
 
+    public boolean estTerminee(){
+        for (ListeApparition la : listeApparitions)
+            if (la.resteProchain())
+                return false;
+
+        return true;
+    }
+
 }

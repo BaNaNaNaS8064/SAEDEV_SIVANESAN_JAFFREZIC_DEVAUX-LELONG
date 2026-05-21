@@ -15,6 +15,10 @@ public class Generateur extends Entite {
         liste = new ListeApparition();
     }
 
+    public void setListe(ListeApparition liste) {
+        this.liste = liste;
+    }
+
     @Override
     public void agir() {
         delai--;
