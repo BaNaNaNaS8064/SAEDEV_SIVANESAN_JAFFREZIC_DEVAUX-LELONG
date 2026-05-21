@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.Params;
 import javafx.scene.layout.TilePane;
 
 /**
@@ -42,11 +43,11 @@ public class AfficheurDeCarte {
      * Fixe la taille de la carte dans la vue
      */
     private void resetTailleCarte(){
-        double largeurVoulue = 48 * environnement.getCarte().getLargeur();
+        double largeurVoulue = Params.TAILLETUILE * environnement.getCarte().getLargeur();
         carte.setMaxWidth(largeurVoulue);
         carte.setMinWidth(largeurVoulue);
 
-        double hauteurVoulue = 48 * environnement.getCarte().getHauteur();
+        double hauteurVoulue = Params.TAILLETUILE * environnement.getCarte().getHauteur();
         carte.setMaxHeight(hauteurVoulue);
         carte.setMinHeight(hauteurVoulue);
     }

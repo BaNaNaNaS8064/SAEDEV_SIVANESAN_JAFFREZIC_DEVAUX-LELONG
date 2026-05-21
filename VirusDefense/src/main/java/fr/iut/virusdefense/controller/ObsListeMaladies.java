@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.Main;
+import fr.iut.virusdefense.modele.Params;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.ListChangeListener;
 import javafx.scene.image.ImageView;
@@ -25,8 +26,8 @@ public class ObsListeMaladies implements ListChangeListener<Maladie> {
     private void creerSprite(Maladie m){
         ImageView img = new ImageView(String.valueOf(Main.class.getResource("maladies/BB.png")));
 
-        img.translateXProperty().bind(m.colonneProperty().multiply(48));
-        img.translateYProperty().bind(m.ligneProperty().multiply(48));
+        img.translateXProperty().bind(m.colonneProperty().multiply(Params.TAILLETUILE));
+        img.translateYProperty().bind(m.ligneProperty().multiply(Params.TAILLETUILE));
         img.setId(m.getId());
 
         paneMaladies.getChildren().add(img);
