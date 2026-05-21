@@ -23,11 +23,14 @@ public class Environnement {
      */
     private final ObservableList<Maladie> maladies;
 
+    private final ObservableList<Tir> tirs;
+
     /**
      * Créé un terrain sans maladies
      */
     public Environnement() {
         maladies = FXCollections.observableArrayList();
+        tirs = FXCollections.observableArrayList();
         carte = new Carte(this);
         carte.initGenerateurs();
         deplacement = new Deplacement(carte);
@@ -50,6 +53,10 @@ public class Environnement {
         return joueur;
     }
 
+    public ObservableList<Tir> getTirs() {
+        return tirs;
+    }
+
     /**
      * Ajoute {@code m} à {@code maladies}
      *
@@ -67,11 +74,23 @@ public class Environnement {
         carte.getCellules().remove(c);
     }
 
+    public void ajouterTir(Tir t){
+        tirs.add(t);
+    }
+
     /**
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
         if (joueur.getPv() != 0) {
+            for (int i=tirs.size()-1; i >= 0; i--)
+                if (tirs.get(i).getAge() >= 2)
+                    tirs.remove(i);
+
+            for (Tir t : tirs)
+                t.agir();
+
+
             for (Cellule c : carte.getCellules())
                 c.agir();
 

@@ -45,11 +45,13 @@ public abstract class Maladie extends Entite {
 
     @Override
     public void agir(){
-        bouger();
+        if (estVivant()) {
+            bouger();
 
-        if (getEnvironnement().getCarte().getObjectif().equals(position())) {
-            infligerDegats();
-            tuer();
+            if (getEnvironnement().getCarte().getObjectif().equals(position())) {
+                infligerDegats();
+                tuer();
+            }
         }
     }
 

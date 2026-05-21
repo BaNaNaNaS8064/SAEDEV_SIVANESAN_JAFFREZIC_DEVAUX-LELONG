@@ -2,6 +2,7 @@ package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Carte;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.Tir;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
@@ -17,6 +18,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -51,6 +53,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
+        environnement.getTirs().addListener(new ObsListeTir(paneMaladie));
 
         initBarreVie();
 
