@@ -43,7 +43,7 @@ public abstract class Cellule extends Entite {
         delai--;
 
         if (delai <=0){
-            if (!aUneCible() || !cible.estVivant() || !aPortee(cible))
+            if (!aUneCible() || !cible.estVivant() || !aPortee(cible) || !voit(cible))
                 changerCible();
 
             if (aUneCible()) {
@@ -65,7 +65,7 @@ public abstract class Cellule extends Entite {
         while (!aUneCible() && i < getEnvironnement().getMaladies().size()){
             m = getEnvironnement().getMaladies().get(i);
 
-            if (m.estVivant() && aPortee(m))
+            if (m.estVivant() && aPortee(m) && voit(m))
                 cible = m;
 
             i++;
@@ -77,6 +77,10 @@ public abstract class Cellule extends Entite {
      */
     public boolean aPortee(Maladie m){
         return distanceEuclidienne(m) <= getPortee();
+    }
+
+    public boolean voit(Maladie m){
+        return new Rayon(getEnvironnement(), getLigne(), getColonne(), m.getLigne(), m.getColonne()).departVoitArrivee((int)getLigne(), (int)getColonne());
     }
 
     /**
