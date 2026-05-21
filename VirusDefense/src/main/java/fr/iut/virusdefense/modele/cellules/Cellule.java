@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Entite;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.Tir;
+import fr.iut.virusdefense.modele.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public abstract class Cellule extends Entite {
@@ -83,7 +83,7 @@ public abstract class Cellule extends Entite {
      * Methode qui attaque quand la cible est a portée et vivante
      */
     public void attaque(){
-        getEnvironnement().ajouterTir(new Tir(getEnvironnement() , this.getLigne() , this.getColonne() , cible.getLigne() , cible.getColonne()));
+        getEnvironnement().ajouterTir(new Rayon(getEnvironnement() , this.getLigne() , this.getColonne() , cible.getLigne() , cible.getColonne()));
         cible.prendreDegats(degats);
     }
 }

@@ -30,7 +30,7 @@ public class Controller implements Initializable {
     private Environnement environnement;
 
     @FXML
-    public Pane paneMaladie;
+    public Pane paneDessin;
 
     @FXML
     public TilePane tuiles;
@@ -60,8 +60,8 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
-        environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
-        environnement.getTirs().addListener(new ObsListeTir(paneMaladie));
+        environnement.getMaladies().addListener(new ObsListeMaladies(paneDessin));
+        environnement.getTirs().addListener(new ObsListeTir(paneDessin));
 
         initBarreVie();
 
