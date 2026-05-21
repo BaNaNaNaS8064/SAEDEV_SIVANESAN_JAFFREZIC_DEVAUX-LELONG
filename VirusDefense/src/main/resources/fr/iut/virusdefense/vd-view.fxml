@@ -18,7 +18,8 @@
             <Label alignment="CENTER" prefHeight="55.0" prefWidth="81.0" text="Vague" textFill="WHITE" />
             <HBox maxHeight="-Infinity" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #4d6b7d;" translateY="7.0">
                <children>
-                  <Label prefHeight="68.0" prefWidth="113.0" text="0/20" textFill="WHITE" />
+                  <Label fx:id="lbVague" alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="113.0" text="0" textFill="WHITE" />
+                  <Label layoutX="23.0" layoutY="10.0" prefHeight="68.0" prefWidth="113.0" text="/20" textFill="WHITE" />
                </children>
             </HBox>
             <Label alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="43.0" text="PV" textFill="WHITE" />
