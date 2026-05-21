@@ -20,7 +20,7 @@ public class ObsListeTir implements ListChangeListener<Tir> {
 
     public void creerSprite(Tir t){
         Line spriteTir = new Line(t.getColonne()*48, t.getLigne()*48, t.getColonneArrivee()*48, t.getLigneArrivee()*48);
-        spriteTir.setFill(Color.WHITE);
+        spriteTir.setStroke(Color.WHITE);
         spriteTir.setId(t.getId());
         paneMaladies.getChildren().add(spriteTir);
     }
