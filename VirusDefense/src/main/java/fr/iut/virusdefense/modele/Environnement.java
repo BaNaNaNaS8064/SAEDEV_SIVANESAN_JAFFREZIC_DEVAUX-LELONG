@@ -68,10 +68,12 @@ public class Environnement {
 
     public void ajouterCellule(Cellule c){
         carte.getCellules().add(c);
+        this.joueur.retirerPC(c.getCout());
     }
 
     public void retirerCellule(Cellule c){
         carte.getCellules().remove(c);
+        this.joueur.ajouterPC(c.getCout());
     }
 
     public void ajouterTir(Tir t){
@@ -101,8 +103,10 @@ public class Environnement {
                 m.agir();
 
             for (int i=maladies.size()-1; i >= 0; i--)
-                if (!maladies.get(i).estVivant())
+                if (!maladies.get(i).estVivant()) {
+                    this.joueur.ajouterPC(maladies.get(i).getPcMortValue());
                     maladies.remove(i);
+                }
         }
     }
 

@@ -30,6 +30,9 @@ public abstract class Cellule extends Entite {
     public double getPortee() {
         return portee;
     }
+    public int getCout() {
+        return cout;
+    }
 
     public boolean aUneCible(){
         return cible != null;

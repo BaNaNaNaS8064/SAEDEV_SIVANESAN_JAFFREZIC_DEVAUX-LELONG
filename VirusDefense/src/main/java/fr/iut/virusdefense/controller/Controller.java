@@ -47,7 +47,14 @@ public class Controller implements Initializable {
     public Label labelTotalPV;
 
     @FXML
+    public Label soldeNb;
+
+    @FXML
     public ToggleGroup cellules;
+
+    /* Label des cout des tours */
+    @FXML
+    public Label lbCoutSainple;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,6 +66,8 @@ public class Controller implements Initializable {
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
         ajouterEventTuile();
+
+        soldeNb.textProperty().bind(environnement.getJoueur().pcProperty().asString());
 
         initGameLoop();
         gameLoop.play();
@@ -98,9 +107,10 @@ public class Controller implements Initializable {
         if (((RadioButton) cellules.getSelectedToggle()).getId().equals("RbSainple")) {
             c = new Sainple(environnement, ligne, colonne);
 
-            environnement.ajouterCellule(c);
-            ((Tuile) tuiles.getChildren().get(ligne * 20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
-
+            if(environnement.getJoueur().getPc()>=50){
+                environnement.ajouterCellule(c);
+                afficheurDeCarte.reloadEmplacementCarte(ligne, colonne);
+            }
         }
 
         //Permet de vérifier que un chemin et possible, sinon ne pose pas la tour
@@ -117,7 +127,6 @@ public class Controller implements Initializable {
             ((Tuile)tuiles.getChildren().get(ligne*20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
             environnement.getDeplacement().faireAlgo();
         }
-
     }
 
     private void ajouterEventTuile(){

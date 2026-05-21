@@ -2,6 +2,8 @@ package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Entite;
 import fr.iut.virusdefense.modele.Environnement;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
 public abstract class Maladie extends Entite {
     private int pv;
     private final double vitesse;
+    private final IntegerProperty pcMort;
 
     /**
      * Créé un nouvelle maladie
@@ -20,12 +23,16 @@ public abstract class Maladie extends Entite {
      * @param pv ses points de vie initiaux
      * @param vitesse sa vitesse de déplacement
      */
-    public Maladie(Environnement environnement, int ligne, int colonne, int pv, double vitesse){
+    public Maladie(Environnement environnement, int ligne, int colonne, int pv, double vitesse, int pc){
         super(environnement, ligne, colonne);
 
         this.vitesse = vitesse;
         this.pv = pv;
+        this.pcMort = new SimpleIntegerProperty(pc);
     }
+
+    public IntegerProperty getPcMort(){ return this.pcMort;}
+    public int getPcMortValue(){ return this.pcMort.getValue();}
 
     public boolean estVivant(){
         return pv > 0;
