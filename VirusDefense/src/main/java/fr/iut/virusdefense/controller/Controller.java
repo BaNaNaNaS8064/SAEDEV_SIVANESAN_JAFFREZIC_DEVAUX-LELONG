@@ -53,6 +53,9 @@ public class Controller implements Initializable {
     @FXML
     public ToggleGroup cellules;
 
+    @FXML
+    public Label lbVague;
+
     /* Label des cout des tours */
     @FXML
     public Label lbCoutSainple;
@@ -69,6 +72,7 @@ public class Controller implements Initializable {
         ajouterEventTuile();
 
         soldeNb.textProperty().bind(environnement.getJoueur().pcProperty().asString());
+        lbVague.textProperty().bind(environnement.getNiveau().getCurseur().asString());
 
         initGameLoop();
         gameLoop.play();

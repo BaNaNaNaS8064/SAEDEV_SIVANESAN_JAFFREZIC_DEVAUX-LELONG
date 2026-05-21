@@ -45,6 +45,10 @@ public class Environnement {
         return carte;
     }
 
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
     public Deplacement getDeplacement() {
         return deplacement;
     }
