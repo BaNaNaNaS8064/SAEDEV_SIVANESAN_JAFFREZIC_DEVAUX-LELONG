@@ -110,6 +110,7 @@ public class Controller implements Initializable {
             if(environnement.getJoueur().getPc()>=50){
                 environnement.ajouterCellule(c);
                 afficheurDeCarte.reloadEmplacementCarte(ligne, colonne);
+
             }
         }
 
@@ -126,6 +127,9 @@ public class Controller implements Initializable {
             environnement.retirerCellule(c);
             ((Tuile)tuiles.getChildren().get(ligne*20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
             environnement.getDeplacement().faireAlgo();
+        }else{
+            ajouterEventTuile();
+
         }
     }
 
@@ -133,6 +137,7 @@ public class Controller implements Initializable {
         for (int i = 0; i<(environnement.getCarte().getHauteur() * environnement.getCarte().getLargeur()); i++) {
             Tuile t = (Tuile) tuiles.getChildren().get(i);
 
+            t.setOnMousePressed(event -> {});
 
             if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Carte.VIDE)
                 t.setOnMousePressed(mouseEvent -> {
