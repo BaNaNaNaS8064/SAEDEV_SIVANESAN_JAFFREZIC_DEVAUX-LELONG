@@ -34,7 +34,7 @@ public class AfficheurDeCarte {
     }
 
     public void reloadEmplacementCarte(int ligne, int colonne){
-        ((Tuile) carte.getChildren().get(ligne * 20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+        ((Tuile) carte.getChildren().get(ligne * environnement.getCarte().getLargeur() + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
     }
 
 

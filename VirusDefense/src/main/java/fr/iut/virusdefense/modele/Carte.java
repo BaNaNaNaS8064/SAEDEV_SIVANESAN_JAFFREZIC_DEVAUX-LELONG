@@ -19,7 +19,7 @@ public class Carte {
 
         initCarteStatique();
         cellules = FXCollections.observableArrayList();
-        objectif = List.of(7, 19); // hard coded pour l'instant
+        objectif = List.of(7, 29); // hard coded pour l'instant
 
         generateurs = FXCollections.observableArrayList();
     }
@@ -35,16 +35,21 @@ public class Carte {
         boolean t = true;
 
         this.carteStatique = new boolean[][]{
-                {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t},
-                {t, f, f, f, f, f, f, t, t, t, f, f, f, f, t, t, t, t, t, t},
-                {f, f, t, t, f, f, f, t, t, t, f, t, t, f, f, t, t, t, t, t},
-                {t, f, f, t, f, f, f, f, t, t, f, t, t, f, f, f, f, f, t, t},
-                {t, f, f, f, f, t, f, f, f, t, f, f, f, f, f, t, t, f, f, t},
-                {t, f, f, f, f, t, t, f, f, f, f, f, f, f, f, f, t, t, f, t},
-                {t, f, f, f, f, f, f, f, t, f, f, f, f, f, t, f, f, t, f, t},
-                {t, f, f, f, t, f, f, f, t, t, f, f, t, t, t, t, f, f, f, f},
-                {t, f, f, f, t, t, f, t, t, t, t, f, f, f, f, f, f, f, f, t},
-                {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t}
+                {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t},
+                {t, f, t, f, f, f, f, f, t, f, f, f, f, t, f, f, f, t, f, t, t, t, f, f, f, f, f, f, f, t},
+                {f, f, f, f, f, t, t, f, f, f, t, f, f, t, f, f, f, t, f, f, f, f, f, f, t, t, f, f, f, t},
+                {t, t, f, t, f, f, t, t, f, f, f, t, f, f, f, f, f, t, f, t, f, f, t, f, f, t, t, f, f, t},
+                {t, f, f, t, t, f, t, f, f, t, f, t, f, f, f, t, f, f, f, t, t, f, f, f, f, f, f, f, f, t},
+                {t, t, f, f, f, f, f, f, f, f, f, f, f, f, f, f, t, t, f, f, f, f, f, t, t, f, t, f, f, t},
+                {t, f, f, t, t, f, f, f, t, f, f, f, t, f, f, f, f, f, f, f, f, f, t, f, f, f, f, t, f, t},
+                {t, f, f, f, f, f, f, t, f, f, t, f, t, f, f, t, f, f, t, f, t, f, f, f, f, f, f, f, f, f},
+                {t, t, f, t, f, t, f, f, f, f, f, f, t, f, t, f, f, f, f, f, f, f, f, f, t, f, f, t, f, t},
+                {t, f, f, f, f, f, f, t, f, t, f, f, f, f, t, f, f, t, t, f, f, f, t, t, f, f, t, f, f, t},
+                {t, f, f, t, f, f, t, f, f, f, t, f, f, f, f, f, f, f, f, f, t, f, f, f, f, t, f, f, f, t},
+                {t, f, t, f, t, f, f, f, f, f, f, f, t, f, t, f, f, f, f, f, f, f, t, f, f, t, f, t, f, t},
+                {t, f, f, f, f, f, t, f, f, f, f, f, f, f, f, f, t, f, t, f, t, f, f, t, f, t, f, f, f, t},
+                {t, t, f, f, f, f, f, f, f, t, f, f, f, t, f, f, f, f, f, f, t, f, f, f, f, f, f, f, f, t},
+                {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t}
         };
     }
 
