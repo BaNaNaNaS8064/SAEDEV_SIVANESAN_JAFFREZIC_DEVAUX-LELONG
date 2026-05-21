@@ -26,8 +26,8 @@ public class ObsListeMaladies implements ListChangeListener<Maladie> {
     private void creerSprite(Maladie m){
         ImageView img = new ImageView(String.valueOf(Main.class.getResource("maladies/BB.png")));
 
-        img.translateXProperty().bind(m.colonneProperty().multiply(Params.TAILLETUILE));
-        img.translateYProperty().bind(m.ligneProperty().multiply(Params.TAILLETUILE));
+        img.translateXProperty().bind(m.colonneProperty().multiply(Params.TAILLETUILE).subtract(Params.TAILLETUILE/4));
+        img.translateYProperty().bind(m.ligneProperty().multiply(Params.TAILLETUILE).subtract(Params.TAILLETUILE/4));
         img.setId(m.getId());
 
         paneMaladies.getChildren().add(img);

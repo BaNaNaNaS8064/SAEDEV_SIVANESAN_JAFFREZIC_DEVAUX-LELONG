@@ -73,11 +73,11 @@ public class Carte {
             return Params.codeTuile.OBJECTIF;
 
         for (Generateur g : generateurs)
-            if (g.getLigne() == ligne && g.getColonne() == colonne)
+            if ((int)g.getLigne() == ligne && (int)g.getColonne() == colonne)
                 return Params.codeTuile.GENERATEUR;
 
         for (Cellule c : cellules)
-            if (c.getLigne() == ligne && c.getColonne() == colonne)
+            if ((int)c.getLigne() == ligne && (int)c.getColonne() == colonne)
                 return Params.codeTuile.SAINPLE;
 
         if (this.carteStatique[ligne][colonne])

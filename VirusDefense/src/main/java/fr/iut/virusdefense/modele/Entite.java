@@ -15,6 +15,10 @@ public abstract class Entite {
     private final DoubleProperty ligneProperty;
     private final DoubleProperty colonneProperty;
 
+    public Entite(Environnement environnement, int ligne, int colonne){
+        this(environnement, ligne + 0.5, colonne + 0.5);
+    }
+
     public Entite(Environnement environnement, double ligne, double colonne){
         id = "" + ++dernierID;
         this.environnement = environnement;
