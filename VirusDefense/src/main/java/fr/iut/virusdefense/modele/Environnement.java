@@ -28,6 +28,9 @@ public class Environnement {
 
     private final ObservableList<Rayon> rayons;
 
+    private boolean fin = false;
+    private boolean victoire = false;
+
     /**
      * Créé un terrain sans maladies
      */
@@ -63,6 +66,14 @@ public class Environnement {
 
     public ObservableList<Rayon> getTirs() {
         return rayons;
+    }
+
+    public boolean isFin() {
+        return fin;
+    }
+
+    public boolean isVictoire() {
+        return victoire;
     }
 
     /**
@@ -104,7 +115,7 @@ public class Environnement {
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        if (joueur.getPv() != 0) {
+        if (joueur.getPv() > 0 && niveau.getNumVague()<=20) {
             for (int i = rayons.size()-1; i >= 0; i--)
                 if (rayons.get(i).getAge() >= 2)
                     rayons.remove(i);
@@ -129,6 +140,10 @@ public class Environnement {
                     this.joueur.ajouterPC(maladies.get(i).getPcMortValue());
                     maladies.remove(i);
                 }
+        }else{
+            fin = true;
+            if(joueur.getPv()>0)
+                victoire=true;
         }
     }
 

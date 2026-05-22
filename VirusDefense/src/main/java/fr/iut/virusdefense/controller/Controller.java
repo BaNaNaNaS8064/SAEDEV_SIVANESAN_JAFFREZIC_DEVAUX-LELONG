@@ -5,6 +5,7 @@ import fr.iut.virusdefense.modele.Params;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
+import fr.iut.virusdefense.vue.EcranFin;
 import fr.iut.virusdefense.vue.SpritesTuiles;
 import fr.iut.virusdefense.vue.Tuile;
 import javafx.animation.KeyFrame;
@@ -90,6 +91,9 @@ public class Controller implements Initializable {
      */
     private void uneFrame(){
         environnement.unTour();
+        if(environnement.isFin()){
+            new EcranFin(paneDessin, environnement.isVictoire());
+        }
     }
 
     /**
