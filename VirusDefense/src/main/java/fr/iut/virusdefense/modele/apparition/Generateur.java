@@ -3,6 +3,8 @@ package fr.iut.virusdefense.modele.apparition;
 import fr.iut.virusdefense.modele.Entite;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.BacterieBanale;
+import fr.iut.virusdefense.modele.maladies.Parasite;
+import fr.iut.virusdefense.modele.maladies.Virus;
 
 public class Generateur extends Entite {
 
@@ -36,6 +38,12 @@ public class Generateur extends Entite {
         switch (codeMaladie){
             case "BB":
                 getEnvironnement().ajouter(new BacterieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                break;
+            case "Pa":
+                getEnvironnement().ajouter(new Parasite(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                break;
+            case "Vi":
+                getEnvironnement().ajouter(new Virus(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
         }
     }
