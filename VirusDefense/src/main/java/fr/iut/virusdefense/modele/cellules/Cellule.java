@@ -80,7 +80,7 @@ public abstract class Cellule extends Entite {
     }
 
     public boolean voit(Maladie m){
-        return new Rayon(getEnvironnement(), getLigne(), getColonne(), m.getLigne(), m.getColonne()).departVoitArrivee((int)getLigne(), (int)getColonne());
+        return new Rayon(getEnvironnement(), getLigne(), getColonne(), m.getLigne(), m.getColonne()).departVoitArrivee((int)getLigne(), (int)getColonne(), false);
     }
 
     /**

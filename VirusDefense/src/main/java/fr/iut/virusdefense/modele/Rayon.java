@@ -25,7 +25,7 @@ public class Rayon extends Entite{
         return colonneArrivee;
     }
 
-    public boolean departVoitArrivee(int ligneExclure, int colonneExclure){
+    public boolean departVoitArrivee(int ligneExclure, int colonneExclure, boolean ignorerCellules){
         double positionLigne, positionColonne = getColonne();
         int nombreDePoints = 100;
         double distColonne = getColonneArrivee() - getColonne();
@@ -37,7 +37,8 @@ public class Rayon extends Entite{
         while (!bloque && i<nombreDePoints){
             positionColonne += (double)1 / nombreDePoints * distColonne;
             positionLigne = (pente * positionColonne + ordoneeOrigine);
-            if (!getEnvironnement().getCarte().peutMarcher((int)positionLigne, (int)positionColonne) && ((int)positionLigne != ligneExclure || (int)positionColonne != colonneExclure))
+            if (!getEnvironnement().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules)
+                    && ((int)positionLigne != ligneExclure || (int)positionColonne != colonneExclure))
                 bloque = true;
 
             i++;
