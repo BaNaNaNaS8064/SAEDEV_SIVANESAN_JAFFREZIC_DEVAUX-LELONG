@@ -112,7 +112,7 @@ public class Controller implements Initializable {
         Cellule c = null;
         boolean maladiePeutPasFinir = false;
         if (((RadioButton) cellules.getSelectedToggle()).getId().equals("RbSainple")) {
-            c = new Sainple(environnement, ligne, colonne);
+            c = Sainple.creer(environnement, ligne, colonne);
 
             if(environnement.getJoueur().getPc()>=50){
                 environnement.ajouterCellule(c);
