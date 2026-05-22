@@ -38,7 +38,7 @@ public class Rayon extends Entite{
             positionColonne += (double)1 / nombreDePoints * distColonne;
             positionLigne = (pente * positionColonne + ordoneeOrigine);
             if (!getEnvironnement().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules)
-                    && ((int)positionLigne != getLigne() || (int)positionColonne != getColonne()))
+                    && ((int)positionLigne != (int)getLigne() || (int)positionColonne != (int)getColonne()))
                 bloque = true;
 
             i++;
