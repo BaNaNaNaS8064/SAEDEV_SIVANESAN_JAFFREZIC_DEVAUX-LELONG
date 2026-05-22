@@ -142,11 +142,11 @@ public class Controller implements Initializable {
 
             t.setOnMousePressed(event -> {});
 
-            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Params.codeTuile.VIDE)
+            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) != Params.codeTuile.MUR)
                 t.setOnMousePressed(mouseEvent -> {
-                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY))
+                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Params.codeTuile.VIDE)
                         poserCellules(t.getLigne(), t.getColonne());
-                    else if (mouseEvent.getButton().equals(MouseButton.SECONDARY)) {
+                    else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && environnement.getCarte().getCode(t.getLigne(), t.getColonne()) != Params.codeTuile.VIDE) {
                         environnement.retirerCelluleA(t.getLigne(), t.getColonne(), false);
                         afficheurDeCarte.reloadEmplacementCarte(t.getLigne(), t.getColonne());
                     }
