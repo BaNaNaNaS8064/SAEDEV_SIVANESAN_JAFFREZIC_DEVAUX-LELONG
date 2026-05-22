@@ -26,14 +26,14 @@ public class Environnement {
      */
     private final ObservableList<Maladie> maladies;
 
-    private final ObservableList<Tir> tirs;
+    private final ObservableList<Rayon> rayons;
 
     /**
      * Créé un terrain sans maladies
      */
     public Environnement() {
         maladies = FXCollections.observableArrayList();
-        tirs = FXCollections.observableArrayList();
+        rayons = FXCollections.observableArrayList();
         carte = new Carte(this);
         carte.initGenerateurs();
         deplacement = new Deplacement(carte);
@@ -61,8 +61,8 @@ public class Environnement {
         return joueur;
     }
 
-    public ObservableList<Tir> getTirs() {
-        return tirs;
+    public ObservableList<Rayon> getTirs() {
+        return rayons;
     }
 
     /**
@@ -96,8 +96,8 @@ public class Environnement {
         }
     }
 
-    public void ajouterTir(Tir t){
-        tirs.add(t);
+    public void ajouterTir(Rayon t){
+        rayons.add(t);
     }
 
     /**
@@ -105,12 +105,12 @@ public class Environnement {
      */
     public void unTour() {
         if (joueur.getPv() != 0) {
-            for (int i=tirs.size()-1; i >= 0; i--)
-                if (tirs.get(i).getAge() >= 2)
-                    tirs.remove(i);
+            for (int i = rayons.size()-1; i >= 0; i--)
+                if (rayons.get(i).getAge() >= 2)
+                    rayons.remove(i);
 
-            for (Tir t : tirs)
-                t.agir();
+            for (Rayon r : rayons)
+                r.agir();
 
 
             for (Cellule c : carte.getCellules())

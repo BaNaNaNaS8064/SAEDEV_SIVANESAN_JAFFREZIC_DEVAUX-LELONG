@@ -1,12 +1,12 @@
 package fr.iut.virusdefense.modele;
 
-public class Tir extends Entite{
+public class Rayon extends Entite{
     public double ligneArrivee;
     public double colonneArrivee;
 
     private int age;
 
-    public Tir(Environnement environnement, double ligneDepart, double colonneDepart, double ligneArrivee, double colonneArrivee){
+    public Rayon(Environnement environnement, double ligneDepart, double colonneDepart, double ligneArrivee, double colonneArrivee){
         super(environnement, ligneDepart, colonneDepart);
         this.ligneArrivee = ligneArrivee;
         this.colonneArrivee = colonneArrivee;

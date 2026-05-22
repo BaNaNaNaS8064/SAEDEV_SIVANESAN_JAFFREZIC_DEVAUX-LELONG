@@ -31,7 +31,7 @@ public class Controller implements Initializable {
     private Environnement environnement;
 
     @FXML
-    public Pane paneMaladie;
+    public Pane paneDessin;
 
     @FXML
     public TilePane tuiles;
@@ -61,8 +61,8 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
-        environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
-        environnement.getTirs().addListener(new ObsListeTir(paneMaladie));
+        environnement.getMaladies().addListener(new ObsListeMaladies(paneDessin));
+        environnement.getTirs().addListener(new ObsListeTir(paneDessin));
 
         initBarreVie();
 
@@ -128,7 +128,7 @@ public class Controller implements Initializable {
 
         if (environnement.getDeplacement().estBloquee(List.of(2, 0)) || maladiePeutPasFinir){
             environnement.retirerCellule(c, true);
-            ((Tuile)tuiles.getChildren().get(ligne*20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+            ((Tuile)tuiles.getChildren().get(ligne*environnement.getCarte().getLargeur() + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
             environnement.getDeplacement().faireAlgo();
         }else{
             ajouterEventTuile();

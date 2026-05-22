@@ -34,7 +34,7 @@ public class AfficheurDeCarte {
     }
 
     public void reloadEmplacementCarte(int ligne, int colonne){
-        ((Tuile) carte.getChildren().get(ligne * 20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+        ((Tuile) carte.getChildren().get(ligne * environnement.getCarte().getLargeur() + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
     }
 
 
@@ -43,11 +43,11 @@ public class AfficheurDeCarte {
      * Fixe la taille de la carte dans la vue
      */
     private void resetTailleCarte(){
-        double largeurVoulue = Params.TAILLETUILE * environnement.getCarte().getLargeur();
+        double largeurVoulue = 32 * environnement.getCarte().getLargeur();
         carte.setMaxWidth(largeurVoulue);
         carte.setMinWidth(largeurVoulue);
 
-        double hauteurVoulue = Params.TAILLETUILE * environnement.getCarte().getHauteur();
+        double hauteurVoulue = 32 * environnement.getCarte().getHauteur();
         carte.setMaxHeight(hauteurVoulue);
         carte.setMinHeight(hauteurVoulue);
     }

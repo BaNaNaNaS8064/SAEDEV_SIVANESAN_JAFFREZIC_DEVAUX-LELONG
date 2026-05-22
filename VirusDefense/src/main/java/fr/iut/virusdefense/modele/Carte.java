@@ -19,7 +19,7 @@ public class Carte {
 
         initCarteStatique();
         cellules = FXCollections.observableArrayList();
-        objectif = List.of(7, 19); // hard coded pour l'instant
+        objectif = List.of(7, 29); // hard coded pour l'instant
 
         generateurs = FXCollections.observableArrayList();
     }
@@ -35,16 +35,21 @@ public class Carte {
         boolean t = true;
 
         this.carteStatique = new boolean[][]{
-                {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t},
-                {t, f, f, f, f, f, f, t, t, t, f, f, f, f, t, t, t, t, t, t},
-                {f, f, t, t, f, f, f, t, t, t, f, t, t, f, f, t, t, t, t, t},
-                {t, f, f, t, f, f, f, f, t, t, f, t, t, f, f, f, f, f, t, t},
-                {t, f, f, f, f, t, f, f, f, t, f, f, f, f, f, t, t, f, f, t},
-                {t, f, f, f, f, t, t, f, f, f, f, f, f, f, f, f, t, t, f, t},
-                {t, f, f, f, f, f, f, f, t, f, f, f, f, f, t, f, f, t, f, t},
-                {t, f, f, f, t, f, f, f, t, t, f, f, t, t, t, t, f, f, f, f},
-                {t, f, f, f, t, t, f, t, t, t, t, f, f, f, f, f, f, f, f, t},
-                {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t}
+                {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t},
+                {t, f, t, f, f, f, f, f, t, f, f, f, f, t, f, f, f, t, f, t, t, t, f, f, f, f, f, f, f, t},
+                {f, f, f, f, f, t, t, f, f, f, t, f, f, t, f, f, f, t, f, f, f, f, f, f, t, t, f, f, f, t},
+                {t, t, f, t, f, f, t, t, f, f, f, t, f, f, f, f, f, t, f, t, f, f, t, f, f, t, t, f, f, t},
+                {t, f, f, t, t, f, t, f, f, t, f, t, f, f, f, t, f, f, f, t, t, f, f, f, f, f, f, f, f, t},
+                {t, t, f, f, f, f, f, f, f, f, f, f, f, f, f, f, t, t, f, f, f, f, f, t, t, f, t, f, f, t},
+                {t, f, f, t, t, f, f, f, t, f, f, f, t, f, f, f, f, f, f, f, f, f, t, f, f, f, f, t, f, t},
+                {t, f, f, f, f, f, f, t, f, f, t, f, t, f, f, t, f, f, t, f, t, f, f, f, f, f, f, f, f, f},
+                {t, t, f, t, f, t, f, f, f, f, f, f, t, f, t, f, f, f, f, f, f, f, f, f, t, f, f, t, f, t},
+                {t, f, f, f, f, f, f, t, f, t, f, f, f, f, t, f, f, t, t, f, f, f, t, t, f, f, t, f, f, t},
+                {t, f, f, t, f, f, t, f, f, f, t, f, f, f, f, f, f, f, f, f, t, f, f, f, f, t, f, f, f, t},
+                {t, f, t, f, t, f, f, f, f, f, f, f, t, f, t, f, f, f, f, f, f, f, t, f, f, t, f, t, f, t},
+                {t, f, f, f, f, f, t, f, f, f, f, f, f, f, f, f, t, f, t, f, t, f, f, t, f, t, f, f, f, t},
+                {t, t, f, f, f, f, f, f, f, t, f, f, f, t, f, f, f, f, f, f, t, f, f, f, f, f, f, f, f, t},
+                {t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t}
         };
     }
 
@@ -73,11 +78,11 @@ public class Carte {
             return Params.codeTuile.OBJECTIF;
 
         for (Generateur g : generateurs)
-            if (g.getLigne() == ligne && g.getColonne() == colonne)
+            if ((int)g.getLigne() == ligne && (int)g.getColonne() == colonne)
                 return Params.codeTuile.GENERATEUR;
 
         for (Cellule c : cellules)
-            if (c.getLigne() == ligne && c.getColonne() == colonne)
+            if ((int)c.getLigne() == ligne && (int)c.getColonne() == colonne)
                 return Params.codeTuile.SAINPLE;
 
         if (this.carteStatique[ligne][colonne])
