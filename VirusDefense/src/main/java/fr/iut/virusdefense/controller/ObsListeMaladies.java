@@ -24,7 +24,10 @@ public class ObsListeMaladies implements ListChangeListener<Maladie> {
      * @param m une maladie
      */
     private void creerSprite(Maladie m){
-        ImageView img = new ImageView(String.valueOf(Main.class.getResource("maladies/BB.png")));
+        ImageView img;
+        switch (m.getClass().getSimpleName()){
+            default -> {img = new ImageView(String.valueOf(Main.class.getResource("maladies/BB.png")));}
+        }
 
         img.translateXProperty().bind(m.colonneProperty().multiply(32).subtract(8));
         img.translateYProperty().bind(m.ligneProperty().multiply(32).subtract(8));

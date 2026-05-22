@@ -5,6 +5,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Niveau {
 
@@ -40,8 +41,18 @@ public class Niveau {
             vagues.add(new Vague());
             vagues.get(i).ajouter(new ListeApparition());
             for (int j=0; j<4*(i+1); j++)
-                vagues.get(i).getListeApparitions().get(0).ajouter("BB", (int)((Math.random()*90+30)) / (2*(i+1)));
+                vagues.get(i).getListeApparitions().get(0).ajouter(randomMaladiesCode(), (int)((Math.random()*90+30)) / (2*(i+1)));
         }
+    }
+
+    private String randomMaladiesCode(){
+        switch ((int)(Math.random() * 3)){
+            case 1 -> { return "Pa"; }
+            case 2 -> { return "Vi"; }
+            default -> { return "BB"; }
+
+        }
+
     }
 
     public void passerProchaineVague(){
