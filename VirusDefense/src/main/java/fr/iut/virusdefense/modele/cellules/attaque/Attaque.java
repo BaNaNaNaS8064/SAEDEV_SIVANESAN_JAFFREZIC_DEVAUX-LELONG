@@ -21,16 +21,6 @@ public abstract class Attaque {
         return cellule;
     }
 
-    /**
-     * Methode qui attaque quand la cible est a portée et vivante
-     */
-    public void attaque(){
-        for (Maladie m : getCellule().getReconnaissance().getCibles()){
-            getCellule().getEnvironnement().ajouterTir(new Rayon(getCellule().getEnvironnement() , getCellule().getLigne() , getCellule().getColonne() , m.getLigne() , m.getColonne()));
-            m.prendreDegats(getDegats());
-        }
-
-
-    }
+    abstract public void attaque();
 
 }
