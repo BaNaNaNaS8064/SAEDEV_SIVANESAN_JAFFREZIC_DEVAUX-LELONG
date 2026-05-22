@@ -18,15 +18,16 @@
             <Label alignment="CENTER" prefHeight="55.0" prefWidth="81.0" text="Vague" textFill="WHITE" />
             <HBox maxHeight="-Infinity" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #4d6b7d;" translateY="7.0">
                <children>
-                  <Label prefHeight="68.0" prefWidth="113.0" text="0/20" textFill="WHITE" />
+                  <Label fx:id="lbVague" alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="113.0" text="0" textFill="WHITE" />
+                  <Label layoutX="23.0" layoutY="10.0" prefHeight="68.0" prefWidth="113.0" text="/20" textFill="WHITE" />
                </children>
             </HBox>
             <Label alignment="CENTER_RIGHT" prefHeight="53.0" prefWidth="43.0" text="PV" textFill="WHITE" />
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <ProgressBar prefHeight="33.0" prefWidth="157.0" progress="1" fx:id="barreDeVie"/>
-                  <Label text="500" translateX="-52.0" fx:id="labelPvActuels"/>
-                  <Label text="1000" translateX="55.0" fx:id="labelTotalPV"/>
+                  <ProgressBar fx:id="barreDeVie" prefHeight="33.0" prefWidth="157.0" progress="1" />
+                  <Label fx:id="labelPvActuels" text="500" translateX="-52.0" />
+                  <Label fx:id="labelTotalPV" text="1000" translateX="55.0" />
                </children>
             </StackPane>
             <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="90.0" translateY="10.0">
@@ -64,25 +65,32 @@
             <HBox maxWidth="-Infinity" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #42a3c2;" translateX="40.0" translateY="-65.0">
                <children>
                   <Label alignment="CENTER" prefHeight="28.0" prefWidth="107.0" text="Solde : " textFill="WHITE" />
+                  <Label fx:id="soldeNb" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="114.0" textFill="WHITE" />
                </children>
             </HBox>
             <VBox prefHeight="398.0" prefWidth="208.0">
                <children>
-                  <Group>
+                  <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="208.0">
                      <children>
-                        <RadioButton id="RbSainple" mnemonicParsing="false" selected="true" text="Sainple" textFill="WHITE">
+                        <RadioButton id="RbSainple" mnemonicParsing="false" selected="true" textFill="WHITE">
                            <toggleGroup>
                               <ToggleGroup fx:id="cellules" />
                            </toggleGroup>
                         </RadioButton>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@tuiles/cellules/Sainple.png" />
+                           </image></ImageView>
+                        <Label alignment="CENTER" prefHeight="16.0" prefWidth="106.0" text="Sainple" textFill="WHITE" />
+                        <Label fx:id="lbCoutSainple" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="50" textAlignment="RIGHT" textFill="WHITE" />
                      </children>
-                  </Group>
+                  </HBox>
                </children>
             </VBox>
          </children></VBox>
    </right>
    <center>
-      <Pane fx:id="paneMaladie" prefHeight="480.0" prefWidth="960.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="paneDessin" prefHeight="480.0" prefWidth="960.0" BorderPane.alignment="CENTER">
          <children>
             <TilePane fx:id="tuiles" />
          </children>

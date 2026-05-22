@@ -2,6 +2,7 @@ package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.Carte;
+import fr.iut.virusdefense.modele.Params;
 
 import java.util.HashMap;
 
@@ -21,10 +22,10 @@ public class SpritesTuiles {
     private static HashMap<Integer, String> createMap(){
         HashMap<Integer, String> temp = new HashMap<>();
 
-        temp.put(Carte.VIDE, "Vide.png");
-        temp.put(Carte.MUR, "Mur.png");
-        temp.put(Carte.SAINPLE, "cellules/Sainple.png");
-        temp.put(Carte.GENERATEUR, "Gen.png");
+        temp.put(Params.codeTuile.VIDE, "Vide.png");
+        temp.put(Params.codeTuile.MUR, "Mur.png");
+        temp.put(Params.codeTuile.SAINPLE, "cellules/Sainple.png");
+        temp.put(Params.codeTuile.GENERATEUR, "Gen.png");
 
         return temp;
     }
@@ -36,7 +37,7 @@ public class SpritesTuiles {
      * @return le chemin vers l'image qui correspond à codeTuile
      */
     public static String imageDe(int codeTuile){
-        return String.valueOf(Main.class.getResource("tuiles/" + correspondance.getOrDefault(codeTuile, correspondance.get(Carte.VIDE))));
+        return String.valueOf(Main.class.getResource("tuiles/" + correspondance.getOrDefault(codeTuile, correspondance.get(Params.codeTuile.VIDE))));
     }
 
 }

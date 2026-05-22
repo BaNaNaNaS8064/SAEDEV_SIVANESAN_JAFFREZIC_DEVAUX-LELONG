@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.Params;
 import javafx.scene.layout.TilePane;
 
 /**
@@ -32,17 +33,21 @@ public class AfficheurDeCarte {
             }
     }
 
+    public void reloadEmplacementCarte(int ligne, int colonne){
+        ((Tuile) carte.getChildren().get(ligne * environnement.getCarte().getLargeur() + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+    }
+
 
 
     /**
      * Fixe la taille de la carte dans la vue
      */
     private void resetTailleCarte(){
-        double largeurVoulue = 48 * environnement.getCarte().getLargeur();
+        double largeurVoulue = 32 * environnement.getCarte().getLargeur();
         carte.setMaxWidth(largeurVoulue);
         carte.setMinWidth(largeurVoulue);
 
-        double hauteurVoulue = 48 * environnement.getCarte().getHauteur();
+        double hauteurVoulue = 32 * environnement.getCarte().getHauteur();
         carte.setMaxHeight(hauteurVoulue);
         carte.setMinHeight(hauteurVoulue);
     }

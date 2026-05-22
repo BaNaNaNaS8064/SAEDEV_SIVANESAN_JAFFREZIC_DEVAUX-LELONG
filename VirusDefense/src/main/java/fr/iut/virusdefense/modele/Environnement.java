@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.modele.apparition.Generateur;
+import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.FXCollections;
@@ -18,27 +19,34 @@ public class Environnement {
 
     private final Joueur joueur;
 
+    private final Niveau niveau;
+
     /**
      * La liste des maladies dans le terrain
      */
     private final ObservableList<Maladie> maladies;
 
-    private final ObservableList<Tir> tirs;
+    private final ObservableList<Rayon> rayons;
 
     /**
      * Créé un terrain sans maladies
      */
     public Environnement() {
         maladies = FXCollections.observableArrayList();
-        tirs = FXCollections.observableArrayList();
+        rayons = FXCollections.observableArrayList();
         carte = new Carte(this);
         carte.initGenerateurs();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
+        niveau = new Niveau(this);
     }
 
     public Carte getCarte() {
         return carte;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
     }
 
     public Deplacement getDeplacement() {
@@ -53,8 +61,8 @@ public class Environnement {
         return joueur;
     }
 
-    public ObservableList<Tir> getTirs() {
-        return tirs;
+    public ObservableList<Rayon> getTirs() {
+        return rayons;
     }
 
     /**
@@ -68,14 +76,16 @@ public class Environnement {
 
     public void ajouterCellule(Cellule c){
         carte.getCellules().add(c);
+        this.joueur.retirerPC(c.getCout());
     }
 
     public void retirerCellule(Cellule c){
         carte.getCellules().remove(c);
+        this.joueur.ajouterPC(c.getCout());
     }
 
-    public void ajouterTir(Tir t){
-        tirs.add(t);
+    public void ajouterTir(Rayon t){
+        rayons.add(t);
     }
 
     /**
@@ -83,16 +93,18 @@ public class Environnement {
      */
     public void unTour() {
         if (joueur.getPv() != 0) {
-            for (int i=tirs.size()-1; i >= 0; i--)
-                if (tirs.get(i).getAge() >= 2)
-                    tirs.remove(i);
+            for (int i = rayons.size()-1; i >= 0; i--)
+                if (rayons.get(i).getAge() >= 2)
+                    rayons.remove(i);
 
-            for (Tir t : tirs)
-                t.agir();
+            for (Rayon r : rayons)
+                r.agir();
 
 
             for (Cellule c : carte.getCellules())
                 c.agir();
+
+            niveau.update();
 
             for (Generateur g : carte.getGenerateurs())
                 g.agir();
@@ -101,8 +113,10 @@ public class Environnement {
                 m.agir();
 
             for (int i=maladies.size()-1; i >= 0; i--)
-                if (!maladies.get(i).estVivant())
+                if (!maladies.get(i).estVivant()) {
+                    this.joueur.ajouterPC(maladies.get(i).getPcMortValue());
                     maladies.remove(i);
+                }
         }
     }
 

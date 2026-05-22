@@ -1,8 +1,7 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.modele.Carte;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.Tir;
+import fr.iut.virusdefense.modele.Params;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
@@ -18,7 +17,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -32,7 +30,7 @@ public class Controller implements Initializable {
     private Environnement environnement;
 
     @FXML
-    public Pane paneMaladie;
+    public Pane paneDessin;
 
     @FXML
     public TilePane tuiles;
@@ -47,18 +45,31 @@ public class Controller implements Initializable {
     public Label labelTotalPV;
 
     @FXML
+    public Label soldeNb;
+
+    @FXML
     public ToggleGroup cellules;
+
+    @FXML
+    public Label lbVague;
+
+    /* Label des cout des tours */
+    @FXML
+    public Label lbCoutSainple;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
-        environnement.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
-        environnement.getTirs().addListener(new ObsListeTir(paneMaladie));
+        environnement.getMaladies().addListener(new ObsListeMaladies(paneDessin));
+        environnement.getTirs().addListener(new ObsListeTir(paneDessin));
 
         initBarreVie();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
         ajouterEventTuile();
+
+        soldeNb.textProperty().bind(environnement.getJoueur().pcProperty().asString());
+        lbVague.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
 
         initGameLoop();
         gameLoop.play();
@@ -98,9 +109,11 @@ public class Controller implements Initializable {
         if (((RadioButton) cellules.getSelectedToggle()).getId().equals("RbSainple")) {
             c = new Sainple(environnement, ligne, colonne);
 
-            environnement.ajouterCellule(c);
-            ((Tuile) tuiles.getChildren().get(ligne * 20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+            if(environnement.getJoueur().getPc()>=50){
+                environnement.ajouterCellule(c);
+                afficheurDeCarte.reloadEmplacementCarte(ligne, colonne);
 
+            }
         }
 
         //Permet de vérifier que un chemin et possible, sinon ne pose pas la tour
@@ -114,18 +127,21 @@ public class Controller implements Initializable {
 
         if (environnement.getDeplacement().estBloquee(List.of(2, 0)) || maladiePeutPasFinir){
             environnement.retirerCellule(c);
-            ((Tuile)tuiles.getChildren().get(ligne*20 + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+            ((Tuile)tuiles.getChildren().get(ligne*environnement.getCarte().getLargeur() + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
             environnement.getDeplacement().faireAlgo();
-        }
+        }else{
+            ajouterEventTuile();
 
+        }
     }
 
     private void ajouterEventTuile(){
         for (int i = 0; i<(environnement.getCarte().getHauteur() * environnement.getCarte().getLargeur()); i++) {
             Tuile t = (Tuile) tuiles.getChildren().get(i);
 
+            t.setOnMousePressed(event -> {});
 
-            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Carte.VIDE)
+            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Params.codeTuile.VIDE)
                 t.setOnMousePressed(mouseEvent -> {
                         poserCellules(t.getLigne(), t.getColonne());
                 });
