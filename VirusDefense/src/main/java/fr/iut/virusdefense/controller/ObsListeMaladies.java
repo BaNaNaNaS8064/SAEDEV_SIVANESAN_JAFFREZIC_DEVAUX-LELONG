@@ -25,9 +25,11 @@ public class ObsListeMaladies implements ListChangeListener<Maladie> {
      */
     private void creerSprite(Maladie m){
         ImageView img;
-        switch (m.getClass().getSimpleName()){
-            default -> {img = new ImageView(String.valueOf(Main.class.getResource("maladies/BB.png")));}
-        }
+        img = new ImageView(String.valueOf(Main.class.getResource("maladies/" + switch (m.getClass().getSimpleName()){
+            case "Virus" -> "Vi";
+            case "Parasite" -> "Pa";
+            default -> "BB";
+        } + ".png")));
 
         img.translateXProperty().bind(m.colonneProperty().multiply(32).subtract(8));
         img.translateYProperty().bind(m.ligneProperty().multiply(32).subtract(8));
