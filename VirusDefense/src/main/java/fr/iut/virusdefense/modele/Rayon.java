@@ -26,19 +26,23 @@ public class Rayon extends Entite{
     }
 
     public boolean peutRelierExtremitees(boolean ignorerCellules){
-        double positionLigne, positionColonne = getColonne();
         int nombreDePoints = 100;
+
+        double positionLigne, positionColonne = getColonne();
+
         double distColonne = getColonne2() - getColonne();
+
         double pente = (getLigne2() - getLigne()) / (distColonne);
         double ordoneeOrigine = getLigne() - pente * getColonne();
+
         boolean bloque = false;
         int i=0;
 
         while (!bloque && i<nombreDePoints){
-            positionColonne += (double)1 / nombreDePoints * distColonne;
-            positionLigne = (pente * positionColonne + ordoneeOrigine);
-            if (!getEnvironnement().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules)
-                    && ((int)positionLigne != (int)getLigne() || (int)positionColonne != (int)getColonne()))
+            positionColonne += distColonne / nombreDePoints;
+            positionLigne = pente * positionColonne + ordoneeOrigine;
+
+            if (!getEnvironnement().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules) && ((int)positionLigne != (int)getLigne() || (int)positionColonne != (int)getColonne()))
                 bloque = true;
 
             i++;
