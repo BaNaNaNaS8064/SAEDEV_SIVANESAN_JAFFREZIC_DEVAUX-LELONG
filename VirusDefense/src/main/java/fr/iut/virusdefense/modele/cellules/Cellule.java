@@ -80,14 +80,14 @@ public abstract class Cellule extends Entite {
     }
 
     public boolean voit(Maladie m){
-        return new Rayon(getEnvironnement(), getLigne(), getColonne(), m.getLigne(), m.getColonne()).departVoitArrivee((int)getLigne(), (int)getColonne(), false);
+        return new Rayon(getEnvironnement(), getLigne(), getColonne(), m.getLigne(), m.getColonne()).peutRelierExtremitees(false);
     }
 
     /**
      * Methode qui attaque quand la cible est a portée et vivante
      */
     public void attaque(){
-        getEnvironnement().ajouterTir(new Rayon(getEnvironnement() , this.getLigne() , this.getColonne() , cible.getLigne() , cible.getColonne()));
+        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement() , this.getLigne() , this.getColonne() , cible.getLigne() , cible.getColonne()));
         cible.prendreDegats(degats);
     }
 }

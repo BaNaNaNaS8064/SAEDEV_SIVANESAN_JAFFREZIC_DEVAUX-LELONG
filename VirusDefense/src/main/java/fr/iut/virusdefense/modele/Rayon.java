@@ -1,15 +1,15 @@
 package fr.iut.virusdefense.modele;
 
 public class Rayon extends Entite{
-    public double ligneArrivee;
-    public double colonneArrivee;
+    public double ligne2;
+    public double colonne2;
 
     private int age;
 
-    public Rayon(Environnement environnement, double ligneDepart, double colonneDepart, double ligneArrivee, double colonneArrivee){
-        super(environnement, ligneDepart, colonneDepart);
-        this.ligneArrivee = ligneArrivee;
-        this.colonneArrivee = colonneArrivee;
+    public Rayon(Environnement environnement, double ligne, double colonne, double ligne2, double colonne2){
+        super(environnement, ligne, colonne);
+        this.ligne2 = ligne2;
+        this.colonne2 = colonne2;
         age = 0;
     }
 
@@ -17,19 +17,19 @@ public class Rayon extends Entite{
         return age;
     }
 
-    public double getLigneArrivee() {
-        return ligneArrivee;
+    public double getLigne2() {
+        return ligne2;
     }
 
-    public double getColonneArrivee() {
-        return colonneArrivee;
+    public double getColonne2() {
+        return colonne2;
     }
 
-    public boolean departVoitArrivee(int ligneExclure, int colonneExclure, boolean ignorerCellules){
+    public boolean peutRelierExtremitees(boolean ignorerCellules){
         double positionLigne, positionColonne = getColonne();
         int nombreDePoints = 100;
-        double distColonne = getColonneArrivee() - getColonne();
-        double pente = (getLigneArrivee() - getLigne()) / (distColonne);
+        double distColonne = getColonne2() - getColonne();
+        double pente = (getLigne2() - getLigne()) / (distColonne);
         double ordoneeOrigine = getLigne() - pente * getColonne();
         boolean bloque = false;
         int i=0;
@@ -38,7 +38,7 @@ public class Rayon extends Entite{
             positionColonne += (double)1 / nombreDePoints * distColonne;
             positionLigne = (pente * positionColonne + ordoneeOrigine);
             if (!getEnvironnement().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules)
-                    && ((int)positionLigne != ligneExclure || (int)positionColonne != colonneExclure))
+                    && ((int)positionLigne != getLigne() || (int)positionColonne != getColonne()))
                 bloque = true;
 
             i++;

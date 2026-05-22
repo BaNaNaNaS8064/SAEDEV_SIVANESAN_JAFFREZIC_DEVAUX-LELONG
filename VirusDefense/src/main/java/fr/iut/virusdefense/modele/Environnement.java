@@ -84,8 +84,8 @@ public class Environnement {
         this.joueur.ajouterPC(c.getCout());
     }
 
-    public void ajouterTir(Rayon t){
-        rayons.add(t);
+    public void ajouterRayon(Rayon r){
+        rayons.add(r);
     }
 
     /**
