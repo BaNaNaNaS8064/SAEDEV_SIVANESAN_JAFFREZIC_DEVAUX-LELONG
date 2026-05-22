@@ -1,8 +1,8 @@
 package fr.iut.virusdefense.modele.cellules;
 
-import fr.iut.virusdefense.modele.Entite;
+import fr.iut.virusdefense.modele.entitesGeneriques.Entite;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.Rayon;
+import fr.iut.virusdefense.modele.entitesGeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public abstract class Cellule extends Entite {

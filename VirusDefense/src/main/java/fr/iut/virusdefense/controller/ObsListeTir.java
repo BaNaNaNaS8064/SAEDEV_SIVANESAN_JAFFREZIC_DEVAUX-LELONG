@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.modele.Rayon;
+import fr.iut.virusdefense.modele.entitesGeneriques.Rayon;
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;

@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele.apparition;
 
-import fr.iut.virusdefense.modele.Entite;
+import fr.iut.virusdefense.modele.entitesGeneriques.Entite;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.BacterieBanale;
 

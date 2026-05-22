@@ -1,6 +1,8 @@
-package fr.iut.virusdefense.modele;
+package fr.iut.virusdefense.modele.entitesGeneriques;
 
-public class Rayon extends Entite{
+import fr.iut.virusdefense.modele.Environnement;
+
+public class Rayon extends Entite {
     public double ligne2;
     public double colonne2;
 
