@@ -91,11 +91,23 @@ public class Carte {
             return Params.codeTuile.VIDE;
     }
 
-    public boolean peutMarcher(int ligne, int colonne){
-        int val = getCode(ligne, colonne);
-        return val == Params.codeTuile.VIDE
-            || val == Params.codeTuile.OBJECTIF
-            || val == Params.codeTuile.GENERATEUR;
+    public boolean peutMarcher(int ligne, int colonne) {
+        return peutMarcher(getCode(ligne, colonne));
+    }
+
+    public boolean peutMarcher(int codeTuile){
+        return codeTuile == Params.codeTuile.VIDE
+                || codeTuile == Params.codeTuile.OBJECTIF
+                || codeTuile == Params.codeTuile.GENERATEUR;
+    }
+
+    public boolean peutVoirAuTravers(int ligne, int colonne, boolean ignorerCellules){
+        int code = getCode(ligne, colonne);
+
+        if (ignorerCellules)
+            return code != Params.codeTuile.MUR;
+        else
+            return peutMarcher(code);
     }
 
     /**

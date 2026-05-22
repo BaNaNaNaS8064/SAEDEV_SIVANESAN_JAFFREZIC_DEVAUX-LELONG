@@ -10,4 +10,5 @@ module fr.iut.virusdefense {
     exports fr.iut.virusdefense.modele;
     exports fr.iut.virusdefense.modele.maladies;
     exports fr.iut.virusdefense.vue;
+    exports fr.iut.virusdefense.modele.entitesGeneriques;
 }

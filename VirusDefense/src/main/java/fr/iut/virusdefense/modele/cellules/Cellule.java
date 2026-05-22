@@ -1,8 +1,8 @@
 package fr.iut.virusdefense.modele.cellules;
 
-import fr.iut.virusdefense.modele.Entite;
+import fr.iut.virusdefense.modele.entitesGeneriques.Entite;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.Rayon;
+import fr.iut.virusdefense.modele.entitesGeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public abstract class Cellule extends Entite {
@@ -43,7 +43,7 @@ public abstract class Cellule extends Entite {
         delai--;
 
         if (delai <=0){
-            if (!aUneCible() || !cible.estVivant() || !aPortee(cible))
+            if (!aUneCible() || !cible.estVivant() || !aPortee(cible) || !voit(cible))
                 changerCible();
 
             if (aUneCible()) {
@@ -65,7 +65,7 @@ public abstract class Cellule extends Entite {
         while (!aUneCible() && i < getEnvironnement().getMaladies().size()){
             m = getEnvironnement().getMaladies().get(i);
 
-            if (m.estVivant() && aPortee(m))
+            if (m.estVivant() && aPortee(m) && voit(m))
                 cible = m;
 
             i++;
@@ -79,11 +79,15 @@ public abstract class Cellule extends Entite {
         return distanceEuclidienne(m) <= getPortee();
     }
 
+    public boolean voit(Maladie m){
+        return new Rayon(getEnvironnement(), getLigne(), getColonne(), m.getLigne(), m.getColonne()).peutRelierExtremitees(false);
+    }
+
     /**
      * Methode qui attaque quand la cible est a portée et vivante
      */
     public void attaque(){
-        getEnvironnement().ajouterTir(new Rayon(getEnvironnement() , this.getLigne() , this.getColonne() , cible.getLigne() , cible.getColonne()));
+        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement() , this.getLigne() , this.getColonne() , cible.getLigne() , cible.getColonne()));
         cible.prendreDegats(degats);
     }
 }

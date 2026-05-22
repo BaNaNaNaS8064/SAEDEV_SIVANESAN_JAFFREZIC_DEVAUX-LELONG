@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele;
 import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.entitesGeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -96,8 +97,8 @@ public class Environnement {
         }
     }
 
-    public void ajouterTir(Rayon t){
-        rayons.add(t);
+    public void ajouterRayon(Rayon r){
+        rayons.add(r);
     }
 
     /**

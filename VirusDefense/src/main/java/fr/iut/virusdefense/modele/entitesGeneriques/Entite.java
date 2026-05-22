@@ -1,5 +1,6 @@
-package fr.iut.virusdefense.modele;
+package fr.iut.virusdefense.modele.entitesGeneriques;
 
+import fr.iut.virusdefense.modele.Environnement;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 

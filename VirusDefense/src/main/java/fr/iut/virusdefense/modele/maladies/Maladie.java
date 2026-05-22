@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele.maladies;
 
-import fr.iut.virusdefense.modele.Entite;
+import fr.iut.virusdefense.modele.entitesGeneriques.Entite;
 import fr.iut.virusdefense.modele.Environnement;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

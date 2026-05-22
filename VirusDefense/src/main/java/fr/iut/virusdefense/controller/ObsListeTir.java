@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.modele.Rayon;
+import fr.iut.virusdefense.modele.entitesGeneriques.Rayon;
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -19,7 +19,7 @@ public class ObsListeTir implements ListChangeListener<Rayon> {
     }
 
     public void creerSprite(Rayon t){
-        Line spriteTir = new Line(t.getColonne()*32, t.getLigne()*32, t.getColonneArrivee()*32, t.getLigneArrivee()*32);
+        Line spriteTir = new Line(t.getColonne()*32, t.getLigne()*32, t.getColonne2()*32, t.getLigne2()*32);
         spriteTir.setStroke(Color.WHITE);
         spriteTir.setId(t.getId());
         paneDessin.getChildren().add(spriteTir);
