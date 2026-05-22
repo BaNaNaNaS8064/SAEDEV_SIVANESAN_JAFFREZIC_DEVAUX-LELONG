@@ -9,14 +9,10 @@ public class RecUnique extends Reconnaissance{
         super(cellule , portee);
     }
 
-//    public void ciblage(){
-//        for (Maladie m : getCellule().getEnvironnement().getMaladies())
-//            getCibles().add(m);
-//    }
-
     /**
      * Methode qui permet de reconnaitre une bacterie de la prendre comme cible
      */
+    @Override
     public void changerCible(){
         int i = 0;
         Maladie m;
