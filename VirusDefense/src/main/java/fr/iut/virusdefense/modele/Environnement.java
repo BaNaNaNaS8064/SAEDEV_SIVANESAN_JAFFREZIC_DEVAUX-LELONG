@@ -87,8 +87,8 @@ public class Environnement {
     public void retirerCelluleA(int ligne, int colonne, boolean rendrePC){
         int i=0;
         boolean trouvé = false;
-        while (i<carte.getCellules().size() || !trouvé){
-            if (carte.getCellules().get(i).getLigne() == ligne && carte.getCellules().get(i).getColonne() == colonne){
+        while (i < carte.getCellules().size() || !trouvé){
+            if ((int)carte.getCellules().get(i).getLigne() == ligne && (int)carte.getCellules().get(i).getColonne() == colonne){
                 trouvé = true;
                 retirerCellule(carte.getCellules().get(i), rendrePC);
             }
