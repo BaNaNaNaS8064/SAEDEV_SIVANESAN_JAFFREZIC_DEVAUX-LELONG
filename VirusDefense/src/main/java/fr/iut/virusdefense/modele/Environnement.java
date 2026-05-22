@@ -89,11 +89,13 @@ public class Environnement {
     public void ajouterCellule(Cellule c){
         carte.getCellules().add(c);
         this.joueur.retirerPC(c.getCout());
+        deplacement.faireAlgo();
     }
 
     public void retirerCellule(Cellule c, boolean rendrePC){
         carte.getCellules().remove(c);
         if (rendrePC) this.joueur.ajouterPC(c.getCout());
+        deplacement.faireAlgo();
     }
 
     public void retirerCelluleA(int ligne, int colonne, boolean rendrePC){
@@ -106,6 +108,7 @@ public class Environnement {
             }
             i++;
         }
+        deplacement.faireAlgo();
     }
 
     public void ajouterRayon(Rayon r){

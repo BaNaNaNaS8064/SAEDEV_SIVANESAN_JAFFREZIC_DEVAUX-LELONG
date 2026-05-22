@@ -122,7 +122,6 @@ public class Controller implements Initializable {
         }
 
         //Permet de vérifier que un chemin et possible, sinon ne pose pas la tour
-        environnement.getDeplacement().faireAlgo();
         int i = 0;
         while(!maladiePeutPasFinir && i < environnement.getMaladies().size()){
             if(environnement.getDeplacement().estBloquee(environnement.getMaladies().get(i).position()))
@@ -133,7 +132,6 @@ public class Controller implements Initializable {
         if (environnement.getDeplacement().estBloquee(List.of(2, 0)) || maladiePeutPasFinir){
             environnement.retirerCellule(c, true);
             ((Tuile)tuiles.getChildren().get(ligne*environnement.getCarte().getLargeur() + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
-            environnement.getDeplacement().faireAlgo();
         }else{
             ajouterEventTuile();
 
