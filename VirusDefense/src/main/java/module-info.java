@@ -7,9 +7,14 @@ module fr.iut.virusdefense {
 
     opens fr.iut.virusdefense to javafx.fxml;
     exports fr.iut.virusdefense;
+
     exports fr.iut.virusdefense.controller;
     exports fr.iut.virusdefense.modele;
+    exports fr.iut.virusdefense.modele.cellules;
+    exports fr.iut.virusdefense.modele.cellules.attaque;
+    exports fr.iut.virusdefense.modele.cellules.reconnaissance;
     exports fr.iut.virusdefense.modele.maladies;
-    exports fr.iut.virusdefense.vue;
     exports fr.iut.virusdefense.modele.entitesGeneriques;
+    exports fr.iut.virusdefense.modele.apparition;
+    exports fr.iut.virusdefense.vue;
 }

@@ -1,7 +1,6 @@
 package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.Main;
-import fr.iut.virusdefense.modele.Carte;
 import fr.iut.virusdefense.modele.Params;
 
 import java.util.HashMap;

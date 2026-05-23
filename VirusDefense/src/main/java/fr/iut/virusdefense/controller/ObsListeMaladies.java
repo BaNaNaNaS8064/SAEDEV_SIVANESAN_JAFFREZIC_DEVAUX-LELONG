@@ -1,7 +1,6 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.Main;
-import fr.iut.virusdefense.modele.Params;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.ListChangeListener;
 import javafx.scene.image.ImageView;

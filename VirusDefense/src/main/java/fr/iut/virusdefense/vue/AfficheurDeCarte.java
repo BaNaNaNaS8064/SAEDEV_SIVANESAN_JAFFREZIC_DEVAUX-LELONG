@@ -1,7 +1,6 @@
 package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.Params;
 import javafx.scene.layout.TilePane;
 
 /**

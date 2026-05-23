@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.cellules.attaque;
 
-import fr.iut.virusdefense.modele.entitesGeneriques.Rayon;
 import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.entitesGeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public class AtkRayon extends Attaque {
