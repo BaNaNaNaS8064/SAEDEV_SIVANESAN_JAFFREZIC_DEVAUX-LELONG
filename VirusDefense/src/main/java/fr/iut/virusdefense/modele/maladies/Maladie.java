@@ -2,8 +2,6 @@ package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.entitesGeneriques.Entite;
 import fr.iut.virusdefense.modele.Environnement;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.List;
 
@@ -13,7 +11,7 @@ import java.util.List;
 public abstract class Maladie extends Entite {
     private int pv;
     private final double vitesse;
-    private final IntegerProperty pcMort;
+    private final int recompense;
 
     /**
      * Créé un nouvelle maladie
@@ -23,22 +21,23 @@ public abstract class Maladie extends Entite {
      * @param pv ses points de vie initiaux
      * @param vitesse sa vitesse de déplacement
      */
-    public Maladie(Environnement environnement, int ligne, int colonne, int pv, double vitesse, int pc){
+    public Maladie(Environnement environnement, int ligne, int colonne, int pv, double vitesse, int recompense){
         super(environnement, ligne, colonne);
 
         this.vitesse = vitesse;
         this.pv = pv;
-        this.pcMort = new SimpleIntegerProperty(pc);
+        this.recompense = recompense;
     }
 
-    public IntegerProperty getPcMort(){ return this.pcMort;}
-    public int getPcMortValue(){ return this.pcMort.getValue();}
+    public final int getRecompense(){
+        return recompense;
+    }
 
     public boolean estVivant(){
         return pv > 0;
     }
 
-    public void tuer(){
+    public void mourir(){
         this.pv = 0;
     }
 
@@ -47,7 +46,12 @@ public abstract class Maladie extends Entite {
      * @param degats degats subis par la maladie
      */
     public void prendreDegats(int degats){
-        pv -= degats;
+        if (degats > 0)
+            pv -= degats;
+    }
+
+    public boolean aAtteintLObjectif(){
+        return getEnvironnement().getCarte().getObjectif().equals(position());
     }
 
     @Override
@@ -55,9 +59,9 @@ public abstract class Maladie extends Entite {
         if (estVivant()) {
             bouger();
 
-            if (getEnvironnement().getCarte().getObjectif().equals(position())) {
-                infligerDegats();
-                tuer();
+            if (aAtteintLObjectif()) {
+                infligerDegatsAuJoueur();
+                mourir();
             }
         }
     }
@@ -73,7 +77,7 @@ public abstract class Maladie extends Entite {
         setColonne(getColonne() + vitesse * Double.compare(prochaineCase.get(1) + 0.5, getColonne()));
     }
 
-    public void infligerDegats(){
+    public void infligerDegatsAuJoueur(){
         getEnvironnement().getJoueur().subisDegats(pv);
     }
 }
