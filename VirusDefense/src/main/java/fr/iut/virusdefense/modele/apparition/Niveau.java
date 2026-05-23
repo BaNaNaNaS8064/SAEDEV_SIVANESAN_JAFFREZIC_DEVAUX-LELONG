@@ -12,11 +12,12 @@ public class Niveau {
 
     private final IntegerProperty numVagueProperty;
     private ArrayList<Vague> vagues;
+    private int delaiEntreVagues;
     int delai;
 
     public Niveau(Environnement environnement){
         this.environnement = environnement;
-        delai = Integer.MAX_VALUE;
+        delaiEntreVagues = 600;
         numVagueProperty = new SimpleIntegerProperty(-1);
         initVagues();
         passerProchaineVague();
@@ -36,22 +37,22 @@ public class Niveau {
 
     public void initVagues(){
         vagues = new ArrayList<>();
-        for (int i=0; i<100; i++){
+        for (int indVague=0; indVague<100; indVague++){
             vagues.add(new Vague());
-            vagues.get(i).ajouter(new ListeApparition());
-            for (int j=0; j<4*(i+1); j++)
-                vagues.get(i).getListeApparitions().get(0).ajouter(randomMaladiesCode(), (int)((Math.random()*90+30)) / (2*(i+1)));
+            for (int indListeA=0; indListeA<environnement.getCarte().getGenerateurs().size(); indListeA++) {
+                vagues.get(indVague).ajouter(new ListeApparition());
+                for (int indEnnemi = 0; indEnnemi < 4 * (indVague + 1); indEnnemi++)
+                    vagues.get(indVague).getListeApparitions().get(indListeA).ajouter(randomMaladiesCode(), (int) ((Math.random() * 90 + 30)) / (2 * (indVague + 1)));
+            }
         }
     }
 
     private String randomMaladiesCode(){
-        switch ((int)(Math.random() * 3)){
-            case 1 -> { return "Pa"; }
-            case 2 -> { return "Vi"; }
-            default -> { return "BB"; }
-
-        }
-
+        return switch ((int)(Math.random() * 3)){
+            case 1 -> "Pa";
+            case 2 -> "Vi";
+            default -> "BB";
+        };
     }
 
     public void passerProchaineVague(){
@@ -61,7 +62,7 @@ public class Niveau {
             for (int i=0; i<environnement.getCarte().getGenerateurs().size(); i++)
                 environnement.getCarte().getGenerateurs().get(i).setListe(vagues.get(getNumVague()).getListeApparitions().get(i));
 
-            delai = 600;
+            delai = Integer.MAX_VALUE;
         }
     }
 
@@ -70,14 +71,10 @@ public class Niveau {
     }
 
     public void update(){
-        delai--;
-
-        if (delai <= 0) {
-            delai = Integer.MAX_VALUE;
+        if (--delai <= 0 && resteVague())
             passerProchaineVague();
-        }
 
-        if (resteVague() && vagues.get(getNumVague()).estTerminee() && delai > 600)
-            delai = 600;
+        if (vagues.get(getNumVague()).estTerminee() && delai > delaiEntreVagues)
+            delai = delaiEntreVagues;
     }
 }
