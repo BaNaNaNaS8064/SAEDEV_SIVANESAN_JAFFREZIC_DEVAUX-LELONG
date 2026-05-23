@@ -2,8 +2,6 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.entitesGeneriques.Entite;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.entitesGeneriques.Rayon;
-import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
 
@@ -50,8 +48,8 @@ public abstract class Cellule extends Entite {
         delai--;
 
         if (delai <=0){
-            if (!reconnaissance.valide())
-                reconnaissance.changerCible();
+            if (!reconnaissance.ciblesValides())
+                reconnaissance.changerCibles();
 
             typeAttaque.attaque();
             delai = frequenceAttaque;

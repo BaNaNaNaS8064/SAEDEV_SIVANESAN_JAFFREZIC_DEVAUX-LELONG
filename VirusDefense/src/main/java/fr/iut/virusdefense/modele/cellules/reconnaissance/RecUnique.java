@@ -6,27 +6,11 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 public class RecUnique extends Reconnaissance{
 
     public RecUnique(Cellule cellule , double portee){
-        super(cellule , portee);
+        super(cellule , portee, 1);
     }
 
-    /**
-     * Methode qui permet de reconnaitre une bacterie de la prendre comme cible
-     */
     @Override
-    public void changerCible(){
-        int i = 0;
-        Maladie m;
-
-        cibles.clear();
-
-        while (!aUneCible() && i < getCellule().getEnvironnement().getMaladies().size()){
-            m = getCellule().getEnvironnement().getMaladies().get(i);
-
-            if (m.estVivant() && aPortee(m) && getCellule().voit(m, true))
-                cibles.add(m);
-
-            i++;
-        }
+    public boolean valide(Maladie m) {
+        return m.estVivant() && aPortee(m) && getCellule().voit(m, true);
     }
-
 }
