@@ -58,23 +58,26 @@ public class Niveau {
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
         environnement.getJoueur().ajouterPc(50 * getNumVague());
-        if (resteVague()){
-            for (int i=0; i<environnement.getCarte().getGenerateurs().size(); i++)
-                environnement.getCarte().getGenerateurs().get(i).setListe(vagues.get(getNumVague()).getListeApparitions().get(i));
-
-            delai = Integer.MAX_VALUE;
-        }
+        for (int i=0; i<environnement.getCarte().getGenerateurs().size(); i++)
+            environnement.getCarte().getGenerateurs().get(i).setListe(vagues.get(getNumVague()).getListeApparitions().get(i));
+         delai = Integer.MAX_VALUE;
     }
 
     public boolean resteVague(){
-        return getNumVague() < vagues.size();
+        return getNumVague() < vagues.size() - 1;
     }
 
     public void update(){
-        if (--delai <= 0 && resteVague())
-            passerProchaineVague();
+        if (!estTermine()) {
+            if (--delai <= 0)
+                passerProchaineVague();
 
-        if (vagues.get(getNumVague()).estTerminee() && delai > delaiEntreVagues)
-            delai = delaiEntreVagues;
+            if (vagues.get(getNumVague()).estTerminee() && delai > delaiEntreVagues)
+                delai = delaiEntreVagues;
+        }
+    }
+
+    public boolean estTermine(){
+        return !resteVague() && vagues.get(vagues.size() - 1).estTerminee();
     }
 }

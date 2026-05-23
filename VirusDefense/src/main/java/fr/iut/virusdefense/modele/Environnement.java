@@ -119,7 +119,7 @@ public class Environnement {
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        if (joueur.getPv() > 0 && niveau.getNumVague()<=20) {
+        if (joueur.getPv() > 0 && (!niveau.estTermine() || !maladies.isEmpty())) {
             for (int i = rayons.size()-1; i >= 0; i--)
                 if (rayons.get(i).aDepasseAgeMaximal())
                     rayons.remove(i);
