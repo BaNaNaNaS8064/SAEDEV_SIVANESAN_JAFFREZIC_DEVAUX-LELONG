@@ -121,7 +121,7 @@ public class Environnement {
     public void unTour() {
         if (joueur.getPv() > 0 && niveau.getNumVague()<=20) {
             for (int i = rayons.size()-1; i >= 0; i--)
-                if (rayons.get(i).getAge() >= 2)
+                if (rayons.get(i).aDepasseAgeMaximal())
                     rayons.remove(i);
 
             for (Rayon r : rayons)

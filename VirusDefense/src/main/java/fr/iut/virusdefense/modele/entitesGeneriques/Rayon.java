@@ -7,16 +7,22 @@ public class Rayon extends Entite {
     public double colonne2;
 
     private int age;
+    private final int ageMaximal;
 
-    public Rayon(Environnement environnement, double ligne, double colonne, double ligne2, double colonne2){
+    public Rayon(Entite e1, Entite e2, int ageMaximal){
+        this(e1.getEnvironnement(), e1.getLigne(), e1.getColonne(), e2.getLigne(), e2.getColonne(), ageMaximal);
+    }
+
+    public Rayon(Environnement environnement, double ligne, double colonne, double ligne2, double colonne2, int ageMaximal){
         super(environnement, ligne, colonne);
         this.ligne2 = ligne2;
         this.colonne2 = colonne2;
         age = 0;
+        this.ageMaximal = ageMaximal;
     }
 
-    public int getAge() {
-        return age;
+    public boolean aDepasseAgeMaximal(){
+        return age > ageMaximal;
     }
 
     public double getLigne2() {

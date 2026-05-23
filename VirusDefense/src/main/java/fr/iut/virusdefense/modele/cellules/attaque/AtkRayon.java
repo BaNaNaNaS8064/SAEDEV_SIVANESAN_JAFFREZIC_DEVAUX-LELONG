@@ -15,7 +15,7 @@ public class AtkRayon extends Attaque {
      */
     @Override
     public void attaque(Maladie m){
-        getCellule().getEnvironnement().ajouterRayon(new Rayon(getCellule().getEnvironnement(), getCellule().getLigne(), getCellule().getColonne(), m.getLigne(), m.getColonne()));
+        getCellule().getEnvironnement().ajouterRayon(new Rayon(getCellule(), m, 2));
         m.prendreDegats(getDegats());
     }
 
