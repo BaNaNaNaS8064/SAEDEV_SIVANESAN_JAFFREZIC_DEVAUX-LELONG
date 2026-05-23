@@ -22,7 +22,7 @@ public class RecUnique extends Reconnaissance{
         while (!aUneCible() && i < getCellule().getEnvironnement().getMaladies().size()){
             m = getCellule().getEnvironnement().getMaladies().get(i);
 
-            if (m.estVivant() && aPortee(m) && voit(m))
+            if (m.estVivant() && aPortee(m) && getCellule().voit(m, true))
                 cibles.add(m);
 
             i++;

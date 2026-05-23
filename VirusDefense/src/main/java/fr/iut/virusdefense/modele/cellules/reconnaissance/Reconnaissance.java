@@ -40,12 +40,8 @@ public abstract class Reconnaissance {
         return !cibles.isEmpty();
     }
 
-    public boolean voit(Maladie m){
-        return new Rayon(cellule.getEnvironnement(), cellule.getLigne(), cellule.getColonne(), m.getLigne(), m.getColonne()).peutRelierExtremitees(false);
-    }
-
     public boolean valide(){
-         return aUneCible() && cibles.get(0).estVivant() && aPortee(cibles.get(0)) && voit(cibles.get(0));
+         return aUneCible() && cibles.get(0).estVivant() && aPortee(cibles.get(0)) && cellule.voit(cibles.get(0), true);
     }
 
     abstract public void changerCible();

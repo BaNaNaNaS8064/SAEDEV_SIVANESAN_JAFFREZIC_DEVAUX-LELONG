@@ -75,11 +75,45 @@ public abstract class Entite {
      * @return distance euclidienne
      */
     public double distanceEuclidienne(Entite e){
-        return Math.sqrt(Math.pow((getLigne() - e.getLigne()), 2) + Math.pow((getColonne() - e.getColonne()), 2));
+        return distanceEuclidienne(e.getLigne(), e.getColonne());
+    }
+
+    public double distanceEuclidienne(double ligne, double colonne){
+        return Math.sqrt(Math.pow((getLigne() - ligne), 2) + Math.pow((getColonne() - colonne), 2));
     }
 
     /**
      * Méthode exécutée à chaque tour
      */
     public abstract void agir();
+
+    public boolean voit(Entite e, boolean ignorerCellules){
+        return voit(e.getLigne(), e.getColonne(), ignorerCellules);
+    }
+
+    public boolean voit(double ligne, double colonne, boolean ignorerCellules){
+        int nombreDePoints = 100;
+
+        double positionLigne, positionColonne = getColonne();
+
+        double distColonne = colonne - getColonne();
+
+        double pente = (ligne - getLigne()) / (distColonne);
+        double ordoneeOrigine = getLigne() - pente * getColonne();
+
+        boolean bloque = false;
+        int i=0;
+
+        while (!bloque && i<nombreDePoints){
+            positionColonne += distColonne / nombreDePoints;
+            positionLigne = pente * positionColonne + ordoneeOrigine;
+
+            if (!getEnvironnement().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules) && ((int)positionLigne != (int)getLigne() || (int)positionColonne != (int)getColonne()))
+                bloque = true;
+
+            i++;
+        }
+
+        return !bloque;
+    }
 }

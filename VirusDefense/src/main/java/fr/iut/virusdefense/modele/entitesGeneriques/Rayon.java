@@ -27,32 +27,6 @@ public class Rayon extends Entite {
         return colonne2;
     }
 
-    public boolean peutRelierExtremitees(boolean ignorerCellules){
-        int nombreDePoints = 100;
-
-        double positionLigne, positionColonne = getColonne();
-
-        double distColonne = getColonne2() - getColonne();
-
-        double pente = (getLigne2() - getLigne()) / (distColonne);
-        double ordoneeOrigine = getLigne() - pente * getColonne();
-
-        boolean bloque = false;
-        int i=0;
-
-        while (!bloque && i<nombreDePoints){
-            positionColonne += distColonne / nombreDePoints;
-            positionLigne = pente * positionColonne + ordoneeOrigine;
-
-            if (!getEnvironnement().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules) && ((int)positionLigne != (int)getLigne() || (int)positionColonne != (int)getColonne()))
-                bloque = true;
-
-            i++;
-        }
-
-        return !bloque;
-    }
-
     @Override
     public void agir(){
         age++;
