@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AttaqueRayon;
+import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Sainple extends Cellule {
@@ -17,7 +17,7 @@ public class Sainple extends Cellule {
 
     @Override
     public void initTypeAttaque() {
-        setTypeAttaque(new AttaqueRayon(this , 45));
+        setTypeAttaque(new AtkRayon(this , 45));
     }
 
     public static Sainple creer(Environnement env , int ligne , int colonne){

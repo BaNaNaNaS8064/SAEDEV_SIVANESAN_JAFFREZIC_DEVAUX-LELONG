@@ -1,12 +1,13 @@
 package fr.iut.virusdefense.modele.cellules.attaque;
 
 import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public abstract class Attaque {
-    private Cellule cellule;
+    private final Cellule cellule;
     private int degats;
 
-    public Attaque(Cellule cellule , int degats){
+    public Attaque(Cellule cellule, int degats){
         this.cellule = cellule;
         this.degats = degats;
     }
@@ -19,6 +20,10 @@ public abstract class Attaque {
         return cellule;
     }
 
-    abstract public void attaque();
+    public void attaqueCibles(){
+        getCellule().getReconnaissance().getCibles().forEach(this::attaque);
+    }
+
+    public abstract void attaque(Maladie m);
 
 }

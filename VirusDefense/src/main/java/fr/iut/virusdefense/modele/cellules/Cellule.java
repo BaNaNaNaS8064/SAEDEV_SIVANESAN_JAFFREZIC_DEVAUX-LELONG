@@ -51,7 +51,7 @@ public abstract class Cellule extends Entite {
             if (!reconnaissance.ciblesValides())
                 reconnaissance.changerCibles();
 
-            typeAttaque.attaque();
+            typeAttaque.attaqueCibles();
             delai = frequenceAttaque;
         }
     }
