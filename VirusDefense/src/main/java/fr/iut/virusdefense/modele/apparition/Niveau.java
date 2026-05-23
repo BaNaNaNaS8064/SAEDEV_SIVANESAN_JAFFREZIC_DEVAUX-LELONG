@@ -5,7 +5,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Niveau {
 
@@ -57,7 +56,7 @@ public class Niveau {
 
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
-        environnement.getJoueur().ajouterPC(50 * getNumVague());
+        environnement.getJoueur().ajouterPc(50 * getNumVague());
         if (resteVague()){
             for (int i=0; i<environnement.getCarte().getGenerateurs().size(); i++)
                 environnement.getCarte().getGenerateurs().get(i).setListe(vagues.get(getNumVague()).getListeApparitions().get(i));

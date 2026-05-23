@@ -88,13 +88,13 @@ public class Environnement {
 
     public void ajouterCellule(Cellule c){
         carte.getCellules().add(c);
-        this.joueur.retirerPC(c.getCout());
+        this.joueur.retirerPc(c.getCout());
         deplacement.faireAlgo();
     }
 
     public void retirerCellule(Cellule c, boolean rendrePC){
         carte.getCellules().remove(c);
-        if (rendrePC) this.joueur.ajouterPC(c.getCout());
+        if (rendrePC) this.joueur.ajouterPc(c.getCout());
         deplacement.faireAlgo();
     }
 
@@ -141,7 +141,7 @@ public class Environnement {
 
             for (int i=maladies.size()-1; i >= 0; i--)
                 if (!maladies.get(i).estVivant()) {
-                    this.joueur.ajouterPC(maladies.get(i).getRecompense());
+                    this.joueur.ajouterPc(maladies.get(i).getRecompense());
                     maladies.remove(i);
                 }
         }else{

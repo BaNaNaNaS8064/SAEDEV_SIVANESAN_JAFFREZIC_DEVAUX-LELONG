@@ -78,6 +78,6 @@ public abstract class Maladie extends Entite {
     }
 
     public void infligerDegatsAuJoueur(){
-        getEnvironnement().getJoueur().subisDegats(pv);
+        getEnvironnement().getJoueur().retirerPv(pv);
     }
 }
