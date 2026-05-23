@@ -6,24 +6,24 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Sainple extends Cellule {
 
-    private Sainple(Environnement env , int ligne , int colonne){
-        super(env , ligne ,colonne, 60 , 50 );
+    private Sainple(Environnement env, int ligne, int colonne){
+        super(env, ligne, colonne, 60, 50);
     }
 
     @Override
-    public void initRec() {
-        setReconnaissance(new RecUnique(this , 3.0));
+    public void initRec(){
+        setReconnaissance(new RecUnique(this, 3.0));
     }
 
     @Override
-    public void initTypeAttaque() {
-        setTypeAttaque(new AtkRayon(this , 45));
+    public void initAttaque(){
+        setAttaque(new AtkRayon(this, 45));
     }
 
-    public static Sainple creer(Environnement env , int ligne , int colonne){
-        Sainple temp = new Sainple(env , ligne , colonne);
+    public static Sainple creer(Environnement env, int ligne, int colonne){
+        Sainple temp = new Sainple(env, ligne, colonne);
         temp.initRec();
-        temp.initTypeAttaque();
+        temp.initAttaque();
         return temp;
     }
 }

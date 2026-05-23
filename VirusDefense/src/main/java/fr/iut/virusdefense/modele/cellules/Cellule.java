@@ -7,7 +7,7 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
 
 public abstract class Cellule extends Entite {
     private Reconnaissance reconnaissance ;
-    private Attaque typeAttaque;
+    private Attaque attaque;
 
     private final int frequenceAttaque;
     private int delai;
@@ -15,15 +15,22 @@ public abstract class Cellule extends Entite {
     private int niveau;
     private final int cout;
 
-    public Cellule(Environnement environnement, int ligne, int colonne, int frequenceAttaque , int cout ){
+    public Cellule(Environnement environnement, int ligne, int colonne, int frequenceAttaque, int cout){
         super(environnement, ligne, colonne);
+
         this.frequenceAttaque = frequenceAttaque;
         this.delai = frequenceAttaque;
-        this.niveau = 1 ;
+
+        this.niveau = 1;
+
         this.cout = cout;
     }
 
-    public Reconnaissance getReconnaissance() {
+    public abstract void initRec();
+
+    public abstract void initAttaque();
+
+    public Reconnaissance getReconnaissance(){
         return reconnaissance;
     }
 
@@ -31,28 +38,26 @@ public abstract class Cellule extends Entite {
         this.reconnaissance = reconnaissance;
     }
 
-    public void setTypeAttaque(Attaque typeAttaque){
-        this.typeAttaque = typeAttaque;
+    public void setAttaque(Attaque attaque){
+        this.attaque = attaque;
     }
-
-    public abstract void initRec();
-
-    public abstract void initTypeAttaque();
 
     public int getCout() {
         return cout;
     }
-
+    
     @Override
     public void agir(){
-        delai--;
-
-        if (delai <=0){
+        if (--delai <= 0){
             if (!reconnaissance.ciblesValides())
                 reconnaissance.changerCibles();
 
-            typeAttaque.attaqueCibles();
-            delai = frequenceAttaque;
+            if (reconnaissance.aAuMoinsUneCible()) {
+                attaque.attaqueCibles();
+                delai = frequenceAttaque;
+            }
+            else
+                delai = frequenceAttaque / 10;
         }
     }
 }

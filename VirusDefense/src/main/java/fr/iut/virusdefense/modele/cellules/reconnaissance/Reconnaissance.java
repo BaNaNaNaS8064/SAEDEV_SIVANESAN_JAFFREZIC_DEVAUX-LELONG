@@ -34,6 +34,10 @@ public abstract class Reconnaissance {
         return getCellule().distanceEuclidienne(m) <= portee;
     }
 
+    public boolean aAuMoinsUneCible(){
+        return !cibles.isEmpty();
+    }
+
     public boolean aAssezDeCibles(){
         return cibles.size() >= nombreCiblesMax;
     }
