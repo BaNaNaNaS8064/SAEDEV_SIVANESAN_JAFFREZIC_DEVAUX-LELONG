@@ -19,11 +19,7 @@ public class Vague {
     }
 
     public boolean estTerminee(){
-        for (ListeApparition la : listeApparitions)
-            if (la.resteProchain())
-                return false;
-
-        return true;
+        return listeApparitions.stream().noneMatch(ListeApparition::resteProchain);
     }
 
 }
