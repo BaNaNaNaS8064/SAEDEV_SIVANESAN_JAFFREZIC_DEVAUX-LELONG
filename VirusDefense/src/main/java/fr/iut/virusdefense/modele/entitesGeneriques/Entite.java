@@ -97,7 +97,7 @@ public abstract class Entite {
         double positionLigne, positionColonne = getColonne();
 
         double distColonne = colonne - getColonne();
-        if (distColonne < 1E-10)
+        if (Math.abs(distColonne) < 1E-10)
             return false;
 
         double pente = (ligne - getLigne()) / (distColonne);
