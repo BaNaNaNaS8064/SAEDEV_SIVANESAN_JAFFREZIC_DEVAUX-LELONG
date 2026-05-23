@@ -2,29 +2,29 @@ package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.cellules.Cellule;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Carte {
     private final Environnement environnement;
     private boolean[][] carteStatique;
     private final List<Integer> objectif;
-    private final ObservableList<Cellule> cellules;
-    private final ObservableList<Generateur> generateurs;
+    private final ArrayList<Cellule> cellules;
+    private final ArrayList<Generateur> generateurs;
 
     public Carte(Environnement environnement) {
         this.environnement = environnement;
 
         initCarteStatique();
-        cellules = FXCollections.observableArrayList();
+        cellules = new ArrayList<>();
         objectif = List.of(7, 29); // hard coded pour l'instant
 
-        generateurs = FXCollections.observableArrayList();
+        generateurs = new ArrayList<>();
     }
 
     public void initGenerateurs(){
+        // hard coded pour l'instant
         getGenerateurs().add(new Generateur(environnement, 2, 0));
     }
 
@@ -65,11 +65,11 @@ public class Carte {
         return objectif;
     }
 
-    public ObservableList<Cellule> getCellules() {
+    public ArrayList<Cellule> getCellules() {
         return cellules;
     }
 
-    public ObservableList<Generateur> getGenerateurs() {
+    public ArrayList<Generateur> getGenerateurs() {
         return generateurs;
     }
 
@@ -85,10 +85,18 @@ public class Carte {
             if ((int)c.getLigne() == ligne && (int)c.getColonne() == colonne)
                 return Params.codeTuile.SAINPLE;
 
-        if (this.carteStatique[ligne][colonne])
+        if (carteStatique[ligne][colonne])
             return Params.codeTuile.MUR;
         else
             return Params.codeTuile.VIDE;
+    }
+
+    public boolean emplacementVide(int ligne, int colonne){
+        return emplacementVide(getCode(ligne, colonne));
+    }
+
+    public boolean emplacementVide(int codeTuile){
+        return codeTuile == Params.codeTuile.VIDE;
     }
 
     public boolean peutMarcher(int ligne, int colonne) {
@@ -97,8 +105,8 @@ public class Carte {
 
     public boolean peutMarcher(int codeTuile){
         return codeTuile == Params.codeTuile.VIDE
-                || codeTuile == Params.codeTuile.OBJECTIF
-                || codeTuile == Params.codeTuile.GENERATEUR;
+            || codeTuile == Params.codeTuile.OBJECTIF
+            || codeTuile == Params.codeTuile.GENERATEUR;
     }
 
     public boolean peutVoirAuTravers(int ligne, int colonne, boolean ignorerCellules){
