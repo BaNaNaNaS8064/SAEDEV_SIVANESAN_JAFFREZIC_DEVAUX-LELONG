@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.controller;
+package fr.iut.virusdefense.controller.observateurs;
 
 import fr.iut.virusdefense.vue.GereurBarreDeVie;
 import javafx.beans.value.ChangeListener;

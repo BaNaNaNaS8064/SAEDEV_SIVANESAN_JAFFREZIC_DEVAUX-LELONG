@@ -2,6 +2,7 @@ package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele;
+package fr.iut.virusdefense.modele.utilitaires;
 
 public enum CodeTuile {
         VIDE,

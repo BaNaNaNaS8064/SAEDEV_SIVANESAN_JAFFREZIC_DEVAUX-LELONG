@@ -1,7 +1,7 @@
-package fr.iut.virusdefense.vue;
+package fr.iut.virusdefense.vue.sprites;
 
 import fr.iut.virusdefense.Main;
-import fr.iut.virusdefense.modele.CodeTuile;
+import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 
 import java.util.HashMap;
 

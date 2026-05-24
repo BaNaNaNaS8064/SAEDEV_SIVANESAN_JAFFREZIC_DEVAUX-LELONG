@@ -1,10 +1,14 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.modele.CodeTuile;
+import fr.iut.virusdefense.controller.observateurs.ObsListeMaladies;
+import fr.iut.virusdefense.controller.observateurs.ObsListeRayons;
+import fr.iut.virusdefense.controller.observateurs.ObsVieJoueur;
+import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.*;
+import fr.iut.virusdefense.vue.sprites.SpritesTuiles;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;

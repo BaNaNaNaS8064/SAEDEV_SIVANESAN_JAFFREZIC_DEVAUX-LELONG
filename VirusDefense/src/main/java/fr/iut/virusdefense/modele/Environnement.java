@@ -3,7 +3,7 @@ package fr.iut.virusdefense.modele;
 import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.cellules.Cellule;
-import fr.iut.virusdefense.modele.entitesGeneriques.Rayon;
+import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

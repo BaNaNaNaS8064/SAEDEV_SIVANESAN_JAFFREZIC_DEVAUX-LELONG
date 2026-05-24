@@ -3,7 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
-import fr.iut.virusdefense.modele.entitesGeneriques.Entite;
+import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 
 public abstract class Cellule extends Entite {
     private Reconnaissance reconnaissance ;

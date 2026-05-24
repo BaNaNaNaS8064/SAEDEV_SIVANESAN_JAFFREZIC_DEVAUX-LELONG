@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.controller;
+package fr.iut.virusdefense.controller.observateurs;
 
 import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.maladies.Maladie;

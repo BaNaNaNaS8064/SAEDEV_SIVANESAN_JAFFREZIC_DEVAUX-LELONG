@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.entitesGeneriques;
+package fr.iut.virusdefense.modele.entitesgeneriques;
 
 import fr.iut.virusdefense.modele.Environnement;
 
