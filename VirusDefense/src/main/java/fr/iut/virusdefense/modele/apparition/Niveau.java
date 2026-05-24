@@ -80,4 +80,8 @@ public class Niveau {
     public boolean estTermine(){
         return !resteVague() && vagues.get(vagues.size() - 1).estTerminee();
     }
+
+    public int nombreDeVagues(){
+        return vagues.size();
+    }
 }

@@ -32,6 +32,7 @@ public class Controller implements Initializable {
 
     // haut -> vagues
     @FXML public Label labelVagueActuelle;
+    @FXML public Label labelVagueMax;
 
     // haut -> vie
     @FXML public ProgressBar barreDeVie;
@@ -39,7 +40,7 @@ public class Controller implements Initializable {
     @FXML public Label labelPvMax;
 
     // droite
-    @FXML public Label LabelSolde;
+    @FXML public Label labelSolde;
     @FXML public ToggleGroup toggleGrpCellules;
     @FXML public Label labelCoutSainple;
 
@@ -58,8 +59,9 @@ public class Controller implements Initializable {
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
         ajouterEventTuile();
 
-        LabelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
+        labelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
         labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
+        labelVagueMax.setText("/" + environnement.getNiveau().nombreDeVagues());
 
         environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
 
