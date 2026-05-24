@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.vue.sprites.SpritesTuiles;
+import fr.iut.virusdefense.vue.sprites.AssociationImage;
 import fr.iut.virusdefense.vue.sprites.Tuile;
 import javafx.scene.layout.TilePane;
 
@@ -30,12 +30,12 @@ public class AfficheurDeCarte {
 
         for (int i = 0; i< environnement.getCarte().getHauteur(); i++)
             for (int j = 0; j < environnement.getCarte().getLargeur(); j++) {
-                carte.getChildren().add(new Tuile(SpritesTuiles.imageDe(environnement.getCarte().getCode(i, j)), i, j));
+                carte.getChildren().add(new Tuile(AssociationImage.imageDe(environnement.getCarte().getCode(i, j)), i, j));
             }
     }
 
     public void reloadEmplacementCarte(int ligne, int colonne){
-        ((Tuile) carte.getChildren().get(ligne * environnement.getCarte().getLargeur() + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+        ((Tuile) carte.getChildren().get(ligne * environnement.getCarte().getLargeur() + colonne)).setImage(AssociationImage.imageDe(environnement.getCarte().getCode(ligne, colonne)));
     }
 
 

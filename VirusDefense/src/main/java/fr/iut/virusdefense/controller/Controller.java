@@ -8,7 +8,7 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.*;
-import fr.iut.virusdefense.vue.sprites.SpritesTuiles;
+import fr.iut.virusdefense.vue.sprites.AssociationImage;
 import fr.iut.virusdefense.vue.sprites.Tuile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -116,7 +116,7 @@ public class Controller implements Initializable {
 
         if (environnement.getDeplacement().estBloquee(List.of(2, 0)) || maladiePeutPasFinir){
             environnement.retirerCellule(c, true);
-            ((Tuile)tuiles.getChildren().get(ligne*environnement.getCarte().getLargeur() + colonne)).setImage(SpritesTuiles.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+            ((Tuile)tuiles.getChildren().get(ligne*environnement.getCarte().getLargeur() + colonne)).setImage(AssociationImage.imageDe(environnement.getCarte().getCode(ligne, colonne)));
         }else{
             ajouterEventTuile();
 
