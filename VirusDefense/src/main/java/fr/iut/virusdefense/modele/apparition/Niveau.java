@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele.apparition;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
@@ -42,17 +43,9 @@ public class Niveau {
             for (int indListeA=0; indListeA<environnement.getCarte().getGenerateurs().size(); indListeA++) {
                 vagues.get(indVague).ajouter(new ListeApparition());
                 for (int indEnnemi = 0; indEnnemi < 4 * (indVague + 1); indEnnemi++)
-                    vagues.get(indVague).getListeApparitions().get(indListeA).ajouter(randomMaladiesCode(), (int) ((Math.random() * 90 + 30)) / (2 * (indVague + 1)));
+                    vagues.get(indVague).getListeApparitions().get(indListeA).ajouter(CodeMaladie.codeAleatoire(), (int) ((Math.random() * 90 + 30)) / (2 * (indVague + 1)));
             }
         }
-    }
-
-    private String randomMaladiesCode(){
-        return switch ((int)(Math.random() * 3)){
-            case 1 -> "Pa";
-            case 2 -> "Vi";
-            default -> "BB";
-        };
     }
 
     public void passerProchaineVague(){

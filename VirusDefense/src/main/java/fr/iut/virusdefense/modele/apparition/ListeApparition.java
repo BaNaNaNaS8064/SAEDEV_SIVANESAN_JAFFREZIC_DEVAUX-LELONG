@@ -1,11 +1,13 @@
 package fr.iut.virusdefense.modele.apparition;
 
+import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
+
 import java.util.ArrayList;
 
 public class ListeApparition {
 
     private int curseur;
-    private ArrayList<String> listeMaladies;
+    private ArrayList<CodeMaladie> listeMaladies;
     private ArrayList<Integer> listeDelais;
 
     public ListeApparition(){
@@ -14,7 +16,7 @@ public class ListeApparition {
         listeDelais = new ArrayList<>();
     }
 
-    public void ajouter(String codeMaladie, int delai){
+    public void ajouter(CodeMaladie codeMaladie, int delai){
         listeMaladies.add(codeMaladie);
         listeDelais.add(delai);
     }
@@ -23,7 +25,7 @@ public class ListeApparition {
         return curseur < Math.min(listeMaladies.size(), listeDelais.size());
     }
 
-    public String prochaineMaladie(){
+    public CodeMaladie prochaineMaladie(){
         return listeMaladies.get(curseur);
     }
 

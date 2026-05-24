@@ -5,6 +5,7 @@ import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 import fr.iut.virusdefense.modele.maladies.BacterieBanale;
 import fr.iut.virusdefense.modele.maladies.Parasite;
 import fr.iut.virusdefense.modele.maladies.Virus;
+import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
 public class Generateur extends Entite {
 
@@ -34,15 +35,15 @@ public class Generateur extends Entite {
         }
     }
 
-    public void ajouterMaladie(String codeMaladie){
+    public void ajouterMaladie(CodeMaladie codeMaladie){
         switch (codeMaladie){
-            case "BB":
+            case BACTERIEBANALE:
                 getEnvironnement().ajouter(new BacterieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
-            case "Pa":
+            case PARASITE:
                 getEnvironnement().ajouter(new Parasite(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
-            case "Vi":
+            case VIRUS:
                 getEnvironnement().ajouter(new Virus(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
         }
