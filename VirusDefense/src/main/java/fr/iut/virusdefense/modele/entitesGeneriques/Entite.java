@@ -98,7 +98,7 @@ public abstract class Entite {
 
         double distColonne = colonne - getColonne();
         if (Math.abs(distColonne) < 1E-10)
-            return false;
+            return voitVertical((int)ligne, ignorerCellules);
 
         double pente = (ligne - getLigne()) / (distColonne);
         double ordoneeOrigine = getLigne() - pente * getColonne();
@@ -116,6 +116,27 @@ public abstract class Entite {
             i++;
         }
 
+        return !bloque;
+    }
+
+    private boolean voitVertical(int ligne, boolean ignorerCellules){
+        int positionLigne = (int)getLigne();
+        int direction;
+        if (ligne < getLigne())
+            direction = -1;
+        else if (ligne > getLigne())
+            direction = 1;
+        else
+            return getEnvironnement().getCarte().peutVoirAuTravers((int)getLigne(), (int)getColonne(), ignorerCellules);
+
+        boolean bloque = false;
+
+        while (!bloque && positionLigne != ligne + direction){
+            positionLigne += direction;
+            if (!getEnvironnement().getCarte().peutVoirAuTravers(positionLigne, (int)getColonne(), ignorerCellules))
+                bloque = true;
+        }
+        
         return !bloque;
     }
 }
