@@ -2,6 +2,7 @@ package fr.iut.virusdefense.controller.observateurs;
 
 import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.maladies.Maladie;
+import fr.iut.virusdefense.vue.sprites.SpriteMaladie;
 import javafx.collections.ListChangeListener;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -18,30 +19,11 @@ public class ObsListeMaladies implements ListChangeListener<Maladie> {
         paneDessin = p;
     }
 
-    /**
-     * Créé un sprite pour m et l'ajoute dans paneMaladies
-     * @param m une maladie
-     */
-    private void creerSprite(Maladie m){
-        ImageView img;
-        img = new ImageView(String.valueOf(Main.class.getResource("maladies/" + switch (m.getClass().getSimpleName()){
-            case "Virus" -> "Vi";
-            case "Parasite" -> "Pa";
-            default -> "BB";
-        } + ".png")));
-
-        img.translateXProperty().bind(m.colonneProperty().multiply(32).subtract(8));
-        img.translateYProperty().bind(m.ligneProperty().multiply(32).subtract(8));
-        img.setId(m.getId());
-
-        paneDessin.getChildren().add(img);
-    }
-
     @Override
     public void onChanged(Change<? extends Maladie> c) {
         while (c.next()){
             for (Maladie m : c.getAddedSubList())
-                creerSprite(m);
+                paneDessin.getChildren().add(new SpriteMaladie(m));
             for (Maladie m : c.getRemoved())
                 paneDessin.getChildren().remove(paneDessin.lookup("#" + m.getId()));
         }

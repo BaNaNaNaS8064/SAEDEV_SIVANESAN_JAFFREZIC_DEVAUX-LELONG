@@ -36,7 +36,7 @@ public class SpritesTuiles {
      * @return le chemin vers l'image qui correspond à CodeTuile
      */
     public static String imageDe(CodeTuile codeTuile){
-        return String.valueOf(Main.class.getResource("tuiles/" + correspondance.getOrDefault(codeTuile, correspondance.get(CodeTuile.VIDE))));
+        return String.valueOf(Main.class.getResource("images/tuiles/" + correspondance.getOrDefault(codeTuile, correspondance.get(CodeTuile.VIDE))));
     }
 
 }

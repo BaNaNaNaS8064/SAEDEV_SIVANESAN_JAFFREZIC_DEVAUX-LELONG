@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.vue;
+package fr.iut.virusdefense.vue.sprites;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

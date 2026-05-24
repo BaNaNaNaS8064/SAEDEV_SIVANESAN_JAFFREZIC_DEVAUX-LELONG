@@ -9,6 +9,7 @@ import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.*;
 import fr.iut.virusdefense.vue.sprites.SpritesTuiles;
+import fr.iut.virusdefense.vue.sprites.Tuile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;

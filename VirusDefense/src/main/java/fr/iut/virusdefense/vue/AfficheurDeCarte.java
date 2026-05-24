@@ -2,6 +2,7 @@ package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.vue.sprites.SpritesTuiles;
+import fr.iut.virusdefense.vue.sprites.Tuile;
 import javafx.scene.layout.TilePane;
 
 /**
