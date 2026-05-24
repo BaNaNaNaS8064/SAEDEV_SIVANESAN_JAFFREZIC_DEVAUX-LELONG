@@ -65,7 +65,7 @@ public class Environnement {
         return joueur;
     }
 
-    public ObservableList<Rayon> getTirs() {
+    public ObservableList<Rayon> getRayons() {
         return rayons;
     }
 

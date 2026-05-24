@@ -9,30 +9,29 @@ import javafx.scene.shape.Line;
 /**
  * Observe la liste des maladies et se charge de créer et supprimer les sprites
  */
-public class ObsListeTir implements ListChangeListener<Rayon> {
+public class ObsListeRayons implements ListChangeListener<Rayon> {
 
     /// le pane dans lequel on ajoute et supprime des sprites
     private final Pane paneDessin;
 
-    public ObsListeTir(Pane p){
+    public ObsListeRayons(Pane p){
         paneDessin = p;
     }
 
-    public void creerSprite(Rayon t){
-        Line spriteTir = new Line(t.getColonne()*32, t.getLigne()*32, t.getColonne2()*32, t.getLigne2()*32);
+    public void creerSprite(Rayon r){
+        Line spriteTir = new Line(r.getColonne()*32, r.getLigne()*32, r.getColonne2()*32, r.getLigne2()*32);
         spriteTir.setStroke(Color.WHITE);
-        spriteTir.setId(t.getId());
+        spriteTir.setId(r.getId());
         paneDessin.getChildren().add(spriteTir);
     }
 
     @Override
     public void onChanged(Change<? extends Rayon> c) {
-
         while (c.next()){
-            for (Rayon t : c.getAddedSubList())
-                creerSprite(t);
-            for (Rayon t : c.getRemoved())
-                paneDessin.getChildren().remove(paneDessin.lookup("#" + t.getId()));
+            for (Rayon r : c.getAddedSubList())
+                creerSprite(r);
+            for (Rayon r : c.getRemoved())
+                paneDessin.getChildren().remove(paneDessin.lookup("#" + r.getId()));
         }
     }
 }

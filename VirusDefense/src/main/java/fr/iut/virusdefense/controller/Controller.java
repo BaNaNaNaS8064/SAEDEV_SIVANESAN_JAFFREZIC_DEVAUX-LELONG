@@ -63,7 +63,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneDessin));
-        environnement.getTirs().addListener(new ObsListeTir(paneDessin));
+        environnement.getRayons().addListener(new ObsListeRayons(paneDessin));
 
         initBarreVie();
 
