@@ -48,9 +48,9 @@ public class AssociationImage {
     private static HashMap<CodeMaladie, String> creerMapMaladie(){
         HashMap<CodeMaladie, String> temp = new HashMap<>();
 
-        temp.put(CodeMaladie.BacterieBanale, "BB");
-        temp.put(CodeMaladie.Parasite, "Pa");
-        temp.put(CodeMaladie.Virus, "Vi");
+        temp.put(CodeMaladie.BACTERIEBANALE, "BB");
+        temp.put(CodeMaladie.PARASITE, "Pa");
+        temp.put(CodeMaladie.VIRUS, "Vi");
 
         return temp;
     }
