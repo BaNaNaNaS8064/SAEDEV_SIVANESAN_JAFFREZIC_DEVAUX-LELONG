@@ -25,36 +25,29 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private Timeline gameLoop;
+
+    // centre
+    @FXML public Pane paneDessin;
+    @FXML public TilePane tuiles;
+
+    // haut -> vagues
+    @FXML public Label labelVagueActuelle;
+
+    // haut -> vie
+    @FXML public ProgressBar barreDeVie;
+    @FXML public Label labelPvActuels;
+    @FXML public Label labelPvMax;
+
+    // droite
+    @FXML public Label LabelSolde;
+    @FXML public ToggleGroup toggleGrpCellules;
+    @FXML public Label labelCoutSainple;
+
+    // vue
     private AfficheurDeCarte afficheurDeCarte;
+
+    // modèle
     private Environnement environnement;
-
-    @FXML
-    public Pane paneDessin;
-
-    @FXML
-    public TilePane tuiles;
-
-    @FXML
-    public ProgressBar barreDeVie;
-
-    @FXML
-    public Label labelPvActuels;
-
-    @FXML
-    public Label labelTotalPV;
-
-    @FXML
-    public Label soldeNb;
-
-    @FXML
-    public ToggleGroup cellules;
-
-    @FXML
-    public Label lbVague;
-
-    /* Label des cout des tours */
-    @FXML
-    public Label lbCoutSainple;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,10 +58,10 @@ public class Controller implements Initializable {
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
         ajouterEventTuile();
 
-        soldeNb.textProperty().bind(environnement.getJoueur().pcProperty().asString());
-        lbVague.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
+        LabelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
+        labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
 
-        environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelTotalPV, environnement.getJoueur().getPv())));
+        environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
 
         initGameLoop();
         gameLoop.play();
@@ -96,7 +89,7 @@ public class Controller implements Initializable {
     public void poserCellules(int ligne, int colonne) {
         Cellule c = null;
         boolean maladiePeutPasFinir = false;
-        if (((RadioButton) cellules.getSelectedToggle()).getId().equals("RbSainple")) {
+        if (((RadioButton) toggleGrpCellules.getSelectedToggle()).getId().equals("RbSainple")) {
             c = Sainple.creer(environnement, ligne, colonne);
 
             if(environnement.getJoueur().getPc()>=50){
