@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.controller;
 
+import fr.iut.virusdefense.modele.CodeTuile;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.Params;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.*;
@@ -124,11 +124,11 @@ public class Controller implements Initializable {
 
             t.setOnMousePressed(event -> {});
 
-            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) != Params.codeTuile.MUR)
+            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) != CodeTuile.MUR)
                 t.setOnMousePressed(mouseEvent -> {
-                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == Params.codeTuile.VIDE)
+                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == CodeTuile.VIDE)
                         poserCellules(t.getLigne(), t.getColonne());
-                    else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && environnement.getCarte().getCode(t.getLigne(), t.getColonne()) != Params.codeTuile.VIDE) {
+                    else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && environnement.getCarte().getCode(t.getLigne(), t.getColonne()) != CodeTuile.VIDE) {
                         environnement.retirerCelluleA(t.getLigne(), t.getColonne(), false);
                         afficheurDeCarte.reloadEmplacementCarte(t.getLigne(), t.getColonne());
                     }

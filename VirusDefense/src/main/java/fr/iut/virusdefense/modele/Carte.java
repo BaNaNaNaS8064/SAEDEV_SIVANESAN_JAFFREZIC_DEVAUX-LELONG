@@ -73,47 +73,47 @@ public class Carte {
         return generateurs;
     }
 
-    public int getCode(int ligne, int colonne) {
+    public CodeTuile getCode(int ligne, int colonne) {
         if (List.of(ligne, colonne).equals(objectif))
-            return Params.codeTuile.OBJECTIF;
+            return CodeTuile.OBJECTIF;
 
         for (Generateur g : generateurs)
             if ((int)g.getLigne() == ligne && (int)g.getColonne() == colonne)
-                return Params.codeTuile.GENERATEUR;
+                return CodeTuile.GENERATEUR;
 
         for (Cellule c : cellules)
             if ((int)c.getLigne() == ligne && (int)c.getColonne() == colonne)
-                return Params.codeTuile.SAINPLE;
+                return CodeTuile.SAINPLE;
 
         if (carteStatique[ligne][colonne])
-            return Params.codeTuile.MUR;
+            return CodeTuile.MUR;
         else
-            return Params.codeTuile.VIDE;
+            return CodeTuile.VIDE;
     }
 
     public boolean emplacementVide(int ligne, int colonne){
         return emplacementVide(getCode(ligne, colonne));
     }
 
-    public boolean emplacementVide(int codeTuile){
-        return codeTuile == Params.codeTuile.VIDE;
+    public boolean emplacementVide(CodeTuile codeTuile){
+        return codeTuile == CodeTuile.VIDE;
     }
 
     public boolean peutMarcher(int ligne, int colonne) {
         return peutMarcher(getCode(ligne, colonne));
     }
 
-    public boolean peutMarcher(int codeTuile){
-        return codeTuile == Params.codeTuile.VIDE
-            || codeTuile == Params.codeTuile.OBJECTIF
-            || codeTuile == Params.codeTuile.GENERATEUR;
+    public boolean peutMarcher(CodeTuile codeTuile){
+        return codeTuile == CodeTuile.VIDE
+            || codeTuile == CodeTuile.OBJECTIF
+            || codeTuile == CodeTuile.GENERATEUR;
     }
 
     public boolean peutVoirAuTravers(int ligne, int colonne, boolean ignorerCellules){
-        int code = getCode(ligne, colonne);
+        CodeTuile code = getCode(ligne, colonne);
 
         if (ignorerCellules)
-            return code != Params.codeTuile.MUR;
+            return code != CodeTuile.MUR;
         else
             return peutMarcher(code);
     }
