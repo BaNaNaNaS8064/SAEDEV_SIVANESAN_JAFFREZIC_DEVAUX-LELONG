@@ -9,7 +9,7 @@ public class Joueur {
     private final IntegerProperty pcProperty;
 
     public Joueur(){
-        pvProperty = new SimpleIntegerProperty(25);
+        pvProperty = new SimpleIntegerProperty(200);
         pcProperty = new SimpleIntegerProperty(100);
     }
 

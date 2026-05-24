@@ -4,10 +4,7 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Params;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.Sainple;
-import fr.iut.virusdefense.vue.AfficheurDeCarte;
-import fr.iut.virusdefense.vue.EcranFin;
-import fr.iut.virusdefense.vue.SpritesTuiles;
-import fr.iut.virusdefense.vue.Tuile;
+import fr.iut.virusdefense.vue.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -65,13 +62,13 @@ public class Controller implements Initializable {
         environnement.getMaladies().addListener(new ObsListeMaladies(paneDessin));
         environnement.getRayons().addListener(new ObsListeRayons(paneDessin));
 
-        initBarreVie();
-
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
         ajouterEventTuile();
 
         soldeNb.textProperty().bind(environnement.getJoueur().pcProperty().asString());
         lbVague.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
+
+        environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelTotalPV, environnement.getJoueur().getPv())));
 
         initGameLoop();
         gameLoop.play();
@@ -94,18 +91,6 @@ public class Controller implements Initializable {
         if(environnement.isFin()){
             new EcranFin(paneDessin, environnement.isVictoire());
         }
-    }
-
-    /**
-     * Méthode qui gere tout ce qui concerne la Barre de Vie et qui lie les listeners et les binds
-     */
-    public void initBarreVie() {
-        int pvTotaux = environnement.getJoueur().getPv();
-        labelTotalPV.setText("" + pvTotaux);
-
-        labelPvActuels.textProperty().bind(environnement.getJoueur().pvProperty().asString());
-
-        environnement.getJoueur().pvProperty().addListener(((observable, oldValue, newValue) -> barreDeVie.setProgress(newValue.doubleValue() / pvTotaux)));
     }
 
     public void poserCellules(int ligne, int colonne) {
