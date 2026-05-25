@@ -94,6 +94,7 @@
       <Pane fx:id="paneDessin" prefHeight="480.0" prefWidth="960.0" BorderPane.alignment="CENTER">
          <children>
             <TilePane fx:id="tuiles" />
+            <Pane fx:id="paneEcranFin"/>
          </children>
       </Pane>
    </center>

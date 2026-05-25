@@ -6,6 +6,8 @@ import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.utilitaires.StatutPartie;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -30,9 +32,7 @@ public class Environnement {
 
     private final ObservableList<Rayon> rayons;
 
-    private StatutPartie statutPartie;
-
-
+    private ObjectProperty<StatutPartie> statutPartieProperty;
 
     /**
      * Créé un terrain sans maladies
@@ -45,7 +45,7 @@ public class Environnement {
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
         niveau = new Niveau(this);
-        statutPartie = StatutPartie.PASTERMINEE;
+        statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
     }
 
     public Carte getCarte() {
@@ -72,8 +72,16 @@ public class Environnement {
         return rayons;
     }
 
-    public StatutPartie getStatutPartie(){
-        return statutPartie;
+    public final StatutPartie getStatutPartie(){
+        return statutPartieProperty.getValue();
+    }
+
+    public final ObjectProperty<StatutPartie> statutPartieProperty(){
+        return statutPartieProperty;
+    }
+
+    public final void setStatutPartie(StatutPartie statutPartie){
+        statutPartieProperty.setValue(statutPartie);
     }
 
     /**
@@ -118,7 +126,7 @@ public class Environnement {
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        if (statutPartie == StatutPartie.PASTERMINEE) {
+        if (getStatutPartie() == StatutPartie.PASTERMINEE) {
             if (joueur.getPv() > 0 && (!niveau.estTermine() || !maladies.isEmpty())) {
                 for (int i = rayons.size() - 1; i >= 0; i--)
                     if (rayons.get(i).aDepasseAgeMaximal())
@@ -146,9 +154,9 @@ public class Environnement {
             }
             else{
                 if(joueur.getPv()>0)
-                    statutPartie = StatutPartie.GAGNEE;
+                    setStatutPartie(StatutPartie.GAGNEE);
                 else
-                    statutPartie = StatutPartie.PASTERMINEE;
+                    setStatutPartie(StatutPartie.PASTERMINEE);
             }
         }
     }

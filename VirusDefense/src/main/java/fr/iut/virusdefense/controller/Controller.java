@@ -2,6 +2,7 @@ package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.controller.observateurs.ObsListeMaladies;
 import fr.iut.virusdefense.controller.observateurs.ObsListeRayons;
+import fr.iut.virusdefense.controller.observateurs.ObsStatutPartie;
 import fr.iut.virusdefense.controller.observateurs.ObsVieJoueur;
 import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 import fr.iut.virusdefense.modele.Environnement;
@@ -34,6 +35,7 @@ public class Controller implements Initializable {
     // centre
     @FXML public Pane paneDessin;
     @FXML public TilePane tuiles;
+    @FXML public Pane paneEcranFin;
 
     // haut -> vagues
     @FXML public Label labelVagueActuelle;
@@ -69,6 +71,7 @@ public class Controller implements Initializable {
         labelVagueMax.setText("/" + environnement.getNiveau().nombreDeVagues());
 
         environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
+        environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GereurEcranDeFin(paneEcranFin)));
 
         initGameLoop();
         gameLoop.play();
