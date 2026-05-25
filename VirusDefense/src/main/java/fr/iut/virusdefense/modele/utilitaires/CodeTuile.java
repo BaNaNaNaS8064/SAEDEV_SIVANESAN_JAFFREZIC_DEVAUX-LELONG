@@ -11,27 +11,27 @@ public enum CodeTuile {
     CELLULEINCONNUE,
     SAINPLE;
 
+    public boolean peutMarcher(){
+        return this == CodeTuile.VIDE
+                || this == CodeTuile.OBJECTIF
+                || this == CodeTuile.GENERATEUR;
+    }
+
+    public boolean peutVoirAuTravers(boolean ignorerCellules){
+        if (ignorerCellules)
+            return this != CodeTuile.MUR;
+        else
+            return peutMarcher();
+    }
+
+    public boolean estVide(){
+        return this == VIDE;
+    }
+
     public static CodeTuile codeDe(Cellule c){
         if (c instanceof Sainple)
             return SAINPLE;
 
         return CELLULEINCONNUE;
-    }
-
-    public static boolean peutMarcher(CodeTuile codeTuile){
-        return codeTuile == CodeTuile.VIDE
-                || codeTuile == CodeTuile.OBJECTIF
-                || codeTuile == CodeTuile.GENERATEUR;
-    }
-
-    public static boolean peutVoirAuTravers(CodeTuile codeTuile, boolean ignorerCellules){
-        if (ignorerCellules)
-            return codeTuile != CodeTuile.MUR;
-        else
-            return peutMarcher(codeTuile);
-    }
-
-    public static boolean estVide(CodeTuile codeTuile){
-        return codeTuile == VIDE;
     }
 }

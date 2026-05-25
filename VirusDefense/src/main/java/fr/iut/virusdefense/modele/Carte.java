@@ -93,15 +93,15 @@ public class Carte {
     }
 
     public boolean emplacementVide(int ligne, int colonne){
-        return CodeTuile.estVide(getCode(ligne, colonne));
+        return getCode(ligne, colonne).estVide();
     }
 
     public boolean peutMarcher(int ligne, int colonne) {
-        return CodeTuile.peutMarcher(getCode(ligne, colonne));
+        return getCode(ligne, colonne).peutMarcher();
     }
 
     public boolean peutVoirAuTravers(int ligne, int colonne, boolean ignorerCellules){
-        return CodeTuile.peutVoirAuTravers(getCode(ligne, colonne), ignorerCellules);
+        return getCode(ligne, colonne).peutVoirAuTravers(ignorerCellules);
     }
 
     /**
