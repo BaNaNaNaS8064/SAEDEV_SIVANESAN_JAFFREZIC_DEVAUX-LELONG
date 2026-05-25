@@ -84,7 +84,7 @@ public class Carte {
 
         for (Cellule c : cellules)
             if ((int)c.getLigne() == ligne && (int)c.getColonne() == colonne)
-                return CodeTuile.SAINPLE;
+                return CodeTuile.codeDe(c);
 
         if (carteStatique[ligne][colonne])
             return CodeTuile.MUR;
@@ -93,30 +93,15 @@ public class Carte {
     }
 
     public boolean emplacementVide(int ligne, int colonne){
-        return emplacementVide(getCode(ligne, colonne));
-    }
-
-    public boolean emplacementVide(CodeTuile codeTuile){
-        return codeTuile == CodeTuile.VIDE;
+        return CodeTuile.estVide(getCode(ligne, colonne));
     }
 
     public boolean peutMarcher(int ligne, int colonne) {
-        return peutMarcher(getCode(ligne, colonne));
-    }
-
-    public boolean peutMarcher(CodeTuile codeTuile){
-        return codeTuile == CodeTuile.VIDE
-            || codeTuile == CodeTuile.OBJECTIF
-            || codeTuile == CodeTuile.GENERATEUR;
+        return CodeTuile.peutMarcher(getCode(ligne, colonne));
     }
 
     public boolean peutVoirAuTravers(int ligne, int colonne, boolean ignorerCellules){
-        CodeTuile code = getCode(ligne, colonne);
-
-        if (ignorerCellules)
-            return code != CodeTuile.MUR;
-        else
-            return peutMarcher(code);
+        return CodeTuile.peutVoirAuTravers(getCode(ligne, colonne), ignorerCellules);
     }
 
     /**
