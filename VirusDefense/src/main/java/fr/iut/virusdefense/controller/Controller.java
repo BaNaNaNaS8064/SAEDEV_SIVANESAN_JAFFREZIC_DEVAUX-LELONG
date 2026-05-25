@@ -88,9 +88,6 @@ public class Controller implements Initializable {
      */
     private void uneFrame(){
         environnement.unTour();
-        if(environnement.isFin()){
-            new EcranFin(paneDessin, environnement.isVictoire());
-        }
     }
 
     public void poserCellules(int ligne, int colonne) {

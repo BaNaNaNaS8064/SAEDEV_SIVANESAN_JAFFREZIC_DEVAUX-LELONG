@@ -5,6 +5,7 @@ import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
+import fr.iut.virusdefense.modele.utilitaires.StatutPartie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -29,8 +30,9 @@ public class Environnement {
 
     private final ObservableList<Rayon> rayons;
 
-    private boolean fin = false;
-    private boolean victoire = false;
+    private StatutPartie statutPartie;
+
+
 
     /**
      * Créé un terrain sans maladies
@@ -43,6 +45,7 @@ public class Environnement {
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
         niveau = new Niveau(this);
+        statutPartie = StatutPartie.PASTERMINEE;
     }
 
     public Carte getCarte() {
@@ -69,12 +72,8 @@ public class Environnement {
         return rayons;
     }
 
-    public boolean isFin() {
-        return fin;
-    }
-
-    public boolean isVictoire() {
-        return victoire;
+    public StatutPartie getStatutPartie(){
+        return statutPartie;
     }
 
     /**
@@ -119,37 +118,39 @@ public class Environnement {
      * La méthode qui s'éxécute à chaque tour
      */
     public void unTour() {
-        if (joueur.getPv() > 0 && (!niveau.estTermine() || !maladies.isEmpty())) {
-            for (int i = rayons.size()-1; i >= 0; i--)
-                if (rayons.get(i).aDepasseAgeMaximal())
-                    rayons.remove(i);
+        if (statutPartie == StatutPartie.PASTERMINEE) {
+            if (joueur.getPv() > 0 && (!niveau.estTermine() || !maladies.isEmpty())) {
+                for (int i = rayons.size() - 1; i >= 0; i--)
+                    if (rayons.get(i).aDepasseAgeMaximal())
+                        rayons.remove(i);
 
-            for (Rayon r : rayons)
-                r.agir();
+                for (Rayon r : rayons)
+                    r.agir();
 
+                for (Cellule c : carte.getCellules())
+                    c.agir();
 
-            for (Cellule c : carte.getCellules())
-                c.agir();
+                niveau.update();
 
-            niveau.update();
+                for (Generateur g : carte.getGenerateurs())
+                    g.agir();
 
-            for (Generateur g : carte.getGenerateurs())
-                g.agir();
+                for (Maladie m : maladies)
+                    m.agir();
 
-            for (Maladie m : maladies)
-                m.agir();
-
-            for (int i=maladies.size()-1; i >= 0; i--)
-                if (!maladies.get(i).estVivant()) {
-                    this.joueur.ajouterPc(maladies.get(i).getRecompense());
-                    maladies.remove(i);
-                }
-        }else{
-            fin = true;
-            if(joueur.getPv()>0)
-                victoire=true;
+                for (int i = maladies.size() - 1; i >= 0; i--)
+                    if (!maladies.get(i).estVivant()) {
+                        this.joueur.ajouterPc(maladies.get(i).getRecompense());
+                        maladies.remove(i);
+                    }
+            }
+            else{
+                if(joueur.getPv()>0)
+                    statutPartie = StatutPartie.GAGNEE;
+                else
+                    statutPartie = StatutPartie.PASTERMINEE;
+            }
         }
     }
-
 
 }
