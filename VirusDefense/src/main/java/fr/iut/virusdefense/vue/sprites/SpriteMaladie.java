@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
 
 public class SpriteMaladie extends ImageView{
 
-
     private final Maladie m;
 
     public SpriteMaladie(Maladie m){
@@ -18,6 +17,8 @@ public class SpriteMaladie extends ImageView{
 
     private void creerSprite(){
         setImage(new Image(AssociationImage.imageDe(CodeMaladie.codeDe(m))));
+
+        setRotate(Math.random() * 359);
 
         translateXProperty().bind(m.colonneProperty().multiply(32).subtract(8));
         translateYProperty().bind(m.ligneProperty().multiply(32).subtract(8));
