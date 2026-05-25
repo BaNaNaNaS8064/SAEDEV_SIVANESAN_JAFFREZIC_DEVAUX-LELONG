@@ -156,7 +156,7 @@ public class Environnement {
                 if(joueur.getPv()>0)
                     setStatutPartie(StatutPartie.GAGNEE);
                 else
-                    setStatutPartie(StatutPartie.PASTERMINEE);
+                    setStatutPartie(StatutPartie.PERDUE);
             }
         }
     }

@@ -35,7 +35,6 @@ public class Controller implements Initializable {
     // centre
     @FXML public Pane paneDessin;
     @FXML public TilePane tuiles;
-    @FXML public Pane paneEcranFin;
 
     // haut -> vagues
     @FXML public Label labelVagueActuelle;
@@ -71,7 +70,7 @@ public class Controller implements Initializable {
         labelVagueMax.setText("/" + environnement.getNiveau().nombreDeVagues());
 
         environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
-        environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GereurEcranDeFin(paneEcranFin)));
+        environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GereurEcranDeFin(paneDessin)));
 
         initGameLoop();
         gameLoop.play();
