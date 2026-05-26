@@ -7,15 +7,32 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.ArrayList;
 
+/**
+ * Le Niveau se charge de ce qui touche aux vagues et aux apparitions <br>
+ * Ce n'est pas son rôle de stocker les générateurs (rôle de {@code Carte})
+ * ni de faire apparaître les maladies (rôle de {@code Generateur})
+ */
 public class Niveau {
 
-    Environnement environnement;
+    /// L'environnement dans lequel tout se passe
+    private final Environnement environnement;
 
+    /// L'indice de la vague actuelle
     private final IntegerProperty numVagueProperty;
+    /// La liste des vagues
     private ArrayList<Vague> vagues;
+
+    /// Le délai entre chaque vague
     private int delaiEntreVagues;
+
+    /// le nombre restant de tours avant la prochain vague
     int delai;
 
+    /**
+     * Créé un nouveau niveau dans {@code environnement} <br>
+     * Le niveau sera automatiquement rempli de vagues et démarrera la première vague
+     * @param environnement l'environnement dans lequel le niveau sera
+     */
     public Niveau(Environnement environnement){
         this.environnement = environnement;
         delaiEntreVagues = 600;
@@ -36,6 +53,11 @@ public class Niveau {
         numVagueProperty.setValue(numVague);
     }
 
+    /**
+     * Créé toutes les vagues du niveau de façon semi-aléatoire <br>
+     * Chaque vague aura autant de listes d'apparition
+     * que le nombre de générateurs dans la carte de {@code environnnement}
+     */
     public void initVagues(){
         vagues = new ArrayList<>();
         for (int indVague=0; indVague<100; indVague++){
@@ -48,6 +70,11 @@ public class Niveau {
         }
     }
 
+    /**
+     * Démmare la prochaine vague,
+     * c'est à dire met à jour les listes d'apparitions des générateurs
+     * de la carte de {@code environnement}
+     */
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
         environnement.getJoueur().ajouterPc(50);
@@ -56,6 +83,10 @@ public class Niveau {
          delai = Integer.MAX_VALUE;
     }
 
+    /**
+     * Retourne vrai s'il reste des vagues, faux sinon
+     * @return vrai s'il reste des vagues, faux sinon
+     */
     public boolean resteVague(){
         return getNumVague() < vagues.size() - 1;
     }
@@ -70,10 +101,20 @@ public class Niveau {
         }
     }
 
+    /**
+     * Retourne vrai si le niveau est terminé, faux sinon <br>
+     * Le niveau est terminé si il ne reste plus de vague
+     * et que la dernière vague est terminée
+     * @return Retourne vrai si le niveau est terminé, faux sinon
+     */
     public boolean estTermine(){
         return !resteVague() && vagues.get(vagues.size() - 1).estTerminee();
     }
 
+    /**
+     * Retourne le nombre de vagues total du niveau
+     * @return le nombre de vagues total du niveau
+     */
     public int nombreDeVagues(){
         return vagues.size();
     }
