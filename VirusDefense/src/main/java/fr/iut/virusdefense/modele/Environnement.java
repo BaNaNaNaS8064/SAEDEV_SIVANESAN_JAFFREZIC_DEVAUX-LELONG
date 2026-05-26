@@ -147,7 +147,9 @@ public class Environnement {
                     m.agir();
 
                 for (int i = maladies.size() - 1; i >= 0; i--)
-                    if (!maladies.get(i).estVivant()) {
+                    if(maladies.get(i).aAtteintLObjectif())
+                        maladies.remove(i);
+                    else if (!maladies.get(i).estVivant()) {
                         this.joueur.ajouterPc(maladies.get(i).getRecompense());
                         maladies.remove(i);
                     }
