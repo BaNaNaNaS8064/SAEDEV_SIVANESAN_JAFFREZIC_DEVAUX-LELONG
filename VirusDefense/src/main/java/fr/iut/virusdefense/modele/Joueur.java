@@ -3,11 +3,19 @@ package fr.iut.virusdefense.modele;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+/**
+ * Le joueur gère ses PV (points de vie) et PC (points de connaissances, monnaie du jeu)
+ */
 public class Joueur {
 
+    /// Les pv (points de vie) du joueur
     private final IntegerProperty pvProperty;
+    /// Les pc (points de connaissance, monnaie du jeu) du joueur
     private final IntegerProperty pcProperty;
 
+    /**
+     * Créé un nouveau joueur avec 200pv et 100pc
+     */
     public Joueur(){
         pvProperty = new SimpleIntegerProperty(200);
         pcProperty = new SimpleIntegerProperty(100);
@@ -38,21 +46,39 @@ public class Joueur {
     }
 
     /**
-     * Méthode qui enleve les pv quand le joueur subis des degats
-     * @param montant les degats qu'il va subir
+     * Retire {@code montant} pv au joueur
+     * <ul>
+     * <li>{@code montant} doit être positif</li>
+     * <li>Les points de vie du joueur ne peuvent descendre en dessous de 0</li>
+     * </ul>
+     * @param montant le montant de pv à enlever
      */
     public void retirerPv(int montant){
         if (montant>0)
             setPv(Math.max(0, getPv() - montant));
     }
 
-    public void ajouterPc(int pc){
-        if (pc>0)
-            setPc(getPc() + pc);
+    /**
+     * Ajoute {@code montant} pc au joueur
+     * <ul>
+     * <li>{@code montant} doit être positif</li>
+     * </ul>
+     * @param montant le montant de pc à ajouter
+     */
+    public void ajouterPc(int montant){
+        if (montant>0)
+            setPc(getPc() + montant);
     }
 
-    public void retirerPc(int pc){
-        if (pc>0)
-            setPc(getPc() - pc);
+    /**
+     * Retire {@code montant} pc au joueur
+     * <ul>
+     * <li>{@code montant} doit être positif</li>
+     * </ul>
+     * @param montant le montant de pc à enlever
+     */
+    public void retirerPc(int montant){
+        if (montant>0)
+            setPc(getPc() - montant);
     }
 }
