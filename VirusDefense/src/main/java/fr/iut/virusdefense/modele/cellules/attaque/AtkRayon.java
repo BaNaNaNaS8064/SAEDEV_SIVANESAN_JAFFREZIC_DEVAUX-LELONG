@@ -1,7 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.attaque;
 
 import fr.iut.virusdefense.modele.cellules.Cellule;
-import fr.iut.virusdefense.modele.cellules.attaque.alteration.Brulure;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Dot;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;

@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.cellules.attaque.alteration;
 
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
-public abstract class Dot extends Alteration {
+public class Dot extends Alteration {
     private int degats;
 
     public Dot(int degats , int dureeDeVie ) {
@@ -12,6 +12,11 @@ public abstract class Dot extends Alteration {
 
     public int getDegats() {
         return degats;
+    }
+
+    @Override
+    public Alteration copieAlteration() {
+        return new Dot(degats,getDureeDeVie());
     }
 
     @Override
