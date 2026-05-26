@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele.cellules.attaque;
 
 import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.cellules.attaque.alteration.Brulure;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Dot;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -8,7 +9,7 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 public class AtkRayon extends Attaque {
 
     public AtkRayon(Cellule cellule, int degats){
-        super(cellule, degats , new Dot(1,30));
+        super(cellule, degats);
     }
 
     /**
@@ -18,7 +19,6 @@ public class AtkRayon extends Attaque {
     public void attaque(Maladie m){
         getCellule().getEnvironnement().ajouterRayon(new Rayon(getCellule(), m, 2));
         m.prendreDegats(getDegats());
-        m.ajouterAlt(getAlteration().copieAlteration());
     }
 
 }

@@ -4,15 +4,17 @@ import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
+import java.util.ArrayList;
+
 public abstract class Attaque {
     private final Cellule cellule;
     private int degats;
-    private Alteration alteration;
+    private ArrayList<Alteration> alterations;
 
-    public Attaque(Cellule cellule, int degats , Alteration alteration){
+    public Attaque(Cellule cellule, int degats){
         this.cellule = cellule;
         this.degats = degats;
-        this.alteration = alteration;
+        this.alterations = new ArrayList<>();
     }
 
     public int getDegats() {
@@ -23,8 +25,14 @@ public abstract class Attaque {
         return cellule;
     }
 
-    public Alteration getAlteration() {
-        return alteration;
+    public void ajouterAlteration(Alteration alt){
+        alterations.add(alt);
+    }
+
+    public void donnerAlterations(Maladie m){
+        for (Alteration alt : alterations){
+            m.ajouterAlt(alt.copieAlteration());
+        }
     }
 
     public void attaqueCibles(){
