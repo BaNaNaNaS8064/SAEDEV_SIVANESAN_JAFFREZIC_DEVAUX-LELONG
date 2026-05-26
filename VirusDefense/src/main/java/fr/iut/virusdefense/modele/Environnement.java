@@ -171,7 +171,7 @@ public class Environnement {
         return false;
     }
 
-    public void vérifierPoserCellules(int ligne, int colonne, Cellule c){
+    public void vérifierPoserCellules(Cellule c){
         if (maladiesBloquées() || getCarte().générateursBloqués()){
             retirerCellule(c, true);
         }

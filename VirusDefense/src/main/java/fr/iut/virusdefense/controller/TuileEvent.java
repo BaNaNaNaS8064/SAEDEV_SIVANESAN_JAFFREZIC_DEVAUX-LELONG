@@ -55,7 +55,7 @@ public class TuileEvent {
 
         if (c != null && env.getJoueur().getPc() >= c.getCout()) {
             env.ajouterCellule(c);
-            env.vérifierPoserCellules(ligne, colonne, c);
+            env.vérifierPoserCellules(c);
         }
 
         ajouterEventTuile();
