@@ -1,8 +1,10 @@
 package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +14,7 @@ public abstract class Maladie extends Entite {
     private int pv;
     private final double vitesse;
     private final int recompense;
+    private ArrayList<Alteration> alterations;
 
     /**
      * Créé un nouvelle maladie
@@ -27,6 +30,7 @@ public abstract class Maladie extends Entite {
         this.vitesse = vitesse;
         this.pv = pv;
         this.recompense = recompense;
+        alterations = new ArrayList<>();
     }
 
     public final int getRecompense(){
@@ -39,6 +43,10 @@ public abstract class Maladie extends Entite {
 
     public void mourir(){
         this.pv = 0;
+    }
+
+    public void ajouterAlt(Alteration alteration){
+        alterations.add(alteration);
     }
 
     /**
@@ -58,6 +66,7 @@ public abstract class Maladie extends Entite {
     public void agir(){
         if (estVivant()) {
             bouger();
+            faireAlterations();
 
             if (aAtteintLObjectif()) {
                 infligerDegatsAuJoueur();
@@ -79,5 +88,17 @@ public abstract class Maladie extends Entite {
 
     public void infligerDegatsAuJoueur(){
         getEnvironnement().getJoueur().retirerPv(pv);
+    }
+
+    public void faireAlterations(){
+
+        for (int i = alterations.size() - 1; i >= 0; i--){
+            if (alterations.get(i).getDureeDeVie() <= 0) {
+                alterations.remove(i);
+            }
+            else {
+                alterations.get(i).agir(this);
+            }
+        }
     }
 }
