@@ -31,7 +31,7 @@ public abstract class Attaque {
 
     public void donnerAlterations(Maladie m){
         for (Alteration alt : alterations){
-            m.ajouterAlt(alt.copieAlteration());
+            m.ajouter(alt.copieAlteration());
         }
     }
 

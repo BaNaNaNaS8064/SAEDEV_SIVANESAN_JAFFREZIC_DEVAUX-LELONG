@@ -18,6 +18,6 @@ public class Ralentissement extends Alteration{
     @Override
     public void agir(Maladie m) {
         super.agir(m);
-        m.ralentisssement(coefficientVitesse);
+        m.ralentir(coefficientVitesse);
     }
 }
