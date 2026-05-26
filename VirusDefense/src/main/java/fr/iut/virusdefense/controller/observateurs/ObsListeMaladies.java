@@ -8,15 +8,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 /**
- * Observe la liste des maladies et se charge de créer et supprimer les sprites
+ * Observe la liste des maladies et ajoute et supprime les {@code SpriteMaladie}
+ * en conséquence
  */
 public class ObsListeMaladies implements ListChangeListener<Maladie> {
 
     /// le pane dans lequel on ajoute et supprime des sprites
     private final Pane paneDessin;
 
-    public ObsListeMaladies(Pane p){
-        paneDessin = p;
+    /**
+     * Créé un nouvel Observateur qui gèrera les {@code SpriteMaladie} dans paneDessin
+     * @param paneDessin le pane dans lequel se trouveront les {@code SpriteMaladie}
+     */
+    public ObsListeMaladies(Pane paneDessin){
+        this.paneDessin = paneDessin;
     }
 
     @Override
