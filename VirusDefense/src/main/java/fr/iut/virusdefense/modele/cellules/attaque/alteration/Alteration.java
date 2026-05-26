@@ -1,6 +1,5 @@
 package fr.iut.virusdefense.modele.cellules.attaque.alteration;
 
-import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public abstract class Alteration {
@@ -14,9 +13,12 @@ public abstract class Alteration {
         return dureeDeVie;
     }
 
+    public abstract Alteration copieAlteration();
+
     public void agir(Maladie m){
         dureeDeVie--;
+        affecter(m);
     }
 
-    public abstract Alteration copieAlteration();
+    public abstract void affecter(Maladie m);
 }

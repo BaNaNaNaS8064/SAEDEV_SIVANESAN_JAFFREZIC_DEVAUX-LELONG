@@ -3,21 +3,20 @@ package fr.iut.virusdefense.modele.cellules.attaque.alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public class Ralentissement extends Alteration{
-    private double coefficientVitesse;
+    private double coefVitesse;
 
-    public Ralentissement(double coefficientVitesse, int dureeDeVie){
+    public Ralentissement(int dureeDeVie, double coefVitesse){
         super(dureeDeVie);
-        this.coefficientVitesse = coefficientVitesse;
+        this.coefVitesse = coefVitesse;
     }
 
     @Override
     public Alteration copieAlteration() {
-        return new Ralentissement(coefficientVitesse,getDureeDeVie());
+        return new Ralentissement(getDureeDeVie(), coefVitesse);
     }
 
     @Override
-    public void agir(Maladie m) {
-        super.agir(m);
-        m.ralentir(coefficientVitesse);
+    public void affecter(Maladie m) {
+        m.ralentir(coefVitesse);
     }
 }
