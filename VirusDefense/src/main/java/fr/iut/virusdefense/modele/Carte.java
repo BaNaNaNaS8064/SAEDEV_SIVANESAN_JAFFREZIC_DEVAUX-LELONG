@@ -114,7 +114,17 @@ public class Carte {
         return (0 <= ligne && ligne < getHauteur()) && (0 <= colonne && colonne < getLargeur());
     }
 
-
+    /**
+     * Vérifie si les générateurs ont un chemins disponible pour les maladies vers la fin.
+     * @return Vrai si bloqué
+     */
+    public boolean générateursBloqués(){
+        for (Generateur generateur : generateurs) {
+            if(environnement.getDeplacement().estBloquee(generateur.position()))
+                return true;
+        }
+        return false;
+    }
 
 
 }

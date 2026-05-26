@@ -38,7 +38,7 @@ public class Niveau {
 
     public void initVagues(){
         vagues = new ArrayList<>();
-        for (int indVague=0; indVague<2; indVague++){
+        for (int indVague=0; indVague<100; indVague++){
             vagues.add(new Vague());
             for (int indListeA=0; indListeA<environnement.getCarte().getGenerateurs().size(); indListeA++) {
                 vagues.get(indVague).ajouter(new ListeApparition());

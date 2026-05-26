@@ -56,6 +56,9 @@ public class Controller implements Initializable {
     // modèle
     private Environnement environnement;
 
+    //controllerPackage
+    private TuileEvent tuileEvent;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
@@ -63,7 +66,8 @@ public class Controller implements Initializable {
         environnement.getRayons().addListener(new ObsListeRayons(paneDessin));
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
-        ajouterEventTuile();
+        tuileEvent = new TuileEvent(environnement, toggleGrpCellules, afficheurDeCarte, tuiles);
+        tuileEvent.ajouterEventTuile();
 
         labelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
         labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
@@ -90,53 +94,5 @@ public class Controller implements Initializable {
      */
     private void uneFrame(){
         environnement.unTour();
-    }
-
-    public void poserCellules(int ligne, int colonne) {
-        Cellule c = null;
-        boolean maladiePeutPasFinir = false;
-        if (((RadioButton) toggleGrpCellules.getSelectedToggle()).getId().equals("RbSainple")) {
-            c = Sainple.creer(environnement, ligne, colonne);
-
-            if(environnement.getJoueur().getPc()>=50){
-                environnement.ajouterCellule(c);
-                afficheurDeCarte.reloadEmplacementCarte(ligne, colonne);
-
-            }
-        }
-
-        //Permet de vérifier que un chemin et possible, sinon ne pose pas la tour
-        int i = 0;
-        while(!maladiePeutPasFinir && i < environnement.getMaladies().size()){
-            if(environnement.getDeplacement().estBloquee(environnement.getMaladies().get(i).position()))
-                maladiePeutPasFinir = true;
-            i++;
-        }
-
-        if (environnement.getDeplacement().estBloquee(List.of(2, 0)) || maladiePeutPasFinir){
-            environnement.retirerCellule(c, true);
-            ((Tuile)tuiles.getChildren().get(ligne*environnement.getCarte().getLargeur() + colonne)).setImage(AssociationImage.imageDe(environnement.getCarte().getCode(ligne, colonne)));
-        }else{
-            ajouterEventTuile();
-
-        }
-    }
-
-    private void ajouterEventTuile(){
-        for (int i = 0; i<(environnement.getCarte().getHauteur() * environnement.getCarte().getLargeur()); i++) {
-            Tuile t = (Tuile) tuiles.getChildren().get(i);
-
-            t.setOnMousePressed(event -> {});
-
-            if(environnement.getCarte().getCode(t.getLigne(), t.getColonne()) != CodeTuile.MUR)
-                t.setOnMousePressed(mouseEvent -> {
-                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && environnement.getCarte().getCode(t.getLigne(), t.getColonne()) == CodeTuile.VIDE)
-                        poserCellules(t.getLigne(), t.getColonne());
-                    else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && environnement.getCarte().getCode(t.getLigne(), t.getColonne()) != CodeTuile.VIDE) {
-                        environnement.retirerCelluleA(t.getLigne(), t.getColonne(), false);
-                        afficheurDeCarte.reloadEmplacementCarte(t.getLigne(), t.getColonne());
-                    }
-                });
-        }
     }
 }

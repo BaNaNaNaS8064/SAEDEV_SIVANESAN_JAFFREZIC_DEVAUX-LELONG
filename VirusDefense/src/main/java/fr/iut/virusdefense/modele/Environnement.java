@@ -161,4 +161,19 @@ public class Environnement {
         }
     }
 
+    public boolean maladiesBloquées(){
+        int i = 0;
+        while( i < getMaladies().size()){
+            if(getDeplacement().estBloquee(getMaladies().get(i).position()))
+                return true;
+            i++;
+        }
+        return false;
+    }
+
+    public void vérifierPoserCellules(int ligne, int colonne, Cellule c){
+        if (maladiesBloquées() || getCarte().générateursBloqués()){
+            retirerCellule(c, true);
+        }
+    }
 }
