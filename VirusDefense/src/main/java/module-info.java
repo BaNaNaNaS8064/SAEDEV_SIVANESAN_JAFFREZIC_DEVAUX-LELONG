@@ -12,6 +12,7 @@ module fr.iut.virusdefense {
     exports fr.iut.virusdefense.modele;
     exports fr.iut.virusdefense.modele.cellules;
     exports fr.iut.virusdefense.modele.cellules.attaque;
+    exports fr.iut.virusdefense.modele.cellules.attaque.alteration;
     exports fr.iut.virusdefense.modele.cellules.reconnaissance;
     exports fr.iut.virusdefense.modele.maladies;
     exports fr.iut.virusdefense.modele.entitesgeneriques;

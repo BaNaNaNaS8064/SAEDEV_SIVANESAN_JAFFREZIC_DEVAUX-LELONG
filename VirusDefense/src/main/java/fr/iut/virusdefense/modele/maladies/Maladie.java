@@ -1,8 +1,10 @@
 package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +14,8 @@ public abstract class Maladie extends Entite {
     private int pv;
     private final double vitesse;
     private final int recompense;
+    private ArrayList<Alteration> alterations;
+    private double coefVitesse;
 
     /**
      * Créé un nouvelle maladie
@@ -27,6 +31,8 @@ public abstract class Maladie extends Entite {
         this.vitesse = vitesse;
         this.pv = pv;
         this.recompense = recompense;
+        alterations = new ArrayList<>();
+        coefVitesse = 1;
     }
 
     public final int getRecompense(){
@@ -39,6 +45,10 @@ public abstract class Maladie extends Entite {
 
     public void mourir(){
         this.pv = 0;
+    }
+
+    public void ajouter(Alteration alteration){
+        alterations.add(alteration);
     }
 
     /**
@@ -57,6 +67,7 @@ public abstract class Maladie extends Entite {
     @Override
     public void agir(){
         if (estVivant()) {
+            faireJouerAlterations();
             bouger();
 
             if (aAtteintLObjectif()) {
@@ -73,11 +84,25 @@ public abstract class Maladie extends Entite {
     public void bouger(){
         List<Integer> prochaineCase = getEnvironnement().getDeplacement().prochaineCase(position());
 
-        setLigne(getLigne() + vitesse * Double.compare(prochaineCase.get(0) + 0.5, getLigne()));
-        setColonne(getColonne() + vitesse * Double.compare(prochaineCase.get(1) + 0.5, getColonne()));
+        setLigne(getLigne() + (vitesse * coefVitesse) * Double.compare(prochaineCase.get(0) + 0.5, getLigne()));
+        setColonne(getColonne() + (vitesse * coefVitesse) * Double.compare(prochaineCase.get(1) + 0.5, getColonne()));
     }
 
     public void infligerDegatsAuJoueur(){
         getEnvironnement().getJoueur().retirerPv(pv);
+    }
+
+    public void faireJouerAlterations(){
+        coefVitesse =1;
+        for (int i = alterations.size() - 1; i >= 0; i--){
+            if (alterations.get(i).getDureeDeVie() <= 0)
+                alterations.remove(i);
+            else
+                alterations.get(i).agir(this);
+        }
+    }
+
+    public void ralentir(double coefRalentissement){
+        coefVitesse *= coefRalentissement;
     }
 }
