@@ -64,6 +64,12 @@ public abstract class Maladie extends Entite {
                 mourir();
             }
         }
+
+        if (!estVivant()){
+            if(!aAtteintLObjectif())
+                getEnvironnement().getJoueur().ajouterPc(getRecompense());
+            getEnvironnement().getMaladies().remove(this);
+        }
     }
 
     /**

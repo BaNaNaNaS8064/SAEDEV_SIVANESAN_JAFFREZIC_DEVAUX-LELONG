@@ -5,6 +5,7 @@ import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 import fr.iut.virusdefense.modele.maladies.BacterieBanale;
 import fr.iut.virusdefense.modele.maladies.Parasite;
 import fr.iut.virusdefense.modele.maladies.Virus;
+import fr.iut.virusdefense.modele.maladies.VirusComposé;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
 public class Generateur extends Entite {
@@ -45,6 +46,9 @@ public class Generateur extends Entite {
                 break;
             case VIRUS:
                 getEnvironnement().ajouter(new Virus(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                break;
+            case VIRUSCOMPOSE:
+                getEnvironnement().ajouter(new VirusComposé(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
         }
     }

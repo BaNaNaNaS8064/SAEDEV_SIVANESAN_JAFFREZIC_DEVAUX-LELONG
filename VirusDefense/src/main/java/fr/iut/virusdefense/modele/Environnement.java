@@ -143,16 +143,8 @@ public class Environnement {
                 for (Generateur g : carte.getGenerateurs())
                     g.agir();
 
-                for (Maladie m : maladies)
-                    m.agir();
-
                 for (int i = maladies.size() - 1; i >= 0; i--)
-                    if(maladies.get(i).aAtteintLObjectif())
-                        maladies.remove(i);
-                    else if (!maladies.get(i).estVivant()) {
-                        this.joueur.ajouterPc(maladies.get(i).getRecompense());
-                        maladies.remove(i);
-                    }
+                    maladies.get(i).agir();
             }
             else{
                 if(joueur.getPv()>0)

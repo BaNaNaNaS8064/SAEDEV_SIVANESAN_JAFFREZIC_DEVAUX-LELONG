@@ -51,12 +51,13 @@ public class AssociationImage {
         temp.put(CodeMaladie.BACTERIEBANALE, "BB");
         temp.put(CodeMaladie.PARASITE, "Pa");
         temp.put(CodeMaladie.VIRUS, "Vi");
+        temp.put(CodeMaladie.VIRUSCOMPOSE, "VC");
 
         return temp;
     }
 
     public static String imageDe(CodeMaladie codeMaladie){
-        return String.valueOf(Main.class.getResource("images/maladies/" + correspondanceMaladie.getOrDefault(codeMaladie, correspondanceTuile.get(CodeTuile.VIDE)) + ".png"));
+        return String.valueOf(Main.class.getResource("images/maladies/" + correspondanceMaladie.get(codeMaladie) + ".png"));
     }
 
 }
