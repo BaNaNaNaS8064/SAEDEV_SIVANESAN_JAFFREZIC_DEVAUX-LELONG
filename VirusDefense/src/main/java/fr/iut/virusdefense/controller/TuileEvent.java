@@ -9,37 +9,36 @@ import fr.iut.virusdefense.vue.sprites.Tuile;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 
 public class TuileEvent {
     private Environnement env;
     private ToggleGroup toggleGrpCellules;
     private AfficheurDeCarte ac;
-    TilePane tuiles;
+    Pane paneDessin;
 
-    public TuileEvent(Environnement env, ToggleGroup toggleGrpCellules, AfficheurDeCarte ac, TilePane tuiles){
+    public TuileEvent(Environnement env, ToggleGroup toggleGrpCellules, AfficheurDeCarte ac, Pane paneDessin){
         this.env = env;
         this.toggleGrpCellules = toggleGrpCellules;
         this.ac = ac;
-        this.tuiles = tuiles;
+        this.paneDessin = paneDessin;
     }
 
-    public void ajouterEventTuile(){
-        for (int i = 0; i<(env.getCarte().getHauteur() * env.getCarte().getLargeur()); i++) {
-            Tuile t = (Tuile) tuiles.getChildren().get(i);
+    public void ajoutEventPane(){
 
-            t.setOnMousePressed(event -> {});
+        paneDessin.setOnMousePressed(mouseEvent -> {
+            int ligne = (int)(mouseEvent.getY()/32);
+            int colonne = (int)(mouseEvent.getX()/32);
+            if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && env.getCarte().emplacementVide(ligne, colonne))
+                poser(ligne, colonne);
+            else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && !env.getCarte().estCellule(ligne, colonne))
+            {
+                env.retirerCelluleA(ligne, colonne, false);
+                ac.reloadEmplacementCarte(ligne, colonne);
+            }
 
-            if(env.getCarte().getCode(t.getLigne(), t.getColonne()) != CodeTuile.MUR)
-                t.setOnMousePressed(mouseEvent -> {
-                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && env.getCarte().getCode(t.getLigne(), t.getColonne()) == CodeTuile.VIDE)
-                        poser(t.getLigne(), t.getColonne());
-                    else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && env.getCarte().getCode(t.getLigne(), t.getColonne()) != CodeTuile.VIDE) {
-                        env.retirerCelluleA(t.getLigne(), t.getColonne(), false);
-                        ac.reloadEmplacementCarte(t.getLigne(), t.getColonne());
-                    }
-                });
-        }
+        });
     }
 
     public void poser(int ligne, int colonne) {
@@ -58,7 +57,6 @@ public class TuileEvent {
             env.vérifierPoserCellules(c);
         }
 
-        ajouterEventTuile();
         ac.reloadEmplacementCarte(ligne, colonne);
     }
 }

@@ -28,6 +28,10 @@ public enum CodeTuile {
         return this == VIDE;
     }
 
+    public boolean estCodeCellule(){
+        return !peutMarcher() && this != MUR;
+    }
+
     public static CodeTuile codeDe(Cellule c){
         if (c instanceof Sainple)
             return SAINPLE;

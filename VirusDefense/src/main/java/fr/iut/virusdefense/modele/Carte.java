@@ -100,6 +100,10 @@ public class Carte {
         return getCode(ligne, colonne).peutMarcher();
     }
 
+    public boolean estCellule(int ligne, int colonne) {
+        return getCode(ligne, colonne).estCodeCellule();
+    }
+
     public boolean peutVoirAuTravers(int ligne, int colonne, boolean ignorerCellules){
         return getCode(ligne, colonne).peutVoirAuTravers(ignorerCellules);
     }

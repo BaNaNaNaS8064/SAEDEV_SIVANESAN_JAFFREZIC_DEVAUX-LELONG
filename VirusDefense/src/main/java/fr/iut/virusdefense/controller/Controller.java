@@ -66,8 +66,8 @@ public class Controller implements Initializable {
         environnement.getRayons().addListener(new ObsListeRayons(paneDessin));
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
-        tuileEvent = new TuileEvent(environnement, toggleGrpCellules, afficheurDeCarte, tuiles);
-        tuileEvent.ajouterEventTuile();
+        tuileEvent = new TuileEvent(environnement, toggleGrpCellules, afficheurDeCarte, paneDessin);
+        tuileEvent.ajoutEventPane();
 
         labelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
         labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
