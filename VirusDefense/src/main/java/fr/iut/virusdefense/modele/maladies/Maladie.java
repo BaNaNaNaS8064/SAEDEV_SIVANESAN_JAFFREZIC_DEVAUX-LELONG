@@ -2,6 +2,8 @@ package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
+import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
+import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 
 import java.util.List;
 
@@ -71,10 +73,25 @@ public abstract class Maladie extends Entite {
      * La distance dépends de la vitesse
      */
     public void bouger(){
-        List<Integer> prochaineCase = getEnvironnement().getDeplacement().prochaineCase(position());
+        List<Integer> destination = position();
+        List<Integer> caseApres = getEnvironnement().getDeplacement().prochaineCase(destination);
 
-        setLigne(getLigne() + vitesse * Double.compare(prochaineCase.get(0) + 0.5, getLigne()));
-        setColonne(getColonne() + vitesse * Double.compare(prochaineCase.get(1) + 0.5, getColonne()));
+        while (getEnvironnement().getCarte().getCode(destination.get(0), destination.get(1)) != CodeTuile.OBJECTIF && voitCase(caseApres.get(0), caseApres.get(1), false)){
+            destination = caseApres;
+            caseApres = getEnvironnement().getDeplacement().prochaineCase(destination);
+        }
+
+        /*
+        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), getLigne(), getColonne(), destination.get(0) + 0.25, destination.get(1) + 0.25, 1));
+        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), getLigne(), getColonne(), destination.get(0) + 0.75, destination.get(1) + 0.25, 1));
+        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), getLigne(), getColonne(), destination.get(0) + 0.25, destination.get(1) + 0.75, 1));
+        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), getLigne(), getColonne(), destination.get(0) + 0.75, destination.get(1) + 0.75, 1));
+         */
+
+        double distLigne = Math.abs((destination.get(0) + 0.5 - getLigne()));
+        double distColonne = Math.abs((destination.get(1) + 0.5 - getColonne()));
+        setLigne(getLigne() + vitesse * Double.compare(destination.get(0) + 0.5, getLigne()) * distLigne / Math.max(distLigne, distColonne));
+        setColonne(getColonne() + vitesse * Double.compare(destination.get(1) + 0.5, getColonne()) * distColonne / Math.max(distLigne, distColonne));
     }
 
     public void infligerDegatsAuJoueur(){

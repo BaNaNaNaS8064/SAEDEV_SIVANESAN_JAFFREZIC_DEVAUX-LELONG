@@ -60,11 +60,11 @@ public class Niveau {
      */
     public void initVagues(){
         vagues = new ArrayList<>();
-        for (int indVague=0; indVague<100; indVague++){
+        for (int indVague=0; indVague<1; indVague++){
             vagues.add(new Vague());
             for (int indListeA=0; indListeA<environnement.getCarte().getGenerateurs().size(); indListeA++) {
                 vagues.get(indVague).ajouter(new ListeApparition());
-                for (int indEnnemi = 0; indEnnemi < 4 * (indVague + 1); indEnnemi++)
+                for (int indEnnemi = 0; indEnnemi < 1/* 4 * (indVague + 1)*/; indEnnemi++)
                     vagues.get(indVague).getListeApparitions().get(indListeA).ajouter(CodeMaladie.codeAleatoire(), (int) ((Math.random() * 90 + 30)) / (2 * (indVague + 1)));
             }
         }

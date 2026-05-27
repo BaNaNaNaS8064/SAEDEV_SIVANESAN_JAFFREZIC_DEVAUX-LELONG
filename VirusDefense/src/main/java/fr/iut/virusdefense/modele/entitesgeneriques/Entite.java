@@ -139,4 +139,53 @@ public abstract class Entite {
         
         return !bloque;
     }
+
+    public boolean voitCase(int ligne, int colonne, boolean ignorerCellules){
+
+        if (!getEnvironnement().getCarte().peutVoirAuTravers(ligne, colonne, ignorerCellules))
+            return false;
+
+
+        setLigne(getLigne() - 0.25);
+        setColonne(getColonne() - 0.25);
+        if (!voit(ligne+0.25, colonne+0.25, ignorerCellules)){
+            setLigne(getLigne() + 0.25);
+            setColonne(getColonne() + 0.25);
+            return false;
+        }
+
+        setColonne(getColonne() + 0.5);
+        if (!voit(ligne+0.25, colonne+0.75, ignorerCellules)){
+            setLigne(getLigne() + 0.25);
+            setColonne(getColonne() - 0.25);
+            return false;
+        }
+
+        setLigne(getLigne() + 0.5);
+        if (!voit(ligne+0.75, colonne+0.75, ignorerCellules)){
+            setLigne(getLigne() - 0.25);
+            setColonne(getColonne() - 0.25);
+            return false;
+        }
+
+        setColonne(getColonne() - 0.5);
+        if (!voit(ligne+0.75, colonne+0.25, ignorerCellules)){
+            setLigne(getLigne() - 0.25);
+            setColonne(getColonne() + 0.25);
+            return false;
+        }
+
+        setLigne(getLigne() - 0.25);
+        setColonne(getColonne() + 0.25);
+        return true;
+
+
+        /*
+        return voit(ligne + 0.25, colonne + 0.25, ignorerCellules)
+                && voit(ligne + 0.75, colonne + 0.25, ignorerCellules)
+                && voit(ligne + 0.25, colonne + 0.75, ignorerCellules)
+                && voit(ligne + 0.75, colonne + 0.75, ignorerCellules);
+
+         */
+    }
 }
