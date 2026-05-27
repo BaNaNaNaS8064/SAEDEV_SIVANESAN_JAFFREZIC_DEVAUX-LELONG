@@ -39,16 +39,16 @@ public class Generateur extends Entite {
     public void ajouterMaladie(CodeMaladie codeMaladie){
         switch (codeMaladie){
             case BACTERIEBANALE:
-                getEnvironnement().ajouter(new BacterieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                getEnvironnement().ajouterMaladie(new BacterieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
             case PARASITE:
-                getEnvironnement().ajouter(new Parasite(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                getEnvironnement().ajouterMaladie(new Parasite(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
             case VIRUS:
-                getEnvironnement().ajouter(new Virus(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                getEnvironnement().ajouterMaladie(new Virus(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
             case VIRUSCOMPOSE:
-                getEnvironnement().ajouter(new VirusComposé(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                getEnvironnement().ajouterMaladie(new VirusComposé(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
         }
     }

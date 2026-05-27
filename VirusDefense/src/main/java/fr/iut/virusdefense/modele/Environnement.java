@@ -89,7 +89,7 @@ public class Environnement {
      *
      * @param m une maladie à ajouter
      */
-    public void ajouter(Maladie m) {
+    public void ajouterMaladie(Maladie m) {
         maladies.add(m);
     }
 
