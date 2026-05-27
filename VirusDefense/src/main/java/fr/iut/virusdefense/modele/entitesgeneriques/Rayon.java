@@ -3,34 +3,28 @@ package fr.iut.virusdefense.modele.entitesgeneriques;
 import fr.iut.virusdefense.modele.Environnement;
 
 public class Rayon extends Entite {
-    public double ligne2;
-    public double colonne2;
+    private final Entite cible;
 
     private int age;
     private final int ageMaximal;
 
     public Rayon(Entite e1, Entite e2, int ageMaximal){
-        this(e1.getEnvironnement(), e1.getLigne(), e1.getColonne(), e2.getLigne(), e2.getColonne(), ageMaximal);
+        this(e1.getEnvironnement(), e1.getLigne(), e1.getColonne(), e2, ageMaximal);
     }
 
-    public Rayon(Environnement environnement, double ligne, double colonne, double ligne2, double colonne2, int ageMaximal){
+    public Rayon(Environnement environnement, double ligne, double colonne, Entite cible, int ageMaximal) {
         super(environnement, ligne, colonne);
-        this.ligne2 = ligne2;
-        this.colonne2 = colonne2;
+        this.cible = cible;
         age = 0;
         this.ageMaximal = ageMaximal;
     }
 
+    public Entite getCible(){
+        return cible;
+    }
+
     public boolean aDepasseAgeMaximal(){
         return age > ageMaximal;
-    }
-
-    public double getLigne2() {
-        return ligne2;
-    }
-
-    public double getColonne2() {
-        return colonne2;
     }
 
     @Override
