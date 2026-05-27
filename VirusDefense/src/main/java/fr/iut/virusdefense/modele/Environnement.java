@@ -76,6 +76,10 @@ public class Environnement {
         return rayons;
     }
 
+    public ObservableList<Zone> getZones() {
+        return zones;
+    }
+
     public final StatutPartie getStatutPartie(){
         return statutPartieProperty.getValue();
     }

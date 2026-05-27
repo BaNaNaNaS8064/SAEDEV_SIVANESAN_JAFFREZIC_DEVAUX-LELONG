@@ -12,6 +12,6 @@ public class AtkZone extends Attaque{
 
     @Override
     public void attaqueCibles(){
-        getCellule().getEnvironnement().ajouterZone(new Zone(getCellule(),getCellule().getReconnaissance().getCibles() , getDegats() , 2 , getAlterations()));
+        getCellule().getEnvironnement().ajouterZone(new Zone(getCellule(),getCellule().getReconnaissance().getCibles() , getDegats() , 10 , getAlterations(), getCellule().getReconnaissance().getPortee()));
     }
 }

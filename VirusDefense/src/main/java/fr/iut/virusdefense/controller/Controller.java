@@ -1,9 +1,6 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.controller.observateurs.ObsListeMaladies;
-import fr.iut.virusdefense.controller.observateurs.ObsListeRayons;
-import fr.iut.virusdefense.controller.observateurs.ObsStatutPartie;
-import fr.iut.virusdefense.controller.observateurs.ObsVieJoueur;
+import fr.iut.virusdefense.controller.observateurs.*;
 import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
@@ -64,6 +61,7 @@ public class Controller implements Initializable {
         environnement = new Environnement();
         environnement.getMaladies().addListener(new ObsListeMaladies(paneDessin));
         environnement.getRayons().addListener(new ObsListeRayons(paneDessin));
+        environnement.getZones().addListener(new ObsListeZones(paneDessin));
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
         tuileEvent = new TuileEvent(environnement, toggleGrpCellules, afficheurDeCarte, tuiles);

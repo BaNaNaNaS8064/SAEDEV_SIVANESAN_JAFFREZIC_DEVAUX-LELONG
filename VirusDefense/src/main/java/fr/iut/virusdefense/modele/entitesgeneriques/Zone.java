@@ -12,17 +12,23 @@ public class Zone extends EntiteAtk{
     private final int degats;
     private int age;
     private final int ageMaximal;
+    private final double portee;
 
-    public Zone(Entite e1, ArrayList<Maladie> cibles, int degats, int ageMaximal, List<Alteration> alterations) {
+    public Zone(Entite e1, ArrayList<Maladie> cibles, int degats, int ageMaximal, List<Alteration> alterations, double portee) {
         super(e1.getEnvironnement(), e1.getLigne(), e1.getColonne(), alterations);
         age = 0;
         this.ageMaximal = ageMaximal;
 
         this.degats = degats;
         this.cibles = cibles;
+        this.portee = portee;
 
         donnerAlterations();
         infligerDegats();
+    }
+
+    public double getPortee() {
+        return portee;
     }
 
     public boolean aDepasseAgeMaximal(){
