@@ -2,10 +2,7 @@ package fr.iut.virusdefense.modele.apparition;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
-import fr.iut.virusdefense.modele.maladies.BacterieBanale;
-import fr.iut.virusdefense.modele.maladies.Parasite;
-import fr.iut.virusdefense.modele.maladies.Virus;
-import fr.iut.virusdefense.modele.maladies.VirusComposé;
+import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
 public class Generateur extends Entite {
@@ -49,6 +46,15 @@ public class Generateur extends Entite {
                 break;
             case VIRUSCOMPOSE:
                 getEnvironnement().ajouterMaladie(new VirusComposé(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                break;
+            case PETITCHAMPIGNON:
+                getEnvironnement().ajouterMaladie(new PetitChampignon(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                break;
+            case GRANDCHAMPIGNON:
+                getEnvironnement().ajouterMaladie(new GrandChampignon(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                break;
+            case TUMEUR:
+                getEnvironnement().ajouterMaladie(new Tumeur(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
         }
     }

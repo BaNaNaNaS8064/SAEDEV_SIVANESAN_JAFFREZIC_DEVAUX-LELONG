@@ -68,6 +68,7 @@ public class Niveau {
                     vagues.get(indVague).getListeApparitions().get(indListeA).ajouter(CodeMaladie.codeAleatoire(), (int) ((Math.random() * 90 + 30)) / (2 * (indVague + 1)));
             }
         }
+        vagues.get(vagues.size() - 1).getListeApparitions().get(0).ajouter(CodeMaladie.TUMEUR, 0);
     }
 
     /**

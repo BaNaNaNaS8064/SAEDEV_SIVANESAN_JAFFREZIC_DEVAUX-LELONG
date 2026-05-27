@@ -32,7 +32,7 @@ public class TuileEvent {
             int colonne = (int)(mouseEvent.getX()/32);
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && env.getCarte().emplacementVide(ligne, colonne))
                 poser(ligne, colonne);
-            else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && !env.getCarte().estCellule(ligne, colonne))
+            else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && env.getCarte().estCellule(ligne, colonne))
             {
                 env.retirerCelluleA(ligne, colonne, false);
                 ac.reloadEmplacementCarte(ligne, colonne);
