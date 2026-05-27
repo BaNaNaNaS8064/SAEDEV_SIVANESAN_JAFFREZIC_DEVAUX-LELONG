@@ -93,9 +93,6 @@ public class Controller implements Initializable {
      * Méthode exécutée à chaque tour
      */
     private void uneFrame(){
-        //try {
-            environnement.unTour();
-        //}
-        //catch (Exception ignored){}
+        environnement.unTour();
     }
 }

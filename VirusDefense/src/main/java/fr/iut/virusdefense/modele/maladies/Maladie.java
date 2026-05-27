@@ -81,13 +81,6 @@ public abstract class Maladie extends Entite {
             caseApres = getEnvironnement().getDeplacement().prochaineCase(destination);
         }
 
-        /*
-        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), getLigne(), getColonne(), destination.get(0) + 0.25, destination.get(1) + 0.25, 1));
-        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), getLigne(), getColonne(), destination.get(0) + 0.75, destination.get(1) + 0.25, 1));
-        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), getLigne(), getColonne(), destination.get(0) + 0.25, destination.get(1) + 0.75, 1));
-        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), getLigne(), getColonne(), destination.get(0) + 0.75, destination.get(1) + 0.75, 1));
-         */
-
         double distLigne = Math.abs((destination.get(0) + 0.5 - getLigne()));
         double distColonne = Math.abs((destination.get(1) + 0.5 - getColonne()));
         setLigne(getLigne() + vitesse * Double.compare(destination.get(0) + 0.5, getLigne()) * distLigne / Math.max(distLigne, distColonne));
