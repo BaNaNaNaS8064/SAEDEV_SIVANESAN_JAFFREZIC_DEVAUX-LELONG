@@ -22,11 +22,12 @@ public class AssociationImage {
     private static HashMap<CodeTuile, String> creerMapTuile(){
         HashMap<CodeTuile, String> temp = new HashMap<>();
 
-        temp.put(CodeTuile.VIDE, "Vide");
-        temp.put(CodeTuile.MUR, "Mur");
-        temp.put(CodeTuile.GENERATEUR, "Gen");
+        temp.put(CodeTuile.VIDE, "Vide.png");
+        temp.put(CodeTuile.MUR, "Mur.png");
+        temp.put(CodeTuile.GENERATEUR, "Gen.png");
+        temp.put(CodeTuile.OBJECTIF, "Obj.gif");
 
-        temp.put(CodeTuile.SAINPLE, "cellules/Sainple");
+        temp.put(CodeTuile.SAINPLE, "cellules/Sainple.png");
 
         return temp;
     }
@@ -38,7 +39,7 @@ public class AssociationImage {
      * @return le chemin vers l'image qui correspond à CodeTuile
      */
     public static String imageDe(CodeTuile codeTuile){
-        return String.valueOf(Main.class.getResource("images/tuiles/" + correspondanceTuile.getOrDefault(codeTuile, correspondanceTuile.get(CodeTuile.VIDE)) + ".png"));
+        return String.valueOf(Main.class.getResource("images/tuiles/" + correspondanceTuile.getOrDefault(codeTuile, correspondanceTuile.get(CodeTuile.VIDE))));
     }
 
 
