@@ -25,14 +25,12 @@ public abstract class Attaque {
         return cellule;
     }
 
-    public void ajouterAlteration(Alteration alt){
-        alterations.add(alt);
+    public ArrayList<Alteration> getAlterations() {
+        return alterations;
     }
 
-    public void donnerAlterations(Maladie m){
-        for (Alteration alt : alterations){
-            m.ajouter(alt.copieAlteration());
-        }
+    public void ajouterAlteration(Alteration alt){
+        alterations.add(alt);
     }
 
     public void attaqueCibles(){
