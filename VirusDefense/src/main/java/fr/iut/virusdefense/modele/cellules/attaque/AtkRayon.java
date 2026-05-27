@@ -15,9 +15,11 @@ public class AtkRayon extends Attaque {
     /**
      * Methode qui attaque quand la cible est a portée et vivante
      */
-    @Override
     public void attaque(Maladie m){
         getCellule().getEnvironnement().ajouterRayon(new Rayon(getCellule(), m, getDegats(), 2, getAlterations()));
     }
 
+    public void attaqueCibles(){
+        getCellule().getReconnaissance().getCibles().forEach(this::attaque);
+    }
 }

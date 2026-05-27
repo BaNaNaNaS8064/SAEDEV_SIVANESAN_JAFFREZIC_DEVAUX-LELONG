@@ -11,6 +11,6 @@ public class RecTous extends Reconnaissance{
 
     @Override
     public boolean valide(Maladie m) {
-        return m.estVivant() && aPortee(m);
+        return m.estVivant() && aPortee(m) && getCellule().voit(m,true);
     }
 }

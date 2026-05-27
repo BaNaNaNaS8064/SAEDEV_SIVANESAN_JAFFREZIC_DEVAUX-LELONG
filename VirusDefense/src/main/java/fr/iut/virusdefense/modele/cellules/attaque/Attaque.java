@@ -33,10 +33,6 @@ public abstract class Attaque {
         alterations.add(alt);
     }
 
-    public void attaqueCibles(){
-        getCellule().getReconnaissance().getCibles().forEach(this::attaque);
-    }
-
-    public abstract void attaque(Maladie m);
+    abstract public void attaqueCibles();
 
 }
