@@ -5,23 +5,27 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.List;
 
-public class Rayon extends Entite {
+public class Rayon extends Entite implements EntiteAtk {
     private final Entite cible;
+
+    private final int degats;
+    private final List<Alteration> alterations;
 
     private int age;
     private final int ageMaximal;
 
     public Rayon(Entite e1, Entite e2, int degats, int ageMaximal, List<Alteration> alterations) {
-        this(e1, e2, degats, ageMaximal);
-        donnerAlterations(alterations);
-    }
-
-    public Rayon(Entite e1, Entite e2, int degats, int ageMaximal){
         super(e1.getEnvironnement(), e1.getLigne(), e1.getColonne());
         this.cible = e2;
+
         age = 0;
         this.ageMaximal = ageMaximal;
-        infligerDegats(degats);
+
+        this.degats = degats;
+        this.alterations = alterations;
+
+        donnerAlterations();
+        infligerDegats();
     }
 
     public Entite getCible(){
@@ -32,12 +36,12 @@ public class Rayon extends Entite {
         return age > ageMaximal;
     }
 
-    private void infligerDegats(int degats){
+    public void infligerDegats(){
         if (cible instanceof Maladie)
             ((Maladie) cible).prendreDegats(degats);
     }
 
-    public void donnerAlterations(List<Alteration> alterations){
+    public void donnerAlterations(){
         if (cible instanceof Maladie)
             for (Alteration alteration : alterations)
                 ((Maladie) cible).ajouter(alteration.copieAlteration());
