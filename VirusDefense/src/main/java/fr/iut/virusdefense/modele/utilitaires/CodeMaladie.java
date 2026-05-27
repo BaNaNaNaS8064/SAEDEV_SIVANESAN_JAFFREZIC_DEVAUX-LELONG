@@ -6,7 +6,8 @@ public enum CodeMaladie {
     MALADIEINCONNUE,
     BACTERIEBANALE,
     PARASITE,
-    VIRUS;
+    VIRUS,
+    VIRUSCOMPOSE;
 
     public static CodeMaladie codeDe(Maladie m) {
         if (m instanceof BacterieBanale)
@@ -18,14 +19,18 @@ public enum CodeMaladie {
         if (m instanceof Virus)
             return VIRUS;
 
+        if (m instanceof VirusComposé)
+            return VIRUSCOMPOSE;
+
         return MALADIEINCONNUE;
     }
 
     public static CodeMaladie codeAleatoire(){
-        return switch ((int) (Math.random() * 3)){
+        return switch ((int) (Math.random() * CodeMaladie.values().length - 1)){
             case 0 -> BACTERIEBANALE;
             case 1 -> PARASITE;
             case 2 -> VIRUS;
+            case 3 -> VIRUSCOMPOSE;
 
             default -> MALADIEINCONNUE;
         };
