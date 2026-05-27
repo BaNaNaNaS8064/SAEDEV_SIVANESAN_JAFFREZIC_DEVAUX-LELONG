@@ -2,6 +2,10 @@ package fr.iut.virusdefense.modele;
 
 import java.util.*;
 
+/**
+ * Se charge d'effectuer tout ce qui est lié au déplacement sur la carte
+ * (par exemple calcul de chemin optimal)
+ */
 public class Deplacement {
     /**
      * Associe à une case les coordonées de la prochaine
@@ -9,6 +13,9 @@ public class Deplacement {
      */
     private final Map<List<Integer>, List<Integer>> prochaineCase;
 
+    /**
+     * La carte sur laquels les calculs seront effectués
+     */
     private final Carte carte;
 
     public Deplacement(Carte carte){
@@ -18,7 +25,9 @@ public class Deplacement {
     }
 
     /**
-     * Remplit {@code prochain} à l'aide de l'algorithme du BFS à partir de {@code objectif}
+     * Remplit la Map {@code prochaineCase}
+     * à l'aide de l'algorithme du BFS
+     * à partir de l'objectif de la carte
      */
     public void faireAlgo() {
         prochaineCase.clear();
@@ -41,13 +50,15 @@ public class Deplacement {
     }
 
     /**
-     * Retourne tous les voisins qui sont vides de uneCase
+     * Retourne tous les voisins sur lequels on peut marcher
+     * de la case de coordonnées {@code coordsCase}
      *
      * @param coordsCase Une liste sous forme [ligne, colonne]
      *                qui représente les coordonnées d'un case
      *
      * @return une liste de listes (sous forme [[ligne, colonne], ...])
-     * qui représente une liste des voisins de {@code uneCase}
+     * qui représente une liste des voisins sur lequels on peut marcher
+     * de la case de coordonnées {@code coordsCase}
      */
     private ArrayList<List<Integer>> voisins(List<Integer> coordsCase){
         ArrayList<List<Integer>> voisins = new ArrayList<>();
@@ -70,19 +81,31 @@ public class Deplacement {
     }
 
     /**
-     * Retourne la prochaine case après {@code coords}
+     * Retourne la prochaine case après {@code coordsCase}
      * dans le chemin optimal vers l'objectif
      *
      * @param coordsCase Une liste sous forme [ligne, colonne]
      *               qui représente les coordonnées d'un case
      *
      * @return Une liste sous forme [ligne, colonne]
-     * qui représente la prochaine case dans le chemin optimal vers l'objectif
+     * qui représente les coordonnées de la prochaine case
+     * après la case de coordonnées {@code coordsCase}
+     * dans le chemin optimal vers l'objectif
      */
     public List<Integer> prochaineCase(List<Integer> coordsCase){
         return prochaineCase.get(coordsCase);
     }
-    
+
+    /**
+     * Retourne vrai si la case de coordonnées {@code coordsCase}
+     * peut atteindre l'objectif de la carte
+     *
+     * @param coordsCase Une liste sous forme [ligne, colonne]
+     *               qui représente les coordonnées d'un case
+     *
+     * @return true si la case case de coordonnées {@code coordsCase}
+     * peut atteindre l'objectif de la carte, false sinon
+     */
     public boolean estBloquee(List<Integer> coordsCase){
         return !prochaineCase.containsKey(coordsCase);
     }
