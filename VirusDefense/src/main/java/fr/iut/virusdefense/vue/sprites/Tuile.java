@@ -11,6 +11,7 @@ public class Tuile extends ImageView {
         super(url);
         this.ligne = ligne;
         this.colonne = colonne;
+        setRotate((int)(Math.random() * 4) * 90);
     }
 
     public int getLigne() {
