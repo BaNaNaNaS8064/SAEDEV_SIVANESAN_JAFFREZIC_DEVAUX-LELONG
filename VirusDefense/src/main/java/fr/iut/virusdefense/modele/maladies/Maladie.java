@@ -39,6 +39,10 @@ public abstract class Maladie extends Entite {
         return recompense;
     }
 
+    public ArrayList<Alteration> getAlterations() {
+        return alterations;
+    }
+
     public boolean estVivant(){
         return pv > 0;
     }
