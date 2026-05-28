@@ -69,7 +69,7 @@ public class Controller implements Initializable {
 
         labelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
         labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
-        labelVagueMax.setText("/" + environnement.getNiveau().nombreDeVagues());
+        labelVagueMax.setText(" /" + environnement.getNiveau().nombreDeVagues());
 
         environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
         environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GereurEcranDeFin(paneDessin)));

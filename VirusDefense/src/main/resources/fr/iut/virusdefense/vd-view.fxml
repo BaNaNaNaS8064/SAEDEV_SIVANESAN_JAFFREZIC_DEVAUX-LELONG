@@ -24,13 +24,23 @@
    <top>
       <HBox prefHeight="55.0" prefWidth="1018.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Vague" />
+            <Label text="Vague : "/>
             <Label fx:id="labelVagueActuelle"/>
-            <Label id="labelVagues" text="0/20" fx:id="labelVagueMax" />
+            <Label fx:id="labelVagueMax">
+               <styleClass>
+                  <String fx:value="labelMax"/>
+               </styleClass>
+            </Label>
+            
             <Label text="PV : " />
             <Label fx:id="labelPvActuels"/>
-            <Label id="labelBarrePVMax" fx:id="labelPvMax"/>
-            <ProgressBar id="barrePV" fx:id="barreDeVie" prefHeight="33.0" prefWidth="157.0" progress="0.4"/>
+            <Label fx:id="labelPvMax">
+               <styleClass>
+                  <String fx:value="labelMax"/>
+               </styleClass>
+            </Label>
+            <ProgressBar id="barrePV" fx:id="barreDeVie" prefHeight="33.0" prefWidth="157.0"/>
+
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0">

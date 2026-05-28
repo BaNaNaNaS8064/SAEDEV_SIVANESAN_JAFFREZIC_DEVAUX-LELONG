@@ -22,12 +22,7 @@
     -fx-text-fill: white;
 }
 
-#labelVagues{
-    -fx-background-color: -couleur1;
-    -fx-padding: 10 20;
-}
-
-#labelBarrePVMax{
+.labelMax{
     -fx-opacity: 0.5;
     -fx-font-size: 80%;
 }
