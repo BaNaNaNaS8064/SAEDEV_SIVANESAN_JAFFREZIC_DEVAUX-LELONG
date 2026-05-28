@@ -8,7 +8,7 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecTous;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Brouaileuse extends Cellule {
-    private static int coutBase = 500;
+    private static int coutBase = 50;
 
     public static int getCoutBase() {
         return coutBase;

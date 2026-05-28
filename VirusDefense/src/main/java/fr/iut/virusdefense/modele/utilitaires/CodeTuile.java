@@ -10,7 +10,13 @@ public enum CodeTuile {
 
     CELLULEINCONNUE,
     SAINPLE,
-    LASERE;
+    LASERE,
+    BROUAIEUSE,
+    MULETYPLE,
+    SNAIPEUR,
+
+    KONSANTRE,
+    POUAZON;
 
     public boolean peutMarcher(){
         return this == CodeTuile.VIDE
@@ -39,6 +45,23 @@ public enum CodeTuile {
 
         if (c instanceof Lasere)
             return LASERE;
+
+        if (c instanceof Brouaileuse)
+            return BROUAIEUSE;
+
+        if (c instanceof MuleTyple)
+            return MULETYPLE;
+
+        if (c instanceof Snaipeur)
+            return SNAIPEUR;
+
+
+
+        if (c instanceof Konsantre)
+            return KONSANTRE;
+
+        if (c instanceof Pouazon)
+            return POUAZON;
 
         return CELLULEINCONNUE;
     }

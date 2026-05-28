@@ -1,10 +1,9 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.controller.observateurs.*;
+import fr.iut.virusdefense.modele.cellules.*;
 import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.Cellule;
-import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.*;
 import fr.iut.virusdefense.vue.sprites.AssociationImage;
 import fr.iut.virusdefense.vue.sprites.Tuile;
@@ -85,6 +84,14 @@ public class Controller implements Initializable {
         environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GereurEcranDeFin(paneDessin)));
 
         labelCoutSainple.setText("" + Sainple.getCoutBase());
+        labelCoutLasère.setText("" + Lasere.getCoutBase());
+        labelCoutBrouaïeuse.setText("" + Brouaileuse.getCoutBase());
+        labelCoutMuleTyple.setText("" + MuleTyple.getCoutBase());
+        labelCoutSnaïpeur.setText("" + Snaipeur.getCoutBase());
+        labelCoutRizCoCher.setText("?");
+        labelCoutKonsantré.setText("" + Konsantre.getCoutBase());
+        labelCoutPouazon.setText("" + Pouazon.getCoutBase());
+        labelCoutBrulHure.setText("?");
 
         initGameLoop();
         gameLoop.play();

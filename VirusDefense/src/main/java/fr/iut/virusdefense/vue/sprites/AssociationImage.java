@@ -29,6 +29,14 @@ public class AssociationImage {
 
         temp.put(CodeTuile.SAINPLE, "cellules/Sainple.png");
         temp.put(CodeTuile.LASERE, "Mur.png");
+        temp.put(CodeTuile.BROUAIEUSE, "Mur.png");
+        temp.put(CodeTuile.MULETYPLE, "Mur.png");
+        temp.put(CodeTuile.SNAIPEUR, "Mur.png");
+
+        temp.put(CodeTuile.KONSANTRE, "Mur.png");
+        temp.put(CodeTuile.POUAZON, "Mur.png");
+
+
 
         return temp;
     }

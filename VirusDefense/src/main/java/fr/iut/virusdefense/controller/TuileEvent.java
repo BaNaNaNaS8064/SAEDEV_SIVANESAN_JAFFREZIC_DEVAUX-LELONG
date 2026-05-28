@@ -44,6 +44,7 @@ public class TuileEvent {
         Cellule c = null;
 
         String type = ((RadioButton) toggleGrpCellules.getSelectedToggle()).getId();
+        System.out.println(type);
 
         switch (type){
             case "RbSainple":
@@ -61,18 +62,14 @@ public class TuileEvent {
             case "RbSnaïpeur":
                 c = Snaipeur.creer(env, ligne, colonne);
                 break;
-            case "RbRizCoCher":
-                c = Sainple.creer(env, ligne, colonne);
-                break;
+
             case "RbKonsantré":
                 c = Konsantre.creer(env, ligne, colonne);
                 break;
             case "RbPouazon":
                 c = Pouazon.creer(env, ligne, colonne);
                 break;
-            case "RbBrulHure":
-                c = Sainple.creer(env, ligne, colonne);
-                break;
+
         }
 
         if (c != null && env.getJoueur().getPc() >= c.getCout()) {
