@@ -2,6 +2,7 @@ package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.cellules.Lasere;
 import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
