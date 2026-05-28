@@ -16,7 +16,7 @@ public class SpriteZone extends Circle {
     public void creerSprite(){
         setCenterX(c.getColonne()*32);
         setCenterY(c.getLigne()*32);
-        setRadius(c.getPortee()*32);
+        setRadius(c.getRayonZone()*32);
 
 
         setFill(Color.LIGHTGRAY);
