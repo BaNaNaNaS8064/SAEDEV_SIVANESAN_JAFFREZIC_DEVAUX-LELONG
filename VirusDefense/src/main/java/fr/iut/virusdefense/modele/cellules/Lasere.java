@@ -4,16 +4,10 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
-public class Sainple extends Cellule {
+public class Lasere extends Cellule{
 
-    private static int coutBase = 500;
-
-    public static int getCoutBase() {
-        return coutBase;
-    }
-
-    private Sainple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 60, coutBase);
+    private Lasere(Environnement env, int ligne, int colonne){
+        super(env, ligne, colonne, 1, 50);
     }
 
     @Override
@@ -23,11 +17,11 @@ public class Sainple extends Cellule {
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 45));
+        setAttaque(new AtkRayonSimple(this, 1));
     }
 
-    public static Sainple creer(Environnement env, int ligne, int colonne){
-        Sainple temp = new Sainple(env, ligne, colonne);
+    public static Lasere creer(Environnement env, int ligne, int colonne){
+        Lasere temp = new Lasere(env, ligne, colonne);
         temp.initRec();
         temp.initAttaque();
         return temp;

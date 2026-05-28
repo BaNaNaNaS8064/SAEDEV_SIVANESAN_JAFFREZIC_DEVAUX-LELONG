@@ -9,7 +9,8 @@ public enum CodeTuile {
     GENERATEUR,
 
     CELLULEINCONNUE,
-    SAINPLE;
+    SAINPLE,
+    LASERE;
 
     public boolean peutMarcher(){
         return this == CodeTuile.VIDE
@@ -35,6 +36,9 @@ public enum CodeTuile {
     public static CodeTuile codeDe(Cellule c){
         if (c instanceof Sainple)
             return SAINPLE;
+
+        if (c instanceof Lasere)
+            return LASERE;
 
         return CELLULEINCONNUE;
     }

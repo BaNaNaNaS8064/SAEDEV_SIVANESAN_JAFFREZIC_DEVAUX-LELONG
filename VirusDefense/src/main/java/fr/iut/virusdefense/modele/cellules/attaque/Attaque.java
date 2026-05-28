@@ -21,6 +21,10 @@ public abstract class Attaque {
         return degats;
     }
 
+    public void setDegats(int degats) {
+        this.degats = degats;
+    }
+
     public Cellule getCellule() {
         return cellule;
     }

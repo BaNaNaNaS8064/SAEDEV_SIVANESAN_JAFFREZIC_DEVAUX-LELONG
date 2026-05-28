@@ -28,6 +28,7 @@ public class AssociationImage {
         temp.put(CodeTuile.OBJECTIF, "Obj.gif");
 
         temp.put(CodeTuile.SAINPLE, "cellules/Sainple.png");
+        temp.put(CodeTuile.LASERE, "Mur.png");
 
         return temp;
     }
