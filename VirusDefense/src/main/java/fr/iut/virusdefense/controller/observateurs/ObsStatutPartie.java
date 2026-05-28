@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.controller.observateurs;
 
 import fr.iut.virusdefense.modele.utilitaires.StatutPartie;
-import fr.iut.virusdefense.vue.GereurEcranDeFin;
+import fr.iut.virusdefense.vue.GestionnaireEcranDeFin;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
@@ -12,24 +12,24 @@ import javafx.beans.value.ObservableValue;
 public class ObsStatutPartie implements ChangeListener<StatutPartie> {
 
     /// L'objet qui gere l'ecran de fin
-    private final GereurEcranDeFin gereurEcranDeFin;
+    private final GestionnaireEcranDeFin gestionnaireEcranDeFin;
 
     /**
-     * Créé un nouvel Observateur qui démarrera les animations de gereurEcranDeFin
-     * @param gereurEcranDeFin l'objet qui gere l'ecran de fin
+     * Créé un nouvel Observateur qui démarrera les animations de gestionnaireEcranDeFin
+     * @param gestionnaireEcranDeFin l'objet qui gere l'ecran de fin
      */
-    public ObsStatutPartie(GereurEcranDeFin gereurEcranDeFin){
-        this.gereurEcranDeFin = gereurEcranDeFin;
+    public ObsStatutPartie(GestionnaireEcranDeFin gestionnaireEcranDeFin){
+        this.gestionnaireEcranDeFin = gestionnaireEcranDeFin;
     }
 
     @Override
     public void changed(ObservableValue<? extends StatutPartie> observable, StatutPartie oldValue, StatutPartie newValue) {
         switch (newValue){
             case GAGNEE :
-                gereurEcranDeFin.demarrerAnimationVictoire();
+                gestionnaireEcranDeFin.demarrerAnimationVictoire();
                 break;
             case PERDUE :
-                gereurEcranDeFin.demarrerAnimationDefaite();
+                gestionnaireEcranDeFin.demarrerAnimationDefaite();
                 break;
         }
     }

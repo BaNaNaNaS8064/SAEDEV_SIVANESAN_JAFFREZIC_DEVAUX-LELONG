@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-public class GereurEcranDeFin {
+public class GestionnaireEcranDeFin {
 
     private final Pane paneDessin;
 
@@ -18,7 +18,7 @@ public class GereurEcranDeFin {
 
     private Timeline animation;
 
-    public GereurEcranDeFin(Pane paneDessin){
+    public GestionnaireEcranDeFin(Pane paneDessin){
         this.paneDessin = paneDessin;
         initAnimation();
     }

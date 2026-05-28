@@ -8,7 +8,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 
-public class GereurClickCarte {
+public class GestionnaireClickCarte {
     private final Environnement environnement;
 
     private final ToggleGroup toggleGrpCellules;
@@ -16,7 +16,7 @@ public class GereurClickCarte {
 
     private final AfficheurDeCarte afficheurDeCarte;
 
-    public GereurClickCarte(Environnement environnement, ToggleGroup toggleGrpCellules, AfficheurDeCarte afficheurDeCarte, Pane paneDessin){
+    public GestionnaireClickCarte(Environnement environnement, ToggleGroup toggleGrpCellules, AfficheurDeCarte afficheurDeCarte, Pane paneDessin){
         this.environnement = environnement;
         this.toggleGrpCellules = toggleGrpCellules;
         this.afficheurDeCarte = afficheurDeCarte;

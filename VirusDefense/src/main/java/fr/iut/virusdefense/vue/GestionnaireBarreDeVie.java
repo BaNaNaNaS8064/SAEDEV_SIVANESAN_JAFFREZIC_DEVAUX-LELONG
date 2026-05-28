@@ -3,13 +3,13 @@ package fr.iut.virusdefense.vue;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 
-public class GereurBarreDeVie {
+public class GestionnaireBarreDeVie {
 
     private final ProgressBar barre;
     private final Label labelPvActuels;
     private final int pvMax;
 
-    public GereurBarreDeVie(ProgressBar barre, Label labelPvActuels, Label labelPvMax, int pvMax){
+    public GestionnaireBarreDeVie(ProgressBar barre, Label labelPvActuels, Label labelPvMax, int pvMax){
         super();
 
         this.barre = barre;

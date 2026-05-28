@@ -48,7 +48,7 @@ public class Controller implements Initializable {
     private Environnement environnement;
 
     //controllerPackage
-    private GereurClickCarte gereurClickCarte;
+    private GestionnaireClickCarte gestionnaireClickCarte;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -58,15 +58,15 @@ public class Controller implements Initializable {
         environnement.getZones().addListener(new ObsListeZones(paneDessin));
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
-        gereurClickCarte = new GereurClickCarte(environnement, toggleGrpCellules, afficheurDeCarte, paneDessin);
-        gereurClickCarte.ajoutEventPane();
+        gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte, paneDessin);
+        gestionnaireClickCarte.ajoutEventPane();
 
         labelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
         labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
         labelVagueMax.setText("/" + environnement.getNiveau().nombreDeVagues());
 
-        environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
-        environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GereurEcranDeFin(paneDessin)));
+        environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GestionnaireBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
+        environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
 
         initGameLoop();
         gameLoop.play();
