@@ -1,10 +1,7 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.Cellule;
-import fr.iut.virusdefense.modele.cellules.Lasere;
-import fr.iut.virusdefense.modele.cellules.Pouazon;
-import fr.iut.virusdefense.modele.cellules.Sainple;
+import fr.iut.virusdefense.modele.cellules.*;
 import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
 import fr.iut.virusdefense.vue.sprites.Tuile;
@@ -50,7 +47,7 @@ public class TuileEvent {
 
         switch (type){
             case "RbSainple":
-                c = Pouazon.creer(env, ligne, colonne);
+                c = MuleTyple.creer(env, ligne, colonne);
                 break;
 
             case "RbLasere":
