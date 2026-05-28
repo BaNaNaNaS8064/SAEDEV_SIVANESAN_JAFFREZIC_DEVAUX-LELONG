@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -13,18 +19,20 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.Controller">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1168.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.Controller">
    <top>
       <HBox prefHeight="55.0" prefWidth="1018.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Vague" />
-            <Label id="labelVagues" text="0/20" />
+            <Label fx:id="labelVagueActuelle"/>
+            <Label id="labelVagues" text="0/20" fx:id="labelVagueMax" />
             <Label text="PV" />
             <Pane id="paneBarreVie">
                <children>
-                  <ProgressBar id="barrePV" prefHeight="33.0" prefWidth="157.0" progress="0.4"/>
-                  <Label text="400" translateX="20.0" translateY="17.0" />
-                  <Label id="labelBarrePVMax" text="1000" translateX="125.0" translateY="17.0" />
+                  <ProgressBar id="barrePV" fx:id="barreDeVie" prefHeight="33.0" prefWidth="157.0" progress="0.4"/>
+                  <Label text="400" fx:id="labelPvActuels" translateX="20.0" translateY="17.0" />
+                  <Label id="labelBarrePVMax" fx:id="labelPvMax" text="1000" translateX="125.0" translateY="17.0" />
                </children>
             </Pane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -70,16 +78,35 @@
             <HBox maxWidth="-Infinity" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #42a3c2;" translateX="40.0" translateY="-65.0">
                <children>
                   <Label alignment="CENTER" prefHeight="28.0" prefWidth="107.0" text="Solde : " textFill="WHITE" />
+                  <Label fx:id="labelSolde" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="114.0" textFill="WHITE" />
                </children>
             </HBox>
+            <VBox prefHeight="398.0" prefWidth="208.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="208.0">
+                     <children>
+                        <RadioButton id="RbSainple" mnemonicParsing="false" selected="true" textFill="WHITE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toggleGrpCellules" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/tuiles/cellules/Sainple.png" />
+                           </image></ImageView>
+                        <Label alignment="CENTER" prefHeight="16.0" prefWidth="106.0" text="Sainple" textFill="WHITE" />
+                        <Label fx:id="labelCoutSainple" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="50" textAlignment="RIGHT" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children></VBox>
    </right>
    <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="paneDessin" prefHeight="480.0" prefWidth="960.0" BorderPane.alignment="CENTER">
          <children>
             <TilePane fx:id="tuiles" />
-            <Pane fx:id="paneMaladie" prefHeight="200.0" prefWidth="200.0" />
          </children>
-      </StackPane>
+      </Pane>
    </center>
 </BorderPane>

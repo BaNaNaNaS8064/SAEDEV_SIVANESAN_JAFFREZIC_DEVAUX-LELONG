@@ -1,40 +1,78 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.modele.maladies.*;
-import fr.iut.virusdefense.modele.Terrain;
-import fr.iut.virusdefense.modele.Tuiles;
+import fr.iut.virusdefense.controller.observateurs.*;
+import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
+import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.cellules.Sainple;
+import fr.iut.virusdefense.vue.*;
+import fr.iut.virusdefense.vue.sprites.AssociationImage;
+import fr.iut.virusdefense.vue.sprites.Tuile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
+
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
     private Timeline gameLoop;
-    private Terrain terrain;
-    private int tailleTuiles;
 
-    @FXML
-    public Pane paneMaladie;
+    // centre
+    @FXML public Pane paneDessin;
+    @FXML public TilePane tuiles;
 
-    @FXML
-    public TilePane tuiles;
+    // haut -> vagues
+    @FXML public Label labelVagueActuelle;
+    @FXML public Label labelVagueMax;
+
+    // haut -> vie
+    @FXML public ProgressBar barreDeVie;
+    @FXML public Label labelPvActuels;
+    @FXML public Label labelPvMax;
+
+    // droite
+    @FXML public Label labelSolde;
+    @FXML public ToggleGroup toggleGrpCellules;
+    @FXML public Label labelCoutSainple;
+
+    // vue
+    private AfficheurDeCarte afficheurDeCarte;
+
+    // modèle
+    private Environnement environnement;
+
+    //controllerPackage
+    private TuileEvent tuileEvent;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        terrain = new Terrain();
-        terrain.getMaladies().addListener(new ObsListeMaladies(paneMaladie));
+        environnement = new Environnement();
+        environnement.getMaladies().addListener(new ObsListeMaladies(paneDessin));
+        environnement.getRayons().addListener(new ObsListeRayons(paneDessin));
+        environnement.getZones().addListener(new ObsListeZones(paneDessin));
 
-        tailleTuiles = 48;
-        initTuilesEtPaneMaladies();
+        afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
+        tuileEvent = new TuileEvent(environnement, toggleGrpCellules, afficheurDeCarte, paneDessin);
+        tuileEvent.ajoutEventPane();
 
-        terrain.ajouter(new BactérieBanale(terrain, 0, 2));
+        labelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
+        labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
+        labelVagueMax.setText("/" + environnement.getNiveau().nombreDeVagues());
+
+        environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
+        environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GereurEcranDeFin(paneDessin)));
 
         initGameLoop();
         gameLoop.play();
@@ -50,37 +88,9 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Initialise tuiles et paneMaladie
-     */
-    private void initTuilesEtPaneMaladies(){
-        initTailleTuilesEtPaneMaladies();
-
-        for (int i=0; i<terrain.getMap().length; i++)
-            for (int j = 0; j < terrain.getMap()[i].length; j++)
-                tuiles.getChildren().add(new ImageView(Tuiles.imageDe(terrain.getMap()[i][j])));
-    }
-
-    /**
-     * Fixe les tailles de tuiles et paneMaladie
-     */
-    private void initTailleTuilesEtPaneMaladies(){
-        double largeurVoulue = tailleTuiles * terrain.getLargeur();
-        tuiles.setMaxWidth(largeurVoulue);
-        tuiles.setMinWidth(largeurVoulue);
-        paneMaladie.setMaxWidth(largeurVoulue);
-        paneMaladie.setMinWidth(largeurVoulue);
-
-        double hauteurVoulue = tailleTuiles * terrain.getHauteur();
-        tuiles.setMaxHeight(hauteurVoulue);
-        tuiles.setMinHeight(hauteurVoulue);
-        paneMaladie.setMaxHeight(hauteurVoulue);
-        paneMaladie.setMinHeight(hauteurVoulue);
-    }
-
-    /**
      * Méthode exécutée à chaque tour
      */
     private void uneFrame(){
-        terrain.unTour();
+        environnement.unTour();
     }
 }
