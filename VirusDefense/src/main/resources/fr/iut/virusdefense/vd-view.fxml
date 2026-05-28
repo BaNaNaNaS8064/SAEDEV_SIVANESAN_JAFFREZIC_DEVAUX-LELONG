@@ -20,10 +20,17 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1168.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1168.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.Controller">
    <top>
-      <HBox prefHeight="55.0" prefWidth="1018.0" BorderPane.alignment="CENTER">
-         <children>
+      <HBox id="zoneHaut" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets/>
+         </BorderPane.margin>
+         <styleClass>
+            <String fx:value="bords"/>
+         </styleClass>
+
+         <HBox>
             <Label text="Vague : "/>
             <Label fx:id="labelVagueActuelle"/>
             <Label fx:id="labelVagueMax">
@@ -31,88 +38,80 @@
                   <String fx:value="labelMax"/>
                </styleClass>
             </Label>
+         </HBox>
 
-            <Label text="PV : " />
-            <Label fx:id="labelPvActuels"/>
-            <Label fx:id="labelPvMax">
-               <styleClass>
-                  <String fx:value="labelMax"/>
-               </styleClass>
-            </Label>
-            <ProgressBar fx:id="barreDeVie" />
-
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0">
-                     <graphic>
-                        <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" translateX="10.0">
-                     <graphic>
-                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" translateX="20.0">
-                     <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-               </children>
+         <VBox>
+            <HBox>
+               <Label text="PV : "/>
+               <Label fx:id="labelPvActuels"/>
+               <Label fx:id="labelPvMax">
+                  <styleClass>
+                     <String fx:value="labelMax"/>
+                  </styleClass>
+               </Label>
             </HBox>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <styleClass>
-            <String fx:value="bords" />
-            <String fx:value="zoneHaut" />
-         </styleClass>
+            <ProgressBar fx:id="barreDeVie"/>
+         </VBox>
+
+         <HBox alignment="CENTER">
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView preserveRatio="true"/>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView preserveRatio="true"/>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView preserveRatio="true"/>
+               </graphic>
+            </Button>
+         </HBox>
       </HBox>
    </top>
    <right>
       <VBox prefHeight="480" prefWidth="208.0" styleClass="bords" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets />
+            <Insets/>
          </BorderPane.margin>
-         <children>
-            <HBox prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #165c84;" translateY="-55.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="71.0" text="Cellules" textFill="WHITE" translateX="60.0" />
-               </children>
-            </HBox>
-            <HBox maxWidth="-Infinity" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #42a3c2;" translateX="40.0" translateY="-65.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="107.0" text="Solde : " textFill="WHITE" />
-                  <Label fx:id="labelSolde" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="114.0" textFill="WHITE" />
-               </children>
-            </HBox>
-            <VBox prefHeight="398.0" prefWidth="208.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="208.0">
-                     <children>
-                        <RadioButton id="RbSainple" mnemonicParsing="false" selected="true" textFill="WHITE">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="toggleGrpCellules" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/tuiles/cellules/Sainple.png" />
-                           </image></ImageView>
-                        <Label alignment="CENTER" prefHeight="16.0" prefWidth="106.0" text="Sainple" textFill="WHITE" />
-                        <Label fx:id="labelCoutSainple" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="50" textAlignment="RIGHT" textFill="WHITE" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children></VBox>
+         <HBox prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #165c84;" translateY="-55.0">
+            <Label alignment="CENTER" prefHeight="34.0" prefWidth="71.0" text="Cellules" textFill="WHITE"
+                   translateX="60.0"/>
+         </HBox>
+         <HBox maxWidth="-Infinity" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: #42a3c2;"
+               translateX="40.0" translateY="-65.0">
+            <Label alignment="CENTER" prefHeight="28.0" prefWidth="107.0" text="Solde : " textFill="WHITE"/>
+            <Label fx:id="labelSolde" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="114.0" textFill="WHITE"/>
+         </HBox>
+         <VBox prefHeight="398.0" prefWidth="208.0">
+            <children>
+               <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="208.0">
+                  <children>
+                     <RadioButton id="RbSainple" mnemonicParsing="false" selected="true" textFill="WHITE">
+                        <toggleGroup>
+                           <ToggleGroup fx:id="toggleGrpCellules"/>
+                        </toggleGroup>
+                     </RadioButton>
+                     <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@images/tuiles/cellules/Sainple.png"/>
+                        </image>
+                     </ImageView>
+                     <Label alignment="CENTER" prefHeight="16.0" prefWidth="106.0" text="Sainple" textFill="WHITE"/>
+                     <Label fx:id="labelCoutSainple" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="50"
+                            textAlignment="RIGHT" textFill="WHITE"/>
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
+      </VBox>
    </right>
    <center>
       <Pane fx:id="paneDessin" prefHeight="480.0" prefWidth="960.0" BorderPane.alignment="CENTER">
-         <children>
-            <TilePane fx:id="tuiles" />
-         </children>
+         <TilePane fx:id="tuiles"/>
       </Pane>
    </center>
 </BorderPane>

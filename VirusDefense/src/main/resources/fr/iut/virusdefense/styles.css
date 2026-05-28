@@ -8,7 +8,7 @@
     -fx-background-color: -bgcolor;
 }
 
-.zoneHaut{
+#zoneHaut, #zoneHaut *{
     -fx-alignment: center;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .progress-bar {
-    -fx-pref-height: 1000%;
+    -fx-pref-height: 500%;
 }
 
 .bar{
