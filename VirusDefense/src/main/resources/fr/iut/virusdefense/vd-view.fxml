@@ -31,7 +31,7 @@
                   <String fx:value="labelMax"/>
                </styleClass>
             </Label>
-            
+
             <Label text="PV : " />
             <Label fx:id="labelPvActuels"/>
             <Label fx:id="labelPvMax">
@@ -39,7 +39,7 @@
                   <String fx:value="labelMax"/>
                </styleClass>
             </Label>
-            <ProgressBar id="barrePV" fx:id="barreDeVie" prefHeight="33.0" prefWidth="157.0"/>
+            <ProgressBar fx:id="barreDeVie" />
 
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>

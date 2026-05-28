@@ -27,7 +27,11 @@
     -fx-font-size: 80%;
 }
 
-#barrePV .bar{
+.progress-bar {
+    -fx-pref-height: 1000%;
+}
+
+.bar{
     -fx-padding: 1px;
     -fx-background-insets: 0;
 }
