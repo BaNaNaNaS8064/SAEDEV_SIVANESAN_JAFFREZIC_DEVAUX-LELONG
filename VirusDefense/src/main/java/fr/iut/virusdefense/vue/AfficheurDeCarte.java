@@ -34,8 +34,9 @@ public class AfficheurDeCarte {
             }
     }
 
-    public void rechargerEmplacementCarte(int ligne, int colonne){
-        ((Tuile) carte.getChildren().get(ligne * environnement.getCarte().getLargeur() + colonne)).setImage(AssociationImage.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+    public void rechargerEmplacement(int ligne, int colonne){
+        Tuile emplacement = (Tuile) carte.getChildren().get(ligne * environnement.getCarte().getLargeur() + colonne);
+        emplacement.setImage(AssociationImage.imageDe(environnement.getCarte().getCode(ligne, colonne)));
     }
 
     /**

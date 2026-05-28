@@ -48,11 +48,11 @@ public class GestionnaireClickCarte {
         };
 
         environnement.ajouterSiConforme(c);
-        afficheurDeCarte.rechargerEmplacementCarte(ligne, colonne);
+        afficheurDeCarte.rechargerEmplacement(ligne, colonne);
     }
 
     public void retirer(int ligne, int colonne){
         environnement.retirerCelluleALEmplacement(ligne, colonne, false);
-        afficheurDeCarte.rechargerEmplacementCarte(ligne, colonne);
+        afficheurDeCarte.rechargerEmplacement(ligne, colonne);
     }
 }
