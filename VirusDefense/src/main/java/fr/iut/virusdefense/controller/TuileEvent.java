@@ -50,6 +50,30 @@ public class TuileEvent {
             case "RbSainple":
                 c = Sainple.creer(env, ligne, colonne);
                 break;
+            case "RbLasère":
+                c = Sainple.creer(env, ligne, colonne);
+                break;
+            case "RbBrouaïeuse":
+                c = Sainple.creer(env, ligne, colonne);
+                break;
+            case "RbMuleTyple":
+                c = Sainple.creer(env, ligne, colonne);
+                break;
+            case "RbSnaïpeur":
+                c = Sainple.creer(env, ligne, colonne);
+                break;
+            case "RbRizCoCher":
+                c = Sainple.creer(env, ligne, colonne);
+                break;
+            case "RbKonsantré":
+                c = Sainple.creer(env, ligne, colonne);
+                break;
+            case "RbPouazon":
+                c = Sainple.creer(env, ligne, colonne);
+                break;
+            case "RbBrulHure":
+                c = Sainple.creer(env, ligne, colonne);
+                break;
         }
 
         if (c != null && env.getJoueur().getPc() >= c.getCout()) {

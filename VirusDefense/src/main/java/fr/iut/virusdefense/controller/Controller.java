@@ -45,7 +45,16 @@ public class Controller implements Initializable {
     // droite
     @FXML public Label labelSolde;
     @FXML public ToggleGroup toggleGrpCellules;
+
     @FXML public Label labelCoutSainple;
+    @FXML public Label labelCoutLasère;
+    @FXML public Label labelCoutBrouaïeuse;
+    @FXML public Label labelCoutMuleTyple;
+    @FXML public Label labelCoutSnaïpeur;
+    @FXML public Label labelCoutRizCoCher;
+    @FXML public Label labelCoutKonsantré;
+    @FXML public Label labelCoutPouazon;
+    @FXML public Label labelCoutBrulHure;
 
     // vue
     private AfficheurDeCarte afficheurDeCarte;
@@ -73,6 +82,8 @@ public class Controller implements Initializable {
 
         environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GereurBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
         environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GereurEcranDeFin(paneDessin)));
+
+        labelCoutSainple.setText("" + Sainple.getCoutBase());
 
         initGameLoop();
         gameLoop.play();
