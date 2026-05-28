@@ -34,11 +34,9 @@ public class AfficheurDeCarte {
             }
     }
 
-    public void reloadEmplacementCarte(int ligne, int colonne){
+    public void rechargerEmplacementCarte(int ligne, int colonne){
         ((Tuile) carte.getChildren().get(ligne * environnement.getCarte().getLargeur() + colonne)).setImage(AssociationImage.imageDe(environnement.getCarte().getCode(ligne, colonne)));
     }
-
-
 
     /**
      * Fixe la taille de la carte dans la vue

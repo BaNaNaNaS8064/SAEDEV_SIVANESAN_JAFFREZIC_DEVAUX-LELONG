@@ -1,28 +1,20 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.controller.observateurs.*;
-import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.Cellule;
-import fr.iut.virusdefense.modele.cellules.Sainple;
 import fr.iut.virusdefense.vue.*;
-import fr.iut.virusdefense.vue.sprites.AssociationImage;
-import fr.iut.virusdefense.vue.sprites.Tuile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -56,7 +48,7 @@ public class Controller implements Initializable {
     private Environnement environnement;
 
     //controllerPackage
-    private TuileEvent tuileEvent;
+    private GereurClickCarte gereurClickCarte;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,8 +58,8 @@ public class Controller implements Initializable {
         environnement.getZones().addListener(new ObsListeZones(paneDessin));
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
-        tuileEvent = new TuileEvent(environnement, toggleGrpCellules, afficheurDeCarte, paneDessin);
-        tuileEvent.ajoutEventPane();
+        gereurClickCarte = new GereurClickCarte(environnement, toggleGrpCellules, afficheurDeCarte, paneDessin);
+        gereurClickCarte.ajoutEventPane();
 
         labelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
         labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());

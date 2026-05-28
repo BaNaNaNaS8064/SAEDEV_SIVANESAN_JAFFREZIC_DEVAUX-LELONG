@@ -101,24 +101,35 @@ public class Environnement {
         maladies.add(m);
     }
 
-    public void ajouterCellule(Cellule c){
-        carte.getCellules().add(c);
-        this.joueur.retirerPc(c.getCout());
-        deplacement.faireAlgo();
+    public void ajouterSiConforme(Cellule c){
+        if (c != null && joueur.getPc() >= c.getCout()) {
+            carte.getCellules().add(c);
+            joueur.retirerPc(c.getCout());
+            deplacement.faireAlgo();
+
+            if (maladieOuGenerateurBloque()) {
+                retirerCellule(c, true);
+                deplacement.faireAlgo();
+            }
+        }
     }
 
     public void retirerCellule(Cellule c, boolean rendrePC){
         carte.getCellules().remove(c);
-        if (rendrePC) this.joueur.ajouterPc(c.getCout());
+
+        if (rendrePC)
+            joueur.ajouterPc(c.getCout());
+
         deplacement.faireAlgo();
     }
 
-    public void retirerCelluleA(int ligne, int colonne, boolean rendrePC){
+    public void retirerCelluleALEmplacement(int ligne, int colonne, boolean rendrePC){
         int i=0;
-        boolean trouvé = false;
-        while (i < carte.getCellules().size() || !trouvé){
+        boolean trouve = false;
+
+        while (!trouve || i < carte.getCellules().size()){
             if ((int)carte.getCellules().get(i).getLigne() == ligne && (int)carte.getCellules().get(i).getColonne() == colonne){
-                trouvé = true;
+                trouve = true;
                 retirerCellule(carte.getCellules().get(i), rendrePC);
             }
             i++;
@@ -174,7 +185,7 @@ public class Environnement {
         }
     }
 
-    public boolean maladiesBloquées(){
+    public boolean maladiesBloquees(){
         int i = 0;
         while( i < getMaladies().size()){
             if(getDeplacement().estBloquee(getMaladies().get(i).position()))
@@ -184,9 +195,7 @@ public class Environnement {
         return false;
     }
 
-    public void vérifierPoserCellules(Cellule c){
-        if (maladiesBloquées() || getCarte().générateursBloqués()){
-            retirerCellule(c, true);
-        }
+    public boolean maladieOuGenerateurBloque(){
+        return maladiesBloquees() || getCarte().generateursBloques();
     }
 }

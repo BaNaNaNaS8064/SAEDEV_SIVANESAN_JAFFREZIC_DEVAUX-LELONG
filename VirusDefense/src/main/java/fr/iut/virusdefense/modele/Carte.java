@@ -122,7 +122,7 @@ public class Carte {
      * Vérifie si les générateurs ont un chemins disponible pour les maladies vers la fin.
      * @return Vrai si bloqué
      */
-    public boolean générateursBloqués(){
+    public boolean generateursBloques(){
         for (Generateur generateur : generateurs) {
             if(environnement.getDeplacement().estBloquee(generateur.position()))
                 return true;
