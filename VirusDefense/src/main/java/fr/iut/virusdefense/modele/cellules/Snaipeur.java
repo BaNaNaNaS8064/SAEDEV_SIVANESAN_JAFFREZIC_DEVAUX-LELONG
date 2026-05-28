@@ -2,6 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
+import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonBase;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Snaipeur extends Cellule{
@@ -16,7 +17,7 @@ public class Snaipeur extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayon(this, 100));
+        setAttaque(new AtkRayonBase(this, 100));
     }
 
     public static Snaipeur creer(Environnement env, int ligne, int colonne){

@@ -6,7 +6,7 @@ import fr.iut.virusdefense.modele.cellules.attaque.alteration.Ralentissement;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
-public class AtkRayon extends Attaque {
+public abstract class AtkRayon extends Attaque {
 
     public AtkRayon(Cellule cellule, int degats){
         super(cellule, degats);
@@ -19,7 +19,5 @@ public class AtkRayon extends Attaque {
         getCellule().getEnvironnement().ajouterRayon(new Rayon(getCellule(), m, getDegats(), 2, getAlterations()));
     }
 
-    public void attaqueCibles(){
-        getCellule().getReconnaissance().getCibles().forEach(this::attaque);
-    }
+    abstract public void attaqueCibles();
 }
