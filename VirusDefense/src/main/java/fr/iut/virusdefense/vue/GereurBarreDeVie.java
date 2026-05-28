@@ -15,7 +15,7 @@ public class GereurBarreDeVie {
         this.barre = barre;
         this.labelPvActuels = labelPvActuels;
         this.pvMax = pvMax;
-        labelPvMax.setText("" + pvMax);
+        labelPvMax.setText(" /" + pvMax);
 
         setPv(pvMax);
     }

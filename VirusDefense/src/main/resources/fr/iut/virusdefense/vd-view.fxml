@@ -27,14 +27,10 @@
             <Label text="Vague" />
             <Label fx:id="labelVagueActuelle"/>
             <Label id="labelVagues" text="0/20" fx:id="labelVagueMax" />
-            <Label text="PV" />
-            <Pane id="paneBarreVie">
-               <children>
-                  <ProgressBar id="barrePV" fx:id="barreDeVie" prefHeight="33.0" prefWidth="157.0" progress="0.4"/>
-                  <Label text="400" fx:id="labelPvActuels" translateX="20.0" translateY="17.0" />
-                  <Label id="labelBarrePVMax" fx:id="labelPvMax" text="1000" translateX="125.0" translateY="17.0" />
-               </children>
-            </Pane>
+            <Label text="PV : " />
+            <Label fx:id="labelPvActuels"/>
+            <Label id="labelBarrePVMax" fx:id="labelPvMax"/>
+            <ProgressBar id="barrePV" fx:id="barreDeVie" prefHeight="33.0" prefWidth="157.0" progress="0.4"/>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0">

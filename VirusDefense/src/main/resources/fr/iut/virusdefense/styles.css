@@ -12,11 +12,6 @@
     -fx-alignment: center;
 }
 
-#paneBarreVie{
-    -fx-fill-height: true;
-    -fx-alignment: center;
-}
-
 .button{
     -fx-background-color: -couleur1;
 }
@@ -33,7 +28,8 @@
 }
 
 #labelBarrePVMax{
-    -fx-opacity: 0.75;
+    -fx-opacity: 0.5;
+    -fx-font-size: 80%;
 }
 
 #barrePV .bar{
