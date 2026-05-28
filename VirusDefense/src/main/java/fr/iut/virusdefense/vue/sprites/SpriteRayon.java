@@ -17,8 +17,8 @@ public class SpriteRayon extends Line {
     public void creerSprite(){
         setStartX(r.getColonne()*32);
         setStartY(r.getLigne()*32);
-        setEndX(r.getColonne2()*32);
-        setEndY(r.getLigne2()*32);
+        setEndX(r.getCible().getColonne()*32);
+        setEndY(r.getCible().getLigne()*32);
 
         setStroke(Color.WHITE);
         setId(r.getId());

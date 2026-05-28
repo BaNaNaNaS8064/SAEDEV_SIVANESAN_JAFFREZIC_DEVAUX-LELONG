@@ -27,6 +27,10 @@ public abstract class Reconnaissance {
         return cibles;
     }
 
+    public double getPortee() {
+        return portee;
+    }
+
     /**
      * Methode qui permet a la cellule de voir si sa cible est toujours dans sa portée
      */

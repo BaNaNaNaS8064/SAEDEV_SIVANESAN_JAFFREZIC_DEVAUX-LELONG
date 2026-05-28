@@ -1,36 +1,48 @@
 package fr.iut.virusdefense.modele.entitesgeneriques;
 
-import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
+import fr.iut.virusdefense.modele.maladies.Maladie;
 
-public class Rayon extends Entite {
-    public double ligne2;
-    public double colonne2;
+import java.util.List;
+
+public class Rayon extends EntiteAtk {
+    private final Entite cible;
+
+    private final int degats;
 
     private int age;
     private final int ageMaximal;
 
-    public Rayon(Entite e1, Entite e2, int ageMaximal){
-        this(e1.getEnvironnement(), e1.getLigne(), e1.getColonne(), e2.getLigne(), e2.getColonne(), ageMaximal);
-    }
+    public Rayon(Entite e1, Entite e2, int degats, int ageMaximal, List<Alteration> alterations) {
+        super(e1.getEnvironnement(), e1.getLigne(), e1.getColonne(), alterations);
+        this.cible = e2;
 
-    public Rayon(Environnement environnement, double ligne, double colonne, double ligne2, double colonne2, int ageMaximal){
-        super(environnement, ligne, colonne);
-        this.ligne2 = ligne2;
-        this.colonne2 = colonne2;
         age = 0;
         this.ageMaximal = ageMaximal;
+
+        this.degats = degats;
+
+        donnerAlterations();
+        infligerDegats();
+    }
+
+    public Entite getCible(){
+        return cible;
     }
 
     public boolean aDepasseAgeMaximal(){
         return age > ageMaximal;
     }
 
-    public double getLigne2() {
-        return ligne2;
+    public void infligerDegats(){
+        if (cible instanceof Maladie)
+            ((Maladie) cible).prendreDegats(degats);
     }
 
-    public double getColonne2() {
-        return colonne2;
+    public void donnerAlterations(){
+        if (cible instanceof Maladie)
+            for (Alteration alteration : getAlterations())
+                ((Maladie) cible).ajouter(alteration.copieAlteration());
     }
 
     @Override

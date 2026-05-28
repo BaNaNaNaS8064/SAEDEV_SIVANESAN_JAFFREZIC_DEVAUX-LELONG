@@ -4,6 +4,7 @@ import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
+import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.utilitaires.StatutPartie;
 import javafx.beans.property.ObjectProperty;
@@ -32,6 +33,8 @@ public class Environnement {
 
     private final ObservableList<Rayon> rayons;
 
+    private final ObservableList<Zone> zones;
+
     private ObjectProperty<StatutPartie> statutPartieProperty;
 
     /**
@@ -40,6 +43,7 @@ public class Environnement {
     public Environnement() {
         maladies = FXCollections.observableArrayList();
         rayons = FXCollections.observableArrayList();
+        zones =  FXCollections.observableArrayList();
         carte = new Carte(this);
         carte.initGenerateurs();
         deplacement = new Deplacement(carte);
@@ -70,6 +74,10 @@ public class Environnement {
 
     public ObservableList<Rayon> getRayons() {
         return rayons;
+    }
+
+    public ObservableList<Zone> getZones() {
+        return zones;
     }
 
     public final StatutPartie getStatutPartie(){
@@ -122,6 +130,10 @@ public class Environnement {
         rayons.add(r);
     }
 
+    public void ajouterZone(Zone z){
+        zones.add(z);
+    }
+
     /**
      * La méthode qui s'éxécute à chaque tour
      */
@@ -132,8 +144,15 @@ public class Environnement {
                     if (rayons.get(i).aDepasseAgeMaximal())
                         rayons.remove(i);
 
+                for (int i = zones.size() - 1; i >= 0; i--)
+                    if (zones.get(i).aDepasseAgeMaximal())
+                        zones.remove(i);
+
                 for (Rayon r : rayons)
                     r.agir();
+
+                for (Zone z : zones)
+                    z.agir();
 
                 for (Cellule c : carte.getCellules())
                     c.agir();
