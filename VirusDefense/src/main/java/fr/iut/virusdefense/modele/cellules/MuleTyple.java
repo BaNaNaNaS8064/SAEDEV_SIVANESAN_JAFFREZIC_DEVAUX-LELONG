@@ -1,11 +1,8 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonBase;
+import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecPlusieurs;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecTous;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class MuleTyple extends Cellule{
 
@@ -20,7 +17,7 @@ public class MuleTyple extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonBase(this, 45));
+        setAttaque(new AtkRayonSimple(this, 45));
     }
 
     public static MuleTyple creer(Environnement env, int ligne, int colonne){

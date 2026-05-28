@@ -47,7 +47,7 @@ public class TuileEvent {
 
         switch (type){
             case "RbSainple":
-                c = Konsantre.creer(env, ligne, colonne);
+                c = Sainple.creer(env, ligne, colonne);
                 break;
 
             case "RbLasere":

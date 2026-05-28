@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonBase;
+import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Dot;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
@@ -18,7 +18,7 @@ public class Pouazon extends Cellule{
 
     @Override
     public void initAttaque(){
-        AtkRayon temp = new AtkRayonBase(this, 1);
+        AtkRayon temp = new AtkRayonSimple(this, 1);
         temp.ajouterAlteration(new Dot(999,1));
         setAttaque(temp);
     }

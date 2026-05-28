@@ -2,9 +2,9 @@ package fr.iut.virusdefense.modele.cellules.attaque;
 
 import fr.iut.virusdefense.modele.cellules.Cellule;
 
-public class AtkRayonBase extends AtkRayon {
+public class AtkRayonSimple extends AtkRayon {
 
-    public AtkRayonBase(Cellule cellule, int degats){
+    public AtkRayonSimple(Cellule cellule, int degats){
         super(cellule, degats);
     }
 
