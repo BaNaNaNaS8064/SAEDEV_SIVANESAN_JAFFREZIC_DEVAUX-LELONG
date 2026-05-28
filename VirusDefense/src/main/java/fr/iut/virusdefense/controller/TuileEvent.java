@@ -50,25 +50,25 @@ public class TuileEvent {
                 c = Sainple.creer(env, ligne, colonne);
                 break;
             case "RbLasère":
-                c = Sainple.creer(env, ligne, colonne);
+                c = Lasere.creer(env, ligne, colonne);
                 break;
             case "RbBrouaïeuse":
-                c = Sainple.creer(env, ligne, colonne);
+                c = Brouaileuse.creer(env, ligne, colonne);
                 break;
             case "RbMuleTyple":
-                c = Sainple.creer(env, ligne, colonne);
+                c = MuleTyple.creer(env, ligne, colonne);
                 break;
             case "RbSnaïpeur":
-                c = Sainple.creer(env, ligne, colonne);
+                c = Snaipeur.creer(env, ligne, colonne);
                 break;
             case "RbRizCoCher":
                 c = Sainple.creer(env, ligne, colonne);
                 break;
             case "RbKonsantré":
-                c = Sainple.creer(env, ligne, colonne);
+                c = Konsantre.creer(env, ligne, colonne);
                 break;
             case "RbPouazon":
-                c = Sainple.creer(env, ligne, colonne);
+                c = Pouazon.creer(env, ligne, colonne);
                 break;
             case "RbBrulHure":
                 c = Sainple.creer(env, ligne, colonne);

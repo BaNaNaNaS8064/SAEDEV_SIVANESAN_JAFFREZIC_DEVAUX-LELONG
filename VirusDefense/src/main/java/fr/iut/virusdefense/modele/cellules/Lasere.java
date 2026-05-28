@@ -5,9 +5,14 @@ import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Lasere extends Cellule{
+    private static int coutBase = 500;
+
+    public static int getCoutBase() {
+        return coutBase;
+    }
 
     private Lasere(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 1, 50);
+        super(env, ligne, colonne, 1, coutBase);
     }
 
     @Override
