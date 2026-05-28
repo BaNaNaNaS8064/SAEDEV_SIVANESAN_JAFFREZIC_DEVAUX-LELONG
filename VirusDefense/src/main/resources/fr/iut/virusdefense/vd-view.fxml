@@ -85,6 +85,18 @@
                         <Label fx:id="labelCoutSainple" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="50" textAlignment="RIGHT" textFill="WHITE" />
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton id="RbLasere" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/tuiles/Mur.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="16.0" prefWidth="106.0" text="Lasere" textFill="WHITE" />
+                        <Label fx:id="labelCoutLasere" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="50" textAlignment="RIGHT" textFill="WHITE" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children></VBox>

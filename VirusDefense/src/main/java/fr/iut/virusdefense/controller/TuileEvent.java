@@ -51,6 +51,10 @@ public class TuileEvent {
             case "RbSainple":
                 c = Sainple.creer(env, ligne, colonne);
                 break;
+
+            case "RbLasere":
+                c = Lasere.creer(env, ligne, colonne);
+                break;
         }
 
         if (c != null && env.getJoueur().getPc() >= c.getCout()) {

@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+
     private Timeline gameLoop;
 
     // centre
@@ -46,6 +47,7 @@ public class Controller implements Initializable {
     @FXML public Label labelSolde;
     @FXML public ToggleGroup toggleGrpCellules;
     @FXML public Label labelCoutSainple;
+    @FXML public Label labelCoutLasere;
 
     // vue
     private AfficheurDeCarte afficheurDeCarte;
