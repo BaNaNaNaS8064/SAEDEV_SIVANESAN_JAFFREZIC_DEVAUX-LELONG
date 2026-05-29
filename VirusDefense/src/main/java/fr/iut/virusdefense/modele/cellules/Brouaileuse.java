@@ -8,24 +8,24 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecTous;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Brouaileuse extends Cellule {
-    private static int coutBase = 50;
+    private static int coutBase = 150;
 
     public static int getCoutBase() {
         return coutBase;
     }
 
     private Brouaileuse(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 120, coutBase);
+        super(env, ligne, colonne, 200, coutBase);
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecTous(this, 3.0));
+        setReconnaissance(new RecTous(this, 1.5));
     }
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkZone(this, 50));
+        setAttaque(new AtkZone(this, 70));
     }
 
     public static Brouaileuse creer(Environnement env, int ligne, int colonne){
