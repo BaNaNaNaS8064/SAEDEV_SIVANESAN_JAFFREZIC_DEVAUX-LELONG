@@ -4,6 +4,7 @@ module fr.iut.virusdefense {
 
     requires org.controlsfx.controls;
     requires jdk.xml.dom;
+    requires java.desktop;
 
     opens fr.iut.virusdefense to javafx.fxml;
     exports fr.iut.virusdefense;

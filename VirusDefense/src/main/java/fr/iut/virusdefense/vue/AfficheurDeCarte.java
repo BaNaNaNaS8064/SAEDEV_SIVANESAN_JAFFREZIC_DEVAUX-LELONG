@@ -13,10 +13,12 @@ public class AfficheurDeCarte {
 
     private Environnement environnement;
     private TilePane carte;
+    private AfficheurDeChemin afficheurDeChemin;
 
-    public AfficheurDeCarte(Environnement environnement, TilePane carte) {
+    public AfficheurDeCarte(Environnement environnement, TilePane carte, AfficheurDeChemin afficheurDeChemin) {
         this.environnement = environnement;
         this.carte = carte;
+        this.afficheurDeChemin = afficheurDeChemin;
         resetCarte();
     }
 
@@ -32,11 +34,13 @@ public class AfficheurDeCarte {
             for (int j = 0; j < environnement.getCarte().getLargeur(); j++) {
                 carte.getChildren().add(new Tuile(AssociationImage.imageDe(environnement.getCarte().getCode(i, j)), i, j));
             }
+        afficheurDeChemin.dessinerChemin();
     }
 
     public void rechargerEmplacement(int ligne, int colonne){
         Tuile emplacement = (Tuile) carte.getChildren().get(ligne * environnement.getCarte().getLargeur() + colonne);
         emplacement.setImage(AssociationImage.imageDe(environnement.getCarte().getCode(ligne, colonne)));
+        afficheurDeChemin.dessinerChemin();
     }
 
     /**

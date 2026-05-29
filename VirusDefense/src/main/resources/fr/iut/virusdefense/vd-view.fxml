@@ -204,9 +204,10 @@
          </children></VBox>
    </right>
    <center>
-      <Pane fx:id="paneDessin" prefHeight="480.0" prefWidth="960.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="paneDessin" prefHeight="480.0" prefWidth="960.0" BorderPane.alignment="CENTER"  onMouseClicked="#clickTuiles">
          <children>
-            <TilePane fx:id="tuiles" onMouseClicked="#clickTuiles"/>
+            <TilePane fx:id="tuiles"/>
+            <Pane fx:id="paneLignes"/>
          </children>
       </Pane>
    </center>

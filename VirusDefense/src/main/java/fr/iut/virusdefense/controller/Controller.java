@@ -27,6 +27,7 @@ public class Controller implements Initializable {
 
     // centre
     @FXML public Pane paneDessin;
+    @FXML public Pane paneLignes;
     @FXML public TilePane tuiles;
 
     // haut -> vagues
@@ -57,6 +58,7 @@ public class Controller implements Initializable {
 
     // vue
     private AfficheurDeCarte afficheurDeCarte;
+    private AfficheurDeChemin afficheurDeChemin;
 
     // modèle
     private Environnement environnement;
@@ -68,7 +70,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
 
-        afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
+        afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles, new AfficheurDeChemin(environnement, paneLignes));
         gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte);
 
         initLabels();
