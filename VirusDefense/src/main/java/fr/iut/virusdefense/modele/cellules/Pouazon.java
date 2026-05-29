@@ -7,7 +7,7 @@ import fr.iut.virusdefense.modele.cellules.attaque.alteration.Dot;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Pouazon extends Cellule{
-    private static int coutBase = 50;
+    private static int coutBase = 130;
 
     public static int getCoutBase() {
         return coutBase;
@@ -24,8 +24,8 @@ public class Pouazon extends Cellule{
 
     @Override
     public void initAttaque(){
-        AtkRayon temp = new AtkRayonSimple(this, 1);
-        temp.ajouterAlteration(new Dot(999,1));
+        AtkRayon temp = new AtkRayonSimple(this, 10);
+        temp.ajouterAlteration(new Dot(15,1));
         setAttaque(temp);
     }
 
