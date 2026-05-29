@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
@@ -64,7 +65,7 @@ public class Controller implements Initializable {
         environnement = new Environnement();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles);
-        gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte, paneDessin);
+        gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte);
 
         initLabels();
         initObservateurs();
@@ -80,7 +81,7 @@ public class Controller implements Initializable {
         environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GestionnaireBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
         environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
     }
-    
+
     private void initLabels(){
         labelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
         labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
@@ -111,5 +112,10 @@ public class Controller implements Initializable {
      */
     private void uneFrame(){
         environnement.unTour();
+    }
+
+    @FXML
+    public void clickTuiles(MouseEvent mouseEvent) {
+        gestionnaireClickCarte.gererClick(mouseEvent);
     }
 }
