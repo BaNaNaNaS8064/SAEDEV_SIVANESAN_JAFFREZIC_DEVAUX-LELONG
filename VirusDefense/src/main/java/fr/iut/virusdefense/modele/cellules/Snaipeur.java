@@ -12,7 +12,7 @@ public class Snaipeur extends Cellule{
     }
 
     private Snaipeur(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 200, coutBase);
+        super(env, ligne, colonne, 250, coutBase);
     }
 
     @Override

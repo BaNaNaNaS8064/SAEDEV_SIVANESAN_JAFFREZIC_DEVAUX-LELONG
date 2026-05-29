@@ -25,7 +25,7 @@ public class Brouaileuse extends Cellule {
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkZone(this, 70));
+        setAttaque(new AtkZone(this, 90));
     }
 
     public static Brouaileuse creer(Environnement env, int ligne, int colonne){
