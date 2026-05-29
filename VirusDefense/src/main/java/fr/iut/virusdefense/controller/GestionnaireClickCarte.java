@@ -21,6 +21,7 @@ public class GestionnaireClickCarte {
         this.toggleGrpCellules = toggleGrpCellules;
         this.afficheurDeCarte = afficheurDeCarte;
         this.paneDessin = paneDessin;
+        ajoutEventPane();
     }
 
     public void ajoutEventPane(){
