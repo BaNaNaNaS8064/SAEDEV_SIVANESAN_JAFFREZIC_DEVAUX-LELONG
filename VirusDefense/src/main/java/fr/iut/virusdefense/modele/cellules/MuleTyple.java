@@ -6,14 +6,14 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecPlusieurs;
 
 public class MuleTyple extends Cellule{
 
-    private static int coutBase = 50;
+    private static int coutBase = 80;
 
     public static int getCoutBase() {
         return coutBase;
     }
 
     private MuleTyple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 60, coutBase);
+        super(env, ligne, colonne, 50, coutBase);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class MuleTyple extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 45));
+        setAttaque(new AtkRayonSimple(this, 30));
     }
 
     public static MuleTyple creer(Environnement env, int ligne, int colonne){
