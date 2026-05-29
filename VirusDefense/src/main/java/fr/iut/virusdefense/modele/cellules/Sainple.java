@@ -6,8 +6,14 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Sainple extends Cellule {
 
+    private static int coutBase = 50;
+
+    public static int getCoutBase() {
+        return coutBase;
+    }
+
     private Sainple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 60, 50);
+        super(env, ligne, colonne, 60, coutBase);
     }
 
     @Override

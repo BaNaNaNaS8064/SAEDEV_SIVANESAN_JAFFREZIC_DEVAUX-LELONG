@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.controller.observateurs.*;
+import fr.iut.virusdefense.modele.cellules.*;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.vue.*;
 import javafx.animation.KeyFrame;
@@ -38,8 +39,16 @@ public class Controller implements Initializable {
     // droite
     @FXML public Label labelSolde;
     @FXML public ToggleGroup toggleGrpCellules;
+
     @FXML public Label labelCoutSainple;
-    @FXML public Label labelCoutLasere;
+    @FXML public Label labelCoutLasère;
+    @FXML public Label labelCoutBrouaïeuse;
+    @FXML public Label labelCoutMuleTyple;
+    @FXML public Label labelCoutSnaïpeur;
+    @FXML public Label labelCoutRizCoCher;
+    @FXML public Label labelCoutKonsantré;
+    @FXML public Label labelCoutPouazon;
+    @FXML public Label labelCoutBrulHure;
 
     // vue
     private AfficheurDeCarte afficheurDeCarte;
@@ -67,6 +76,16 @@ public class Controller implements Initializable {
 
         environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GestionnaireBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
         environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
+
+        labelCoutSainple.setText("" + Sainple.getCoutBase());
+        labelCoutLasère.setText("" + Lasere.getCoutBase());
+        labelCoutBrouaïeuse.setText("" + Brouaileuse.getCoutBase());
+        labelCoutMuleTyple.setText("" + MuleTyple.getCoutBase());
+        labelCoutSnaïpeur.setText("" + Snaipeur.getCoutBase());
+        labelCoutRizCoCher.setText("?");
+        labelCoutKonsantré.setText("" + Konsantre.getCoutBase());
+        labelCoutPouazon.setText("" + Pouazon.getCoutBase());
+        labelCoutBrulHure.setText("?");
 
         initGameLoop();
         gameLoop.play();

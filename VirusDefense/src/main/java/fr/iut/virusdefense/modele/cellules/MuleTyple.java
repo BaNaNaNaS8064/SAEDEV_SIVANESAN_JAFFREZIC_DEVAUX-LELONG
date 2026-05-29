@@ -6,8 +6,14 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecPlusieurs;
 
 public class MuleTyple extends Cellule{
 
+    private static int coutBase = 50;
+
+    public static int getCoutBase() {
+        return coutBase;
+    }
+
     private MuleTyple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 60, 50);
+        super(env, ligne, colonne, 60, coutBase);
     }
 
     @Override
