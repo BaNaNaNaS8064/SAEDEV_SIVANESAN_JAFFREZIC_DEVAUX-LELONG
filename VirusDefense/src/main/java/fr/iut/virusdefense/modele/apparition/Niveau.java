@@ -97,7 +97,7 @@ public class Niveau {
             if (--delai <= 0)
                 passerProchaineVague();
 
-            if (getNumVague() > 0 && vagues.get(getNumVague()).estTerminee() && delai > delaiEntreVagues)
+            if (getNumVague() >= 0 && vagues.get(getNumVague()).estTerminee() && delai > delaiEntreVagues)
                 delai = delaiEntreVagues;
         }
     }
