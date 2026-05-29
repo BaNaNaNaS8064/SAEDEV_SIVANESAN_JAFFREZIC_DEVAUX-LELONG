@@ -36,9 +36,9 @@ public class Niveau {
     public Niveau(Environnement environnement){
         this.environnement = environnement;
         delaiEntreVagues = 600;
+        delai = Integer.MAX_VALUE;
         numVagueProperty = new SimpleIntegerProperty(-1);
         initVagues();
-        passerProchaineVague();
     }
 
     public final int getNumVague(){
@@ -97,7 +97,7 @@ public class Niveau {
             if (--delai <= 0)
                 passerProchaineVague();
 
-            if (vagues.get(getNumVague()).estTerminee() && delai > delaiEntreVagues)
+            if (getNumVague() > 0 && vagues.get(getNumVague()).estTerminee() && delai > delaiEntreVagues)
                 delai = delaiEntreVagues;
         }
     }

@@ -8,9 +8,11 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
@@ -35,6 +37,9 @@ public class Controller implements Initializable {
     @FXML public ProgressBar barreDeVie;
     @FXML public Label labelPvActuels;
     @FXML public Label labelPvMax;
+
+    //haut button
+    @FXML public Button startButton;
 
     // droite
     @FXML public Label labelSolde;
@@ -105,5 +110,12 @@ public class Controller implements Initializable {
      */
     private void uneFrame(){
         environnement.unTour();
+    }
+
+    @FXML
+    public void démarrerVague(MouseEvent mouseEvent) {
+        environnement.getNiveau().passerProchaineVague();
+        startButton.setDisable(true);
+        startButton.setVisible(false);
     }
 }
