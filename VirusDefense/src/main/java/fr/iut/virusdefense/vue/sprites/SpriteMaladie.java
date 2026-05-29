@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.vue.sprites;
 
+import fr.iut.virusdefense.controller.AssociationImage;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 import javafx.scene.image.Image;

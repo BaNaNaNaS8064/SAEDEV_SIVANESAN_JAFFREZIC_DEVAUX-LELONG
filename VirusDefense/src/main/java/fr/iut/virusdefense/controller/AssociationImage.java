@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.vue.sprites;
+package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;

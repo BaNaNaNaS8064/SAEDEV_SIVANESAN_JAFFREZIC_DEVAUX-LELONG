@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.vue.sprites.AssociationImage;
+import fr.iut.virusdefense.controller.AssociationImage;
 import fr.iut.virusdefense.vue.sprites.Tuile;
 import javafx.scene.layout.TilePane;
 
