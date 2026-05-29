@@ -7,7 +7,7 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 
 public class Konsantre extends Cellule{
-    private static int coutBase = 50;
+    private static int coutBase = 100;
 
     public static int getCoutBase() {
         return coutBase;
