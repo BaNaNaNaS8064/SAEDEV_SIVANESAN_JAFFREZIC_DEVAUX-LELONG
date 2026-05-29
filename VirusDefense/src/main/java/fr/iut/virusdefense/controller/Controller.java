@@ -41,12 +41,12 @@ public class Controller implements Initializable {
     @FXML public ToggleGroup toggleGrpCellules;
 
     @FXML public Label labelCoutSainple;
-    @FXML public Label labelCoutLasère;
-    @FXML public Label labelCoutBrouaïeuse;
+    @FXML public Label labelCoutLasere;
+    @FXML public Label labelCoutBrouaieuse;
     @FXML public Label labelCoutMuleTyple;
-    @FXML public Label labelCoutSnaïpeur;
+    @FXML public Label labelCoutSnaipeur;
     @FXML public Label labelCoutRizCoCher;
-    @FXML public Label labelCoutKonsantré;
+    @FXML public Label labelCoutKonsantre;
     @FXML public Label labelCoutPouazon;
     @FXML public Label labelCoutBrulHure;
 
@@ -78,12 +78,12 @@ public class Controller implements Initializable {
         environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
 
         labelCoutSainple.setText("" + Sainple.getCoutBase());
-        labelCoutLasère.setText("" + Lasere.getCoutBase());
-        labelCoutBrouaïeuse.setText("" + Brouaileuse.getCoutBase());
+        labelCoutLasere.setText("" + Lasere.getCoutBase());
+        labelCoutBrouaieuse.setText("" + Brouaileuse.getCoutBase());
         labelCoutMuleTyple.setText("" + MuleTyple.getCoutBase());
-        labelCoutSnaïpeur.setText("" + Snaipeur.getCoutBase());
+        labelCoutSnaipeur.setText("" + Snaipeur.getCoutBase());
         labelCoutRizCoCher.setText("?");
-        labelCoutKonsantré.setText("" + Konsantre.getCoutBase());
+        labelCoutKonsantre.setText("" + Konsantre.getCoutBase());
         labelCoutPouazon.setText("" + Pouazon.getCoutBase());
         labelCoutBrulHure.setText("?");
 
