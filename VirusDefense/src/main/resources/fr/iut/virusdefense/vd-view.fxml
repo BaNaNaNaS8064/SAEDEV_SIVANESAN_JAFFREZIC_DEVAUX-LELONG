@@ -148,8 +148,8 @@
                                                 <Image url="@images/tuiles/cellules/Sainple.png" />
                                              </image>
                                           </ImageView>
-                                          <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Riz co-cher" textFill="WHITE" />
-                                          <Label fx:id="labelCoutRizCoCher" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="50" textAlignment="RIGHT" textFill="WHITE" />
+                                          <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="COMING SOON" textFill="WHITE" />
+                                          <Label fx:id="labelCoutRizCoCher" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="?" textAlignment="RIGHT" textFill="WHITE" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
@@ -184,8 +184,8 @@
                                                 <Image url="@images/tuiles/cellules/Sainple.png" />
                                              </image>
                                           </ImageView>
-                                          <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Brul-hure" textFill="WHITE" />
-                                          <Label fx:id="labelCoutBrulHure" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="50" textAlignment="RIGHT" textFill="WHITE" />
+                                          <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="COMING SOON" textFill="WHITE" />
+                                          <Label fx:id="labelCoutBrulHure" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="?" textAlignment="RIGHT" textFill="WHITE" />
                                        </children>
                                     </HBox>
                                  </children>
