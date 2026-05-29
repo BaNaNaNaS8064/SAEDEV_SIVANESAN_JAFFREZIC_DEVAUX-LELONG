@@ -41,10 +41,10 @@ public class GestionnaireClickCarte {
         Cellule c = switch (boutonSelectionne) {
             case "RbSainple" -> Sainple.creer(environnement, ligne, colonne);
             case "RbLasere" -> Lasere.creer(environnement, ligne, colonne);
-            case "RbBrouaïeuse" -> Brouaileuse.creer(environnement, ligne, colonne);
+            case "RbBrouaieuse" -> Brouaileuse.creer(environnement, ligne, colonne);
             case "RbMuleTyple" -> MuleTyple.creer(environnement, ligne, colonne);
-            case "RbSnaïpeur" -> Snaipeur.creer(environnement, ligne, colonne);
-            case "RbKonsantré" -> Konsantre.creer(environnement, ligne, colonne);
+            case "RbSnaipeur" -> Snaipeur.creer(environnement, ligne, colonne);
+            case "RbKonsantre" -> Konsantre.creer(environnement, ligne, colonne);
             case "RbPouazon" -> Pouazon.creer(environnement, ligne, colonne);
             default -> null;
         };

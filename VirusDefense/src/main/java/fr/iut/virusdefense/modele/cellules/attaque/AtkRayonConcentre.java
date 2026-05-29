@@ -20,7 +20,7 @@ public class AtkRayonConcentre extends AtkRayon{
     public void reconnaissanceCible(){
         if (!getCellule().getReconnaissance().getCibles().isEmpty()) {
             if (getCellule().getReconnaissance().getCibles().get(0) == cible) {
-                if (delai%10==0)
+                if (delai%150==0)
                     setDegats(getDegats() + 1);
             } else {
                 setCible(getCellule().getReconnaissance().getCibles().get(0));
