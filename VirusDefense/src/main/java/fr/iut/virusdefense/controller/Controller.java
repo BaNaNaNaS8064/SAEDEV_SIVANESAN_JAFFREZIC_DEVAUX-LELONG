@@ -110,7 +110,7 @@ public class Controller implements Initializable {
     private void initGameLoop(){
         gameLoop = new Timeline();
         gameLoop.setCycleCount(Timeline.INDEFINITE);
-        gameLoop.getKeyFrames().add(new KeyFrame(Duration.seconds(0.017/3), e -> uneFrame()));
+        gameLoop.getKeyFrames().add(new KeyFrame(Duration.seconds(0.017), e -> uneFrame()));
     }
 
     /**
