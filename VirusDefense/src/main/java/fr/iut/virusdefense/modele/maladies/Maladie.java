@@ -14,7 +14,6 @@ public abstract class Maladie extends Entite {
     private int pv;
     private final double vitesse;
     private final int recompense;
-    private ArrayList<Alteration> alterations;
     private double coefVitesse;
 
     /**
@@ -31,7 +30,6 @@ public abstract class Maladie extends Entite {
         this.vitesse = vitesse;
         this.pv = pv;
         this.recompense = recompense;
-        alterations = new ArrayList<>();
         coefVitesse = 1;
     }
 
@@ -39,9 +37,6 @@ public abstract class Maladie extends Entite {
         return recompense;
     }
 
-    public ArrayList<Alteration> getAlterations() {
-        return alterations;
-    }
 
     public boolean estVivant(){
         return pv > 0;
@@ -51,8 +46,8 @@ public abstract class Maladie extends Entite {
         this.pv = 0;
     }
 
-    public void ajouter(Alteration alteration){
-        alterations.add(alteration);
+    public int getPv() {
+        return pv;
     }
 
     /**
@@ -71,7 +66,6 @@ public abstract class Maladie extends Entite {
     @Override
     public void agir(){
         if (estVivant()) {
-            faireJouerAlterations();
             bouger();
 
             if (aAtteintLObjectif()) {
@@ -102,15 +96,6 @@ public abstract class Maladie extends Entite {
         getEnvironnement().getJoueur().retirerPv(pv);
     }
 
-    public void faireJouerAlterations(){
-        coefVitesse =1;
-        for (int i = alterations.size() - 1; i >= 0; i--){
-            if (alterations.get(i).getDureeDeVie() <= 0)
-                alterations.remove(i);
-            else
-                alterations.get(i).agir(this);
-        }
-    }
 
     public void ralentir(double coefRalentissement){
         coefVitesse *= coefRalentissement;

@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele;
 import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -11,6 +12,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
 
 /**
  * Représente le terrain dans lequel il y aura les cellules et maladies
@@ -25,6 +28,8 @@ public class Environnement {
     private final Joueur joueur;
 
     private final Niveau niveau;
+
+    private final ArrayList<Alteration> alterations;
 
     /**
      * La liste des maladies dans le terrain
@@ -49,6 +54,7 @@ public class Environnement {
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
         niveau = new Niveau(this);
+        alterations = new ArrayList<>();
         statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
     }
 
@@ -70,6 +76,10 @@ public class Environnement {
 
     public Joueur getJoueur() {
         return joueur;
+    }
+
+    public ArrayList<Alteration> getAlterations() {
+        return alterations;
     }
 
     public ObservableList<Rayon> getRayons() {
@@ -159,6 +169,10 @@ public class Environnement {
                     if (zones.get(i).aDepasseAgeMaximal())
                         zones.remove(i);
 
+                for (int i = alterations.size() - 1; i >= 0; i--)
+                    if (alterations.get(i).finDeVie())
+                        alterations.remove(i);
+
                 for (Rayon r : rayons)
                     r.agir();
 
@@ -172,6 +186,11 @@ public class Environnement {
 
                 for (Generateur g : carte.getGenerateurs())
                     g.agir();
+
+                for (Alteration alt : alterations) {
+                    alt.agir();
+                    System.out.println(alt.getM().getPv());
+                }
 
                 for (int i = maladies.size() - 1; i >= 0; i--)
                     maladies.get(i).agir();

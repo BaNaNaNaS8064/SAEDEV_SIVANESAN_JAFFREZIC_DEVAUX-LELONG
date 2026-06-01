@@ -2,6 +2,7 @@ package fr.iut.virusdefense.modele.entitesgeneriques;
 
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
+import fr.iut.virusdefense.modele.maladies.Tumeur;
 
 import java.util.List;
 
@@ -40,9 +41,11 @@ public class Rayon extends EntiteAtk {
     }
 
     public void donnerAlterations(){
-        if (cible instanceof Maladie)
-            for (Alteration alteration : getAlterations())
-                ((Maladie) cible).ajouter(alteration.copieAlteration());
+        if (cible instanceof Maladie && !(cible instanceof Tumeur))
+            for (Alteration alt : getAlterations()){
+                alt.setMaladie((Maladie) cible);
+                getEnvironnement().getAlterations().add(alt);
+            }
     }
 
     @Override
