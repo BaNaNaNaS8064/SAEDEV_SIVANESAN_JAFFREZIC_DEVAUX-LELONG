@@ -5,19 +5,21 @@ import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
+import java.util.ArrayList;
+
 public class Generateur extends Entite {
 
     private int delai;
-    private ListeApparition liste;
+    private ArrayList<ListeApparition> listes;
 
     public Generateur(Environnement environnement, int ligne, int colonne){
         super(environnement, ligne, colonne);
         delai = 0;
-        liste = new ListeApparition();
+        listes = new ArrayList<>();
     }
 
-    public void setListe(ListeApparition liste) {
-        this.liste = liste;
+    public void ajouter(ListeApparition liste) {
+        listes.add(liste);
     }
 
     @Override
@@ -25,10 +27,18 @@ public class Generateur extends Entite {
         delai--;
 
         if (delai<=0){
-            if (liste.resteProchain()) {
-                ajouterMaladie(liste.prochaineMaladie());
-                delai = liste.prochainDelai();
-                liste.avancer();
+            ListeApparition liste;
+
+            for (int i = listes.size() - 1; i >= 0; i--) {
+                liste = listes.get(i);
+                if (liste.resteProchain()) {
+                    ajouterMaladie(liste.prochaineMaladie());
+                    delai = liste.prochainDelai();
+                    liste.avancer();
+                }
+                else {
+                    listes.remove(i);
+                }
             }
         }
     }

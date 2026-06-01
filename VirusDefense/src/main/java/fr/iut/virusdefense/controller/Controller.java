@@ -40,7 +40,7 @@ public class Controller implements Initializable {
     @FXML public Label labelPvMax;
 
     //haut button
-    @FXML public Button startButton;
+    @FXML public Button boutonVague;
 
     // droite
     @FXML public Label labelSolde;
@@ -128,7 +128,12 @@ public class Controller implements Initializable {
     @FXML
     public void démarrerVague(MouseEvent mouseEvent) {
         environnement.getNiveau().passerProchaineVague();
-        startButton.setDisable(true);
-        startButton.setVisible(false);
+        boutonVague.setText("Passer");
+        boutonVague.setOnMousePressed(this::skipFrame);
+    }
+
+    public void skipFrame(MouseEvent mouseEvent){
+        if(environnement.getNiveau().resteVague())
+            environnement.getNiveau().passerProchaineVague();
     }
 }
