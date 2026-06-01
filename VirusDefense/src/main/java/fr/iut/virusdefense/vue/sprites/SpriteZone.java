@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class SpriteZone extends Circle {
+public class SpriteZone extends Circle implements Sprite{
     private final Zone c;
 
     public SpriteZone(Zone c){
@@ -13,6 +13,7 @@ public class SpriteZone extends Circle {
         creerSprite();
     }
 
+    @Override
     public void creerSprite(){
         setCenterX(c.getColonne()*32);
         setCenterY(c.getLigne()*32);

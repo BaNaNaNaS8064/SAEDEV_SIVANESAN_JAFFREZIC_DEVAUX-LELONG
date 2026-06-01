@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public class SpriteRayon extends Line {
+public class SpriteRayon extends Line implements Sprite{
 
     private final Rayon r;
 
@@ -14,6 +14,7 @@ public class SpriteRayon extends Line {
         creerSprite();
     }
 
+    @Override
     public void creerSprite(){
         setStartX(r.getColonne()*32);
         setStartY(r.getLigne()*32);

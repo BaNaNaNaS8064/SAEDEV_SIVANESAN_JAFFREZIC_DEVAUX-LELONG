@@ -6,7 +6,7 @@ import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class SpriteMaladie extends ImageView{
+public class SpriteMaladie extends ImageView implements Sprite{
 
     private final Maladie m;
 
@@ -16,7 +16,8 @@ public class SpriteMaladie extends ImageView{
         creerSprite();
     }
 
-    private void creerSprite(){
+    @Override
+    public void creerSprite(){
         setImage(new Image(AssociationImage.imageDe(CodeMaladie.codeDe(m))));
 
         setRotate(Math.random() * 359);
