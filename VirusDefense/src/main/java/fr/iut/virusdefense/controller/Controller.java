@@ -129,10 +129,10 @@ public class Controller implements Initializable {
     public void démarrerVague(MouseEvent mouseEvent) {
         environnement.getNiveau().passerProchaineVague();
         boutonVague.setText("Passer");
-        boutonVague.setOnMousePressed(this::skipFrame);
+        boutonVague.setOnMousePressed(this::passerVague);
     }
 
-    public void skipFrame(MouseEvent mouseEvent){
+    public void passerVague(MouseEvent mouseEvent){
         if(environnement.getNiveau().resteVague())
             environnement.getNiveau().passerProchaineVague();
     }
