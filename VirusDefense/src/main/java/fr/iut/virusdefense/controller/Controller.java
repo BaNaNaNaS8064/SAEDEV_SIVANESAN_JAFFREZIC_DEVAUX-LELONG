@@ -133,6 +133,7 @@ public class Controller implements Initializable {
     }
 
     public void skipFrame(MouseEvent mouseEvent){
-        environnement.getNiveau().passerProchaineVague();
+        if(environnement.getNiveau().resteVague())
+            environnement.getNiveau().passerProchaineVague();
     }
 }
