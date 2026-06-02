@@ -26,6 +26,14 @@ public class GestionnaireClickCarte {
         int ligne = (int)(mouseEvent.getY()/32);
         int colonne = (int)(mouseEvent.getX()/32);
 
+        if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && environnement.getCarte().estCellule(ligne, colonne)){
+            for (Cellule c : environnement.getCarte().getCellules()){
+                if (c.getLigne() == ligne+0.5 && c.getColonne() == colonne+0.5){
+                    c.niveauSuperieur();
+                }
+            }
+        }
+
         if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && environnement.getCarte().emplacementVide(ligne, colonne))
             poser(ligne, colonne);
 

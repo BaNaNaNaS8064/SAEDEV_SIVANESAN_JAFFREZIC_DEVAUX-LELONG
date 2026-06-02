@@ -2,6 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 
@@ -46,6 +47,21 @@ public abstract class Cellule extends Entite {
         return cout;
     }
 
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public void niveauSuperieur(){
+        niveau++;
+        this.amelioration();
+    }
+
+    public void amelioration() {
+        if (getNiveau() == 2){
+            setReconnaissance(new RecUnique(this, 12.0));
+        }
+    }
+
     @Override
     public void agir(){
         if (--delai <= 0){
@@ -56,8 +72,9 @@ public abstract class Cellule extends Entite {
                 attaque.attaqueCibles();
                 delai = frequenceAttaque;
             }
-            else
+            else {
                 delai = frequenceAttaque / 10;
+            }
         }
     }
 }
