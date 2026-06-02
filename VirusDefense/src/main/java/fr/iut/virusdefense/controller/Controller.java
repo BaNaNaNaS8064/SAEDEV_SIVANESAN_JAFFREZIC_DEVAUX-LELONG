@@ -23,12 +23,14 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
 
+
     private Timeline gameLoop;
 
     // centre
     @FXML public Pane paneDessin;
     @FXML public Pane paneLignes;
     @FXML public TilePane tuiles;
+    @FXML public Pane paneAmelioration;
 
     // haut -> vagues
     @FXML public Label labelVagueActuelle;
@@ -71,7 +73,7 @@ public class Controller implements Initializable {
         environnement = new Environnement();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles, new AfficheurDeChemin(environnement, paneLignes));
-        gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte);
+        gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte , paneDessin);
 
         initLabels();
         initObservateurs();
@@ -136,4 +138,5 @@ public class Controller implements Initializable {
         if(environnement.getNiveau().resteVague())
             environnement.getNiveau().passerProchaineVague();
     }
+
 }
