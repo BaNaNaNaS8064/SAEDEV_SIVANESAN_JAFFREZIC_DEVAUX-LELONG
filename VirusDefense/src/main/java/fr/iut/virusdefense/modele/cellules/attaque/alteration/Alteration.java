@@ -4,20 +4,27 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public abstract class Alteration {
     private int dureeDeVie;
+    private Maladie m;
 
     public Alteration(int dureeDeVie){
         this.dureeDeVie = dureeDeVie;
     }
 
-    public int getDureeDeVie() {
-        return dureeDeVie;
+    public Maladie getM() {
+        return m;
     }
 
-    public abstract Alteration copieAlteration();
+    public void setMaladie(Maladie m) {
+        this.m = m;
+    }
 
-    public void agir(Maladie m){
+    public boolean finDeVie(){
+        return (0 >= dureeDeVie || !m.estVivant());
+    }
+
+    public void agir(){
         dureeDeVie--;
-        affecter(m);
+        affecter(this.m);
     }
 
     public abstract void affecter(Maladie m);
