@@ -11,11 +11,6 @@ public class Dot extends Alteration {
     }
 
     @Override
-    public Alteration copieAlteration() {
-        return new Dot(getDureeDeVie(), degats);
-    }
-
-    @Override
     public void affecter(Maladie m){
         m.prendreDegats(degats);
     }

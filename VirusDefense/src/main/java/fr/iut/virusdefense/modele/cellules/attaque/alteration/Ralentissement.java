@@ -11,11 +11,6 @@ public class Ralentissement extends Alteration{
     }
 
     @Override
-    public Alteration copieAlteration() {
-        return new Ralentissement(getDureeDeVie(), coefVitesse);
-    }
-
-    @Override
     public void affecter(Maladie m) {
         m.ralentir(coefVitesse);
     }

@@ -189,7 +189,6 @@ public class Environnement {
 
                 for (Alteration alt : alterations) {
                     alt.agir();
-                    System.out.println(alt.getM().getPv());
                 }
 
                 for (int i = maladies.size() - 1; i >= 0; i--)
