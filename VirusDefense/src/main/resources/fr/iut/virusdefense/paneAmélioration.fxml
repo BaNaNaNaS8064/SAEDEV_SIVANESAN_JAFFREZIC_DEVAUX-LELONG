@@ -13,7 +13,7 @@
             <HBox prefHeight="32.0" prefWidth="200.0">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="139.0" text="Nom" textAlignment="CENTER" fx:id="labelNomCellule"/>
-                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="34.0" prefWidth="29.0" text="X" fx:id="boutonQuitter" onMouseClicked="#click"/>
+                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="34.0" prefWidth="29.0" text="X" fx:id="boutonQuitter" onMouseClicked="#clickBoutonQuitter"/>
                </children>
             </HBox>
             <VBox prefHeight="144.0" prefWidth="160.0">
@@ -51,7 +51,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" text="Supprimer" fx:id="boutonSupprimer">
+                  <Button mnemonicParsing="false" text="Supprimer" fx:id="boutonSupprimer" onMouseClicked="#clickBoutonSupprimer">
                      <font>
                         <Font size="10.0" />
                      </font>

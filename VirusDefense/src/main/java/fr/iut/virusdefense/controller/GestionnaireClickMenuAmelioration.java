@@ -16,6 +16,7 @@ public class GestionnaireClickMenuAmelioration {
 
     private AfficheurDuMenuAmelioration afficheurDuMenuAmelioration;
 
+
     public GestionnaireClickMenuAmelioration(Pane pane, Button quitter, Button amelioration, Button supprimer){
         this.menu = pane;
         this.quitter = quitter;

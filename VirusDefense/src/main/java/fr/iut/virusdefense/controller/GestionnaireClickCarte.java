@@ -37,7 +37,7 @@ public class GestionnaireClickCarte {
             poser(ligne, colonne);
 
         else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && environnement.getCarte().estCellule(ligne, colonne)){
-            creationMenu(colonne,ligne);
+            creationMenu(ligne,colonne);
         }
 
         afficheurDeCarte.rechargerEmplacement(ligne, colonne);
@@ -60,16 +60,19 @@ public class GestionnaireClickCarte {
         environnement.ajouterSiConforme(c);
     }
 
-    public void creationMenu(int colonne, int ligne){
+    public void retirer(int ligne, int colonne){
+        environnement.retirerCelluleALEmplacement(ligne,colonne,false);
+    }
+
+    public void creationMenu(int ligne, int colonne){
         for (Cellule c : environnement.getCarte().getCellules()){
             if ((int) c.getLigne() == ligne && (int) c.getColonne() == colonne) {
-                menuAmelioration(colonne, ligne,paneDessin);
+                menuAmelioration(ligne, colonne);
             }
         }
     }
 
-    public void menuAmelioration(int colonne, int ligne,Pane paneDessin ){
-        menuAmelioration = new AfficheurDuMenuAmelioration(colonne , ligne , paneDessin);
-        menuAmelioration.creeMenuAmelioration();
+    public void menuAmelioration(int ligne, int colonne ){
+        menuAmelioration = new AfficheurDuMenuAmelioration(ligne , colonne , paneDessin,environnement,afficheurDeCarte);
     }
 }

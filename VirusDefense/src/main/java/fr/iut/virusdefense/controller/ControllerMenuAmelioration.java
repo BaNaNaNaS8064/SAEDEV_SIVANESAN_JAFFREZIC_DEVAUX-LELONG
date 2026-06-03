@@ -36,7 +36,17 @@ public class ControllerMenuAmelioration implements Initializable {
         this.afficheurAmelioration = afficheurDuMenuAmelioration;
     }
 
-    public void click(MouseEvent mouseEvent){
+    public void clickBoutonQuitter(MouseEvent mouseEvent){
+        fermetureMenu();
+    }
+
+    public void clickBoutonSupprimer(){
+        afficheurAmelioration.getEnvironnement().retirerCelluleALEmplacement(afficheurAmelioration.getLigne(), afficheurAmelioration.getColonne(), false);
+        afficheurAmelioration.getAfficheurDeCarte().rechargerEmplacement(afficheurAmelioration.getLigne(), afficheurAmelioration.getColonne());
+        fermetureMenu();
+    }
+
+    public void fermetureMenu(){
         afficheurAmelioration.retirerMenu();
         gestionnaireAmelioration.setAfficheurDuMenuAmelioration(afficheurAmelioration);
     }
