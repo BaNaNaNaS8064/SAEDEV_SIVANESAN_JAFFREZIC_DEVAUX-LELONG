@@ -18,11 +18,11 @@ public class LecteurDeCarte {
             fichier = new File(Main.class.getResource("cartes/carte.txt").toURI());
 
             constructeurDeCarte = new ConstructeurDeCarte(environnement);
-        }
-        catch (Exception e) {
+
+            lire();
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        lire();
     }
 
     private int[] prochaineLigne(){
@@ -35,36 +35,30 @@ public class LecteurDeCarte {
         return ligneInt;
     }
 
-    private void lire() {
-        try{
-            scanner = new Scanner(fichier);
-            int[] ligne;
-            int hauteur, largeur;
-            int nbGenerateurs;
+    private void lire() throws FileNotFoundException {
+        scanner = new Scanner(fichier);
+        int[] ligne;
+        int hauteur, largeur;
+        int nbGenerateurs;
 
+        ligne = prochaineLigne();
+        hauteur = ligne[0];
+        largeur = ligne[1];
+        constructeurDeCarte.setTaille(hauteur, largeur);
+
+        constructeurDeCarte.setObjectif(prochaineLigne());
+
+        nbGenerateurs = Integer.parseInt(scanner.nextLine());
+        for (int i=0; i<nbGenerateurs; i++)
+            constructeurDeCarte.ajouterGenerateur(prochaineLigne());
+
+        for (int indLigne = 0; indLigne < hauteur; indLigne++){
             ligne = prochaineLigne();
-            hauteur = ligne[0];
-            largeur = ligne[1];
-            constructeurDeCarte.setTaille(hauteur, largeur);
 
-            constructeurDeCarte.setObjectif(prochaineLigne());
+            for (int indColonne = 0; indColonne < largeur; indColonne++)
+                constructeurDeCarte.changerValeur(indLigne, indColonne, ligne[indColonne] == 1);
 
-            nbGenerateurs = Integer.parseInt(scanner.nextLine());
-            for (int i=0; i<nbGenerateurs; i++)
-                constructeurDeCarte.ajouterGenerateur(prochaineLigne());
-
-            for (int indLigne = 0; indLigne < hauteur; indLigne++){
-                ligne = prochaineLigne();
-
-                for (int indColonne = 0; indColonne < largeur; indColonne++)
-                    constructeurDeCarte.changerValeur(indLigne, indColonne, ligne[indColonne] == 1);
-
-            }
-
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
         }
-
     }
 
     public Carte creer(){
