@@ -84,23 +84,23 @@ public abstract class Maladie extends Entite {
      */
     public void bouger(){
         List<Integer> destination = getEnvironnement().getDeplacement().prochaineCase(position());
+        if (destination != null) {
+            double distLigne = Math.abs(destination.get(0) + 0.5 - getLigne());
+            double distColonne = Math.abs(destination.get(1) + 0.5 - getColonne());
 
-        double distLigne = Math.abs(destination.get(0) + 0.5 - getLigne());
-        double distColonne = Math.abs(destination.get(1) + 0.5 - getColonne());
+            double distanceMax = Math.max(distLigne, distColonne);
 
-        double distanceMax = Math.max(distLigne, distColonne);
+            int directionLigne = Double.compare(destination.get(0) + 0.5, getLigne());
+            int directionColonne = Double.compare(destination.get(1) + 0.5, getColonne());
 
-        int directionLigne = Double.compare(destination.get(0) + 0.5, getLigne());
-        int directionColonne = Double.compare(destination.get(1) + 0.5, getColonne());
-
-        setLigne(getLigne() + vitesse * coefVitesse * directionLigne * distLigne / distanceMax);
-        setColonne(getColonne() + vitesse * coefVitesse * directionColonne * distColonne / distanceMax);
+            setLigne(getLigne() + vitesse * coefVitesse * directionLigne * distLigne / distanceMax);
+            setColonne(getColonne() + vitesse * coefVitesse * directionColonne * distColonne / distanceMax);
+        }
     }
 
     public void infligerDegatsAuJoueur(){
         getEnvironnement().getJoueur().retirerPv(pv);
     }
-
 
     public void ralentir(double coefRalentissement){
         coefVitesse *= coefRalentissement;

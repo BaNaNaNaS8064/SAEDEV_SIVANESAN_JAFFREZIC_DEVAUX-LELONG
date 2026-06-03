@@ -15,7 +15,7 @@ public class VirusComposé extends Maladie{
 
     @Override
     public void capaciteALaMort() {
-        if(stade<3)
+        if(stade<3 && !aAtteintLObjectif())
             for (int i=0; i<2; i++)
                 getEnvironnement().getMaladies().add(new VirusComposé(getEnvironnement(), getLigne(), getColonne(), stade+1));
     }

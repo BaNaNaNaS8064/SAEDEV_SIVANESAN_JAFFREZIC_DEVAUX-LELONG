@@ -196,6 +196,8 @@ public class Environnement {
                     maladies.get(i).agir();
                     if (!maladies.get(i).estVivant()) {
                         maladies.get(i).capaciteALaMort();
+                        if (!maladies.get(i).aAtteintLObjectif())
+                            joueur.ajouterPc(maladies.get(i).getRecompense());
                         maladies.remove(i);
                     }
                 }
