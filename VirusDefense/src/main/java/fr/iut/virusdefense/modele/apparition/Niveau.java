@@ -60,7 +60,7 @@ public class Niveau {
      */
     public void initVagues(){
         vagues = new ArrayList<>();
-        for (int indVague=0; indVague<100; indVague++){
+        for (int indVague=0; indVague<25; indVague++){
             vagues.add(new Vague());
             for (int indListeA=0; indListeA<environnement.getCarte().getGenerateurs().size(); indListeA++) {
                 vagues.get(indVague).ajouter(new ListeApparition());
@@ -78,7 +78,6 @@ public class Niveau {
      */
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
-        environnement.getJoueur().ajouterPc(50);
         for (int i=0; i<environnement.getCarte().getGenerateurs().size(); i++)
             environnement.getCarte().getGenerateurs().get(i).setListe(vagues.get(getNumVague()).getListeApparitions().get(i));
          delai = Integer.MAX_VALUE;

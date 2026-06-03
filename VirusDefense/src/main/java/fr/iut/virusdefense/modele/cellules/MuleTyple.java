@@ -6,7 +6,7 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecPlusieurs;
 
 public class MuleTyple extends Cellule{
 
-    private static int coutBase = 80;
+    private static int coutBase = 600;
 
     public static int getCoutBase() {
         return coutBase;

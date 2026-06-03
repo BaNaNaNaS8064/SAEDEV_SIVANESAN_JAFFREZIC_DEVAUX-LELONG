@@ -4,6 +4,6 @@ import fr.iut.virusdefense.modele.Environnement;
 
 public class PetitChampignon extends Maladie{
     public PetitChampignon(Environnement environnement, int ligne, int colonne){
-        super(environnement, ligne, colonne, 60, 0.02, 5);
+        super(environnement, ligne, colonne, 105, 0.02, 5);
     }
 }

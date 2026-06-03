@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.Environnement;
 public class GrandChampignon extends Maladie{
     private int timerSpawnPetitChamp;
     public GrandChampignon(Environnement environnement, int ligne, int colonne){
-        super(environnement, ligne, colonne, 400, 0.009, 100);
+        super(environnement, ligne, colonne, 1000, 0.009, 100);
         timerSpawnPetitChamp=600;
     }
 

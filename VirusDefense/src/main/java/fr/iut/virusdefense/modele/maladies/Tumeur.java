@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.Environnement;
 
 public class Tumeur extends Maladie{
     public Tumeur(Environnement environnement, int ligne, int colonne){
-        super(environnement, ligne, colonne, 5000, 0.005, 500);
+        super(environnement, ligne, colonne, 10000, 0.005, 500);
     }
 
     @Override

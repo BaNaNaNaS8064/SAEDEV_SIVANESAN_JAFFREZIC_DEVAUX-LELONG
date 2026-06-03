@@ -9,7 +9,7 @@ public class VirusComposé extends Maladie{
     }
 
     private VirusComposé(Environnement environnement, int ligne, int colonne, int stade){
-        super(environnement, ligne, colonne, 80/(int)(Math.pow(2,(stade-1))), 0.015, 24/(int)(Math.pow(2,(stade-1))));
+        super(environnement, ligne, colonne, 120/(int)(Math.pow(2,(stade-1))), 0.015, 24/(int)(Math.pow(2,(stade-1))));
         this.stade = stade;
     }
 

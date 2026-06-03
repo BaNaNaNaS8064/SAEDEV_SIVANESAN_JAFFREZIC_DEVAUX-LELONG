@@ -7,7 +7,7 @@ import fr.iut.virusdefense.modele.cellules.attaque.alteration.Dot;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Pouazon extends Cellule{
-    private static int coutBase = 130;
+    private static int coutBase = 850;
 
     public static int getCoutBase() {
         return coutBase;
