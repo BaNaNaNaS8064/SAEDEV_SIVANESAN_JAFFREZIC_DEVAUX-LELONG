@@ -192,8 +192,13 @@ public class Environnement {
                     alt.agir();
                 }
 
-                for (int i = maladies.size() - 1; i >= 0; i--)
+                for (int i = maladies.size() - 1; i >= 0; i--) {
                     maladies.get(i).agir();
+                    if (!maladies.get(i).estVivant()) {
+                        maladies.get(i).capaciteALaMort();
+                        maladies.remove(i);
+                    }
+                }
             }
             else{
                 if(joueur.getPv()>0)

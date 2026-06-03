@@ -26,8 +26,8 @@ public abstract class Maladie extends Entite {
      * @param pv ses points de vie initiaux
      * @param vitesse sa vitesse de déplacement
      */
-    public Maladie(Environnement environnement, int ligne, int colonne, int pv, double vitesse, int recompense){
-        super(environnement, ligne, colonne);
+    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense){
+        super(environnement, (int) ligne, (int) colonne);
 
         this.vitesse = vitesse;
         this.pv = pv;
@@ -66,20 +66,15 @@ public abstract class Maladie extends Entite {
     }
 
     @Override
-    public void agir(){
+    public final void agir(){
         if (estVivant()) {
+            capaciteActive();
             bouger();
 
             if (aAtteintLObjectif()) {
                 infligerDegatsAuJoueur();
                 mourir();
             }
-        }
-
-        if (!estVivant()){
-            if(!aAtteintLObjectif())
-                getEnvironnement().getJoueur().ajouterPc(getRecompense());
-            getEnvironnement().getMaladies().remove(this);
         }
     }
 
@@ -110,4 +105,8 @@ public abstract class Maladie extends Entite {
     public void ralentir(double coefRalentissement){
         coefVitesse *= coefRalentissement;
     }
+
+    public void capaciteActive(){}
+
+    public void capaciteALaMort(){}
 }
