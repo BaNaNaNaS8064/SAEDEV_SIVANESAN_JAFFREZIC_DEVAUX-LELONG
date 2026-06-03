@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Dot;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Pouazon extends Cellule{
     private static int coutBase = 130;
@@ -19,7 +19,7 @@ public class Pouazon extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecUnique(this, 3.0));
+        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0, 1));
     }
 
     @Override

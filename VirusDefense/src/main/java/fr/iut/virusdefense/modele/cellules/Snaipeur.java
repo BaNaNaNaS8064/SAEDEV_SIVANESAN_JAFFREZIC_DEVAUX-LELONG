@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Snaipeur extends Cellule{
     private static int coutBase = 90;
@@ -17,7 +17,7 @@ public class Snaipeur extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecUnique(this, 12.0));
+        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 12.0, 1));
     }
 
     @Override

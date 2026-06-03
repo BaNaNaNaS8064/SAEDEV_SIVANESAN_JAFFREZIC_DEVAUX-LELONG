@@ -1,70 +1,76 @@
 package fr.iut.virusdefense.modele.cellules.reconnaissance;
 
-import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Reconnaissance {
-    private Cellule cellule;
-    private double portee;
+    private final List<Maladie> maladies;
+    private final double ligne, colonne;
+
+    private final double portee;
 
     private int nombreCiblesMax;
-    ArrayList<Maladie> cibles;
+    private final ArrayList<Maladie> cibles;
 
-    public Reconnaissance (Cellule cellule, double portee, int nombreCiblesMax){
-        this.cellule = cellule;
+    public Reconnaissance (double ligne, double colonne, List<Maladie> maladies, double portee, int nombreCiblesMax){
+        this.ligne = ligne;
+        this.colonne = colonne;
+        this.maladies = maladies;
         this.portee = portee;
         this.nombreCiblesMax = nombreCiblesMax;
         cibles = new ArrayList<>();
-    }
-
-    public Cellule getCellule() {
-        return cellule;
     }
 
     public ArrayList<Maladie> getCibles() {
         return cibles;
     }
 
+    public void setNombreCiblesMax(int nombreCiblesMax){
+        this.nombreCiblesMax = nombreCiblesMax;
+    }
+
+    public double getLigne() {
+        return ligne;
+    }
+
+    public double getColonne() {
+        return colonne;
+    }
+
     public double getPortee() {
         return portee;
     }
 
-    /**
-     * Methode qui permet a la cellule de voir si sa cible est toujours dans sa portée
-     */
-    public boolean aPortee(Maladie m){
-        return getCellule().distanceEuclidienne(m) <= portee;
+    public final boolean aPortee(Maladie m){
+        return m.distanceEuclidienne(ligne, colonne) <= portee;
     }
 
-    public boolean aAuMoinsUneCible(){
+    public final boolean aAuMoinsUneCible(){
         return !cibles.isEmpty();
     }
 
-    public boolean aAssezDeCibles(){
+    public final boolean aAssezDeCibles(){
         return cibles.size() >= nombreCiblesMax;
     }
 
-    public boolean ciblesValides(){
-         return aAssezDeCibles() && cibles.stream().allMatch(this::valide);
+    public final boolean ciblesValides(){
+         return aAssezDeCibles() && cibles.stream().allMatch(this::estValide);
     }
 
-    public abstract boolean valide(Maladie m);
+    public abstract boolean estValide(Maladie m);
 
-    /**
-     * Methode qui permet de reconnaitre une bacterie de la prendre comme cible
-     */
-    public void changerCibles(){
+    public final void changerCibles(){
         int i = 0;
         Maladie m;
 
         cibles.clear();
 
-        while (!aAssezDeCibles() && i < getCellule().getEnvironnement().getMaladies().size()){
-            m = getCellule().getEnvironnement().getMaladies().get(i);
+        while (!aAssezDeCibles() && i < maladies.size()){
+            m = maladies.get(i);
 
-            if (valide(m))
+            if (estValide(m))
                 cibles.add(m);
 
             i++;
