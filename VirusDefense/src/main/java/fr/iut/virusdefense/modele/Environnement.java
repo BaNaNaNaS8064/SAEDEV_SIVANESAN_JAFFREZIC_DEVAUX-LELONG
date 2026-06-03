@@ -4,6 +4,7 @@ import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
+import fr.iut.virusdefense.modele.entitesgeneriques.Projectile;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -40,6 +41,8 @@ public class Environnement {
 
     private final ObservableList<Zone> zones;
 
+    private final ObservableList<Projectile> projectiles;
+
     private ObjectProperty<StatutPartie> statutPartieProperty;
 
     /**
@@ -49,6 +52,7 @@ public class Environnement {
         maladies = FXCollections.observableArrayList();
         rayons = FXCollections.observableArrayList();
         zones =  FXCollections.observableArrayList();
+        projectiles = FXCollections.observableArrayList();
         carte = new Carte(this);
         carte.initGenerateurs();
         deplacement = new Deplacement(carte);
@@ -88,6 +92,10 @@ public class Environnement {
 
     public ObservableList<Zone> getZones() {
         return zones;
+    }
+
+    public ObservableList<Projectile> getProjectiles() {
+        return projectiles;
     }
 
     public final StatutPartie getStatutPartie(){
@@ -151,6 +159,10 @@ public class Environnement {
         rayons.add(r);
     }
 
+    public void ajouterProjectile(Projectile p){
+        projectiles.add(p);
+    }
+
     public void ajouterZone(Zone z){
         zones.add(z);
     }
@@ -169,6 +181,10 @@ public class Environnement {
                     if (zones.get(i).aDepasseAgeMaximal())
                         zones.remove(i);
 
+                for (int i = projectiles.size() - 1; i >= 0; i--)
+                    if (projectiles.get(i).getCibleTouché())
+                        projectiles.remove(i);
+
                 for (int i = alterations.size() - 1; i >= 0; i--)
                     if (alterations.get(i).finDeVie())
                         alterations.remove(i);
@@ -178,6 +194,9 @@ public class Environnement {
 
                 for (Zone z : zones)
                     z.agir();
+
+                for(Projectile p : projectiles)
+                    p.agir();
 
                 for (Cellule c : carte.getCellules())
                     c.agir();

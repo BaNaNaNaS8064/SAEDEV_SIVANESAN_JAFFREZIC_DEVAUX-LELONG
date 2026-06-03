@@ -5,24 +5,24 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class SpriteZone extends Circle implements Sprite{
-    private final Zone c;
+    private final Zone z;
 
-    public SpriteZone(Zone c){
+    public SpriteZone(Zone z){
         super();
-        this.c = c;
+        this.z = z;
         creerSprite();
     }
 
     @Override
     public void creerSprite(){
-        setCenterX(c.getColonne()*32);
-        setCenterY(c.getLigne()*32);
-        setRadius(c.getRayonZone()*32);
+        setCenterX(z.getColonne()*32);
+        setCenterY(z.getLigne()*32);
+        setRadius(z.getRayonZone()*32);
 
 
         setFill(Color.LIGHTGRAY);
         setOpacity(0.2);
-        setId(c.getId());
+        setId(z.getId());
     }
 
 }
