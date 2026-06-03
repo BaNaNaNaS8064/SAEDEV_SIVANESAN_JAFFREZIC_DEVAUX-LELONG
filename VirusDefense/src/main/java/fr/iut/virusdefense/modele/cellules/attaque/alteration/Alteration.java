@@ -3,29 +3,29 @@ package fr.iut.virusdefense.modele.cellules.attaque.alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public abstract class Alteration {
-    private int dureeDeVie;
-    private Maladie m;
+    private int duree;
+    private Maladie maladie;
 
-    public Alteration(int dureeDeVie){
-        this.dureeDeVie = dureeDeVie;
+    public Alteration(int duree){
+        this.duree = duree;
     }
 
-    public Maladie getM() {
-        return m;
+    public Maladie getMaladie() {
+        return maladie;
     }
 
     public void setMaladie(Maladie m) {
-        this.m = m;
+        this.maladie = m;
     }
 
-    public boolean finDeVie(){
-        return (0 >= dureeDeVie || !m.estVivant());
+    public boolean estFinie(){
+        return (0 >= duree || !maladie.estVivant());
     }
 
-    public void agir(){
-        dureeDeVie--;
-        affecter(this.m);
+    public final void agir(){
+        duree--;
+        affecter();
     }
 
-    public abstract void affecter(Maladie m);
+    public abstract void affecter();
 }

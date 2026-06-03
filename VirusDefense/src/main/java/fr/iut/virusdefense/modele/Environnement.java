@@ -171,7 +171,7 @@ public class Environnement {
                         zones.remove(i);
 
                 for (int i = alterations.size() - 1; i >= 0; i--)
-                    if (alterations.get(i).finDeVie())
+                    if (alterations.get(i).estFinie())
                         alterations.remove(i);
 
                 for (Rayon r : rayons)

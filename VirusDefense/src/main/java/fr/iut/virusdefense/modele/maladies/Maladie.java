@@ -68,6 +68,7 @@ public abstract class Maladie extends Entite {
     @Override
     public final void agir(){
         if (estVivant()) {
+            coefVitesse = 1;
             capaciteActive();
             bouger();
 
