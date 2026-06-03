@@ -11,6 +11,7 @@ public class LecteurDeCarte {
 
     private final File fichier;
     private final ConstructeurDeCarte constructeurDeCarte;
+    private Scanner scanner;
 
     public LecteurDeCarte(Environnement environnement){
         try {
@@ -24,31 +25,40 @@ public class LecteurDeCarte {
         lire();
     }
 
+    private int[] prochaineLigne(){
+        String[] ligneString = scanner.nextLine().split(" ");
+        int[] ligneInt = new int[ligneString.length];
+
+        for (int i = 0; i < ligneString.length; i++)
+            ligneInt[i] = Integer.parseInt(ligneString[i]);
+
+        return ligneInt;
+    }
+
     private void lire() {
-        try(Scanner scanner = new Scanner(fichier)){
-            String[] ligne;
+        try{
+            scanner = new Scanner(fichier);
+            int[] ligne;
             int hauteur, largeur;
             int nbGenerateurs;
 
-            ligne = scanner.nextLine().split(" ");
-            hauteur = Integer.parseInt(ligne[0]);
-            largeur = Integer.parseInt(ligne[1]);
+            ligne = prochaineLigne();
+            hauteur = ligne[0];
+            largeur = ligne[1];
             constructeurDeCarte.setTaille(hauteur, largeur);
 
-            ligne = scanner.nextLine().split(" ");
-            constructeurDeCarte.setObjectif(Integer.parseInt(ligne[0]), Integer.parseInt(ligne[1]));
+            constructeurDeCarte.setObjectif(prochaineLigne());
 
             nbGenerateurs = Integer.parseInt(scanner.nextLine());
-            for (int i=0; i<nbGenerateurs; i++){
-                ligne = scanner.nextLine().split(" ");
-                constructeurDeCarte.ajouterGenerateur(Integer.parseInt(ligne[0]), Integer.parseInt(ligne[1]));
-            }
+            for (int i=0; i<nbGenerateurs; i++)
+                constructeurDeCarte.ajouterGenerateur(prochaineLigne());
 
             for (int indLigne = 0; indLigne < hauteur; indLigne++){
-                ligne = scanner.nextLine().split(" ");
-                for (int indColonne = 0; indColonne < largeur; indColonne++){
-                    constructeurDeCarte.changerValeur(indLigne, indColonne, Integer.parseInt(ligne[indColonne]) == 1);
-                }
+                ligne = prochaineLigne();
+
+                for (int indColonne = 0; indColonne < largeur; indColonne++)
+                    constructeurDeCarte.changerValeur(indLigne, indColonne, ligne[indColonne] == 1);
+
             }
 
         } catch (FileNotFoundException e) {

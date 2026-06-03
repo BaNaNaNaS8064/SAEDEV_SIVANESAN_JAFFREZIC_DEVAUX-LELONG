@@ -21,8 +21,16 @@ public class ConstructeurDeCarte {
         carteStatique = new boolean[hauteur][largeur];
     }
 
+    public void setObjectif(int[] coordonees){
+        setObjectif(coordonees[0], coordonees[1]);
+    }
+
     public void setObjectif(int ligne, int colonne){
         objectif = List.of(ligne, colonne);
+    }
+
+    public void ajouterGenerateur(int[] coordones){
+        ajouterGenerateur(coordones[0], coordones[1]);
     }
 
     public void ajouterGenerateur(int ligne, int colonne){
