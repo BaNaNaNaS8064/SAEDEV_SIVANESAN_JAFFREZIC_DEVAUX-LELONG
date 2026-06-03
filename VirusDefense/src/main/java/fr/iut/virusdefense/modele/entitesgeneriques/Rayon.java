@@ -7,14 +7,14 @@ import fr.iut.virusdefense.modele.maladies.Tumeur;
 import java.util.List;
 
 public class Rayon extends EntiteAtk {
-    private final Entite cible;
+    private final Maladie cible;
 
     private final int degats;
 
     private int age;
     private final int ageMaximal;
 
-    public Rayon(Entite e1, Entite e2, int degats, int ageMaximal, List<Alteration> alterations) {
+    public Rayon(Entite e1, Maladie e2, int degats, int ageMaximal, List<Alteration> alterations) {
         super(e1.getEnvironnement(), e1.getLigne(), e1.getColonne(), alterations);
         this.cible = e2;
 
@@ -36,14 +36,13 @@ public class Rayon extends EntiteAtk {
     }
 
     public void infligerDegats(){
-        if (cible instanceof Maladie)
-            ((Maladie) cible).prendreDegats(degats);
+            cible.prendreDegats(degats);
     }
 
     public void donnerAlterations(){
-        if (cible instanceof Maladie && !(cible instanceof Tumeur))
+        if (!(cible instanceof Tumeur))
             for (Alteration alt : getAlterations()){
-                alt.setMaladie((Maladie) cible);
+                alt.setMaladie(cible);
                 getEnvironnement().getAlterations().add(alt);
             }
     }
