@@ -73,18 +73,18 @@ public abstract class Maladie extends Entite {
      * La distance dépends de la vitesse
      */
     public void bouger(){
-        List<Integer> destination = position();
-        List<Integer> caseApres = getEnvironnement().getDeplacement().prochaineCase(destination);
+        List<Integer> destination = getEnvironnement().getDeplacement().prochaineCase(position());
 
-        while (getEnvironnement().getCarte().getCode(destination.get(0), destination.get(1)) != CodeTuile.OBJECTIF && voitCase(caseApres.get(0), caseApres.get(1), false)){
-            destination = caseApres;
-            caseApres = getEnvironnement().getDeplacement().prochaineCase(destination);
-        }
+        double distLigne = Math.abs(destination.get(0) + 0.5 - getLigne());
+        double distColonne = Math.abs(destination.get(1) + 0.5 - getColonne());
 
-        double distLigne = Math.abs((destination.get(0) + 0.5 - getLigne()));
-        double distColonne = Math.abs((destination.get(1) + 0.5 - getColonne()));
-        setLigne(getLigne() + vitesse * Double.compare(destination.get(0) + 0.5, getLigne()) * distLigne / Math.max(distLigne, distColonne));
-        setColonne(getColonne() + vitesse * Double.compare(destination.get(1) + 0.5, getColonne()) * distColonne / Math.max(distLigne, distColonne));
+        double distanceMax = Math.max(distLigne, distColonne);
+
+        int directionLigne = Double.compare(destination.get(0) + 0.5, getLigne());
+        int directionColonne = Double.compare(destination.get(1) + 0.5, getColonne());
+
+        setLigne(getLigne() + vitesse * directionLigne * distLigne / distanceMax);
+        setColonne(getColonne() + vitesse * directionColonne * distColonne / distanceMax);
     }
 
     public void infligerDegatsAuJoueur(){
