@@ -30,7 +30,6 @@ public class Controller implements Initializable {
     @FXML public Pane paneDessin;
     @FXML public Pane paneLignes;
     @FXML public TilePane tuiles;
-    @FXML public Pane paneAmelioration;
 
     // haut -> vagues
     @FXML public Label labelVagueActuelle;
@@ -60,7 +59,6 @@ public class Controller implements Initializable {
 
     // vue
     private AfficheurDeCarte afficheurDeCarte;
-    private AfficheurDeChemin afficheurDeChemin;
 
     // modèle
     private Environnement environnement;
