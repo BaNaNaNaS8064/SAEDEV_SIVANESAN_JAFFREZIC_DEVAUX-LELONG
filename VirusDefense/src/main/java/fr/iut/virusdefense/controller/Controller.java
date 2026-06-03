@@ -128,18 +128,21 @@ public class Controller implements Initializable {
 
     @FXML
     public void clickTuiles(MouseEvent mouseEvent) {
-        gestionnaireClickCarte.gererClick(mouseEvent);
+        if (!pause)
+            gestionnaireClickCarte.gererClick(mouseEvent);
     }
 
     @FXML
     public void démarrerVague(MouseEvent mouseEvent) {
-        environnement.getNiveau().passerProchaineVague();
-        boutonVague.setText("Passer");
-        boutonVague.setOnMousePressed(this::passerVague);
+        if (!pause){
+            environnement.getNiveau().passerProchaineVague();
+            boutonVague.setText("Passer");
+            boutonVague.setOnMousePressed(this::passerVague);
+        }
     }
 
     public void passerVague(MouseEvent mouseEvent){
-        if(environnement.getNiveau().resteVague())
+        if(environnement.getNiveau().resteVague() && !pause)
             environnement.getNiveau().passerProchaineVague();
     }
 
