@@ -34,18 +34,27 @@ public class Sainple extends Cellule {
     }
 
     @Override
-    public String nomCellule() {
+    public String getNom() {
         return "Sainple";
     }
 
     @Override
-    public void niveau2(){
-
-        setCoutAmelioration(10);
+    public int coutNiveau2() {
+        return 10;
     }
 
     @Override
-    public void niveau3(){
+    public int coutNiveau3() {
+        return 40;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2(){
+
+    }
+
+    @Override
+    public void ameliorerAuNiveau3(){
 
     }
 }

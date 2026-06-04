@@ -38,22 +38,27 @@ public class Konsantre extends Cellule{
     }
 
     @Override
-    public String nomCellule() {
+    public String getNom() {
         return "Konsantré";
     }
 
     @Override
-    public void amelioration() {
+    public int coutNiveau2() {
+        return 0;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 0;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
 
     }
 
     @Override
-    public void niveau2() {
-
-    }
-
-    @Override
-    public void niveau3() {
+    public void ameliorerAuNiveau3() {
 
     }
 }

@@ -2,33 +2,29 @@ package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.*;
+import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
+import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
-import fr.iut.virusdefense.vue.AfficheurDuMenuAmelioration;
+import fr.iut.virusdefense.vue.GestionnaireMenuClick;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
-public class GestionnaireClickCarte {
+public class GestionnaireClick {
     private final Environnement environnement;
-
-    private final ToggleGroup toggleGrpCellules;
 
     private final AfficheurDeCarte afficheurDeCarte;
 
-    private Pane paneDessin;
+    private final Pane paneCentre;
+    private final ToggleGroup toggleGrpCellules;
 
-    private AfficheurDuMenuAmelioration menuAmelioration;
-
-    private Pane paneCentre;
-
-
-    public GestionnaireClickCarte(Environnement environnement, ToggleGroup toggleGrpCellules, AfficheurDeCarte afficheurDeCarte , Pane panedessin , Pane paneCentre){
+    public GestionnaireClick(Environnement environnement, ToggleGroup toggleGrpCellules, AfficheurDeCarte afficheurDeCarte, Pane paneCentre){
         this.environnement = environnement;
         this.toggleGrpCellules = toggleGrpCellules;
         this.afficheurDeCarte = afficheurDeCarte;
-        this.paneDessin = panedessin;
         this.paneCentre = paneCentre;
     }
 
@@ -39,9 +35,8 @@ public class GestionnaireClickCarte {
         if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && environnement.getCarte().emplacementVide(ligne, colonne))
             poser(ligne, colonne);
 
-        else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && environnement.getCarte().estCellule(ligne, colonne)){
-            creationMenu(ligne,colonne);
-        }
+        else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && environnement.getCarte().estCellule(ligne, colonne))
+            creerMenu(ligne,colonne);
 
         afficheurDeCarte.rechargerEmplacement(ligne, colonne);
     }
@@ -63,19 +58,11 @@ public class GestionnaireClickCarte {
         environnement.ajouterSiConforme(c);
     }
 
-    public void retirer(int ligne, int colonne){
-        environnement.retirerCelluleALEmplacement(ligne,colonne,false);
-    }
-
-    public void creationMenu(int ligne, int colonne){
+    public void creerMenu(int ligne, int colonne){
         for (Cellule c : environnement.getCarte().getCellules()){
             if ((int) c.getLigne() == ligne && (int) c.getColonne() == colonne) {
-                menuAmelioration(ligne, colonne);
+                new GestionnaireMenuClick(ligne, colonne, paneCentre, environnement, afficheurDeCarte);
             }
         }
-    }
-
-    public void menuAmelioration(int ligne, int colonne ){
-        menuAmelioration = new AfficheurDuMenuAmelioration(ligne, colonne, paneCentre, environnement, afficheurDeCarte );
     }
 }

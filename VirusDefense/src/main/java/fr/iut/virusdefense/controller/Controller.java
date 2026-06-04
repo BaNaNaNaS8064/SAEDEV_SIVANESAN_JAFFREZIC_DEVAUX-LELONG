@@ -65,14 +65,14 @@ public class Controller implements Initializable {
     private Environnement environnement;
 
     //controllerPackage
-    private GestionnaireClickCarte gestionnaireClickCarte;
+    private GestionnaireClick gestionnaireClick;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles, new AfficheurDeChemin(environnement, paneLignes));
-        gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte , paneDessin , paneCentre);
+        gestionnaireClick = new GestionnaireClick(environnement, toggleGrpCellules, afficheurDeCarte , paneCentre);
 
         initLabels();
         initObservateurs();
@@ -123,7 +123,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void clickTuiles(MouseEvent mouseEvent) {
-        gestionnaireClickCarte.gererClick(mouseEvent);
+        gestionnaireClick.gererClick(mouseEvent);
     }
 
     @FXML

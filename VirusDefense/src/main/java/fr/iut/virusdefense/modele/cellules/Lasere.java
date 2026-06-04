@@ -33,17 +33,27 @@ public class Lasere extends Cellule{
     }
 
     @Override
-    public String nomCellule() {
+    public String getNom() {
         return "L'asère";
     }
 
     @Override
-    public void niveau2() {
+    public int coutNiveau2() {
+        return 0;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 0;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
 
     }
 
     @Override
-    public void niveau3() {
+    public void ameliorerAuNiveau3() {
 
     }
 }

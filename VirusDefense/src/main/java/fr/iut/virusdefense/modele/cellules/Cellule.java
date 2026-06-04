@@ -2,7 +2,6 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 
@@ -15,7 +14,6 @@ public abstract class Cellule extends Entite {
 
     private int niveau;
     private final int cout;
-    private int coutAmelioration;
 
     public Cellule(Environnement environnement, int ligne, int colonne, int frequenceAttaque, int cout, int coutAmelioration){
         super(environnement, ligne, colonne);
@@ -26,7 +24,6 @@ public abstract class Cellule extends Entite {
         this.niveau = 1;
 
         this.cout = cout;
-        this.coutAmelioration = coutAmelioration;
     }
 
     public abstract void initRec();
@@ -62,38 +59,40 @@ public abstract class Cellule extends Entite {
     }
 
     public int getCoutAmelioration() {
-        return coutAmelioration;
+        return switch (niveau){
+            case 1 -> coutNiveau2();
+            case 2 -> coutNiveau3();
+            default -> -1;
+        };
     }
 
-    public void setCoutAmelioration(int coutAmelioration) {
-        this.coutAmelioration = coutAmelioration;
+    public abstract String getNom();
+
+    public abstract int coutNiveau2();
+
+    public abstract int coutNiveau3();
+
+    public boolean resteAmeliorations(){
+        return niveau <= 2;
     }
-
-    abstract public String nomCellule();
-
 
     public void niveauSuperieur(){
-        if (getEnvironnement().getJoueur().getPc()> getCoutAmelioration()) {
-            niveau++;
-            this.amelioration();
+        if (resteAmeliorations() && getEnvironnement().getJoueur().getPc() >= getCoutAmelioration()) {
+            getEnvironnement().getJoueur().retirerPc(getCoutAmelioration());
+            switch (++niveau){
+                case 2:
+                    ameliorerAuNiveau2();
+                    break;
+                case 3:
+                    ameliorerAuNiveau3();
+                    break;
+            }
         }
     }
 
-    public void amelioration(){
-        if (niveau==2){
-            getEnvironnement().getJoueur().retirerPc(getCoutAmelioration());
-            niveau2();
-        }
-        else if (niveau==3){
-            getEnvironnement().getJoueur().retirerPc(getCoutAmelioration());
-            niveau3();
-        }
-    }
+    public abstract void ameliorerAuNiveau2();
 
-    abstract public void niveau2();
-
-    abstract public void niveau3();
-
+    public abstract void ameliorerAuNiveau3();
 
     @Override
     public void agir(){
