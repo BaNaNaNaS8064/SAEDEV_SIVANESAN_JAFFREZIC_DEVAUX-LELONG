@@ -15,7 +15,7 @@ public class LecteurVague {
     private int nbVague;
     private int nbGen;
 
-    public LecteurVague(String s, int nbGenerateur){
+    public LecteurVague(int nbGenerateur){
         try{
             fichier = new File(Main.class.getResource("vagues.txt").toURI());
             nbGen = nbGenerateur;
@@ -25,35 +25,41 @@ public class LecteurVague {
         }
     }
 
-    private int[] prochaineLigne(String s){
+    private double[] prochaineLigne(String s){
         String[] ligneString = s.split(" ");
-        int[] ligneInt = new int[ligneString.length];
+        double[] ligneDouble = new double[ligneString.length];
 
         for (int i = 0; i < ligneString.length; i++)
-            ligneInt[i] = Integer.parseInt(ligneString[i]);
+            ligneDouble[i] = Double.parseDouble(ligneString[i]);
 
-        return ligneInt;
+        return ligneDouble;
     }
 
     public int getNbVague() {
         return nbVague;
     }
 
+    public Vague[] getVagues() {
+        return vagues;
+    }
+
     public void lire() throws FileNotFoundException {
         sc = new Scanner(fichier).useDelimiter("\n");
-        int[] maladiesInfo;
+        double[] maladiesInfo;
         String ligne;
 
         nbVague = sc.nextInt();
         vagues = new Vague[nbVague];
         sc.next();
         for (int indVague = 0; indVague < nbVague; indVague++) {
+            vagues[indVague] = new Vague();
             ligne = sc.next();
             while(!ligne.equals("#")){
                 maladiesInfo = prochaineLigne(ligne);
                 for (int indGenerateur = 0; indGenerateur < nbGen; indGenerateur++) {
-                    for (int nombreMemeMaladie = 0; nombreMemeMaladie < maladiesInfo[0]; nombreMemeMaladie++) {
-                        vagues[indVague].getListeApparitions().get(indGenerateur).ajouter(CodeMaladie.values()[maladiesInfo[1]], maladiesInfo[2]);
+                    vagues[indVague].ajouter(new ListeApparition());
+                    for (int nombreMemeMaladie = 0; nombreMemeMaladie < (int)maladiesInfo[0]; nombreMemeMaladie++) {
+                        vagues[indVague].getListeApparitions().get(indGenerateur).ajouter(CodeMaladie.values()[(int)maladiesInfo[1]], (int)(maladiesInfo[2] *60));
                     }
                 }
                 ligne = sc.next();
