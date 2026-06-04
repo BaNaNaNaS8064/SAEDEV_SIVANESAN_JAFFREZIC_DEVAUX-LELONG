@@ -29,6 +29,7 @@ public class Controller implements Initializable {
     // centre
     @FXML public Pane paneDessin;
     @FXML public Pane paneLignes;
+    @FXML public Pane paneAmelioration;
     @FXML public TilePane tuiles;
 
     // haut -> vagues

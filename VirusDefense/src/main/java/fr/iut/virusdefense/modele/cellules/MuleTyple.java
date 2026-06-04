@@ -13,7 +13,7 @@ public class MuleTyple extends Cellule{
     }
 
     private MuleTyple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 50, coutBase);
+        super(env, ligne, colonne, 50, coutBase,5);
     }
 
     @Override
@@ -36,5 +36,10 @@ public class MuleTyple extends Cellule{
     @Override
     public String nomCellule() {
         return "Mule-typle";
+    }
+
+    @Override
+    public void amelioration() {
+
     }
 }

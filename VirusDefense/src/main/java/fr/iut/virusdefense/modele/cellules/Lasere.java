@@ -12,7 +12,7 @@ public class Lasere extends Cellule{
     }
 
     private Lasere(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 1, coutBase);
+        super(env, ligne, colonne, 1, coutBase , 5);
     }
 
     @Override
@@ -35,5 +35,10 @@ public class Lasere extends Cellule{
     @Override
     public String nomCellule() {
         return "L'asère";
+    }
+
+    @Override
+    public void amelioration() {
+
     }
 }

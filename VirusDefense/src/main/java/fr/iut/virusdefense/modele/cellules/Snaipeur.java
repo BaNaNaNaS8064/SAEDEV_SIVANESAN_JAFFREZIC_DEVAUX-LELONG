@@ -12,7 +12,7 @@ public class Snaipeur extends Cellule{
     }
 
     private Snaipeur(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 200, coutBase);
+        super(env, ligne, colonne, 200, coutBase, 5);
     }
 
     @Override
@@ -35,5 +35,10 @@ public class Snaipeur extends Cellule{
     @Override
     public String nomCellule() {
         return "Snaï-peur";
+    }
+
+    @Override
+    public void amelioration() {
+
     }
 }

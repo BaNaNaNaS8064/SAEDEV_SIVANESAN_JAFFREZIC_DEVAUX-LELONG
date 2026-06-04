@@ -17,7 +17,7 @@ public abstract class Cellule extends Entite {
     private final int cout;
     private int coutAmelioration;
 
-    public Cellule(Environnement environnement, int ligne, int colonne, int frequenceAttaque, int cout){
+    public Cellule(Environnement environnement, int ligne, int colonne, int frequenceAttaque, int cout, int coutAmelioration){
         super(environnement, ligne, colonne);
 
         this.frequenceAttaque = frequenceAttaque;
@@ -26,6 +26,7 @@ public abstract class Cellule extends Entite {
         this.niveau = 1;
 
         this.cout = cout;
+        this.coutAmelioration = coutAmelioration;
     }
 
     public abstract void initRec();
@@ -64,6 +65,10 @@ public abstract class Cellule extends Entite {
         return coutAmelioration;
     }
 
+    public void setCoutAmelioration(int coutAmelioration) {
+        this.coutAmelioration = coutAmelioration;
+    }
+
     abstract public String nomCellule();
 
 
@@ -72,11 +77,9 @@ public abstract class Cellule extends Entite {
         this.amelioration();
     }
 
-    public void amelioration() {
-        if (getNiveau() == 2){
-            setReconnaissance(new RecUnique(this, 12.0));
-        }
-    }
+    abstract public void amelioration();
+
+
 
     @Override
     public void agir(){

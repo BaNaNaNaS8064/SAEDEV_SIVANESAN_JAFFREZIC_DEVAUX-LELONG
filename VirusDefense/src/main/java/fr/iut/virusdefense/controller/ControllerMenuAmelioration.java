@@ -37,6 +37,12 @@ public class ControllerMenuAmelioration implements Initializable {
 
     public void setMenuAmelioration(AfficheurDuMenuAmelioration afficheurDuMenuAmelioration){
         this.afficheurAmelioration = afficheurDuMenuAmelioration;
+        for (Cellule c : afficheurAmelioration.getEnvironnement().getCarte().getCellules()) {
+            if ((int) c.getLigne() == afficheurAmelioration.getLigne() && (int) c.getColonne() == afficheurAmelioration.getColonne()) {
+                initLabel(c);
+                niveauMax(c);
+            }
+        }
     }
 
     public void clickBoutonQuitter(MouseEvent mouseEvent){
@@ -49,21 +55,33 @@ public class ControllerMenuAmelioration implements Initializable {
         fermetureMenu();
     }
 
+    public void clickBoutonAmelioration(){
+        for (Cellule c : afficheurAmelioration.getEnvironnement().getCarte().getCellules()){
+            if ((int) c.getLigne() == afficheurAmelioration.getLigne() && (int) c.getColonne() == afficheurAmelioration.getColonne()) {
+                    c.niveauSuperieur();
+            }
+        }
+        fermetureMenu();
+    }
+
     public void fermetureMenu(){
         afficheurAmelioration.retirerMenu();
         gestionnaireAmelioration.setAfficheurDuMenuAmelioration(afficheurAmelioration);
     }
 
-    public void initLabel(){
-        for (Cellule c : afficheurAmelioration.getEnvironnement().getCarte().getCellules()){
-            if ((int) c.getLigne() == afficheurAmelioration.getLigne() && (int) c.getColonne() == afficheurAmelioration.getColonne()) {
-                labelNomCellule.setText(c.nomCellule()); ;
-                labelDegatsCellule.setText("" + c.getAttaque().getDegats());
-                labelPorteeCellule.setText("" + c.getReconnaissance().getPortee());
-                labelFrequenceCellule.setText("" + c.getFrequenceAttaque());
-                labelNiveauCellule.setText("Niveau " + c.getNiveau());
-                labelCoutAmelioration.setText("" + c.getCoutAmelioration());
-            }
+    public void initLabel(Cellule cellule){
+        labelNomCellule.setText(cellule.nomCellule()); ;
+        labelDegatsCellule.setText("" + cellule.getAttaque().getDegats());
+        labelPorteeCellule.setText("" + cellule.getReconnaissance().getPortee());
+        labelFrequenceCellule.setText("" + cellule.getFrequenceAttaque());
+        labelNiveauCellule.setText("Niveau " + cellule.getNiveau());
+        labelCoutAmelioration.setText("" + cellule.getCoutAmelioration());
+    }
+
+    public void niveauMax(Cellule cellule){
+        if (cellule.getNiveau() == 3) {
+            boutonAmelioration.setDisable(true);
+            boutonAmelioration.setText("Niveau Max");
         }
     }
 }

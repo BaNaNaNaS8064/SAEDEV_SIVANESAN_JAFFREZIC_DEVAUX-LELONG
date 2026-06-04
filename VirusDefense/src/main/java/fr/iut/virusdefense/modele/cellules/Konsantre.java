@@ -17,7 +17,7 @@ public class Konsantre extends Cellule{
 
 
     private Konsantre(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 1, coutBase);
+        super(env, ligne, colonne, 1, coutBase, 5);
     }
 
     @Override
@@ -40,5 +40,10 @@ public class Konsantre extends Cellule{
     @Override
     public String nomCellule() {
         return "Konsantré";
+    }
+
+    @Override
+    public void amelioration() {
+
     }
 }

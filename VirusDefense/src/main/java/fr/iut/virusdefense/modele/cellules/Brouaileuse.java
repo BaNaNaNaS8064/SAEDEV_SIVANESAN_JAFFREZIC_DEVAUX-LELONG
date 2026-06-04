@@ -15,7 +15,7 @@ public class Brouaileuse extends Cellule {
     }
 
     private Brouaileuse(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 200, coutBase);
+        super(env, ligne, colonne, 200, coutBase,5);
     }
 
     @Override
@@ -38,5 +38,10 @@ public class Brouaileuse extends Cellule {
     @Override
     public String nomCellule() {
         return "Brouaïlleuse";
+    }
+
+    @Override
+    public void amelioration() {
+
     }
 }

@@ -14,7 +14,7 @@ public class Pouazon extends Cellule{
     }
 
     private Pouazon(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 50, coutBase);
+        super(env, ligne, colonne, 50, coutBase, 5);
     }
 
     @Override
@@ -39,5 +39,10 @@ public class Pouazon extends Cellule{
     @Override
     public String nomCellule() {
         return "Pouazon";
+    }
+
+    @Override
+    public void amelioration() {
+
     }
 }

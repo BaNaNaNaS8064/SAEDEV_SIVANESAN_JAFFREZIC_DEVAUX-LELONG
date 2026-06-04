@@ -13,7 +13,7 @@ public class Sainple extends Cellule {
     }
 
     private Sainple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 60, coutBase);
+        super(env, ligne, colonne, 60, coutBase, 5);
     }
 
     @Override
@@ -31,6 +31,18 @@ public class Sainple extends Cellule {
         temp.initRec();
         temp.initAttaque();
         return temp;
+    }
+
+    @Override
+    public void amelioration() {
+        if (getNiveau() == 2){
+
+            getEnvironnement().getJoueur().retirerPc(getCoutAmelioration());
+            setCoutAmelioration(10);
+        }
+        if (getNiveau() == 3){
+            //amelioration
+        }
     }
 
     @Override
