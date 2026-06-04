@@ -33,14 +33,14 @@ public class AtkRayonConcentre extends AtkRayon{
             attaque(m, calculerDegats(dureeCiblageTourActuel.get(i)));
         }
 
-        ciblesTourPrecedent = getCibles();
+        ciblesTourPrecedent = (ArrayList<Maladie>) getCibles().clone();
         dureeCiblageTourPrecedent = dureeCiblageTourActuel;
     }
 
     private int calculerDegats(int dureeCiblage){
-        if (dureeCiblage < 120)
+        if (dureeCiblage < 60)
             return degatsInitiaux;
-        else if (dureeCiblage < 300)
+        else if (dureeCiblage < 120)
             return degatsInitiaux * 3;
         else
             return degatsInitiaux * 9;
