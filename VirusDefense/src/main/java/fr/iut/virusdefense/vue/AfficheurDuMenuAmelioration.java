@@ -24,21 +24,6 @@ public class AfficheurDuMenuAmelioration {
         creeMenuAmelioration();
     }
 
-    public void creeMenuAmelioration(){
-          try {
-              FXMLLoader loader = new FXMLLoader(Main.class.getResource("paneAmélioration.fxml"));
-              Pane amelioration = loader.load();
-              this.amelioration = amelioration;
-
-              ControllerMenuAmelioration controllerMenuAmelioration = loader.getController();
-              controllerMenuAmelioration.setMenuAmelioration(this);
-              amelioration.setTranslateX((colonne+0.5)*32);
-              amelioration.setTranslateY((ligne+0.5)*32);
-              paneDessin.getChildren().add(amelioration);
-          }
-          catch (Exception ignored){}
-    }
-
     public Environnement getEnvironnement() {
         return environnement;
     }
@@ -53,6 +38,21 @@ public class AfficheurDuMenuAmelioration {
 
     public AfficheurDeCarte getAfficheurDeCarte() {
         return afficheurDeCarte;
+    }
+
+    public void creeMenuAmelioration(){
+          try {
+              FXMLLoader loader = new FXMLLoader(Main.class.getResource("paneAmélioration.fxml"));
+              Pane amelioration = loader.load();
+              this.amelioration = amelioration;
+
+              ControllerMenuAmelioration controllerMenuAmelioration = loader.getController();
+              controllerMenuAmelioration.setMenuAmelioration(this);
+              amelioration.setTranslateX((colonne+0.5)*32);
+              amelioration.setTranslateY((ligne+0.5)*32);
+              paneDessin.getChildren().add(amelioration);
+          }
+          catch (Exception ignored){}
     }
 
     public void retirerMenu(){

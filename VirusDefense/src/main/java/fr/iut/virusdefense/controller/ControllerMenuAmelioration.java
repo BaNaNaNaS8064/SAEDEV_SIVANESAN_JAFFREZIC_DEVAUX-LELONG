@@ -27,11 +27,11 @@ public class ControllerMenuAmelioration implements Initializable {
 
     private AfficheurDuMenuAmelioration afficheurAmelioration;
 
-    private GestionnaireClickMenuAmelioration gestionnaireAmelioration;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.gestionnaireAmelioration = new GestionnaireClickMenuAmelioration(paneMenu,boutonQuitter,boutonAmelioration,boutonSupprimer);
+
 
     }
 
@@ -43,30 +43,6 @@ public class ControllerMenuAmelioration implements Initializable {
                 niveauMax(c);
             }
         }
-    }
-
-    public void clickBoutonQuitter(MouseEvent mouseEvent){
-        fermetureMenu();
-    }
-
-    public void clickBoutonSupprimer(){
-        afficheurAmelioration.getEnvironnement().retirerCelluleALEmplacement(afficheurAmelioration.getLigne(), afficheurAmelioration.getColonne(), false);
-        afficheurAmelioration.getAfficheurDeCarte().rechargerEmplacement(afficheurAmelioration.getLigne(), afficheurAmelioration.getColonne());
-        fermetureMenu();
-    }
-
-    public void clickBoutonAmelioration(){
-        for (Cellule c : afficheurAmelioration.getEnvironnement().getCarte().getCellules()){
-            if ((int) c.getLigne() == afficheurAmelioration.getLigne() && (int) c.getColonne() == afficheurAmelioration.getColonne()) {
-                    c.niveauSuperieur();
-            }
-        }
-        setMenuAmelioration(afficheurAmelioration);
-    }
-
-    public void fermetureMenu(){
-        afficheurAmelioration.retirerMenu();
-        gestionnaireAmelioration.setAfficheurDuMenuAmelioration(afficheurAmelioration);
     }
 
     public void initLabel(Cellule cellule){
@@ -84,4 +60,30 @@ public class ControllerMenuAmelioration implements Initializable {
             boutonAmelioration.setText("Niveau Max");
         }
     }
+
+    public void clickBoutonQuitter(MouseEvent mouseEvent){
+        fermetureMenu();
+    }
+
+    public void clickBoutonAmelioration(){
+        for (Cellule c : afficheurAmelioration.getEnvironnement().getCarte().getCellules()){
+            if ((int) c.getLigne() == afficheurAmelioration.getLigne() && (int) c.getColonne() == afficheurAmelioration.getColonne()) {
+                c.niveauSuperieur();
+            }
+        }
+        setMenuAmelioration(afficheurAmelioration);
+    }
+
+    public void clickBoutonSupprimer(){
+        afficheurAmelioration.getEnvironnement().retirerCelluleALEmplacement(afficheurAmelioration.getLigne(), afficheurAmelioration.getColonne(), false);
+        afficheurAmelioration.getAfficheurDeCarte().rechargerEmplacement(afficheurAmelioration.getLigne(), afficheurAmelioration.getColonne());
+        fermetureMenu();
+    }
+
+    public void fermetureMenu(){
+        afficheurAmelioration.retirerMenu();
+
+    }
+
+
 }
