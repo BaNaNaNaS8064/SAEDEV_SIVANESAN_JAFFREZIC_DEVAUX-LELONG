@@ -21,12 +21,15 @@ public class GestionnaireClickCarte {
 
     private AfficheurDuMenuAmelioration menuAmelioration;
 
+    private Pane paneCentre;
 
-    public GestionnaireClickCarte(Environnement environnement, ToggleGroup toggleGrpCellules, AfficheurDeCarte afficheurDeCarte , Pane panedessin){
+
+    public GestionnaireClickCarte(Environnement environnement, ToggleGroup toggleGrpCellules, AfficheurDeCarte afficheurDeCarte , Pane panedessin , Pane paneCentre){
         this.environnement = environnement;
         this.toggleGrpCellules = toggleGrpCellules;
         this.afficheurDeCarte = afficheurDeCarte;
         this.paneDessin = panedessin;
+        this.paneCentre = paneCentre;
     }
 
     public void gererClick(MouseEvent mouseEvent){
@@ -73,6 +76,6 @@ public class GestionnaireClickCarte {
     }
 
     public void menuAmelioration(int ligne, int colonne ){
-        menuAmelioration = new AfficheurDuMenuAmelioration(ligne , colonne , paneDessin,environnement,afficheurDeCarte);
+        menuAmelioration = new AfficheurDuMenuAmelioration(ligne, colonne, paneCentre, environnement, afficheurDeCarte );
     }
 }

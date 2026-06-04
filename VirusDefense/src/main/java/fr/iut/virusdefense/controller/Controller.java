@@ -29,7 +29,7 @@ public class Controller implements Initializable {
     // centre
     @FXML public Pane paneDessin;
     @FXML public Pane paneLignes;
-    @FXML public Pane paneAmelioration;
+    @FXML public Pane paneCentre;
     @FXML public TilePane tuiles;
 
     // haut -> vagues
@@ -72,7 +72,7 @@ public class Controller implements Initializable {
         environnement = new Environnement();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles, new AfficheurDeChemin(environnement, paneLignes));
-        gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte , paneDessin);
+        gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte , paneDessin , paneCentre);
 
         initLabels();
         initObservateurs();
