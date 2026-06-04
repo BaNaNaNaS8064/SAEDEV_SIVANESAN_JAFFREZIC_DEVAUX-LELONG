@@ -5,14 +5,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerMenuAmelioration" fx:id="paneMenu" style="-fx-background-color: gray">
+<Pane fx:id="paneMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="160.0" style="-fx-background-color: gray" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerMenuAmelioration">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="128.0" prefWidth="160.0" >
+      <VBox alignment="TOP_CENTER" prefHeight="128.0" prefWidth="160.0">
          <children>
             <HBox prefHeight="32.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="139.0" textAlignment="CENTER" fx:id="labelNomCellule"/>
+                  <Label fx:id="labelNomCellule" alignment="CENTER" prefHeight="30.0" prefWidth="139.0" textAlignment="CENTER" />
+                  <Label fx:id="labelNiveauCellule" prefHeight="26.0" prefWidth="131.0" />
                   <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="34.0" prefWidth="29.0" text="X" fx:id="boutonQuitter" onMouseClicked="#clickBoutonQuitter"/>
                </children>
             </HBox>
@@ -20,26 +20,26 @@
                <children>
                   <HBox prefHeight="20.0" prefWidth="160.0">
                      <children>
-                        <Label  fx:id="labelDegatsCellule"/>
-                        <Label />
+                        <Label text="Dégats : " />
+                        <Label fx:id="labelDegatsCellule"/>
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="160.0">
                      <children>
-                        <Label  fx:id="labelPorteeCellule"/>
-                        <Label />
+                        <Label text="Portée : " />
+                        <Label fx:id="labelPorteeCellule"/>
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="30.0" prefHeight="18.0" prefWidth="160.0">
                      <children>
-                        <Label  fx:id="labelFrequenceCellule"/>
-                        <Label />
+                        <Label text="Fréquence : " />
+                        <Label fx:id="labelFrequenceCellule"/>
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="48.0" prefHeight="18.0" prefWidth="160.0">
                      <children>
-                        <Label text="Cout amélioration : " fx:id="labelCoutAmelioration"/>
-                        <Label />
+                        <Label text="Cout amélioration : " />
+                        <Label fx:id="labelCoutAmelioration"/>
                      </children>
                   </HBox>
                </children>

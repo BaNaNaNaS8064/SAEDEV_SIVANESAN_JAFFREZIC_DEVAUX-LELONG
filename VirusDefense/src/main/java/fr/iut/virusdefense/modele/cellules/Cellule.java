@@ -15,6 +15,7 @@ public abstract class Cellule extends Entite {
 
     private int niveau;
     private final int cout;
+    private int coutAmelioration;
 
     public Cellule(Environnement environnement, int ligne, int colonne, int frequenceAttaque, int cout){
         super(environnement, ligne, colonne);
@@ -57,6 +58,10 @@ public abstract class Cellule extends Entite {
 
     public Attaque getAttaque() {
         return attaque;
+    }
+
+    public int getCoutAmelioration() {
+        return coutAmelioration;
     }
 
     abstract public String nomCellule();

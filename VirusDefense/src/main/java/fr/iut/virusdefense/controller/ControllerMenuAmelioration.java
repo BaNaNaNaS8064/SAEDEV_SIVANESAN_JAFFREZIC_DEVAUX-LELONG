@@ -22,6 +22,7 @@ public class ControllerMenuAmelioration implements Initializable {
     @FXML public Label labelDegatsCellule;
     @FXML public Label labelPorteeCellule;
     @FXML public Label labelFrequenceCellule;
+    @FXML public Label labelNiveauCellule;
     @FXML public Label labelCoutAmelioration;
 
     private AfficheurDuMenuAmelioration afficheurAmelioration;
@@ -57,9 +58,11 @@ public class ControllerMenuAmelioration implements Initializable {
         for (Cellule c : afficheurAmelioration.getEnvironnement().getCarte().getCellules()){
             if ((int) c.getLigne() == afficheurAmelioration.getLigne() && (int) c.getColonne() == afficheurAmelioration.getColonne()) {
                 labelNomCellule.setText(c.nomCellule()); ;
-                labelDegatsCellule.setText("Dégats : " + c.getAttaque().getDegats());
-                labelPorteeCellule.setText("Portée : " + c.getReconnaissance().getPortee()); ;
-                labelFrequenceCellule.setText("Fréquence : " + c.getFrequenceAttaque()); ;
+                labelDegatsCellule.setText("" + c.getAttaque().getDegats());
+                labelPorteeCellule.setText("" + c.getReconnaissance().getPortee());
+                labelFrequenceCellule.setText("" + c.getFrequenceAttaque());
+                labelNiveauCellule.setText("Niveau " + c.getNiveau());
+                labelCoutAmelioration.setText("" + c.getCoutAmelioration());
             }
         }
     }
