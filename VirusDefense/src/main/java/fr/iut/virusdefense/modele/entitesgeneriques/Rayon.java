@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.entitesgeneriques;
 
+import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -10,8 +11,8 @@ public class Rayon extends EntiteAtk {
     private int age;
     private final int ageMaximal;
 
-    public Rayon(Cellule cellule, Maladie cible, int degats, int ageMaximal, List<Alteration> alterations) {
-        super(cellule.getEnvironnement(), cellule.getLigne(), cellule.getColonne(), degats, alterations, cible);
+    public Rayon(Environnement environnement, double ligne, double colonne, Maladie cible, int degats, int ageMaximal, List<Alteration> alterations) {
+        super(environnement, ligne, colonne, degats, alterations, cible);
 
         age = 0;
         this.ageMaximal = ageMaximal;

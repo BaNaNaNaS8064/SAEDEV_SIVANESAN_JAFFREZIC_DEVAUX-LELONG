@@ -23,7 +23,7 @@ public class MuleTyple extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 30));
+        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 30, getReconnaissance().getCibles()));
     }
 
     public static MuleTyple creer(Environnement env, int ligne, int colonne){

@@ -22,7 +22,7 @@ public class Snaipeur extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 100));
+        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 100, getReconnaissance().getCibles()));
     }
 
     public static Snaipeur creer(Environnement env, int ligne, int colonne){

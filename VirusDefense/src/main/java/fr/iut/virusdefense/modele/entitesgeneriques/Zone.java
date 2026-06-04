@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.entitesgeneriques;
 
+import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -12,8 +13,8 @@ public class Zone extends EntiteAtk{
     private final int ageMaximal;
     private final double rayonZone;
 
-    public Zone(Cellule cellule, ArrayList<Maladie> cibles, int degats, int ageMaximal, List<Alteration> alterations, double rayonZone) {
-        super(cellule.getEnvironnement(), cellule.getLigne(), cellule.getColonne(), degats, alterations, cibles);
+    public Zone(Environnement environnement, double ligne, double colonne, ArrayList<Maladie> cibles, int degats, int ageMaximal, List<Alteration> alterations, double rayonZone) {
+        super(environnement, ligne, colonne, degats, alterations, cibles);
 
         age = 0;
         this.ageMaximal = ageMaximal;

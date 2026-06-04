@@ -27,7 +27,7 @@ public class Konsantre extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonConcentre(this, 1));
+        setAttaque(new AtkRayonConcentre(getEnvironnement(), getLigne(), getColonne(), 1, getReconnaissance().getCibles()));
     }
 
     public static Konsantre creer(Environnement env, int ligne, int colonne){

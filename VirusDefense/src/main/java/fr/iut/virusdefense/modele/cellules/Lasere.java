@@ -22,7 +22,7 @@ public class Lasere extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 1));
+        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 1, getReconnaissance().getCibles()));
     }
 
     public static Lasere creer(Environnement env, int ligne, int colonne){
