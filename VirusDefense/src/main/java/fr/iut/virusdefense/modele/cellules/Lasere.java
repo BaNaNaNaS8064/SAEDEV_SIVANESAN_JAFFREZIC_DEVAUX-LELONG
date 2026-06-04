@@ -31,4 +31,9 @@ public class Lasere extends Cellule{
         temp.initAttaque();
         return temp;
     }
+
+    @Override
+    public String nomCellule() {
+        return "L'asère";
+    }
 }

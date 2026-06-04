@@ -51,6 +51,17 @@ public abstract class Cellule extends Entite {
         return niveau;
     }
 
+    public int getFrequenceAttaque() {
+        return frequenceAttaque;
+    }
+
+    public Attaque getAttaque() {
+        return attaque;
+    }
+
+    abstract public String nomCellule();
+
+
     public void niveauSuperieur(){
         niveau++;
         this.amelioration();

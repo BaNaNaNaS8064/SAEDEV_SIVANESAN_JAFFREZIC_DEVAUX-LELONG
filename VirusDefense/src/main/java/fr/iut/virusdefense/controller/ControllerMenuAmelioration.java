@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.controller;
 
+import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.vue.AfficheurDuMenuAmelioration;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,6 +31,7 @@ public class ControllerMenuAmelioration implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.gestionnaireAmelioration = new GestionnaireClickMenuAmelioration(paneMenu,boutonQuitter,boutonAmelioration,boutonSupprimer);
+
     }
 
     public void setMenuAmelioration(AfficheurDuMenuAmelioration afficheurDuMenuAmelioration){
@@ -49,5 +51,16 @@ public class ControllerMenuAmelioration implements Initializable {
     public void fermetureMenu(){
         afficheurAmelioration.retirerMenu();
         gestionnaireAmelioration.setAfficheurDuMenuAmelioration(afficheurAmelioration);
+    }
+
+    public void initLabel(){
+        for (Cellule c : afficheurAmelioration.getEnvironnement().getCarte().getCellules()){
+            if ((int) c.getLigne() == afficheurAmelioration.getLigne() && (int) c.getColonne() == afficheurAmelioration.getColonne()) {
+                labelNomCellule.setText(c.nomCellule()); ;
+                labelDegatsCellule.setText("Dégats : " + c.getAttaque().getDegats());
+                labelPorteeCellule.setText("Portée : " + c.getReconnaissance().getPortee()); ;
+                labelFrequenceCellule.setText("Fréquence : " + c.getFrequenceAttaque()); ;
+            }
+        }
     }
 }

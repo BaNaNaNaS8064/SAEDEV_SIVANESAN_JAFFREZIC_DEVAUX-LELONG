@@ -12,7 +12,7 @@
          <children>
             <HBox prefHeight="32.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="139.0" text="Nom" textAlignment="CENTER" fx:id="labelNomCellule"/>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="139.0" textAlignment="CENTER" fx:id="labelNomCellule"/>
                   <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="34.0" prefWidth="29.0" text="X" fx:id="boutonQuitter" onMouseClicked="#clickBoutonQuitter"/>
                </children>
             </HBox>
@@ -20,19 +20,19 @@
                <children>
                   <HBox prefHeight="20.0" prefWidth="160.0">
                      <children>
-                        <Label text="Dégats : " fx:id="labelDegatsCellule"/>
+                        <Label  fx:id="labelDegatsCellule"/>
                         <Label />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="160.0">
                      <children>
-                        <Label text="Portée : " fx:id="labelPorteeCellule"/>
+                        <Label  fx:id="labelPorteeCellule"/>
                         <Label />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="30.0" prefHeight="18.0" prefWidth="160.0">
                      <children>
-                        <Label text="Fréquence : " fx:id="labelFrequenceCellule"/>
+                        <Label  fx:id="labelFrequenceCellule"/>
                         <Label />
                      </children>
                   </HBox>

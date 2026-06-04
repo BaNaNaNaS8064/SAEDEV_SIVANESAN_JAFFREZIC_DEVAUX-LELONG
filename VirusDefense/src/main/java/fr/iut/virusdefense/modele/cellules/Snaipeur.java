@@ -31,4 +31,9 @@ public class Snaipeur extends Cellule{
         temp.initAttaque();
         return temp;
     }
+
+    @Override
+    public String nomCellule() {
+        return "Snaï-peur";
+    }
 }

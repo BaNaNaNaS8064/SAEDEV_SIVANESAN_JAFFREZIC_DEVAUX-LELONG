@@ -31,6 +31,7 @@ public class AfficheurDuMenuAmelioration {
 
               ControllerMenuAmelioration controllerMenuAmelioration = loader.getController();
               controllerMenuAmelioration.setMenuAmelioration(this);
+              controllerMenuAmelioration.initLabel();
               amelioration.setTranslateX((colonne+0.5)*32);
               amelioration.setTranslateY((ligne+0.5)*32);
               paneDessin.getChildren().add(amelioration);
