@@ -10,6 +10,7 @@ public class AtkRayonSimple extends AtkRayon {
 
     public AtkRayonSimple(Environnement environnement, double ligne, double colonne, int degats, ArrayList<Maladie> cibles){
         super(environnement, ligne, colonne, cibles);
+        this.degats = degats;
     }
 
     @Override
