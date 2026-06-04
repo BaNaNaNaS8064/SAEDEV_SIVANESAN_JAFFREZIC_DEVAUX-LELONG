@@ -2,7 +2,10 @@ package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.apparition.Niveau;
+import fr.iut.virusdefense.modele.carte.Carte;
+import fr.iut.virusdefense.modele.carte.LecteurDeCarte;
 import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -11,6 +14,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
 
 /**
  * Représente le terrain dans lequel il y aura les cellules et maladies
@@ -25,6 +30,8 @@ public class Environnement {
     private final Joueur joueur;
 
     private final Niveau niveau;
+
+    private final ArrayList<Alteration> alterations;
 
     /**
      * La liste des maladies dans le terrain
@@ -44,11 +51,11 @@ public class Environnement {
         maladies = FXCollections.observableArrayList();
         rayons = FXCollections.observableArrayList();
         zones =  FXCollections.observableArrayList();
-        carte = new Carte(this);
-        carte.initGenerateurs();
+        carte = new LecteurDeCarte(this).creer();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
         niveau = new Niveau(this);
+        alterations = new ArrayList<>();
         statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
     }
 
@@ -70,6 +77,10 @@ public class Environnement {
 
     public Joueur getJoueur() {
         return joueur;
+    }
+
+    public ArrayList<Alteration> getAlterations() {
+        return alterations;
     }
 
     public ObservableList<Rayon> getRayons() {
@@ -159,6 +170,10 @@ public class Environnement {
                     if (zones.get(i).aDepasseAgeMaximal())
                         zones.remove(i);
 
+                for (int i = alterations.size() - 1; i >= 0; i--)
+                    if (alterations.get(i).finDeVie())
+                        alterations.remove(i);
+
                 for (Rayon r : rayons)
                     r.agir();
 
@@ -173,8 +188,19 @@ public class Environnement {
                 for (Generateur g : carte.getGenerateurs())
                     g.agir();
 
-                for (int i = maladies.size() - 1; i >= 0; i--)
+                for (Alteration alt : alterations) {
+                    alt.agir();
+                }
+
+                for (int i = maladies.size() - 1; i >= 0; i--) {
                     maladies.get(i).agir();
+                    if (!maladies.get(i).estVivant()) {
+                        maladies.get(i).capaciteALaMort();
+                        if (!maladies.get(i).aAtteintLObjectif())
+                            joueur.ajouterPc(maladies.get(i).getRecompense());
+                        maladies.remove(i);
+                    }
+                }
             }
             else{
                 if(joueur.getPv()>0)
@@ -195,7 +221,20 @@ public class Environnement {
         return false;
     }
 
+
+    /**
+     * Vérifie si les générateurs ont un chemins disponible pour les maladies vers la fin.
+     * @return Vrai si bloqué
+     */
+    public boolean generateursBloques(){
+        for (Generateur generateur : carte.getGenerateurs()) {
+            if(deplacement.estBloquee(generateur.position()))
+                return true;
+        }
+        return false;
+    }
+
     public boolean maladieOuGenerateurBloque(){
-        return maladiesBloquees() || getCarte().generateursBloques();
+        return maladiesBloquees() || generateursBloques();
     }
 }

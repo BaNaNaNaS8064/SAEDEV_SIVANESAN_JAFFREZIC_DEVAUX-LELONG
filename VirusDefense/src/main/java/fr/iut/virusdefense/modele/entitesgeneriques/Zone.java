@@ -2,6 +2,7 @@ package fr.iut.virusdefense.modele.entitesgeneriques;
 
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
+import fr.iut.virusdefense.modele.maladies.Tumeur;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +46,11 @@ public class Zone extends EntiteAtk{
     @Override
     public void donnerAlterations() {
         for (Maladie cible : cibles) {
-            for (Alteration alteration : getAlterations()) {
-                cible.ajouter(alteration.copieAlteration());
+            if (!(cible instanceof Tumeur)) {
+                for (Alteration alt : getAlterations()) {
+                    alt.setMaladie(cible);
+                    getEnvironnement().getAlterations().add(alt);
+                }
             }
         }
     }

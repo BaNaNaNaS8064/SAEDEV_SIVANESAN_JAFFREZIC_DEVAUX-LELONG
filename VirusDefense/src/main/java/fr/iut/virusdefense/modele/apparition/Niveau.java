@@ -6,6 +6,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Le Niveau se charge de ce qui touche aux vagues et aux apparitions <br>
@@ -20,7 +22,7 @@ public class Niveau {
     /// L'indice de la vague actuelle
     private final IntegerProperty numVagueProperty;
     /// La liste des vagues
-    private ArrayList<Vague> vagues;
+    private List<Vague> vagues;
 
     /// Le délai entre chaque vague
     private int delaiEntreVagues;
@@ -59,8 +61,8 @@ public class Niveau {
      * que le nombre de générateurs dans la carte de {@code environnnement}
      */
     public void initVagues(){
-        vagues = new ArrayList<>();
-        for (int indVague=0; indVague<25; indVague++){
+        /*vagues = new ArrayList<>();
+        for (int indVague=0; indVague<100; indVague++){
             vagues.add(new Vague());
             for (int indListeA=0; indListeA<environnement.getCarte().getGenerateurs().size(); indListeA++) {
                 vagues.get(indVague).ajouter(new ListeApparition());
@@ -68,7 +70,8 @@ public class Niveau {
                     vagues.get(indVague).getListeApparitions().get(indListeA).ajouter(CodeMaladie.codeAleatoire(), (int) ((Math.random() * 90 + 30)) / (2 * (indVague + 1)));
             }
         }
-        vagues.get(vagues.size() - 1).getListeApparitions().get(0).ajouter(CodeMaladie.TUMEUR, 0);
+        vagues.get(vagues.size() - 1).getListeApparitions().get(0).ajouter(CodeMaladie.TUMEUR, 0);*/
+        vagues = Arrays.asList(new LecteurVague(environnement.getCarte().getGenerateurs().size()).getVagues());
     }
 
     /**
@@ -79,7 +82,7 @@ public class Niveau {
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
         for (int i=0; i<environnement.getCarte().getGenerateurs().size(); i++)
-            environnement.getCarte().getGenerateurs().get(i).setListe(vagues.get(getNumVague()).getListeApparitions().get(i));
+            environnement.getCarte().getGenerateurs().get(i).ajouter(vagues.get(getNumVague()).getListeApparitions().get(i));
          delai = Integer.MAX_VALUE;
     }
 

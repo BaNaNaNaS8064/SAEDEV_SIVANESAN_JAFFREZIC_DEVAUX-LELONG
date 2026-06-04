@@ -24,13 +24,8 @@ public abstract class Entite {
         id = "" + ++dernierID;
         this.environnement = environnement;
 
-        // Dans la plupart des cas ligne et colonne seront dans les bornes
         ligneProperty = new SimpleDoubleProperty(ligne);
         colonneProperty = new SimpleDoubleProperty(colonne);
-        if (!environnement.getCarte().dansBornes(ligne, colonne)) {
-            setColonne(0);
-            setLigne(0);
-        }
     }
 
     public String getId() {

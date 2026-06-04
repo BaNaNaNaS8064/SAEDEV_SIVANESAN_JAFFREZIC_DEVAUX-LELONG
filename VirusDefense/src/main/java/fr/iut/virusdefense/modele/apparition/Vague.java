@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Vague {
 
     /**
-     * Décrit la liste des listes d'apparitoins de la vague
+     * Décrit la liste des listes d'apparitions de la vague
      */
     private final ArrayList<ListeApparition> listeApparitions;
 

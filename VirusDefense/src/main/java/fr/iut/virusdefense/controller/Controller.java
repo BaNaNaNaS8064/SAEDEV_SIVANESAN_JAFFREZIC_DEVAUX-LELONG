@@ -1,17 +1,21 @@
 package fr.iut.virusdefense.controller;
 
+import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.controller.observateurs.*;
 import fr.iut.virusdefense.modele.cellules.*;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.vue.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
@@ -24,6 +28,7 @@ public class Controller implements Initializable {
 
 
     private Timeline gameLoop;
+    private boolean pause = false;
 
     // centre
     @FXML public Pane paneDessin;
@@ -40,7 +45,8 @@ public class Controller implements Initializable {
     @FXML public Label labelPvMax;
 
     //haut button
-    @FXML public Button startButton;
+    @FXML public Button boutonVague;
+    @FXML public ImageView imagePause;
 
     // droite
     @FXML public Label labelSolde;
@@ -122,13 +128,33 @@ public class Controller implements Initializable {
 
     @FXML
     public void clickTuiles(MouseEvent mouseEvent) {
-        gestionnaireClickCarte.gererClick(mouseEvent);
+        if (!pause)
+            gestionnaireClickCarte.gererClick(mouseEvent);
     }
 
     @FXML
     public void démarrerVague(MouseEvent mouseEvent) {
-        environnement.getNiveau().passerProchaineVague();
-        startButton.setDisable(true);
-        startButton.setVisible(false);
+        if (!pause){
+            environnement.getNiveau().passerProchaineVague();
+            boutonVague.setText("Passer");
+            boutonVague.setOnMousePressed(this::passerVague);
+        }
+    }
+
+    public void passerVague(MouseEvent mouseEvent){
+        if(environnement.getNiveau().resteVague() && !pause)
+            environnement.getNiveau().passerProchaineVague();
+    }
+
+    @FXML
+    public void pauseJeu(ActionEvent actionEvent) {
+        if (pause) {
+            gameLoop.play();
+            imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/reprendre.png"))));
+        }else{
+            gameLoop.pause();
+            imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/pause.png"))));
+        }
+        pause = !pause;
     }
 }
