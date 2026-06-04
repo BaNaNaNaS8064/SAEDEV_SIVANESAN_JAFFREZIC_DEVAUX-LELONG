@@ -15,9 +15,11 @@ import java.util.ResourceBundle;
 public class ControllerMenuAmelioration implements Initializable {
 
     @FXML public Pane paneMenu;
+
     @FXML public Button boutonQuitter;
     @FXML public Button boutonAmelioration;
     @FXML public Button boutonSupprimer;
+
     @FXML public Label labelNomCellule;
     @FXML public Label labelDegatsCellule;
     @FXML public Label labelPorteeCellule;
@@ -28,15 +30,14 @@ public class ControllerMenuAmelioration implements Initializable {
     private AfficheurDuMenuAmelioration afficheurAmelioration;
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
     }
 
     public void setMenuAmelioration(AfficheurDuMenuAmelioration afficheurDuMenuAmelioration){
         this.afficheurAmelioration = afficheurDuMenuAmelioration;
+        afficheurAmelioration.getEnvironnement().statutPartieProperty().addListener((observableValue, statutPartie, t1) -> afficheurAmelioration.retirerMenu());
+
         for (Cellule c : afficheurAmelioration.getEnvironnement().getCarte().getCellules()) {
             if ((int) c.getLigne() == afficheurAmelioration.getLigne() && (int) c.getColonne() == afficheurAmelioration.getColonne()) {
                 initLabel(c);
@@ -82,7 +83,6 @@ public class ControllerMenuAmelioration implements Initializable {
 
     public void fermetureMenu(){
         afficheurAmelioration.retirerMenu();
-
     }
 
 

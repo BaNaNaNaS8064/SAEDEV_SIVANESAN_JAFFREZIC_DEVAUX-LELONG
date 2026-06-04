@@ -49,7 +49,7 @@ public class AfficheurDuMenuAmelioration {
 
               ControllerMenuAmelioration controllerMenuAmelioration = loader.getController();
               controllerMenuAmelioration.setMenuAmelioration(this);
-              coteApparitionMenu(ligne,colonne);
+              coteApparitionMenu();
               paneCentre.getChildren().add(amelioration);
           }
           catch (Exception ignored){}
@@ -59,19 +59,19 @@ public class AfficheurDuMenuAmelioration {
         paneCentre.getChildren().remove(amelioration);
     }
 
-    public void coteApparitionMenu(int Ligne, int Colonne){
-        if (paneCentre.getPrefHeight() > ((ligne+0.5)*32)+amelioration.getPrefHeight()) {
-            amelioration.setTranslateY((ligne + 0.5) * 32);
-        }
-        else{
-            amelioration.setTranslateY(((ligne + 0.5) * 32)-128);
-        }
-
+    public void coteApparitionMenu(){
         if (paneCentre.getPrefWidth() > ((colonne+0.5)*32)+amelioration.getPrefWidth()) {
             amelioration.setTranslateX((colonne + 0.5) * 32);
         }
         else{
             amelioration.setTranslateX(((colonne + 0.5) * 32)-160);
+        }
+
+        if (paneCentre.getPrefHeight() > ((ligne+0.5)*32)+amelioration.getPrefHeight()) {
+            amelioration.setTranslateY((ligne + 0.5) * 32);
+        }
+        else{
+            amelioration.setTranslateY(((ligne + 0.5) * 32)-128);
         }
     }
 }
