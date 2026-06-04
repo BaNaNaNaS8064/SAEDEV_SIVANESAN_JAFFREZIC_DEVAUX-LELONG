@@ -38,7 +38,12 @@ public class Lasere extends Cellule{
     }
 
     @Override
-    public void amelioration() {
+    public void niveau2() {
+
+    }
+
+    @Override
+    public void niveau3() {
 
     }
 }

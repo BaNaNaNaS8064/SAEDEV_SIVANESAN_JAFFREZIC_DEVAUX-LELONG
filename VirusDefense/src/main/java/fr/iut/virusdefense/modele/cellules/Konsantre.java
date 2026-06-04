@@ -46,4 +46,14 @@ public class Konsantre extends Cellule{
     public void amelioration() {
 
     }
+
+    @Override
+    public void niveau2() {
+
+    }
+
+    @Override
+    public void niveau3() {
+
+    }
 }

@@ -34,19 +34,18 @@ public class Sainple extends Cellule {
     }
 
     @Override
-    public void amelioration() {
-        if (getNiveau() == 2){
-
-            getEnvironnement().getJoueur().retirerPc(getCoutAmelioration());
-            setCoutAmelioration(10);
-        }
-        if (getNiveau() == 3){
-            //amelioration
-        }
+    public String nomCellule() {
+        return "Sainple";
     }
 
     @Override
-    public String nomCellule() {
-        return "Sainple";
+    public void niveau2(){
+
+        setCoutAmelioration(10);
+    }
+
+    @Override
+    public void niveau3(){
+
     }
 }

@@ -73,12 +73,26 @@ public abstract class Cellule extends Entite {
 
 
     public void niveauSuperieur(){
-        niveau++;
-        this.amelioration();
+        if (getEnvironnement().getJoueur().getPc()> getCoutAmelioration()) {
+            niveau++;
+            this.amelioration();
+        }
     }
 
-    abstract public void amelioration();
+    public void amelioration(){
+        if (niveau==2){
+            getEnvironnement().getJoueur().retirerPc(getCoutAmelioration());
+            niveau2();
+        }
+        else if (niveau==3){
+            getEnvironnement().getJoueur().retirerPc(getCoutAmelioration());
+            niveau3();
+        }
+    }
 
+    abstract public void niveau2();
+
+    abstract public void niveau3();
 
 
     @Override

@@ -61,7 +61,7 @@ public class ControllerMenuAmelioration implements Initializable {
                     c.niveauSuperieur();
             }
         }
-        fermetureMenu();
+        setMenuAmelioration(afficheurAmelioration);
     }
 
     public void fermetureMenu(){
