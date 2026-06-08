@@ -32,4 +32,29 @@ public class Sainple extends Cellule {
         temp.initAttaque();
         return temp;
     }
+
+    @Override
+    public String getNom() {
+        return "Sainple";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 75;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 150;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2(){
+        getAttaque().setDegats(70);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3(){
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+1.5);
+    }
 }

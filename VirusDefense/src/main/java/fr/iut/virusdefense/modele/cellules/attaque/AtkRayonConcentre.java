@@ -6,16 +6,23 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 import java.util.ArrayList;
 
 public class AtkRayonConcentre extends AtkRayon{
-
-    private final int degatsInitiaux;
     private ArrayList<Maladie> ciblesTourPrecedent;
     private ArrayList<Integer> dureeCiblageTourPrecedent;
+    private double delaiAugmentation;
 
-    public AtkRayonConcentre(Environnement environnement, double ligne, double colonne, int degatsInitiaux, ArrayList<Maladie> cibles){
-        super(environnement, ligne, colonne, cibles);
-        this.degatsInitiaux = degatsInitiaux;
+    public AtkRayonConcentre(Environnement environnement, double ligne, double colonne, double degats, double delaiAugmentation, ArrayList<Maladie> cibles) {
+        super(environnement, ligne, colonne, degats, cibles);
         ciblesTourPrecedent = new ArrayList<>();
         dureeCiblageTourPrecedent = new ArrayList<>();
+        this.delaiAugmentation = delaiAugmentation;
+    }
+
+    public double getDelaiAugmentation() {
+        return delaiAugmentation;
+    }
+
+    public void setDelaiAugmentation(double delaiAugmentation) {
+        this.delaiAugmentation = delaiAugmentation;
     }
 
     @Override
@@ -37,12 +44,12 @@ public class AtkRayonConcentre extends AtkRayon{
         dureeCiblageTourPrecedent = dureeCiblageTourActuel;
     }
 
-    private int calculerDegats(int dureeCiblage){
-        if (dureeCiblage < 60)
-            return degatsInitiaux;
-        else if (dureeCiblage < 120)
-            return degatsInitiaux * 3;
+    private double calculerDegats(int dureeCiblage){
+        if (dureeCiblage < delaiAugmentation)
+            return getDegats();
+        else if (dureeCiblage < delaiAugmentation * 2)
+            return getDegats() * 3;
         else
-            return degatsInitiaux * 9;
+            return getDegats() * 9;
     }
 }

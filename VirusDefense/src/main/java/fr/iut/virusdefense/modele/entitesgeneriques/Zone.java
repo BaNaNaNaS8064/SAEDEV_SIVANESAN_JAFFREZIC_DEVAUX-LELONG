@@ -13,9 +13,8 @@ public class Zone extends EntiteAtk{
     private final int ageMaximal;
     private final double rayonZone;
 
-    public Zone(Environnement environnement, double ligne, double colonne, ArrayList<Maladie> cibles, int degats, int ageMaximal, List<Alteration> alterations, double rayonZone) {
+    public Zone(Environnement environnement, double ligne, double colonne, ArrayList<Maladie> cibles, double degats, int ageMaximal, List<Alteration> alterations, double rayonZone) {
         super(environnement, ligne, colonne, degats, alterations, cibles);
-
         age = 0;
         this.ageMaximal = ageMaximal;
 

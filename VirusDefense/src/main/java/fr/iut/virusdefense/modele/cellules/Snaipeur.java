@@ -31,4 +31,29 @@ public class Snaipeur extends Cellule{
         temp.initAttaque();
         return temp;
     }
+
+    @Override
+    public String getNom() {
+        return "Snaï-peur";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 120;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 175;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        setFrequenceAttaque(getFrequenceAttaque()-25);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        setFrequenceAttaque(getFrequenceAttaque()-50);
+    }
 }

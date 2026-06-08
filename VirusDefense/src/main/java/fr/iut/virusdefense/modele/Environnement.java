@@ -138,7 +138,7 @@ public class Environnement {
         int i=0;
         boolean trouve = false;
 
-        while (!trouve || i < carte.getCellules().size()){
+        while (!trouve && i < carte.getCellules().size()){
             if ((int)carte.getCellules().get(i).getLigne() == ligne && (int)carte.getCellules().get(i).getColonne() == colonne){
                 trouve = true;
                 retirerCellule(carte.getCellules().get(i), rendrePC);

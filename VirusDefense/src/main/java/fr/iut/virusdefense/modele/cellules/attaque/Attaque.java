@@ -10,12 +10,14 @@ public abstract class Attaque {
     private final ArrayList<Maladie> cibles;
     private final Environnement environnement;
     private final double ligne, colonne;
+    private double degats;
     private final ArrayList<Alteration> alterations;
 
-    public Attaque(Environnement environnement, double ligne, double colonne, ArrayList<Maladie> cibles){
+    public Attaque(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
         this.environnement = environnement;
         this.ligne = ligne;
         this.colonne = colonne;
+        this.degats = degats;
         this.alterations = new ArrayList<>();
         this.cibles = cibles;
     }
@@ -26,6 +28,14 @@ public abstract class Attaque {
 
     public Environnement getEnvironnement() {
         return environnement;
+    }
+
+    public double getDegats() {
+        return degats;
+    }
+
+    public void setDegats(double degats) {
+        this.degats = degats;
     }
 
     public double getLigne() {

@@ -9,7 +9,7 @@ public abstract class Reconnaissance {
     private final List<Maladie> maladies;
     private final double ligne, colonne;
 
-    private final double portee;
+    private double portee;
 
     private int nombreCiblesMax;
     private final ArrayList<Maladie> cibles;
@@ -41,6 +41,10 @@ public abstract class Reconnaissance {
 
     public double getPortee() {
         return portee;
+    }
+
+    public void setPortee(double portee) {
+        this.portee = portee;
     }
 
     public final boolean aPortee(Maladie m){

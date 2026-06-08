@@ -31,4 +31,29 @@ public class Lasere extends Cellule{
         temp.initAttaque();
         return temp;
     }
+
+    @Override
+    public String getNom() {
+        return "L'asère";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 150;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 175;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        getAttaque().setDegats(getAttaque().getDegats()+0.5);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+1);
+    }
 }

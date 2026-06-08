@@ -9,16 +9,14 @@ import java.util.ArrayList;
 
 public class AtkZone extends Attaque{
     private final double rayonZone;
-    private final int degats;
 
-    public AtkZone(Environnement environnement, double ligne, double colonne, int degats, ArrayList<Maladie> cibles, double rayonZone){
-        super(environnement, ligne, colonne, cibles);
-        this.degats = degats;
+    public AtkZone(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles, double rayonZone){
+        super(environnement, ligne, colonne, degats, cibles);
         this.rayonZone = rayonZone;
     }
 
     @Override
     public final void attaqueCibles(){
-        getEnvironnement().ajouterZone(new Zone(getEnvironnement(), getLigne(), getColonne(), getCibles() , degats, 10 , getAlterations(), rayonZone));
+        getEnvironnement().ajouterZone(new Zone(getEnvironnement(), getLigne(), getColonne(), getCibles() , getDegats(), 10 , getAlterations(), rayonZone));
     }
 }

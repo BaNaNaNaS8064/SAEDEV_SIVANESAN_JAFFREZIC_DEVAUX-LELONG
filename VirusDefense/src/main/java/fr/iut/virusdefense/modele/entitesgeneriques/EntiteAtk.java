@@ -10,20 +10,20 @@ import java.util.List;
 public abstract class EntiteAtk extends Entite{
     private final List<Maladie> cibles;
     private final List<Alteration> alterations;
-    private final int degats;
+    private final double degats;
 
-    public EntiteAtk(Environnement environnement, double ligne, double colonne, int degats, List<Alteration> alterations, Maladie cible){
+    public EntiteAtk(Environnement environnement, double ligne, double colonne, double degats, List<Alteration> alterations, Maladie cible){
         this(environnement, ligne, colonne, degats, alterations, List.of(cible));
     }
 
-    public EntiteAtk(Environnement environnement, double ligne, double colonne, int degats, List<Alteration> alterations, List<Maladie> cibles) {
+    public EntiteAtk(Environnement environnement, double ligne, double colonne, double degats, List<Alteration> alterations, List<Maladie> cibles) {
         super(environnement, ligne, colonne);
         this.degats = degats;
         this.alterations = alterations;
         this.cibles = cibles;
     }
 
-    public int getDegats(){
+    public double getDegats(){
         return degats;
     }
 

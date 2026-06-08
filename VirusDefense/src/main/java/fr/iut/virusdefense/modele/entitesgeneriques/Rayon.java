@@ -11,7 +11,7 @@ public class Rayon extends EntiteAtk {
     private int age;
     private final int ageMaximal;
 
-    public Rayon(Environnement environnement, double ligne, double colonne, Maladie cible, int degats, int ageMaximal, List<Alteration> alterations) {
+    public Rayon(Environnement environnement, double ligne, double colonne, Maladie cible, double degats, int ageMaximal, List<Alteration> alterations) {
         super(environnement, ligne, colonne, degats, alterations, cible);
 
         age = 0;

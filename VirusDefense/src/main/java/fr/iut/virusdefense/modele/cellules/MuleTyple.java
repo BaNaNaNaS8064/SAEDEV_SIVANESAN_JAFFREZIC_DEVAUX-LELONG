@@ -32,4 +32,29 @@ public class MuleTyple extends Cellule{
         temp.initAttaque();
         return temp;
     }
+
+    @Override
+    public String getNom() {
+        return "Mule-typle";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 120;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 250;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+0.5);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        getReconnaissance().setNombreCiblesMax(5);
+    }
 }

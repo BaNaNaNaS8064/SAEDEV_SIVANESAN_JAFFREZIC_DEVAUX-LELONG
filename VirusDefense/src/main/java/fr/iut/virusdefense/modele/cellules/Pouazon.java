@@ -5,6 +5,7 @@ import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Dot;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.cellules.attaque.alteration.Ralentissement;
 
 public class Pouazon extends Cellule{
     private static int coutBase = 130;
@@ -34,5 +35,30 @@ public class Pouazon extends Cellule{
         temp.initRec();
         temp.initAttaque();
         return temp;
+    }
+
+    @Override
+    public String getNom() {
+        return "Pouazon";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 170;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 220;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        getAttaque().setDegats(30);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        getAttaque().ajouterAlteration(new Ralentissement(5,0.9));
     }
 }

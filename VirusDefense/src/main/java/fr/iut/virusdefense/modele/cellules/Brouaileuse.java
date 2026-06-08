@@ -33,4 +33,29 @@ public class Brouaileuse extends Cellule {
         temp.initAttaque();
         return temp;
     }
+
+    @Override
+    public String getNom() {
+        return "Brouaïlleuse";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 200;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 275;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        setFrequenceAttaque(getFrequenceAttaque()-50);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+1);
+    }
 }

@@ -1,10 +1,8 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonConcentre;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
-import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 
 public class Konsantre extends Cellule{
     private static int coutBase = 100;
@@ -12,8 +10,6 @@ public class Konsantre extends Cellule{
     public static int getCoutBase() {
         return coutBase;
     }
-
-    private Entite cible;
 
 
     private Konsantre(Environnement env, int ligne, int colonne){
@@ -27,7 +23,7 @@ public class Konsantre extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonConcentre(getEnvironnement(), getLigne(), getColonne(), 1, getReconnaissance().getCibles()));
+        setAttaque(new AtkRayonConcentre(getEnvironnement(), getLigne(), getColonne(), 1, 60, getReconnaissance().getCibles()));
     }
 
     public static Konsantre creer(Environnement env, int ligne, int colonne){
@@ -35,5 +31,30 @@ public class Konsantre extends Cellule{
         temp.initRec();
         temp.initAttaque();
         return temp;
+    }
+
+    @Override
+    public String getNom() {
+        return "Konsantré";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 175;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 200;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        getAttaque().setDegats(getAttaque().getDegats()+0.5);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        ((AtkRayonConcentre)getAttaque()).setDelaiAugmentation(((AtkRayonConcentre)getAttaque()).getDelaiAugmentation()-50);
     }
 }
