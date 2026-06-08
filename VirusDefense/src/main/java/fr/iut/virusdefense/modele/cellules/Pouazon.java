@@ -54,7 +54,7 @@ public class Pouazon extends Cellule{
 
     @Override
     public void ameliorerAuNiveau2() {
-        getAttaque().setDegats(30);
+        getAttaque().setDegats(getAttaque().getDegats() + 15);
     }
 
     @Override

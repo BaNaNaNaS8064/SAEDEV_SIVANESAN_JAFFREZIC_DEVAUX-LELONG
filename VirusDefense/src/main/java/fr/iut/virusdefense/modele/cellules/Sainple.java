@@ -50,7 +50,7 @@ public class Sainple extends Cellule {
 
     @Override
     public void ameliorerAuNiveau2(){
-        getAttaque().setDegats(70);
+        getAttaque().setDegats(getAttaque().getDegats() + 30);
     }
 
     @Override
