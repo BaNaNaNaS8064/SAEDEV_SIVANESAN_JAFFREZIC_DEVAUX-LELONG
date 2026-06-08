@@ -24,7 +24,7 @@ public class Pouazon extends Cellule{
 
     @Override
     public void initAttaque(){
-        AtkRayon temp = new AtkRayonSimple(this, 10);
+        AtkRayon temp = new AtkRayonSimple(this, 15);
         temp.ajouterAlteration(new Dot(15,4));
         setAttaque(temp);
     }

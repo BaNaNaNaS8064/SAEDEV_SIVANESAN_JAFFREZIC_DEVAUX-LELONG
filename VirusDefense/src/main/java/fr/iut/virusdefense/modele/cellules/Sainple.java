@@ -23,7 +23,7 @@ public class Sainple extends Cellule {
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 45));
+        setAttaque(new AtkRayonSimple(this, 30));
     }
 
     public static Sainple creer(Environnement env, int ligne, int colonne){
