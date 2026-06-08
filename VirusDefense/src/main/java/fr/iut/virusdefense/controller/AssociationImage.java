@@ -27,14 +27,14 @@ public class AssociationImage {
         temp.put(CodeTuile.GENERATEUR, "Gen.png");
         temp.put(CodeTuile.OBJECTIF, "Obj.gif");
 
-        temp.put(CodeTuile.SAINPLE, "cellules/Sainple.png");
-        temp.put(CodeTuile.LASERE, "cellules/Sainple.png");
-        temp.put(CodeTuile.BROUAIEUSE, "cellules/Sainple.png");
-        temp.put(CodeTuile.MULETYPLE, "cellules/Sainple.png");
-        temp.put(CodeTuile.SNAIPEUR, "cellules/Sainple.png");
+        temp.put(CodeTuile.SAINPLE, "cellules/sainple.png");
+        temp.put(CodeTuile.LASERE, "cellules/lasere.png");
+        temp.put(CodeTuile.BROUAIEUSE, "cellules/brouaieuse.png");
+        temp.put(CodeTuile.MULETYPLE, "cellules/mule-typle.png");
+        temp.put(CodeTuile.SNAIPEUR, "cellules/snaipeur.png");
 
-        temp.put(CodeTuile.KONSANTRE, "cellules/Sainple.png");
-        temp.put(CodeTuile.POUAZON, "cellules/Sainple.png");
+        temp.put(CodeTuile.KONSANTRE, "cellules/konsantre.png");
+        temp.put(CodeTuile.POUAZON, "cellules/pouazon.png");
 
         return temp;
     }

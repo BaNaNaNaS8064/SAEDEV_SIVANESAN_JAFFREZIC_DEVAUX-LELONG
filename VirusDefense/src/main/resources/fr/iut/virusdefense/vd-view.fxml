@@ -93,7 +93,7 @@
                                           </RadioButton>
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/Sainple.png" />
+                                                <Image url="@images/tuiles/cellules/sainple.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Sainple" textFill="WHITE" />
@@ -105,7 +105,7 @@
                                           <RadioButton id="RbLasere" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/Sainple.png" />
+                                                <Image url="@images/tuiles/cellules/lasere.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="L'asère" textFill="WHITE" />
@@ -117,7 +117,7 @@
                                           <RadioButton id="RbBrouaieuse" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/Sainple.png" />
+                                                <Image url="@images/tuiles/cellules/brouaieuse.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Brouaïeuse" textFill="WHITE" />
@@ -129,7 +129,7 @@
                                           <RadioButton id="RbMuleTyple" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/Sainple.png" />
+                                                <Image url="@images/tuiles/cellules/mule-typle.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Mule-typle" textFill="WHITE" />
@@ -141,7 +141,7 @@
                                           <RadioButton id="RbSnaipeur" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/Sainple.png" />
+                                                <Image url="@images/tuiles/cellules/snaipeur.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Snaï-peur" textFill="WHITE" />
@@ -153,7 +153,7 @@
                                           <RadioButton id="RbRizCoCher" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/Sainple.png" />
+                                                <Image url="@images/tuiles/cellules/rizcocher.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="COMING SOON" textFill="WHITE" />
@@ -165,7 +165,7 @@
                                           <RadioButton id="RbKonsantre" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/Sainple.png" />
+                                                <Image url="@images/tuiles/cellules/konsantre.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Konsantré" textFill="WHITE" />
@@ -177,7 +177,7 @@
                                           <RadioButton id="RbPouazon" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/Sainple.png" />
+                                                <Image url="@images/tuiles/cellules/pouazon.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Pouazon" textFill="WHITE" />
@@ -189,7 +189,7 @@
                                           <RadioButton id="RbBrulHure" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/Sainple.png" />
+                                                <Image url="@images/tuiles/cellules/brul-hure.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="COMING SOON" textFill="WHITE" />
@@ -210,8 +210,8 @@
       <Pane fx:id="paneCentre" BorderPane.alignment="CENTER">
          <Pane fx:id="paneDessin" onMouseClicked="#clickTuiles">
             <children>
-               <TilePane fx:id="tuiles"/>
-               <Pane fx:id="paneLignes"/>
+               <TilePane fx:id="tuiles" />
+               <Pane fx:id="paneLignes" />
             </children>
          </Pane>
       </Pane>
