@@ -22,8 +22,19 @@ public class Projectile extends EntiteAtk {
 
     @Override
     public void agir(){
-        setLigne(getLigne() + 0.1 * Double.compare(getCibles().get(0).getLigne(), getLigne()));
-        setColonne(getColonne() + 0.1 * Double.compare(getCibles().get(0).getColonne(), getColonne()));
+        List<Integer> destination = getCibles().get(0).position();
+        if (destination != null) {
+            double distLigne = Math.abs(destination.get(0) + 0.5 - getLigne());
+            double distColonne = Math.abs(destination.get(1) + 0.5 - getColonne());
+
+            double distanceMax = Math.max(distLigne, distColonne);
+
+            int directionLigne = Double.compare(destination.get(0) + 0.5, getLigne());
+            int directionColonne = Double.compare(destination.get(1) + 0.5, getColonne());
+
+            setLigne(getLigne() + 0.1 * directionLigne * distLigne / distanceMax);
+            setColonne(getColonne() + 0.1 * directionColonne * distColonne / distanceMax);
+        }
 
         if(Math.abs(getCibles().get(0).getLigne() - getLigne()) <= 0.5 && Math.abs(getCibles().get(0).getColonne() - getColonne()) <= 0.5){
             infligerDegats();
