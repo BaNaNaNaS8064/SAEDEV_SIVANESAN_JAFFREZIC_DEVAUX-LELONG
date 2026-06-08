@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
 public class GestionnaireMenuClick {
+    private static GestionnaireMenuClick menuActif;
+
     private Environnement environnement;
     private int ligne;
     private int colonne;
@@ -17,6 +19,10 @@ public class GestionnaireMenuClick {
     private AfficheurDeCarte afficheurDeCarte;
 
     public GestionnaireMenuClick(int ligne, int colonne, Pane paneCentre, Environnement environnement , AfficheurDeCarte afficheurDeCarte){
+        if (menuActif != null)
+            menuActif.retirerMenu();
+        menuActif = this;
+        
         this.colonne = colonne;
         this.ligne = ligne;
         this.paneCentre = paneCentre;
