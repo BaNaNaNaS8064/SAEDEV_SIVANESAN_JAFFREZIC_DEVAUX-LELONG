@@ -3,7 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonConcentre;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 
 public class Konsantre extends Cellule{
@@ -22,12 +22,12 @@ public class Konsantre extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecUnique(this, 3.0));
+        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0, 1));
     }
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonConcentre(this, 1));
+        setAttaque(new AtkRayonConcentre(getEnvironnement(), getLigne(), getColonne(), 1, getReconnaissance().getCibles()));
     }
 
     public static Konsantre creer(Environnement env, int ligne, int colonne){
