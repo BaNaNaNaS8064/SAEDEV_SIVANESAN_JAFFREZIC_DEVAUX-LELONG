@@ -13,7 +13,7 @@ public class Sainple extends Cellule {
     }
 
     private Sainple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 60, coutBase, 5);
+        super(env, ligne, colonne, 60, coutBase);
     }
 
     @Override
@@ -40,21 +40,21 @@ public class Sainple extends Cellule {
 
     @Override
     public int coutNiveau2() {
-        return 10;
+        return 75;
     }
 
     @Override
     public int coutNiveau3() {
-        return 40;
+        return 150;
     }
 
     @Override
     public void ameliorerAuNiveau2(){
-
+        getAttaque().setDegats(70);
     }
 
     @Override
     public void ameliorerAuNiveau3(){
-
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+1.5);
     }
 }

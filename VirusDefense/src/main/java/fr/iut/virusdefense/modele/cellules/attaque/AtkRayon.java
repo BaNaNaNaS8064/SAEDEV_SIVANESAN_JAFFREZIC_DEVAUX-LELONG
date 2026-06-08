@@ -8,7 +8,7 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public abstract class AtkRayon extends Attaque {
 
-    public AtkRayon(Cellule cellule, int degats){
+    public AtkRayon(Cellule cellule, double degats){
         super(cellule, degats);
     }
 

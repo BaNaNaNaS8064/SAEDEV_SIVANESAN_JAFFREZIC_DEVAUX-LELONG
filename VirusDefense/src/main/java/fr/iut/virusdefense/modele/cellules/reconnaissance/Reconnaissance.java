@@ -31,6 +31,10 @@ public abstract class Reconnaissance {
         return portee;
     }
 
+    public void setPortee(double portee) {
+        this.portee = portee;
+    }
+
     /**
      * Methode qui permet a la cellule de voir si sa cible est toujours dans sa portée
      */

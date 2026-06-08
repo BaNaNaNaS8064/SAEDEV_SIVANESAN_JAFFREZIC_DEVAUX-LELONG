@@ -15,7 +15,7 @@ public class Brouaileuse extends Cellule {
     }
 
     private Brouaileuse(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 200, coutBase,5);
+        super(env, ligne, colonne, 200, coutBase);
     }
 
     @Override
@@ -42,21 +42,21 @@ public class Brouaileuse extends Cellule {
 
     @Override
     public int coutNiveau2() {
-        return 0;
+        return 200;
     }
 
     @Override
     public int coutNiveau3() {
-        return 0;
+        return 275;
     }
 
     @Override
     public void ameliorerAuNiveau2() {
-
+        setFrequenceAttaque(getFrequenceAttaque()-50);
     }
 
     @Override
     public void ameliorerAuNiveau3() {
-
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+1);
     }
 }

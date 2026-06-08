@@ -9,12 +9,12 @@ import java.util.List;
 public class Rayon extends EntiteAtk {
     private final Entite cible;
 
-    private final int degats;
+    private final double degats;
 
     private int age;
     private final int ageMaximal;
 
-    public Rayon(Entite e1, Entite e2, int degats, int ageMaximal, List<Alteration> alterations) {
+    public Rayon(Entite e1, Entite e2, double degats, int ageMaximal, List<Alteration> alterations) {
         super(e1.getEnvironnement(), e1.getLigne(), e1.getColonne(), alterations);
         this.cible = e2;
 

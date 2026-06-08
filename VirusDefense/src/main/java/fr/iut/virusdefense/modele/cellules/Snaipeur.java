@@ -12,7 +12,7 @@ public class Snaipeur extends Cellule{
     }
 
     private Snaipeur(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 200, coutBase, 5);
+        super(env, ligne, colonne, 200, coutBase);
     }
 
     @Override
@@ -39,21 +39,21 @@ public class Snaipeur extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 0;
+        return 120;
     }
 
     @Override
     public int coutNiveau3() {
-        return 0;
+        return 175;
     }
 
     @Override
     public void ameliorerAuNiveau2() {
-
+        setFrequenceAttaque(getFrequenceAttaque()-25);
     }
 
     @Override
     public void ameliorerAuNiveau3() {
-
+        setFrequenceAttaque(getFrequenceAttaque()-50);
     }
 }

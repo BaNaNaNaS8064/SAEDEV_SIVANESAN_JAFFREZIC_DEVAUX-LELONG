@@ -12,7 +12,7 @@ public class Lasere extends Cellule{
     }
 
     private Lasere(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 1, coutBase , 5);
+        super(env, ligne, colonne, 1, coutBase);
     }
 
     @Override
@@ -39,21 +39,21 @@ public class Lasere extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 0;
+        return 150;
     }
 
     @Override
     public int coutNiveau3() {
-        return 0;
+        return 175;
     }
 
     @Override
     public void ameliorerAuNiveau2() {
-
+        getAttaque().setDegats(getAttaque().getDegats()+0.5);
     }
 
     @Override
     public void ameliorerAuNiveau3() {
-
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+1);
     }
 }

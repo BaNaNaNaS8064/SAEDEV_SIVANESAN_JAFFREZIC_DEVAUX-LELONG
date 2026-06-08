@@ -13,7 +13,7 @@ public class MuleTyple extends Cellule{
     }
 
     private MuleTyple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 50, coutBase,5);
+        super(env, ligne, colonne, 50, coutBase);
     }
 
     @Override
@@ -40,21 +40,21 @@ public class MuleTyple extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 0;
+        return 120;
     }
 
     @Override
     public int coutNiveau3() {
-        return 0;
+        return 250;
     }
 
     @Override
     public void ameliorerAuNiveau2() {
-
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+0.5);
     }
 
     @Override
     public void ameliorerAuNiveau3() {
-
+        setReconnaissance(new RecPlusieurs(this,getReconnaissance().getPortee(),5));
     }
 }

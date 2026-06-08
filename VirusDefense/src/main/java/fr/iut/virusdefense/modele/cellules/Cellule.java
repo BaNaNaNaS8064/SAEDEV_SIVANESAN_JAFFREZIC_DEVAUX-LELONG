@@ -9,13 +9,13 @@ public abstract class Cellule extends Entite {
     private Reconnaissance reconnaissance ;
     private Attaque attaque;
 
-    private final int frequenceAttaque;
+    private int frequenceAttaque;
     private int delai;
 
     private int niveau;
     private final int cout;
 
-    public Cellule(Environnement environnement, int ligne, int colonne, int frequenceAttaque, int cout, int coutAmelioration){
+    public Cellule(Environnement environnement, int ligne, int colonne, int frequenceAttaque, int cout){
         super(environnement, ligne, colonne);
 
         this.frequenceAttaque = frequenceAttaque;
@@ -56,6 +56,10 @@ public abstract class Cellule extends Entite {
 
     public Attaque getAttaque() {
         return attaque;
+    }
+
+    public void setFrequenceAttaque(int frequenceAttaque) {
+        this.frequenceAttaque = frequenceAttaque;
     }
 
     public int getCoutAmelioration() {

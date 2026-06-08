@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public class AtkZone extends Attaque{
-    public AtkZone(Cellule cellule, int degats){
+    public AtkZone(Cellule cellule, double degats){
         super(cellule, degats);
     }
 

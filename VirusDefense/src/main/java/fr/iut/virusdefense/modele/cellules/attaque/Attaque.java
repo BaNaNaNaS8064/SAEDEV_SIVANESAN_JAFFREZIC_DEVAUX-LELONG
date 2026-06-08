@@ -8,20 +8,20 @@ import java.util.ArrayList;
 
 public abstract class Attaque {
     private final Cellule cellule;
-    private int degats;
+    private double degats;
     private ArrayList<Alteration> alterations;
 
-    public Attaque(Cellule cellule, int degats){
+    public Attaque(Cellule cellule, double degats){
         this.cellule = cellule;
         this.degats = degats;
         this.alterations = new ArrayList<>();
     }
 
-    public int getDegats() {
+    public double getDegats() {
         return degats;
     }
 
-    public void setDegats(int degats) {
+    public void setDegats(double degats) {
         this.degats = degats;
     }
 

@@ -4,6 +4,8 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Dot;
+import fr.iut.virusdefense.modele.cellules.attaque.alteration.Ralentissement;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecPlusieurs;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
 
 public class Pouazon extends Cellule{
@@ -14,7 +16,7 @@ public class Pouazon extends Cellule{
     }
 
     private Pouazon(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 50, coutBase, 5);
+        super(env, ligne, colonne, 50, coutBase);
     }
 
     @Override
@@ -43,21 +45,21 @@ public class Pouazon extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 0;
+        return 170;
     }
 
     @Override
     public int coutNiveau3() {
-        return 0;
+        return 220;
     }
 
     @Override
     public void ameliorerAuNiveau2() {
-
+        getAttaque().setDegats(30);
     }
 
     @Override
     public void ameliorerAuNiveau3() {
-
+        getAttaque().ajouterAlteration(new Ralentissement(5,0.9));
     }
 }

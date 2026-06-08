@@ -13,11 +13,9 @@ public class Konsantre extends Cellule{
         return coutBase;
     }
 
-    private Entite cible;
-
 
     private Konsantre(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 1, coutBase, 5);
+        super(env, ligne, colonne, 1, coutBase);
     }
 
     @Override
@@ -27,7 +25,7 @@ public class Konsantre extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonConcentre(this, 1));
+        setAttaque(new AtkRayonConcentre(this, 1 , 150));
     }
 
     public static Konsantre creer(Environnement env, int ligne, int colonne){
@@ -44,21 +42,22 @@ public class Konsantre extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 0;
+        return 175;
     }
 
     @Override
     public int coutNiveau3() {
-        return 0;
+        return 200;
     }
 
     @Override
     public void ameliorerAuNiveau2() {
-
+        getAttaque().setDegats(getAttaque().getDegats()+0.5);
+        ((AtkRayonConcentre)getAttaque()).setDegatBase(getAttaque().getDegats());
     }
 
     @Override
     public void ameliorerAuNiveau3() {
-
+        ((AtkRayonConcentre)getAttaque()).setDelaiAugmentationAttaque(((AtkRayonConcentre)getAttaque()).getDelaiAugmentationAttaque()-50);
     }
 }
