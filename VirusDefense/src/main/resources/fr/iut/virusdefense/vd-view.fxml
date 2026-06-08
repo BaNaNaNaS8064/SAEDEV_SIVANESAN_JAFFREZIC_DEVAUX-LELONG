@@ -129,7 +129,7 @@
                                           <RadioButton id="RbMuleTyple" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/mule-typle.png" />
+                                                <Image url="@images/tuiles/cellules/muletyple.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Mule-typle" textFill="WHITE" />
@@ -189,7 +189,7 @@
                                           <RadioButton id="RbBrulHure" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpCellules" />
                                           <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/tuiles/cellules/brul-hure.png" />
+                                                <Image url="@images/tuiles/cellules/brulhure.png" />
                                              </image>
                                           </ImageView>
                                           <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="COMING SOON" textFill="WHITE" />

@@ -22,15 +22,15 @@ public class AssociationImage {
     private static HashMap<CodeTuile, String> creerMapTuile(){
         HashMap<CodeTuile, String> temp = new HashMap<>();
 
-        temp.put(CodeTuile.VIDE, "Vide.png");
-        temp.put(CodeTuile.MUR, "Mur.png");
-        temp.put(CodeTuile.GENERATEUR, "Gen.png");
-        temp.put(CodeTuile.OBJECTIF, "Obj.gif");
+        temp.put(CodeTuile.VIDE, "vide.png");
+        temp.put(CodeTuile.MUR, "mur.png");
+        temp.put(CodeTuile.GENERATEUR, "generateur.png");
+        temp.put(CodeTuile.OBJECTIF, "objectif.gif");
 
         temp.put(CodeTuile.SAINPLE, "cellules/sainple.png");
         temp.put(CodeTuile.LASERE, "cellules/lasere.png");
         temp.put(CodeTuile.BROUAIEUSE, "cellules/brouaieuse.png");
-        temp.put(CodeTuile.MULETYPLE, "cellules/mule-typle.png");
+        temp.put(CodeTuile.MULETYPLE, "cellules/muletyple.png");
         temp.put(CodeTuile.SNAIPEUR, "cellules/snaipeur.png");
 
         temp.put(CodeTuile.KONSANTRE, "cellules/konsantre.png");
@@ -56,13 +56,13 @@ public class AssociationImage {
     private static HashMap<CodeMaladie, String> creerMapMaladie(){
         HashMap<CodeMaladie, String> temp = new HashMap<>();
 
-        temp.put(CodeMaladie.BACTERIEBANALE, "BB.gif");
-        temp.put(CodeMaladie.PARASITE, "Pa.gif");
-        temp.put(CodeMaladie.VIRUS, "Vi.gif");
-        temp.put(CodeMaladie.VIRUSCOMPOSE, "VC.png");
-        temp.put(CodeMaladie.PETITCHAMPIGNON, "PC.png");
-        temp.put(CodeMaladie.GRANDCHAMPIGNON, "GC.png");
-        temp.put(CodeMaladie.TUMEUR, "Tu.png");
+        temp.put(CodeMaladie.BACTERIEBANALE, "bacterie_banale.gif");
+        temp.put(CodeMaladie.PARASITE, "parasite.gif");
+        temp.put(CodeMaladie.VIRUS, "virus.gif");
+        temp.put(CodeMaladie.VIRUSCOMPOSE, "virus_compose.png");
+        temp.put(CodeMaladie.PETITCHAMPIGNON, "petit_champignon.png");
+        temp.put(CodeMaladie.GRANDCHAMPIGNON, "grand_champignon.png");
+        temp.put(CodeMaladie.TUMEUR, "tumeur.png");
 
         return temp;
     }
