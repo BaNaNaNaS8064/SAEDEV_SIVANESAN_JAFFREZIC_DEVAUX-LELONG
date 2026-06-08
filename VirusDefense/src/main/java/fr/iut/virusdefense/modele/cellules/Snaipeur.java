@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Snaipeur extends Cellule{
     private static int coutBase = 500;
@@ -17,12 +17,12 @@ public class Snaipeur extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecUnique(this, 12.0));
+        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 12.0, 1));
     }
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 100));
+        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 100, getReconnaissance().getCibles()));
     }
 
     public static Snaipeur creer(Environnement env, int ligne, int colonne){
@@ -30,5 +30,30 @@ public class Snaipeur extends Cellule{
         temp.initRec();
         temp.initAttaque();
         return temp;
+    }
+
+    @Override
+    public String getNom() {
+        return "Snaï-peur";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 120;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 175;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        setFrequenceAttaque(getFrequenceAttaque()-25);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        setFrequenceAttaque(getFrequenceAttaque()-50);
     }
 }

@@ -9,7 +9,7 @@ public abstract class Cellule extends Entite {
     private Reconnaissance reconnaissance ;
     private Attaque attaque;
 
-    private final int frequenceAttaque;
+    private int frequenceAttaque;
     private int delai;
 
     private int niveau;
@@ -46,6 +46,58 @@ public abstract class Cellule extends Entite {
         return cout;
     }
 
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public int getFrequenceAttaque() {
+        return frequenceAttaque;
+    }
+
+    public Attaque getAttaque() {
+        return attaque;
+    }
+
+    public void setFrequenceAttaque(int frequenceAttaque) {
+        this.frequenceAttaque = frequenceAttaque;
+    }
+
+    public int getCoutAmelioration() {
+        return switch (niveau){
+            case 1 -> coutNiveau2();
+            case 2 -> coutNiveau3();
+            default -> -1;
+        };
+    }
+
+    public abstract String getNom();
+
+    public abstract int coutNiveau2();
+
+    public abstract int coutNiveau3();
+
+    public boolean resteAmeliorations(){
+        return niveau <= 2;
+    }
+
+    public void niveauSuperieur(){
+        if (resteAmeliorations() && getEnvironnement().getJoueur().getPc() >= getCoutAmelioration()) {
+            getEnvironnement().getJoueur().retirerPc(getCoutAmelioration());
+            switch (++niveau){
+                case 2:
+                    ameliorerAuNiveau2();
+                    break;
+                case 3:
+                    ameliorerAuNiveau3();
+                    break;
+            }
+        }
+    }
+
+    public abstract void ameliorerAuNiveau2();
+
+    public abstract void ameliorerAuNiveau3();
+
     @Override
     public void agir(){
         if (--delai <= 0){
@@ -56,8 +108,9 @@ public abstract class Cellule extends Entite {
                 attaque.attaqueCibles();
                 delai = frequenceAttaque;
             }
-            else
+            else {
                 delai = frequenceAttaque / 10;
+            }
         }
     }
 }

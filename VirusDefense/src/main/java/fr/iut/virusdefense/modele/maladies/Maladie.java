@@ -13,7 +13,7 @@ import java.util.List;
  * Représente une maladie
  */
 public abstract class Maladie extends Entite {
-    private int pv;
+    private double pv;
     private final double vitesse;
     private final int recompense;
     private double coefVitesse;
@@ -48,15 +48,11 @@ public abstract class Maladie extends Entite {
         this.pv = 0;
     }
 
-    public int getPv() {
-        return pv;
-    }
-
     /**
      * Méthode qui calcule les PV de la maladie apres avoir subis des degats de la cellule
      * @param degats degats subis par la maladie
      */
-    public void prendreDegats(int degats){
+    public void prendreDegats(double degats){
         if (degats > 0)
             pv -= degats;
     }
@@ -68,6 +64,7 @@ public abstract class Maladie extends Entite {
     @Override
     public final void agir(){
         if (estVivant()) {
+            coefVitesse = 1;
             capaciteActive();
             bouger();
 
@@ -99,7 +96,7 @@ public abstract class Maladie extends Entite {
     }
 
     public void infligerDegatsAuJoueur(){
-        getEnvironnement().getJoueur().retirerPv(pv);
+        getEnvironnement().getJoueur().retirerPv((int) pv);
     }
 
     public void ralentir(double coefRalentissement){

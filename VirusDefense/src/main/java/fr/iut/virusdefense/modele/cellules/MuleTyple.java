@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecPlusieurs;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class MuleTyple extends Cellule{
 
@@ -18,12 +18,12 @@ public class MuleTyple extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecPlusieurs(this, 3.0 , 3));
+        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0 , 3));
     }
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 15));
+        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 15, getReconnaissance().getCibles()));
     }
 
     public static MuleTyple creer(Environnement env, int ligne, int colonne){
@@ -31,5 +31,30 @@ public class MuleTyple extends Cellule{
         temp.initRec();
         temp.initAttaque();
         return temp;
+    }
+
+    @Override
+    public String getNom() {
+        return "Mule-typle";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 120;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 250;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+0.5);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        getReconnaissance().setNombreCiblesMax(5);
     }
 }
