@@ -2,6 +2,8 @@ package fr.iut.virusdefense.modele;
 
 import fr.iut.virusdefense.modele.apparition.Generateur;
 import fr.iut.virusdefense.modele.apparition.Niveau;
+import fr.iut.virusdefense.modele.carte.Carte;
+import fr.iut.virusdefense.modele.carte.LecteurDeCarte;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.entitesgeneriques.Projectile;
@@ -53,8 +55,7 @@ public class Environnement {
         rayons = FXCollections.observableArrayList();
         zones =  FXCollections.observableArrayList();
         projectiles = FXCollections.observableArrayList();
-        carte = new Carte(this);
-        carte.initGenerateurs();
+        carte = new LecteurDeCarte(this).creer();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
         niveau = new Niveau(this);
@@ -186,7 +187,7 @@ public class Environnement {
                         projectiles.remove(i);
 
                 for (int i = alterations.size() - 1; i >= 0; i--)
-                    if (alterations.get(i).finDeVie())
+                    if (alterations.get(i).estFinie())
                         alterations.remove(i);
 
                 for (Rayon r : rayons)
@@ -210,8 +211,15 @@ public class Environnement {
                     alt.agir();
                 }
 
-                for (int i = maladies.size() - 1; i >= 0; i--)
+                for (int i = maladies.size() - 1; i >= 0; i--) {
                     maladies.get(i).agir();
+                    if (!maladies.get(i).estVivant()) {
+                        maladies.get(i).capaciteALaMort();
+                        if (!maladies.get(i).aAtteintLObjectif())
+                            joueur.ajouterPc(maladies.get(i).getRecompense());
+                        maladies.remove(i);
+                    }
+                }
             }
             else{
                 if(joueur.getPv()>0)
@@ -232,7 +240,20 @@ public class Environnement {
         return false;
     }
 
+
+    /**
+     * Vérifie si les générateurs ont un chemins disponible pour les maladies vers la fin.
+     * @return Vrai si bloqué
+     */
+    public boolean generateursBloques(){
+        for (Generateur generateur : carte.getGenerateurs()) {
+            if(deplacement.estBloquee(generateur.position()))
+                return true;
+        }
+        return false;
+    }
+
     public boolean maladieOuGenerateurBloque(){
-        return maladiesBloquees() || getCarte().generateursBloques();
+        return maladiesBloquees() || generateursBloques();
     }
 }

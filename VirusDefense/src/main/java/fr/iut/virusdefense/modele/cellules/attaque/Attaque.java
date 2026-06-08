@@ -1,32 +1,39 @@
 package fr.iut.virusdefense.modele.cellules.attaque;
 
-import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
 
 public abstract class Attaque {
-    private final Cellule cellule;
-    private int degats;
-    private ArrayList<Alteration> alterations;
+    private final ArrayList<Maladie> cibles;
+    private final Environnement environnement;
+    private final double ligne, colonne;
+    private final ArrayList<Alteration> alterations;
 
-    public Attaque(Cellule cellule, int degats){
-        this.cellule = cellule;
-        this.degats = degats;
+    public Attaque(Environnement environnement, double ligne, double colonne, ArrayList<Maladie> cibles){
+        this.environnement = environnement;
+        this.ligne = ligne;
+        this.colonne = colonne;
         this.alterations = new ArrayList<>();
+        this.cibles = cibles;
     }
 
-    public int getDegats() {
-        return degats;
+    public ArrayList<Maladie> getCibles(){
+        return cibles;
     }
 
-    public void setDegats(int degats) {
-        this.degats = degats;
+    public Environnement getEnvironnement() {
+        return environnement;
     }
 
-    public Cellule getCellule() {
-        return cellule;
+    public double getLigne() {
+        return ligne;
+    }
+
+    public double getColonne() {
+        return colonne;
     }
 
     public ArrayList<Alteration> getAlterations() {

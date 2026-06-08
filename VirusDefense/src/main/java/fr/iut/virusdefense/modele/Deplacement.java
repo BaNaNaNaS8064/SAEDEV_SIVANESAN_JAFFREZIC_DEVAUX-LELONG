@@ -1,5 +1,7 @@
 package fr.iut.virusdefense.modele;
 
+import fr.iut.virusdefense.modele.carte.Carte;
+
 import java.util.*;
 
 /**

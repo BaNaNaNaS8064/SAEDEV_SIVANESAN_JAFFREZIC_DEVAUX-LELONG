@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecPlusieurs;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class MuleTyple extends Cellule{
 
@@ -18,12 +18,12 @@ public class MuleTyple extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecPlusieurs(this, 3.0 , 3));
+        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0 , 3));
     }
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 30));
+        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 30, getReconnaissance().getCibles()));
     }
 
     public static MuleTyple creer(Environnement env, int ligne, int colonne){

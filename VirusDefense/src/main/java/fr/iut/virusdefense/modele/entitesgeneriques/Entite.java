@@ -5,6 +5,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Entite {
 
@@ -24,13 +25,8 @@ public abstract class Entite {
         id = "" + ++dernierID;
         this.environnement = environnement;
 
-        // Dans la plupart des cas ligne et colonne seront dans les bornes
         ligneProperty = new SimpleDoubleProperty(ligne);
         colonneProperty = new SimpleDoubleProperty(colonne);
-        if (!environnement.getCarte().dansBornes(ligne, colonne)) {
-            setColonne(0);
-            setLigne(0);
-        }
     }
 
     public String getId() {
@@ -67,6 +63,16 @@ public abstract class Entite {
 
     public List<Integer> position(){
         return List.of((int) getLigne(), (int) getColonne());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null)
+            return false;
+        else if (!(o instanceof Entite))
+            return false;
+        else
+            return ((Entite) o).getId().equals(id);
     }
 
     /**

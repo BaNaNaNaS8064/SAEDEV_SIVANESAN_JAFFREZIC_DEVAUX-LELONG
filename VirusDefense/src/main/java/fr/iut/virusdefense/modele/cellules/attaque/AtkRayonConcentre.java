@@ -1,38 +1,48 @@
 package fr.iut.virusdefense.modele.cellules.attaque;
 
-import fr.iut.virusdefense.modele.cellules.Cellule;
-import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
+import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.maladies.Maladie;
+
+import java.util.ArrayList;
 
 public class AtkRayonConcentre extends AtkRayon{
-    private Entite cible;
-    private int delai = 0;
 
-    public AtkRayonConcentre(Cellule cellule, int degats){
-        super(cellule , degats);
-    }
+    private final int degatsInitiaux;
+    private ArrayList<Maladie> ciblesTourPrecedent;
+    private ArrayList<Integer> dureeCiblageTourPrecedent;
 
-
-    public void setCible(Entite cible) {
-        this.cible = cible;
-    }
-
-
-    public void reconnaissanceCible(){
-        if (!getCellule().getReconnaissance().getCibles().isEmpty()) {
-            if (getCellule().getReconnaissance().getCibles().get(0) == cible) {
-                if (delai%150==0)
-                    setDegats(getDegats() + 1);
-            } else {
-                setCible(getCellule().getReconnaissance().getCibles().get(0));
-                setDegats(1);
-            }
-        }
-        delai++;
+    public AtkRayonConcentre(Environnement environnement, double ligne, double colonne, int degatsInitiaux, ArrayList<Maladie> cibles){
+        super(environnement, ligne, colonne, cibles);
+        this.degatsInitiaux = degatsInitiaux;
+        ciblesTourPrecedent = new ArrayList<>();
+        dureeCiblageTourPrecedent = new ArrayList<>();
     }
 
     @Override
-    public void attaqueCibles() {
-        reconnaissanceCible();
-        getCellule().getReconnaissance().getCibles().forEach(this::attaque);
+    public final void attaqueCibles() {
+        ArrayList<Integer> dureeCiblageTourActuel = new ArrayList<>();
+        Maladie m;
+
+        for (int i=0; i<getCibles().size(); i++){
+            m = getCibles().get(i);
+            if (ciblesTourPrecedent.contains(m))
+                dureeCiblageTourActuel.add(dureeCiblageTourPrecedent.get(ciblesTourPrecedent.indexOf(m)) + 1);
+            else
+                dureeCiblageTourActuel.add(0);
+
+            attaque(m, calculerDegats(dureeCiblageTourActuel.get(i)));
+        }
+
+        ciblesTourPrecedent = (ArrayList<Maladie>) getCibles().clone();
+        dureeCiblageTourPrecedent = dureeCiblageTourActuel;
+    }
+
+    private int calculerDegats(int dureeCiblage){
+        if (dureeCiblage < 60)
+            return degatsInitiaux;
+        else if (dureeCiblage < 120)
+            return degatsInitiaux * 3;
+        else
+            return degatsInitiaux * 9;
     }
 }

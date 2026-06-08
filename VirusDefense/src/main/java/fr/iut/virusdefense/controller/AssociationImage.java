@@ -56,19 +56,19 @@ public class AssociationImage {
     private static HashMap<CodeMaladie, String> creerMapMaladie(){
         HashMap<CodeMaladie, String> temp = new HashMap<>();
 
-        temp.put(CodeMaladie.BACTERIEBANALE, "BB");
-        temp.put(CodeMaladie.PARASITE, "Pa");
-        temp.put(CodeMaladie.VIRUS, "Vi");
-        temp.put(CodeMaladie.VIRUSCOMPOSE, "VC");
-        temp.put(CodeMaladie.PETITCHAMPIGNON, "PC");
-        temp.put(CodeMaladie.GRANDCHAMPIGNON, "GC");
-        temp.put(CodeMaladie.TUMEUR, "Tu");
+        temp.put(CodeMaladie.BACTERIEBANALE, "BB.gif");
+        temp.put(CodeMaladie.PARASITE, "Pa.gif");
+        temp.put(CodeMaladie.VIRUS, "Vi.gif");
+        temp.put(CodeMaladie.VIRUSCOMPOSE, "VC.png");
+        temp.put(CodeMaladie.PETITCHAMPIGNON, "PC.png");
+        temp.put(CodeMaladie.GRANDCHAMPIGNON, "GC.png");
+        temp.put(CodeMaladie.TUMEUR, "Tu.png");
 
         return temp;
     }
 
     public static String imageDe(CodeMaladie codeMaladie){
-        return String.valueOf(Main.class.getResource("images/maladies/" + correspondanceMaladie.get(codeMaladie) + ".png"));
+        return String.valueOf(Main.class.getResource("images/maladies/" + correspondanceMaladie.get(codeMaladie)));
     }
 
 }
