@@ -60,8 +60,8 @@ public class AssociationImage {
         temp.put(CodeMaladie.PARASITE, "parasite.gif");
         temp.put(CodeMaladie.VIRUS, "virus.gif");
         temp.put(CodeMaladie.VIRUSCOMPOSE, "virus_compose.png");
-        temp.put(CodeMaladie.PETITCHAMPIGNON, "petit_champignon.png");
-        temp.put(CodeMaladie.GRANDCHAMPIGNON, "grand_champignon.png");
+        temp.put(CodeMaladie.PETITCHAMPIGNON, "petit_champignon.gif");
+        temp.put(CodeMaladie.GRANDCHAMPIGNON, "grand_champignon.gif");
         temp.put(CodeMaladie.TUMEUR, "tumeur.png");
 
         return temp;
