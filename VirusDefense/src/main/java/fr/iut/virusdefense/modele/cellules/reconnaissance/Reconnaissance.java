@@ -7,14 +7,14 @@ import java.util.List;
 
 public abstract class Reconnaissance {
     private final List<Maladie> maladies;
-    private final double ligne, colonne;
+    private double ligne, colonne;
 
     private double portee;
 
     private int nombreCiblesMax;
     private final ArrayList<Maladie> cibles;
 
-    public Reconnaissance (double ligne, double colonne, List<Maladie> maladies, double portee, int nombreCiblesMax){
+    public Reconnaissance(double ligne, double colonne, List<Maladie> maladies, double portee, int nombreCiblesMax){
         this.ligne = ligne;
         this.colonne = colonne;
         this.maladies = maladies;
@@ -35,8 +35,16 @@ public abstract class Reconnaissance {
         return ligne;
     }
 
+    public void setLigne(double ligne) {
+        this.ligne = ligne;
+    }
+
     public double getColonne() {
         return colonne;
+    }
+
+    public void setColonne(double colonne) {
+        this.colonne = colonne;
     }
 
     public double getPortee() {
@@ -47,6 +55,10 @@ public abstract class Reconnaissance {
         this.portee = portee;
     }
 
+    public List<Maladie> getMaladies() {
+        return maladies;
+    }
+
     public final boolean aPortee(Maladie m){
         return m.distanceEuclidienne(ligne, colonne) <= portee;
     }
@@ -55,7 +67,7 @@ public abstract class Reconnaissance {
         return !cibles.isEmpty();
     }
 
-    public final boolean aAssezDeCibles(){
+    public boolean aAssezDeCibles(){
         return cibles.size() >= nombreCiblesMax;
     }
 
@@ -65,17 +77,21 @@ public abstract class Reconnaissance {
 
     public abstract boolean estValide(Maladie m);
 
-    public final void changerCibles(){
+    public void ajoutCible(Maladie maladie){
+        cibles.add(maladie);
+    }
+
+    public void changerCibles(){
         int i = 0;
         Maladie m;
 
         cibles.clear();
 
-        while (!aAssezDeCibles() && i < maladies.size()){
+        while (!aAssezDeCibles() && i < maladies.size()) {
             m = maladies.get(i);
 
             if (estValide(m))
-                cibles.add(m);
+                ajoutCible(m);
 
             i++;
         }

@@ -15,6 +15,5 @@ public class AtkRayonSimple extends AtkRayon {
     public final void attaqueCibles() {
         for (Maladie m : getCibles())
             attaque(m, getDegats());
-
     }
 }

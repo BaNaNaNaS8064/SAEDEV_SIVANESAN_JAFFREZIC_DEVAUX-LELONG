@@ -32,7 +32,7 @@ public class AssociationImage {
         temp.put(CodeTuile.BROUAIEUSE, "cellules/Sainple.png");
         temp.put(CodeTuile.MULETYPLE, "cellules/Sainple.png");
         temp.put(CodeTuile.SNAIPEUR, "cellules/Sainple.png");
-
+        temp.put(CodeTuile.RIZCOCHER, "cellules/Sainple.png");
         temp.put(CodeTuile.KONSANTRE, "cellules/Sainple.png");
         temp.put(CodeTuile.POUAZON, "cellules/Sainple.png");
 

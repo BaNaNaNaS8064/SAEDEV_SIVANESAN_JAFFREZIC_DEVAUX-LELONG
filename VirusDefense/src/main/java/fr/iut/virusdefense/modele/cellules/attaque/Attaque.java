@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public abstract class Attaque {
     private final ArrayList<Maladie> cibles;
     private final Environnement environnement;
-    private final double ligne, colonne;
+    private double ligne, colonne;
     private double degats;
     private final ArrayList<Alteration> alterations;
 
@@ -48,6 +48,14 @@ public abstract class Attaque {
 
     public ArrayList<Alteration> getAlterations() {
         return alterations;
+    }
+
+    public void setLigne(double ligne) {
+        this.ligne = ligne;
+    }
+
+    public void setColonne(double colonne) {
+        this.colonne = colonne;
     }
 
     public void ajouterAlteration(Alteration alt){
