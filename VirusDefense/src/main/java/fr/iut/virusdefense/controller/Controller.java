@@ -27,12 +27,14 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
 
+
     private Timeline gameLoop;
     private boolean pause = false;
 
     // centre
     @FXML public Pane paneDessin;
     @FXML public Pane paneLignes;
+    @FXML public Pane paneCentre;
     @FXML public TilePane tuiles;
 
     // haut -> vagues
@@ -64,20 +66,19 @@ public class Controller implements Initializable {
 
     // vue
     private AfficheurDeCarte afficheurDeCarte;
-    private AfficheurDeChemin afficheurDeChemin;
 
     // modèle
     private Environnement environnement;
 
     //controllerPackage
-    private GestionnaireClickCarte gestionnaireClickCarte;
+    private GestionnaireClick gestionnaireClick;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         environnement = new Environnement();
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles, new AfficheurDeChemin(environnement, paneLignes));
-        gestionnaireClickCarte = new GestionnaireClickCarte(environnement, toggleGrpCellules, afficheurDeCarte);
+        gestionnaireClick = new GestionnaireClick(environnement, toggleGrpCellules, afficheurDeCarte , paneCentre);
 
         initLabels();
         initObservateurs();
@@ -128,18 +129,21 @@ public class Controller implements Initializable {
 
     @FXML
     public void clickTuiles(MouseEvent mouseEvent) {
-        gestionnaireClickCarte.gererClick(mouseEvent);
+        if (!pause)
+            gestionnaireClick.gererClick(mouseEvent);
     }
 
     @FXML
     public void démarrerVague(MouseEvent mouseEvent) {
-        environnement.getNiveau().passerProchaineVague();
-        boutonVague.setText("Passer");
-        boutonVague.setOnMousePressed(this::passerVague);
+        if (!pause){
+            environnement.getNiveau().passerProchaineVague();
+            boutonVague.setText("Passer");
+            boutonVague.setOnMousePressed(this::passerVague);
+        }
     }
 
     public void passerVague(MouseEvent mouseEvent){
-        if(environnement.getNiveau().resteVague())
+        if(environnement.getNiveau().resteVague() && !pause)
             environnement.getNiveau().passerProchaineVague();
     }
 

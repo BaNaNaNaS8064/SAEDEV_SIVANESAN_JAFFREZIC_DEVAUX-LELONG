@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Lasere extends Cellule{
     private static int coutBase = 70;
@@ -17,12 +17,12 @@ public class Lasere extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecUnique(this, 3.0));
+        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0, 1));
     }
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(this, 1));
+        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 1, getReconnaissance().getCibles()));
     }
 
     public static Lasere creer(Environnement env, int ligne, int colonne){
@@ -30,5 +30,30 @@ public class Lasere extends Cellule{
         temp.initRec();
         temp.initAttaque();
         return temp;
+    }
+
+    @Override
+    public String getNom() {
+        return "L'asère";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 150;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 175;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        getAttaque().setDegats(getAttaque().getDegats()+0.5);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+1);
     }
 }

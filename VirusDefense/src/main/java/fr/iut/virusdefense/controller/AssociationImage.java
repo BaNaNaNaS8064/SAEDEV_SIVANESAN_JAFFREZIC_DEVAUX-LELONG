@@ -22,19 +22,19 @@ public class AssociationImage {
     private static HashMap<CodeTuile, String> creerMapTuile(){
         HashMap<CodeTuile, String> temp = new HashMap<>();
 
-        temp.put(CodeTuile.VIDE, "Vide.png");
-        temp.put(CodeTuile.MUR, "Mur.png");
-        temp.put(CodeTuile.GENERATEUR, "Gen.png");
-        temp.put(CodeTuile.OBJECTIF, "Obj.gif");
+        temp.put(CodeTuile.VIDE, "vide.png");
+        temp.put(CodeTuile.MUR, "mur.png");
+        temp.put(CodeTuile.GENERATEUR, "generateur.png");
+        temp.put(CodeTuile.OBJECTIF, "objectif.gif");
 
-        temp.put(CodeTuile.SAINPLE, "cellules/Sainple.png");
-        temp.put(CodeTuile.LASERE, "cellules/Sainple.png");
-        temp.put(CodeTuile.BROUAIEUSE, "cellules/Sainple.png");
-        temp.put(CodeTuile.MULETYPLE, "cellules/Sainple.png");
-        temp.put(CodeTuile.SNAIPEUR, "cellules/Sainple.png");
+        temp.put(CodeTuile.SAINPLE, "cellules/sainple.png");
+        temp.put(CodeTuile.LASERE, "cellules/lasere.png");
+        temp.put(CodeTuile.BROUAIEUSE, "cellules/brouaieuse.png");
+        temp.put(CodeTuile.MULETYPLE, "cellules/muletyple.png");
+        temp.put(CodeTuile.SNAIPEUR, "cellules/snaipeur.png");
 
-        temp.put(CodeTuile.KONSANTRE, "cellules/Sainple.png");
-        temp.put(CodeTuile.POUAZON, "cellules/Sainple.png");
+        temp.put(CodeTuile.KONSANTRE, "cellules/konsantre.png");
+        temp.put(CodeTuile.POUAZON, "cellules/pouazon.png");
 
         return temp;
     }
@@ -56,19 +56,19 @@ public class AssociationImage {
     private static HashMap<CodeMaladie, String> creerMapMaladie(){
         HashMap<CodeMaladie, String> temp = new HashMap<>();
 
-        temp.put(CodeMaladie.BACTERIEBANALE, "BB");
-        temp.put(CodeMaladie.PARASITE, "Pa");
-        temp.put(CodeMaladie.VIRUS, "Vi");
-        temp.put(CodeMaladie.VIRUSCOMPOSE, "VC");
-        temp.put(CodeMaladie.PETITCHAMPIGNON, "PC");
-        temp.put(CodeMaladie.GRANDCHAMPIGNON, "GC");
-        temp.put(CodeMaladie.TUMEUR, "Tu");
+        temp.put(CodeMaladie.BACTERIEBANALE, "bacterie_banale.gif");
+        temp.put(CodeMaladie.PARASITE, "parasite.gif");
+        temp.put(CodeMaladie.VIRUS, "virus.gif");
+        temp.put(CodeMaladie.VIRUSCOMPOSE, "virus_compose.png");
+        temp.put(CodeMaladie.PETITCHAMPIGNON, "petit_champignon.gif");
+        temp.put(CodeMaladie.GRANDCHAMPIGNON, "grand_champignon.gif");
+        temp.put(CodeMaladie.TUMEUR, "tumeur.png");
 
         return temp;
     }
 
     public static String imageDe(CodeMaladie codeMaladie){
-        return String.valueOf(Main.class.getResource("images/maladies/" + correspondanceMaladie.get(codeMaladie) + ".png"));
+        return String.valueOf(Main.class.getResource("images/maladies/" + correspondanceMaladie.get(codeMaladie)));
     }
 
 }

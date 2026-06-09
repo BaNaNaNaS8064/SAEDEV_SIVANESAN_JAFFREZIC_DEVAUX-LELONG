@@ -4,8 +4,7 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkZone;
 import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecTous;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecUnique;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Brouaileuse extends Cellule {
     private static int coutBase = 150;
@@ -20,12 +19,12 @@ public class Brouaileuse extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecTous(this, 1.5));
+        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 1.5, 1));
     }
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkZone(this, 70));
+        setAttaque(new AtkZone(getEnvironnement(), getLigne(), getColonne(), 70, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
     }
 
     public static Brouaileuse creer(Environnement env, int ligne, int colonne){
@@ -33,5 +32,30 @@ public class Brouaileuse extends Cellule {
         temp.initRec();
         temp.initAttaque();
         return temp;
+    }
+
+    @Override
+    public String getNom() {
+        return "Brouaïlleuse";
+    }
+
+    @Override
+    public int coutNiveau2() {
+        return 200;
+    }
+
+    @Override
+    public int coutNiveau3() {
+        return 275;
+    }
+
+    @Override
+    public void ameliorerAuNiveau2() {
+        setFrequenceAttaque(getFrequenceAttaque()-50);
+    }
+
+    @Override
+    public void ameliorerAuNiveau3() {
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+1);
     }
 }

@@ -1,17 +1,15 @@
 package fr.iut.virusdefense.modele.cellules.attaque.alteration;
 
-import fr.iut.virusdefense.modele.maladies.Maladie;
-
 public class Ralentissement extends Alteration{
-    private double coefVitesse;
+    private final double coefRalentissement;
 
-    public Ralentissement(int dureeDeVie, double coefVitesse){
-        super(dureeDeVie);
-        this.coefVitesse = coefVitesse;
+    public Ralentissement(int duree, double coefRalentissement){
+        super(duree);
+        this.coefRalentissement = coefRalentissement;
     }
 
     @Override
-    public void affecter(Maladie m) {
-        m.ralentir(coefVitesse);
+    public void affecter() {
+        getMaladie().ralentir(coefRalentissement);
     }
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="128.0" prefWidth="160.0" style="-fx-background-color: gray" xmlns="http://javafx.com/javafx/8.0.40"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerMenuClick">
+
+   <HBox alignment="CENTER_RIGHT">
+      <Label fx:id="labelNom"/>
+      <Label text=" (Niveau "/>
+      <Label fx:id="labelNiveau"/>
+      <Label text=")   "/>
+      <Button text="X" onMouseClicked="#clickBoutonQuitter" mnemonicParsing="false"/>
+   </HBox>
+
+   <VBox>
+      <HBox>
+         <Label text="Dégats : "/>
+         <Label fx:id="labelDegats"/>
+      </HBox>
+
+      <HBox>
+         <Label text="Portée : "/>
+         <Label fx:id="labelPortee"/>
+      </HBox>
+
+      <HBox>
+         <Label text="Fréquence : "/>
+         <Label fx:id="labelFrequence"/>
+      </HBox>
+
+      <HBox fx:id="hBoxCoutAmelioration">
+         <Label text="Cout amélioration : "/>
+         <Label fx:id="labelCout"/>
+      </HBox>
+   </VBox>
+
+   <HBox alignment="CENTER">
+      <Button text="Améliorer" fx:id="boutonAmelioration" onMouseClicked="#clickBoutonAmelioration" mnemonicParsing="false" />
+      <Button text="Supprimer" onMouseClicked="#clickBoutonSupprimer" mnemonicParsing="false"/>
+   </HBox>
+</VBox>

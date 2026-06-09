@@ -1,0 +1,131 @@
+Vague 1
+NB mob : 5
+
+5 BB 0.5
+
+Vague 2
+NB mob : 10
+
+10 BB 0.5
+
+Vague 3
+NB mob : 10
+
+10 Pa 0.25
+
+Vague 4
+NB mob : 12
+7 BB 0.5
+5 Pa 0.25
+
+Vague 5
+NB mob : 15
+7 Pa 0.25
+5 BB 0.5
+3 Vi 1
+
+Vague 6
+NB mob : 
+
+10 BB 0.5
+10 Vi 1
+
+Vague 7
+NB mob :
+
+15 Pa 0.25
+10 BB 0.5
+5 Vi 1
+
+Vague 8
+NB mob : 
+
+10 Pa 0.25
+5 VC 2
+
+Vague 9
+NB mob :
+
+
+10 VC 2
+
+Vague 10
+NB mob : 
+
+5 BB 0.5
+5 Vi 1
+1 GC 1
+
+Vague 11
+NB mob :
+
+10 Vi 1
+5 GC 1
+
+Vague 12
+NB mob :
+
+10 Pa
+10 VC
+3 GC
+
+Vague 13
+NB mob :
+
+10 VC
+10 GC
+
+Vague 14
+NB mob :
+
+20 GC
+
+Vague 15
+NB mob :
+
+20 VC
+10 GC
+
+Vague 16
+NB mob :
+
+10 Pa
+10 BB
+10 Vi
+5 GC
+
+Vague 17
+NB mob :
+
+20 Pa
+10 Vi
+10 VC
+10 GC
+
+Vague 18
+NB mob :
+
+20 Vi
+15 VC
+10 GC
+
+Vague 19
+NB mob :
+
+15 Pa
+10 BB
+10 Vi
+15 VC
+10 GC
+
+
+Vague 20
+
+20 Pa
+20 BB
+20 Vi
+20 VC
+20 GC
+1 T
+
+
