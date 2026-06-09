@@ -13,9 +13,9 @@ public class LecteurDeCarte {
     private final ConstructeurDeCarte constructeurDeCarte;
     private Scanner scanner;
 
-    public LecteurDeCarte(Environnement environnement){
+    public LecteurDeCarte(Environnement environnement, String idNiveau){
         try {
-            fichier = new File(Main.class.getResource("cartes/carte.txt").toURI());
+            fichier = new File(Main.class.getResource("niveaux/" + idNiveau + "/carte.txt").toURI());
 
             constructeurDeCarte = new ConstructeurDeCarte(environnement);
 

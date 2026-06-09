@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <BorderPane fx:id="paneMenuPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1168.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerMenuPrincipal">
    <top>
@@ -18,14 +18,15 @@
       </HBox>
    </top>
    <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Jouer" onMouseClicked="#commencerJeu">
+            <ChoiceBox fx:id="menuChoixNiveau" prefWidth="150.0" />
+            <Button mnemonicParsing="false" onMouseClicked="#commencerJeu" prefHeight="50.0" prefWidth="150.0" text="Jouer">
                <font>
                   <Font size="25.0" />
                </font>
             </Button>
          </children>
-      </HBox>
+      </VBox>
    </center>
 </BorderPane>

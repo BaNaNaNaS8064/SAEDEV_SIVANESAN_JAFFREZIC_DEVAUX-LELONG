@@ -35,12 +35,12 @@ public class Niveau {
      * Le niveau sera automatiquement rempli de vagues et démarrera la première vague
      * @param environnement l'environnement dans lequel le niveau sera
      */
-    public Niveau(Environnement environnement){
+    public Niveau(Environnement environnement, String idNiveau){
         this.environnement = environnement;
         delaiEntreVagues = 600;
         delai = Integer.MAX_VALUE;
         numVagueProperty = new SimpleIntegerProperty(-1);
-        initVagues();
+        initVagues(idNiveau);
     }
 
     public final int getNumVague(){
@@ -60,7 +60,7 @@ public class Niveau {
      * Chaque vague aura autant de listes d'apparition
      * que le nombre de générateurs dans la carte de {@code environnnement}
      */
-    public void initVagues(){
+    public void initVagues(String idNiveau){
         /*vagues = new ArrayList<>();
         for (int indVague=0; indVague<100; indVague++){
             vagues.add(new Vague());
@@ -71,7 +71,7 @@ public class Niveau {
             }
         }
         vagues.get(vagues.size() - 1).getListeApparitions().get(0).ajouter(CodeMaladie.TUMEUR, 0);*/
-        vagues = Arrays.asList(new LecteurVague(environnement.getCarte().getGenerateurs().size()).getVagues());
+        vagues = Arrays.asList(new LecteurVague(environnement.getCarte().getGenerateurs().size(), idNiveau).getVagues());
     }
 
     /**
