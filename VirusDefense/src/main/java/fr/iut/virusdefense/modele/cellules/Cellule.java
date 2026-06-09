@@ -101,8 +101,8 @@ public abstract class Cellule extends Entite {
     @Override
     public void agir(){
         if (--delai <= 0){
-            if (!reconnaissance.ciblesValides())
-                reconnaissance.changerCibles();
+            if (!reconnaissance.valide())
+                reconnaissance.actualiser();
 
             if (reconnaissance.aAuMoinsUneCible()) {
                 attaque.attaqueCibles();

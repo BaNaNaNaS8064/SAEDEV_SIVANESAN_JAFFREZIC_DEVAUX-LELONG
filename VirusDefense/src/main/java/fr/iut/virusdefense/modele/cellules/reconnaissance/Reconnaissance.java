@@ -67,21 +67,21 @@ public abstract class Reconnaissance {
         return !cibles.isEmpty();
     }
 
-    public boolean aAssezDeCibles(){
+    public final boolean aAssezDeCibles(){
         return cibles.size() >= nombreCiblesMax;
     }
 
     public final boolean ciblesValides(){
-         return aAssezDeCibles() && cibles.stream().allMatch(this::estValide);
+         return cibles.stream().allMatch(this::estValide);
+    }
+
+    public boolean valide(){
+        return ciblesValides() && aAssezDeCibles();
     }
 
     public abstract boolean estValide(Maladie m);
 
-    public void ajoutCible(Maladie maladie){
-        cibles.add(maladie);
-    }
-
-    public void changerCibles(){
+    private void changerCibles(){
         int i = 0;
         Maladie m;
 
@@ -91,10 +91,17 @@ public abstract class Reconnaissance {
             m = maladies.get(i);
 
             if (estValide(m))
-                ajoutCible(m);
+                cibles.add(m);
 
             i++;
         }
+    }
+
+    public void reconnaissanceSecondaire(){}
+
+    public final void actualiser() {
+        changerCibles();
+        reconnaissanceSecondaire();
     }
 
 }

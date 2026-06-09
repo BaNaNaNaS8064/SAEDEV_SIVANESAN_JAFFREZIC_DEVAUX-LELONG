@@ -16,25 +16,22 @@ public class RizCocher extends Cellule{
         return coutBase;
     }
 
-    private int nbrRicochet;
-
-    public RizCocher(Environnement env, int ligne, int colonne,int nbrRicochet){
-        super(env,ligne,colonne,60,coutBase);
-        this.nbrRicochet = nbrRicochet;
+    private RizCocher(Environnement env, int ligne, int colonne){
+        super(env, ligne, colonne, 90, coutBase);
     }
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecRicochet(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0, 145));
+        setReconnaissance(new RecRicochet(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0, 3));
     }
 
     @Override
     public void initAttaque() {
-        setAttaque(new AtkRayonRicochet(getEnvironnement(), getLigne(), getColonne(), 10, getReconnaissance().getCibles()));
+        setAttaque(new AtkRayonRicochet(getEnvironnement(), getLigne(), getColonne(), 75, getReconnaissance().getCibles()));
     }
 
     public static RizCocher creer(Environnement env, int ligne, int colonne){
-        RizCocher temp = new RizCocher(env, ligne, colonne,3);
+        RizCocher temp = new RizCocher(env, ligne, colonne);
         temp.initRec();
         temp.initAttaque();
         return temp;

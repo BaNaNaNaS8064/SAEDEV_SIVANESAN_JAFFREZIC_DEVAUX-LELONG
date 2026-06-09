@@ -18,39 +18,72 @@ public class RecRicochet extends Reconnaissance{
         return m.estVivant() && aPortee(m) && m.voit(getLigne(), getColonne(),true);
     }
 
+    public boolean ricochetValide(Maladie m){
+        return m.estVivant() && aPortee(m) && m.voit(getLigne(), getColonne(),false) && !getCibles().contains(m);
+    }
+
     private boolean aAssezDeRicochets(){
         return getCibles().size() >= 1 + nbRicochets;
     }
 
     @Override
-    public boolean aAssezDeCibles() {
-        return super.aAssezDeCibles() && aAssezDeRicochets();
+    public boolean valide() {
+        return super.valide() && aAssezDeRicochets();
     }
 
     @Override
-    public void changerCibles() {
-        super.changerCibles();
+    public void reconnaissanceSecondaire() {
         if (aAuMoinsUneCible()){
             double posLigne = getLigne(), posColonne = getColonne();
-            int i = 0;
-            Maladie m;
+            ArrayList<Maladie> candidats = new ArrayList<>();
+            boolean resteCandidats = true;
+            Maladie maladie;
 
             setLigne(getCibles().get(0).getLigne());
             setColonne(getCibles().get(0).getColonne());
-            while (!aAssezDeRicochets() && i < getMaladies().size()){
-                m = getMaladies().get(i);
+            while (!aAssezDeRicochets() && resteCandidats){
+                candidats.clear();
 
-                if (estValide(m) && !getCibles().contains(m)) {
-                    ajoutCible(m);
-                    setLigne(m.getLigne());
-                    setColonne(m.getColonne());
+                for (Maladie m : getMaladies()) {
+                    if (ricochetValide(m)) {
+                        candidats.add(m);
+                    }
                 }
 
-                i++;
+                if (candidats.isEmpty()){
+                    resteCandidats = false;
+                }
+                else {
+                    maladie = maladiePlusProche(candidats);
+
+                    getCibles().add(maladie);
+                    setLigne(maladie.getLigne());
+                    setColonne(maladie.getColonne());
+                }
             }
 
             setLigne(posLigne);
             setColonne(posColonne);
         }
     }
+
+    private Maladie maladiePlusProche(List<Maladie> candidats){
+        double distanceMin;
+        double distance;
+        int indMaladiePlusProche;
+
+        indMaladiePlusProche = 0;
+        distanceMin = candidats.get(0).distanceEuclidienne(getLigne(), getColonne());
+
+        for (int i = 1; i < candidats.size(); i++){
+            distance = candidats.get(i).distanceEuclidienne(getLigne(), getColonne());
+            if (distance < distanceMin){
+                indMaladiePlusProche = i;
+                distanceMin = distance;
+            }
+        }
+
+        return candidats.get(indMaladiePlusProche);
+    }
+
 }
