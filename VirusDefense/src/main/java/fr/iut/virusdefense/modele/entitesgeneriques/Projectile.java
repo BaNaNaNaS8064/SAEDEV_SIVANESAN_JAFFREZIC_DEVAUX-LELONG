@@ -32,8 +32,8 @@ public class Projectile extends EntiteAtk {
             int directionLigne = Double.compare(destination.get(0) + 0.5, getLigne());
             int directionColonne = Double.compare(destination.get(1) + 0.5, getColonne());
 
-            setLigne(getLigne() + 0.1 * directionLigne * distLigne / distanceMax);
-            setColonne(getColonne() + 0.1 * directionColonne * distColonne / distanceMax);
+            setLigne(getLigne() + 0.15 * directionLigne * distLigne / distanceMax);
+            setColonne(getColonne() + 0.15 * directionColonne * distColonne / distanceMax);
         }
 
         if(Math.abs(getCibles().get(0).getLigne() - getLigne()) <= 0.5 && Math.abs(getCibles().get(0).getColonne() - getColonne()) <= 0.5){
