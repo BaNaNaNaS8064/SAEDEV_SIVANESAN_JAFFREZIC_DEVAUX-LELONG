@@ -16,8 +16,7 @@ public class Rayon extends EntiteAtk {
         age = 0;
         this.ageMaximal = ageMaximal;
 
-        donnerAlterations();
-        infligerDegats();
+        attaquer();
     }
 
     public boolean aDepasseAgeMaximal(){

@@ -8,7 +8,7 @@ import fr.iut.virusdefense.modele.maladies.Tumeur;
 import java.util.List;
 
 public abstract class EntiteAtk extends Entite{
-    private final List<Maladie> cibles;
+    private  List<Maladie> cibles;
     private final List<Alteration> alterations;
     private final double degats;
 
@@ -35,6 +35,10 @@ public abstract class EntiteAtk extends Entite{
         return cibles;
     }
 
+    public void setCibles(List<Maladie> cibles) {
+        this.cibles = cibles;
+    }
+
     public final void infligerDegats() {
         for (Maladie cible : cibles){
             cible.prendreDegats(getDegats());
@@ -50,5 +54,10 @@ public abstract class EntiteAtk extends Entite{
                 }
             }
         }
+    }
+
+    public void attaquer(){
+        infligerDegats();
+        donnerAlterations();
     }
 }

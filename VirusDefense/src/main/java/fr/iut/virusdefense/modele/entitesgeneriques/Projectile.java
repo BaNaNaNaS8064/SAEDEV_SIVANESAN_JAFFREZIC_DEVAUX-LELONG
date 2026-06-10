@@ -3,14 +3,13 @@ package fr.iut.virusdefense.modele.entitesgeneriques;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
-import fr.iut.virusdefense.modele.maladies.Tumeur;
 
 import java.util.List;
 
 public class Projectile extends EntiteAtk {
     private boolean cibleTouché;
 
-    public Projectile(Environnement environnement, double ligne, double colonne, Maladie cible, double degats, int ageMaximal, List<Alteration> alterations){
+    public Projectile(Environnement environnement, double ligne, double colonne, Maladie cible, double degats, List<Alteration> alterations){
         super(environnement, ligne, colonne, degats, alterations, cible);
 
         this.cibleTouché = false;
@@ -37,8 +36,7 @@ public class Projectile extends EntiteAtk {
         }
 
         if(Math.abs(getCibles().get(0).getLigne() - getLigne()) <= 0.5 && Math.abs(getCibles().get(0).getColonne() - getColonne()) <= 0.5){
-            infligerDegats();
-            donnerAlterations();
+            attaquer();
             cibleTouché = true;
         }
     }

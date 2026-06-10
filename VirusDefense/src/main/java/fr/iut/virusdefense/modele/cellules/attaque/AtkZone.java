@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules.attaque;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
+import fr.iut.virusdefense.modele.entitesgeneriques.ZoneSimple;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
@@ -17,6 +18,6 @@ public class AtkZone extends Attaque{
 
     @Override
     public final void attaqueCibles(){
-        getEnvironnement().ajouterZone(new Zone(getEnvironnement(), getLigne(), getColonne(), getCibles() , getDegats(), 10 , getAlterations(), rayonZone));
+        getEnvironnement().ajouterZone(new ZoneSimple(getEnvironnement(), getLigne(), getColonne(), getCibles() , getDegats(), 10 , getAlterations(), rayonZone));
     }
 }
