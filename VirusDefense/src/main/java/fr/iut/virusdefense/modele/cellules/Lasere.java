@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Lasere extends Cellule{
-    private static int coutBase = 70;
+    private static int coutBase = 200;
 
     public static int getCoutBase() {
         return coutBase;

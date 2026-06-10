@@ -17,8 +17,8 @@ public class Joueur {
      * Créé un nouveau joueur avec 200pv et 100pc
      */
     public Joueur(){
-        pvProperty = new SimpleIntegerProperty(200);
-        pcProperty = new SimpleIntegerProperty(100);
+        pvProperty = new SimpleIntegerProperty(1000);
+        pcProperty = new SimpleIntegerProperty(150);
     }
 
     public final int getPv() {

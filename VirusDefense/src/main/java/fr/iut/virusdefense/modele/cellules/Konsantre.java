@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonConcentre;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Konsantre extends Cellule{
-    private static int coutBase = 100;
+    private static int coutBase = 1300;
 
     public static int getCoutBase() {
         return coutBase;

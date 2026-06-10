@@ -7,7 +7,7 @@ import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Brouaileuse extends Cellule {
-    private static int coutBase = 150;
+    private static int coutBase = 300;
 
     public static int getCoutBase() {
         return coutBase;
@@ -24,7 +24,7 @@ public class Brouaileuse extends Cellule {
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkZone(getEnvironnement(), getLigne(), getColonne(), 70, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
+        setAttaque(new AtkZone(getEnvironnement(), getLigne(), getColonne(), 90, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
     }
 
     public static Brouaileuse creer(Environnement env, int ligne, int colonne){

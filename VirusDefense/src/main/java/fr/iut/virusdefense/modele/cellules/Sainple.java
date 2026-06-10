@@ -24,7 +24,7 @@ public class Sainple extends Cellule {
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkProjectile(getEnvironnement(), getLigne(), getColonne(), 45, getReconnaissance().getCibles()));
+        setAttaque(new AtkProjectile(getEnvironnement(), getLigne(), getColonne(), 40, getReconnaissance().getCibles()));
     }
 
     public static Sainple creer(Environnement env, int ligne, int colonne){
@@ -51,7 +51,7 @@ public class Sainple extends Cellule {
 
     @Override
     public void ameliorerAuNiveau2(){
-        getAttaque().setDegats(70);
+        getAttaque().setDegats(getAttaque().getDegats() + 30);
     }
 
     @Override

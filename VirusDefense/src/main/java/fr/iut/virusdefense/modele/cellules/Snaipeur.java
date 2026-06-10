@@ -5,14 +5,14 @@ import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Snaipeur extends Cellule{
-    private static int coutBase = 90;
+    private static int coutBase = 500;
 
     public static int getCoutBase() {
         return coutBase;
     }
 
     private Snaipeur(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 200, coutBase);
+        super(env, ligne, colonne, 250, coutBase);
     }
 
     @Override

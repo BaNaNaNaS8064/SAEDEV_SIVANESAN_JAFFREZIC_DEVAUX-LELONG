@@ -81,7 +81,6 @@ public class Niveau {
      */
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
-        environnement.getJoueur().ajouterPc(50);
         for (int i=0; i<environnement.getCarte().getGenerateurs().size(); i++)
             environnement.getCarte().getGenerateurs().get(i).ajouter(vagues.get(getNumVague()).getListeApparitions().get(i));
          delai = Integer.MAX_VALUE;

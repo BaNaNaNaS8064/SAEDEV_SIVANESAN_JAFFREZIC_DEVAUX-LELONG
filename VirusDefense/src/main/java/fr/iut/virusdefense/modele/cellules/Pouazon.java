@@ -8,7 +8,7 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 import fr.iut.virusdefense.modele.cellules.attaque.alteration.Ralentissement;
 
 public class Pouazon extends Cellule{
-    private static int coutBase = 130;
+    private static int coutBase = 850;
 
     public static int getCoutBase() {
         return coutBase;
@@ -25,8 +25,8 @@ public class Pouazon extends Cellule{
 
     @Override
     public void initAttaque(){
-        AtkRayon temp = new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 10, getReconnaissance().getCibles());
-        temp.ajouterAlteration(new Dot(15,1));
+        AtkRayon temp = new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 15, getReconnaissance().getCibles());
+        temp.ajouterAlteration(new Dot(15,4));
         setAttaque(temp);
     }
 
@@ -54,7 +54,7 @@ public class Pouazon extends Cellule{
 
     @Override
     public void ameliorerAuNiveau2() {
-        getAttaque().setDegats(30);
+        getAttaque().setDegats(getAttaque().getDegats() + 15);
     }
 
     @Override

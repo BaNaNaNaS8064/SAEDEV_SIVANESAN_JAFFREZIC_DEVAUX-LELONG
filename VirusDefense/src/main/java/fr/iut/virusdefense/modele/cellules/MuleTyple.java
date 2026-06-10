@@ -6,7 +6,7 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class MuleTyple extends Cellule{
 
-    private static int coutBase = 80;
+    private static int coutBase = 600;
 
     public static int getCoutBase() {
         return coutBase;
@@ -23,7 +23,7 @@ public class MuleTyple extends Cellule{
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 30, getReconnaissance().getCibles()));
+        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 15, getReconnaissance().getCibles()));
     }
 
     public static MuleTyple creer(Environnement env, int ligne, int colonne){
