@@ -25,9 +25,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-
-
-
     private Timeline gameLoop;
     private boolean pause = false;
 
@@ -73,9 +70,13 @@ public class Controller implements Initializable {
     //controllerPackage
     private GestionnaireClick gestionnaireClick;
 
+    private String idNiveau;
+
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        environnement = new Environnement();
+    public void initialize(URL location, ResourceBundle resources) {}
+
+    private void démarrerEnv(){
+        environnement = new Environnement(idNiveau);
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles, new AfficheurDeChemin(environnement, paneLignes));
         gestionnaireClick = new GestionnaireClick(environnement, toggleGrpCellules, afficheurDeCarte , paneCentre);
@@ -150,13 +151,20 @@ public class Controller implements Initializable {
 
     @FXML
     public void pauseJeu(ActionEvent actionEvent) {
-        if (pause) {
-            gameLoop.play();
-            imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/reprendre.png"))));
-        }else{
-            gameLoop.pause();
-            imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/pause.png"))));
+        if (environnement.getNiveau().getNumVague()>=0){
+            if (pause) {
+                gameLoop.play();
+                imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/reprendre.png"))));
+            }else{
+                gameLoop.pause();
+                imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/pause.png"))));
+            }
+            pause = !pause;
         }
-        pause = !pause;
+    }
+
+    public void changerNiveauEtJouer(String id){
+        idNiveau = id;
+        démarrerEnv();
     }
 }

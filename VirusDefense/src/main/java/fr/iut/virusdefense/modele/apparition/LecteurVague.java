@@ -15,9 +15,9 @@ public class LecteurVague {
     private int nbVague;
     private int nbGen;
 
-    public LecteurVague(int nbGenerateur){
+    public LecteurVague(int nbGenerateur, String idNiveau){
         try{
-            fichier = new File(Main.class.getResource("vagues.txt").toURI());
+            fichier = new File(Main.class.getResource("niveaux/" + idNiveau + "/vagues.txt").toURI());
             nbGen = nbGenerateur;
             lire();
         }catch(Exception e) {

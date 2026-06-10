@@ -50,15 +50,15 @@ public class Environnement {
     /**
      * Créé un terrain sans maladies
      */
-    public Environnement() {
+    public Environnement(String idNiveau) {
         maladies = FXCollections.observableArrayList();
         rayons = FXCollections.observableArrayList();
         zones =  FXCollections.observableArrayList();
         projectiles = FXCollections.observableArrayList();
-        carte = new LecteurDeCarte(this).creer();
+        carte = new LecteurDeCarte(this, idNiveau).creer();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
-        niveau = new Niveau(this);
+        niveau = new Niveau(this, idNiveau);
         alterations = new ArrayList<>();
         statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
     }
