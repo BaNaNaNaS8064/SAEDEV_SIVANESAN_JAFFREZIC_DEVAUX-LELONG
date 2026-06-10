@@ -14,7 +14,7 @@ public enum CodeTuile {
     BROUAIEUSE,
     MULETYPLE,
     SNAIPEUR,
-
+    RIZCOCHER,
     KONSANTRE,
     POUAZON;
 
@@ -55,7 +55,8 @@ public enum CodeTuile {
         if (c instanceof Snaipeur)
             return SNAIPEUR;
 
-
+        if (c instanceof RizCocher)
+            return RIZCOCHER;
 
         if (c instanceof Konsantre)
             return KONSANTRE;

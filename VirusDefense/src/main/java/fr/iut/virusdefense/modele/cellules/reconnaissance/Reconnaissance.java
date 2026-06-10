@@ -7,14 +7,14 @@ import java.util.List;
 
 public abstract class Reconnaissance {
     private final List<Maladie> maladies;
-    private final double ligne, colonne;
+    private double ligne, colonne;
 
     private double portee;
 
     private int nombreCiblesMax;
     private final ArrayList<Maladie> cibles;
 
-    public Reconnaissance (double ligne, double colonne, List<Maladie> maladies, double portee, int nombreCiblesMax){
+    public Reconnaissance(double ligne, double colonne, List<Maladie> maladies, double portee, int nombreCiblesMax){
         this.ligne = ligne;
         this.colonne = colonne;
         this.maladies = maladies;
@@ -35,8 +35,16 @@ public abstract class Reconnaissance {
         return ligne;
     }
 
+    public void setLigne(double ligne) {
+        this.ligne = ligne;
+    }
+
     public double getColonne() {
         return colonne;
+    }
+
+    public void setColonne(double colonne) {
+        this.colonne = colonne;
     }
 
     public double getPortee() {
@@ -45,6 +53,10 @@ public abstract class Reconnaissance {
 
     public void setPortee(double portee) {
         this.portee = portee;
+    }
+
+    public List<Maladie> getMaladies() {
+        return maladies;
     }
 
     public final boolean aPortee(Maladie m){
@@ -60,18 +72,22 @@ public abstract class Reconnaissance {
     }
 
     public final boolean ciblesValides(){
-         return aAssezDeCibles() && cibles.stream().allMatch(this::estValide);
+         return cibles.stream().allMatch(this::estValide);
+    }
+
+    public boolean valide(){
+        return ciblesValides() && aAssezDeCibles();
     }
 
     public abstract boolean estValide(Maladie m);
 
-    public final void changerCibles(){
+    private void changerCibles(){
         int i = 0;
         Maladie m;
 
         cibles.clear();
 
-        while (!aAssezDeCibles() && i < maladies.size()){
+        while (!aAssezDeCibles() && i < maladies.size()) {
             m = maladies.get(i);
 
             if (estValide(m))
@@ -79,6 +95,13 @@ public abstract class Reconnaissance {
 
             i++;
         }
+    }
+
+    public void reconnaissanceSecondaire(){}
+
+    public final void actualiser() {
+        changerCibles();
+        reconnaissanceSecondaire();
     }
 
 }

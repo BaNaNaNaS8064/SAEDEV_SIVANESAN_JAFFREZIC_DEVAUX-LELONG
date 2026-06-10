@@ -50,6 +50,7 @@ public class GestionnaireClick {
             case "RbBrouaieuse" -> Brouaileuse.creer(environnement, ligne, colonne);
             case "RbMuleTyple" -> MuleTyple.creer(environnement, ligne, colonne);
             case "RbSnaipeur" -> Snaipeur.creer(environnement, ligne, colonne);
+            case "RbRizCoCher" -> RizCocher.creer(environnement, ligne, colonne);
             case "RbKonsantre" -> Konsantre.creer(environnement, ligne, colonne);
             case "RbPouazon" -> Pouazon.creer(environnement, ligne, colonne);
             default -> null;
