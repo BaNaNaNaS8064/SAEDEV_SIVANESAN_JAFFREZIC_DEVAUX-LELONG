@@ -91,6 +91,7 @@ public class Controller implements Initializable {
         environnement.getMaladies().addListener(new ObsListeMaladies(paneDessin));
         environnement.getRayons().addListener(new ObsListeRayons(paneDessin));
         environnement.getZones().addListener(new ObsListeZones(paneDessin));
+        environnement.getProjectiles().addListener(new ObsListeProjectiles(paneDessin));
         environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GestionnaireBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
         environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
     }

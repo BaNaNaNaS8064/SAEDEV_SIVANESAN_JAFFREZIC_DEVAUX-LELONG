@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.cellules.attaque.AtkProjectile;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
@@ -23,7 +24,7 @@ public class Sainple extends Cellule {
 
     @Override
     public void initAttaque(){
-        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 45, getReconnaissance().getCibles()));
+        setAttaque(new AtkProjectile(getEnvironnement(), getLigne(), getColonne(), 45, getReconnaissance().getCibles()));
     }
 
     public static Sainple creer(Environnement env, int ligne, int colonne){
