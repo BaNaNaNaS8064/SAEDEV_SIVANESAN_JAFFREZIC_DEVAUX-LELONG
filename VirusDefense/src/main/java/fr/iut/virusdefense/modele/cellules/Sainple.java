@@ -2,6 +2,7 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkProjectile;
+import fr.iut.virusdefense.modele.cellules.attaque.AtkProjectileExplosif;
 import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
