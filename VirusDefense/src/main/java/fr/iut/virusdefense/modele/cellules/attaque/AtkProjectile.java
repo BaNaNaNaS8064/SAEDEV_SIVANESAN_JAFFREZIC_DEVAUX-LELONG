@@ -2,9 +2,7 @@ package fr.iut.virusdefense.modele.cellules.attaque;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
-import fr.iut.virusdefense.modele.entitesgeneriques.Projectile;
-import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
-import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
+import fr.iut.virusdefense.modele.entitesgeneriques.*;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;

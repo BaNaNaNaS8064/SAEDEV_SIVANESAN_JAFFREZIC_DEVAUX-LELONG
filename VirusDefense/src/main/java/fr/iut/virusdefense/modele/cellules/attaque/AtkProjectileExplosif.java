@@ -1,0 +1,21 @@
+package fr.iut.virusdefense.modele.cellules.attaque;
+
+import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.entitesgeneriques.ProjectileExplosif;
+import fr.iut.virusdefense.modele.maladies.Maladie;
+
+import java.util.ArrayList;
+
+public class AtkProjectileExplosif extends Attaque{
+    public AtkProjectileExplosif(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
+        super(environnement, ligne, colonne, degats, cibles);
+    }
+
+    public void attaque(Maladie m){
+        getEnvironnement().ajouterProjectile(new ProjectileExplosif(getEnvironnement(), getLigne(), getColonne(), m, getDegats(), getAlterations()));
+    }
+
+    public void attaqueCibles(){
+        getCibles().forEach(this::attaque);
+    }
+}
