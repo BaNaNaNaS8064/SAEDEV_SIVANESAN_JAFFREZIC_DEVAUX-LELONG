@@ -39,7 +39,7 @@ public class LecteurDeCarte {
         scanner = new Scanner(fichier);
         int[] ligne;
         int hauteur, largeur;
-        int nbGenerateurs;
+        int nbPointsApparitions;
 
         ligne = prochaineLigne();
         hauteur = ligne[0];
@@ -48,9 +48,9 @@ public class LecteurDeCarte {
 
         constructeurDeCarte.setObjectif(prochaineLigne());
 
-        nbGenerateurs = Integer.parseInt(scanner.nextLine());
-        for (int i=0; i<nbGenerateurs; i++)
-            constructeurDeCarte.ajouterGenerateur(prochaineLigne());
+        nbPointsApparitions = Integer.parseInt(scanner.nextLine());
+        for (int i=0; i<nbPointsApparitions; i++)
+            constructeurDeCarte.ajouterPointApparition(prochaineLigne());
 
         for (int indLigne = 0; indLigne < hauteur; indLigne++){
             ligne = prochaineLigne();

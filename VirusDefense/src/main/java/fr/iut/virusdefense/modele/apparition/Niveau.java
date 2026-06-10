@@ -1,18 +1,16 @@
 package fr.iut.virusdefense.modele.apparition;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Le Niveau se charge de ce qui touche aux vagues et aux apparitions <br>
  * Ce n'est pas son rôle de stocker les générateurs (rôle de {@code Carte})
- * ni de faire apparaître les maladies (rôle de {@code Generateur})
+ * ni de faire apparaître les maladies (rôle de {@code PointApparition})
  */
 public class Niveau {
 
@@ -64,14 +62,14 @@ public class Niveau {
         /*vagues = new ArrayList<>();
         for (int indVague=0; indVague<100; indVague++){
             vagues.add(new Vague());
-            for (int indListeA=0; indListeA<environnement.getCarte().getGenerateurs().size(); indListeA++) {
+            for (int indListeA=0; indListeA<environnement.getCarte().getPointsApparitions().size(); indListeA++) {
                 vagues.get(indVague).ajouter(new ListeApparition());
                 for (int indEnnemi = 0; indEnnemi < 4 * (indVague + 1); indEnnemi++)
                     vagues.get(indVague).getListeApparitions().get(indListeA).ajouter(CodeMaladie.codeAleatoire(), (int) ((Math.random() * 90 + 30)) / (2 * (indVague + 1)));
             }
         }
         vagues.get(vagues.size() - 1).getListeApparitions().get(0).ajouter(CodeMaladie.TUMEUR, 0);*/
-        vagues = Arrays.asList(new LecteurVague(environnement.getCarte().getGenerateurs().size(), idNiveau).getVagues());
+        vagues = Arrays.asList(new LecteurVague(environnement.getCarte().getPointsApparitions().size(), idNiveau).getVagues());
     }
 
     /**
@@ -81,8 +79,8 @@ public class Niveau {
      */
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
-        for (int i=0; i<environnement.getCarte().getGenerateurs().size(); i++)
-            environnement.getCarte().getGenerateurs().get(i).ajouter(vagues.get(getNumVague()).getListeApparitions().get(i));
+        for (int i = 0; i<environnement.getCarte().getPointsApparitions().size(); i++)
+            environnement.getCarte().getPointsApparitions().get(i).ajouter(vagues.get(getNumVague()).getListeApparitions().get(i));
          delai = Integer.MAX_VALUE;
     }
 

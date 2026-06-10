@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.apparition.Generateur;
+import fr.iut.virusdefense.modele.apparition.PointApparition;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -25,8 +25,8 @@ public class AfficheurDeChemin {
         List<Integer> objectif = environnement.getCarte().getObjectif();
         Line ligne;
 
-        for (Generateur g : environnement.getCarte().getGenerateurs()) {
-            caseActuelle = g.position();
+        for (PointApparition p : environnement.getCarte().getPointsApparitions()) {
+            caseActuelle = p.position();
             prochaineCase = environnement.getDeplacement().prochaineCase(caseActuelle);
             while (!caseActuelle.equals(objectif)){
                 ligne = new Line((caseActuelle.get(1)+0.5) * 32, (caseActuelle.get(0)+0.5) * 32, (prochaineCase.get(1)+0.5) * 32, (prochaineCase.get(0)+0.5) * 32);

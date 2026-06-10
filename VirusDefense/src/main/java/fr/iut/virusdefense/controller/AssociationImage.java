@@ -24,7 +24,7 @@ public class AssociationImage {
 
         temp.put(CodeTuile.VIDE, "vide.png");
         temp.put(CodeTuile.MUR, "mur.png");
-        temp.put(CodeTuile.GENERATEUR, "generateur.png");
+        temp.put(CodeTuile.POINTAPPARITION, "pointApparition.png");
         temp.put(CodeTuile.OBJECTIF, "objectif.gif");
 
         temp.put(CodeTuile.SAINPLE, "cellules/sainple.png");

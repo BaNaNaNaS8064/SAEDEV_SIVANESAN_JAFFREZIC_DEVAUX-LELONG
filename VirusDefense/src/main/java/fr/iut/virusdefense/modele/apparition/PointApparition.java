@@ -7,12 +7,12 @@ import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
 import java.util.ArrayList;
 
-public class Generateur extends Entite {
+public class PointApparition extends Entite {
 
     private int delai;
     private ArrayList<ListeApparition> listes;
 
-    public Generateur(Environnement environnement, int ligne, int colonne){
+    public PointApparition(Environnement environnement, int ligne, int colonne){
         super(environnement, ligne, colonne);
         delai = 0;
         listes = new ArrayList<>();

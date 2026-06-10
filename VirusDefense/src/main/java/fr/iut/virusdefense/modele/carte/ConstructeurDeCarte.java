@@ -1,7 +1,8 @@
 package fr.iut.virusdefense.modele.carte;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.apparition.Generateur;
+import fr.iut.virusdefense.modele.apparition.PointApparition;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +11,11 @@ public class ConstructeurDeCarte {
     private boolean[][] carteStatique;
     private List<Integer> objectif;
     private Environnement environnement;
-    private ArrayList<Generateur> generateurs;
+    private ArrayList<PointApparition> pointApparitions;
 
     public ConstructeurDeCarte(Environnement environnement){
         this.environnement = environnement;
-        generateurs = new ArrayList<>();
+        pointApparitions = new ArrayList<>();
     }
 
     public void setTaille(int hauteur, int largeur){
@@ -29,12 +30,12 @@ public class ConstructeurDeCarte {
         objectif = List.of(ligne, colonne);
     }
 
-    public void ajouterGenerateur(int[] coordones){
-        ajouterGenerateur(coordones[0], coordones[1]);
+    public void ajouterPointApparition(int[] coordones){
+        ajouterPointApparition(coordones[0], coordones[1]);
     }
 
-    public void ajouterGenerateur(int ligne, int colonne){
-        generateurs.add(new Generateur(environnement, ligne, colonne));
+    public void ajouterPointApparition(int ligne, int colonne){
+        pointApparitions.add(new PointApparition(environnement, ligne, colonne));
     }
 
     public void changerValeur(int ligne, int colonne, boolean valeur){
@@ -42,7 +43,7 @@ public class ConstructeurDeCarte {
     }
 
     public Carte recupCarte(){
-        return new Carte(carteStatique, objectif, generateurs);
+        return new Carte(carteStatique, objectif, pointApparitions);
     }
 
 }

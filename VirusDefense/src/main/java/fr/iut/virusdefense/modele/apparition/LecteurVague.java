@@ -13,12 +13,12 @@ public class LecteurVague {
     private Vague[] vagues;
 
     private int nbVague;
-    private int nbGen;
+    private int nbPointsApparition;
 
-    public LecteurVague(int nbGenerateur, String idNiveau){
+    public LecteurVague(int nbPointsApparition, String idNiveau){
         try{
             fichier = new File(Main.class.getResource("niveaux/" + idNiveau + "/vagues.txt").toURI());
-            nbGen = nbGenerateur;
+            this.nbPointsApparition = nbPointsApparition;
             lire();
         }catch(Exception e) {
             throw new RuntimeException(e);
@@ -56,10 +56,10 @@ public class LecteurVague {
             ligne = sc.next();
             while(!ligne.equals("#")){
                 maladiesInfo = prochaineLigne(ligne);
-                for (int indGenerateur = 0; indGenerateur < nbGen; indGenerateur++) {
+                for (int indPointApparition = 0; indPointApparition < nbPointsApparition; indPointApparition++) {
                     vagues[indVague].ajouter(new ListeApparition());
                     for (int nombreMemeMaladie = 0; nombreMemeMaladie < (int)maladiesInfo[0]; nombreMemeMaladie++) {
-                        vagues[indVague].getListeApparitions().get(indGenerateur).ajouter(CodeMaladie.values()[(int)maladiesInfo[1]], (int)(maladiesInfo[2] *60));
+                        vagues[indVague].getListeApparitions().get(indPointApparition).ajouter(CodeMaladie.values()[(int)maladiesInfo[1]], (int)(maladiesInfo[2] *60));
                     }
                 }
                 ligne = sc.next();

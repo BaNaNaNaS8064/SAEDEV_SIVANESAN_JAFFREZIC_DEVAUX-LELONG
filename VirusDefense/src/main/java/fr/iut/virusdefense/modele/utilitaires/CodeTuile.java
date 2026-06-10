@@ -6,7 +6,7 @@ public enum CodeTuile {
     VIDE,
     MUR,
     OBJECTIF,
-    GENERATEUR,
+    POINTAPPARITION,
 
     CELLULEINCONNUE,
     SAINPLE,
@@ -21,7 +21,7 @@ public enum CodeTuile {
     public boolean peutMarcher(){
         return this == CodeTuile.VIDE
                 || this == CodeTuile.OBJECTIF
-                || this == CodeTuile.GENERATEUR;
+                || this == CodeTuile.POINTAPPARITION;
     }
 
     public boolean peutVoirAuTravers(boolean ignorerCellules){

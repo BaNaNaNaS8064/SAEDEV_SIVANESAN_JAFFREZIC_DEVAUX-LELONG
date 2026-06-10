@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele.carte;
 
-import fr.iut.virusdefense.modele.apparition.Generateur;
+import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 
@@ -10,13 +10,13 @@ import java.util.List;
 public class Carte {
     private final boolean[][] carteStatique;
     private final List<Integer> objectif;
-    private final ArrayList<Generateur> generateurs;
+    private final ArrayList<PointApparition> pointApparitions;
     private final ArrayList<Cellule> cellules;
 
-    public Carte(boolean[][] carteStatique, List<Integer> objectif, ArrayList<Generateur> generateurs) {
+    public Carte(boolean[][] carteStatique, List<Integer> objectif, ArrayList<PointApparition> pointApparitions) {
         this.carteStatique = carteStatique;
         this.objectif = objectif;
-        this.generateurs = generateurs;
+        this.pointApparitions = pointApparitions;
         cellules = new ArrayList<>();
     }
 
@@ -36,17 +36,17 @@ public class Carte {
         return cellules;
     }
 
-    public ArrayList<Generateur> getGenerateurs() {
-        return generateurs;
+    public ArrayList<PointApparition> getPointsApparitions() {
+        return pointApparitions;
     }
 
     public CodeTuile getCode(int ligne, int colonne) {
         if (List.of(ligne, colonne).equals(objectif))
             return CodeTuile.OBJECTIF;
 
-        for (Generateur g : generateurs)
-            if ((int)g.getLigne() == ligne && (int)g.getColonne() == colonne)
-                return CodeTuile.GENERATEUR;
+        for (PointApparition p : pointApparitions)
+            if ((int)p.getLigne() == ligne && (int)p.getColonne() == colonne)
+                return CodeTuile.POINTAPPARITION;
 
         for (Cellule c : cellules)
             if ((int)c.getLigne() == ligne && (int)c.getColonne() == colonne)

@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele;
 
-import fr.iut.virusdefense.modele.apparition.Generateur;
+import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.carte.Carte;
 import fr.iut.virusdefense.modele.carte.LecteurDeCarte;
@@ -126,7 +126,7 @@ public class Environnement {
             joueur.retirerPc(c.getCout());
             deplacement.faireAlgo();
 
-            if (maladieOuGenerateurBloque()) {
+            if (maladieOuPointsApparitionsBloques()) {
                 retirerCellule(c, true);
                 deplacement.faireAlgo();
             }
@@ -204,8 +204,8 @@ public class Environnement {
 
                 niveau.update();
 
-                for (Generateur g : carte.getGenerateurs())
-                    g.agir();
+                for (PointApparition p : carte.getPointsApparitions())
+                    p.agir();
 
                 for (Alteration alt : alterations) {
                     alt.agir();
@@ -245,15 +245,15 @@ public class Environnement {
      * Vérifie si les générateurs ont un chemins disponible pour les maladies vers la fin.
      * @return Vrai si bloqué
      */
-    public boolean generateursBloques(){
-        for (Generateur generateur : carte.getGenerateurs()) {
-            if(deplacement.estBloquee(generateur.position()))
+    public boolean pointsApparitionBloques(){
+        for (PointApparition pointApparition : carte.getPointsApparitions()) {
+            if(deplacement.estBloquee(pointApparition.position()))
                 return true;
         }
         return false;
     }
 
-    public boolean maladieOuGenerateurBloque(){
-        return maladiesBloquees() || generateursBloques();
+    public boolean maladieOuPointsApparitionsBloques(){
+        return maladiesBloquees() || pointsApparitionBloques();
     }
 }
