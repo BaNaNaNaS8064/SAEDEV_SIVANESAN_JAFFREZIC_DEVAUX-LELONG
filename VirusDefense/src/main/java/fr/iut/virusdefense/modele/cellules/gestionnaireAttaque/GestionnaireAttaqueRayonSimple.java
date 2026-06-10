@@ -1,13 +1,13 @@
-package fr.iut.virusdefense.modele.cellules.attaque;
+package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
 
-public class AtkRayonSimple extends AtkRayon {
+public class GestionnaireAttaqueRayonSimple extends GestionnaireAttaqueRayon {
 
-    public AtkRayonSimple(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
+    public GestionnaireAttaqueRayonSimple(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
         super(environnement, ligne, colonne, degats, cibles);
     }
 

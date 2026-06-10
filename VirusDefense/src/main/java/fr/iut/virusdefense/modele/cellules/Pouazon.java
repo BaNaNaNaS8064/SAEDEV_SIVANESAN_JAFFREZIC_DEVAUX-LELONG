@@ -1,11 +1,11 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
-import fr.iut.virusdefense.modele.cellules.attaque.alteration.Dot;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayon;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration.Dot;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
-import fr.iut.virusdefense.modele.cellules.attaque.alteration.Ralentissement;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration.Ralentissement;
 
 public class Pouazon extends Cellule{
     private static int coutBase = 850;
@@ -24,16 +24,16 @@ public class Pouazon extends Cellule{
     }
 
     @Override
-    public void initAttaque(){
-        AtkRayon temp = new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 15, getReconnaissance().getCibles());
+    public void initGestionnaireAttaque(){
+        GestionnaireAttaqueRayon temp = new GestionnaireAttaqueRayonSimple(getEnvironnement(), getLigne(), getColonne(), 15, getReconnaissance().getCibles());
         temp.ajouterAlteration(new Dot(15,4));
-        setAttaque(temp);
+        setGestionnaireAttaque(temp);
     }
 
     public static Pouazon creer(Environnement env, int ligne, int colonne){
         Pouazon temp = new Pouazon(env, ligne, colonne);
         temp.initRec();
-        temp.initAttaque();
+        temp.initGestionnaireAttaque();
         return temp;
     }
 

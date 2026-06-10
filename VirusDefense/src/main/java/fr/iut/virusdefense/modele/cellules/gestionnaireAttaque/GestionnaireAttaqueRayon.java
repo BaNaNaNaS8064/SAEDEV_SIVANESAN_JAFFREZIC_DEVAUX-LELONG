@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.cellules.attaque;
+package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
@@ -6,9 +6,9 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
 
-public abstract class AtkRayon extends Attaque {
+public abstract class GestionnaireAttaqueRayon extends GestionnaireAttaque {
 
-    public AtkRayon(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
+    public GestionnaireAttaqueRayon(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
         super(environnement, ligne, colonne, degats, cibles);
     }
 

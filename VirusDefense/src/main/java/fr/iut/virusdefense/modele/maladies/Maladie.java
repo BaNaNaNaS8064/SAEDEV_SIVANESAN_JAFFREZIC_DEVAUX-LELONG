@@ -1,12 +1,8 @@
 package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
-import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
-import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,9 +1,7 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayon;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkZone;
-import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueZone;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Brouaileuse extends Cellule {
@@ -23,14 +21,14 @@ public class Brouaileuse extends Cellule {
     }
 
     @Override
-    public void initAttaque(){
-        setAttaque(new AtkZone(getEnvironnement(), getLigne(), getColonne(), 90, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
+    public void initGestionnaireAttaque(){
+        setGestionnaireAttaque(new GestionnaireAttaqueZone(getEnvironnement(), getLigne(), getColonne(), 90, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
     }
 
     public static Brouaileuse creer(Environnement env, int ligne, int colonne){
         Brouaileuse temp = new Brouaileuse(env, ligne, colonne);
         temp.initRec();
-        temp.initAttaque();
+        temp.initGestionnaireAttaque();
         return temp;
     }
 

@@ -1,19 +1,19 @@
-package fr.iut.virusdefense.modele.cellules.attaque;
+package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
 
-public abstract class Attaque {
+public abstract class GestionnaireAttaque {
     private final ArrayList<Maladie> cibles;
     private final Environnement environnement;
     private double ligne, colonne;
     private double degats;
     private final ArrayList<Alteration> alterations;
 
-    public Attaque(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
+    public GestionnaireAttaque(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
         this.environnement = environnement;
         this.ligne = ligne;
         this.colonne = colonne;

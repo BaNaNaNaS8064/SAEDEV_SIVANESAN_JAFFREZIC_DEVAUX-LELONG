@@ -1,13 +1,13 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaque;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
 
 public abstract class Cellule extends Entite {
     private Reconnaissance reconnaissance ;
-    private Attaque attaque;
+    private GestionnaireAttaque gestionnaireAttaque;
 
     private int frequenceAttaque;
     private int delai;
@@ -28,7 +28,7 @@ public abstract class Cellule extends Entite {
 
     public abstract void initRec();
 
-    public abstract void initAttaque();
+    public abstract void initGestionnaireAttaque();
 
     public Reconnaissance getReconnaissance(){
         return reconnaissance;
@@ -38,8 +38,8 @@ public abstract class Cellule extends Entite {
         this.reconnaissance = reconnaissance;
     }
 
-    public void setAttaque(Attaque attaque){
-        this.attaque = attaque;
+    public void setGestionnaireAttaque(GestionnaireAttaque gestionnaireAttaque){
+        this.gestionnaireAttaque = gestionnaireAttaque;
     }
 
     public int getCout() {
@@ -54,8 +54,8 @@ public abstract class Cellule extends Entite {
         return frequenceAttaque;
     }
 
-    public Attaque getAttaque() {
-        return attaque;
+    public GestionnaireAttaque getAttaque() {
+        return gestionnaireAttaque;
     }
 
     public void setFrequenceAttaque(int frequenceAttaque) {
@@ -105,7 +105,7 @@ public abstract class Cellule extends Entite {
                 reconnaissance.actualiser();
 
             if (reconnaissance.aAuMoinsUneCible()) {
-                attaque.attaqueCibles();
+                gestionnaireAttaque.attaqueCibles();
                 delai = frequenceAttaque;
             }
             else {

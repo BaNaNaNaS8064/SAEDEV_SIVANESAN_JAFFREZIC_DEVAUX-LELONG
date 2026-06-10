@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.entitesgeneriques;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.maladies.Tumeur;
 

@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Snaipeur extends Cellule{
@@ -21,14 +21,14 @@ public class Snaipeur extends Cellule{
     }
 
     @Override
-    public void initAttaque(){
-        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 100, getReconnaissance().getCibles()));
+    public void initGestionnaireAttaque(){
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getLigne(), getColonne(), 100, getReconnaissance().getCibles()));
     }
 
     public static Snaipeur creer(Environnement env, int ligne, int colonne){
         Snaipeur temp = new Snaipeur(env, ligne, colonne);
         temp.initRec();
-        temp.initAttaque();
+        temp.initGestionnaireAttaque();
         return temp;
     }
 

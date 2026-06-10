@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Lasere extends Cellule{
@@ -21,14 +21,14 @@ public class Lasere extends Cellule{
     }
 
     @Override
-    public void initAttaque(){
-        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 1, getReconnaissance().getCibles()));
+    public void initGestionnaireAttaque(){
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getLigne(), getColonne(), 1, getReconnaissance().getCibles()));
     }
 
     public static Lasere creer(Environnement env, int ligne, int colonne){
         Lasere temp = new Lasere(env, ligne, colonne);
         temp.initRec();
-        temp.initAttaque();
+        temp.initGestionnaireAttaque();
         return temp;
     }
 

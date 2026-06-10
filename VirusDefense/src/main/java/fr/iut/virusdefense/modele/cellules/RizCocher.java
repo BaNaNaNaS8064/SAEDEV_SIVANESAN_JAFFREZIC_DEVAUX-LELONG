@@ -1,13 +1,8 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonRicochet;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonRicochet;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecRicochet;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
-import fr.iut.virusdefense.modele.maladies.Maladie;
-
-import java.util.ArrayList;
 
 public class RizCocher extends Cellule{
     private static int coutBase = 100;
@@ -26,14 +21,14 @@ public class RizCocher extends Cellule{
     }
 
     @Override
-    public void initAttaque() {
-        setAttaque(new AtkRayonRicochet(getEnvironnement(), getLigne(), getColonne(), 75, getReconnaissance().getCibles()));
+    public void initGestionnaireAttaque() {
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getEnvironnement(), getLigne(), getColonne(), 75, getReconnaissance().getCibles()));
     }
 
     public static RizCocher creer(Environnement env, int ligne, int colonne){
         RizCocher temp = new RizCocher(env, ligne, colonne);
         temp.initRec();
-        temp.initAttaque();
+        temp.initGestionnaireAttaque();
         return temp;
     }
 

@@ -1,16 +1,16 @@
-package fr.iut.virusdefense.modele.cellules.attaque;
+package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
 
-public class AtkRayonConcentre extends AtkRayon{
+public class GestionnaireAttaqueRayonConcentre extends GestionnaireAttaqueRayon {
     private ArrayList<Maladie> ciblesTourPrecedent;
     private ArrayList<Integer> dureeCiblageTourPrecedent;
     private double delaiAugmentation;
 
-    public AtkRayonConcentre(Environnement environnement, double ligne, double colonne, double degats, double delaiAugmentation, ArrayList<Maladie> cibles) {
+    public GestionnaireAttaqueRayonConcentre(Environnement environnement, double ligne, double colonne, double degats, double delaiAugmentation, ArrayList<Maladie> cibles) {
         super(environnement, ligne, colonne, degats, cibles);
         ciblesTourPrecedent = new ArrayList<>();
         dureeCiblageTourPrecedent = new ArrayList<>();

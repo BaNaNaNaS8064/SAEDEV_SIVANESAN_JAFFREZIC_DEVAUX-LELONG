@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.carte.Carte;
 import fr.iut.virusdefense.modele.carte.LecteurDeCarte;
 import fr.iut.virusdefense.modele.cellules.Cellule;
-import fr.iut.virusdefense.modele.cellules.attaque.alteration.Alteration;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration.Alteration;
 import fr.iut.virusdefense.modele.entitesgeneriques.Projectile;
 import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
 import fr.iut.virusdefense.modele.entitesgeneriques.Zone;

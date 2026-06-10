@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonConcentre;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonConcentre;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Konsantre extends Cellule{
@@ -22,14 +22,14 @@ public class Konsantre extends Cellule{
     }
 
     @Override
-    public void initAttaque(){
-        setAttaque(new AtkRayonConcentre(getEnvironnement(), getLigne(), getColonne(), 1, 60, getReconnaissance().getCibles()));
+    public void initGestionnaireAttaque(){
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getEnvironnement(), getLigne(), getColonne(), 1, 60, getReconnaissance().getCibles()));
     }
 
     public static Konsantre creer(Environnement env, int ligne, int colonne){
         Konsantre temp = new Konsantre(env, ligne, colonne);
         temp.initRec();
-        temp.initAttaque();
+        temp.initGestionnaireAttaque();
         return temp;
     }
 
@@ -55,6 +55,6 @@ public class Konsantre extends Cellule{
 
     @Override
     public void ameliorerAuNiveau3() {
-        ((AtkRayonConcentre)getAttaque()).setDelaiAugmentation(((AtkRayonConcentre)getAttaque()).getDelaiAugmentation()-50);
+        ((GestionnaireAttaqueRayonConcentre)getAttaque()).setDelaiAugmentation(((GestionnaireAttaqueRayonConcentre)getAttaque()).getDelaiAugmentation()-50);
     }
 }

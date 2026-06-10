@@ -2,9 +2,6 @@ package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.*;
-import fr.iut.virusdefense.modele.cellules.attaque.Attaque;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
-import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
 import fr.iut.virusdefense.vue.GestionnaireMenuClick;
 import javafx.scene.control.RadioButton;

@@ -1,17 +1,14 @@
-package fr.iut.virusdefense.modele.cellules.attaque;
+package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.modele.entitesgeneriques.Projectile;
-import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
-import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
 
-public class AtkProjectile extends Attaque{
+public class GestionnaireAttaqueProjectile extends GestionnaireAttaque {
 
-    public AtkProjectile(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
+    public GestionnaireAttaqueProjectile(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
         super(environnement, ligne, colonne, degats, cibles);
     }
 

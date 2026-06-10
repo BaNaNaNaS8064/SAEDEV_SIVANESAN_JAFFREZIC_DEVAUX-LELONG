@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.attaque.AtkRayonSimple;
+import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class MuleTyple extends Cellule{
@@ -22,14 +22,14 @@ public class MuleTyple extends Cellule{
     }
 
     @Override
-    public void initAttaque(){
-        setAttaque(new AtkRayonSimple(getEnvironnement(), getLigne(), getColonne(), 15, getReconnaissance().getCibles()));
+    public void initGestionnaireAttaque(){
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getLigne(), getColonne(), 15, getReconnaissance().getCibles()));
     }
 
     public static MuleTyple creer(Environnement env, int ligne, int colonne){
         MuleTyple temp = new MuleTyple(env, ligne, colonne);
         temp.initRec();
-        temp.initAttaque();
+        temp.initGestionnaireAttaque();
         return temp;
     }
 
