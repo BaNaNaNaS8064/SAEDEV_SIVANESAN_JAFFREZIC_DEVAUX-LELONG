@@ -28,6 +28,5 @@ public class ZonePersistante extends Zone{
     @Override
     public void effetSpecial() {
         actualiser();
-        super.agir();
     }
 }
