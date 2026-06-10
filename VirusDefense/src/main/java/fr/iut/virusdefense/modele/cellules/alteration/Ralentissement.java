@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration;
+package fr.iut.virusdefense.modele.cellules.alteration;
 
 public class Ralentissement extends Alteration{
     private final double coefRalentissement;

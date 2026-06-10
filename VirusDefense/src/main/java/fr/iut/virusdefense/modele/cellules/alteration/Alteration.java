@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration;
+package fr.iut.virusdefense.modele.cellules.alteration;
 
 import fr.iut.virusdefense.modele.maladies.Maladie;
 

@@ -1,8 +1,6 @@
 package fr.iut.virusdefense.controller.observateurs;
 
-import fr.iut.virusdefense.modele.entitesgeneriques.Rayon;
-import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
-import fr.iut.virusdefense.vue.sprites.SpriteRayon;
+import fr.iut.virusdefense.modele.cellules.attaques.Zone;
 import fr.iut.virusdefense.vue.sprites.SpriteZone;
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;

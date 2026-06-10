@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration;
+package fr.iut.virusdefense.modele.cellules.alteration;
 
 public class Dot extends Alteration {
     private final int degats;

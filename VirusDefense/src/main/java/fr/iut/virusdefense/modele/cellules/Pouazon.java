@@ -3,9 +3,9 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayon;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
-import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration.Dot;
+import fr.iut.virusdefense.modele.cellules.alteration.Dot;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
-import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.alteration.Ralentissement;
+import fr.iut.virusdefense.modele.cellules.alteration.Ralentissement;
 
 public class Pouazon extends Cellule{
     private static int coutBase = 850;

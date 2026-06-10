@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.entitesgeneriques.Entite;
+import fr.iut.virusdefense.modele.Entite;
 
 import java.util.List;
 

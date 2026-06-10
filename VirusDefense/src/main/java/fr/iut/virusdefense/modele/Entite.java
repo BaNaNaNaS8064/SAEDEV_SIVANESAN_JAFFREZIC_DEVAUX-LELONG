@@ -1,11 +1,9 @@
-package fr.iut.virusdefense.modele.entitesgeneriques;
+package fr.iut.virusdefense.modele;
 
-import fr.iut.virusdefense.modele.Environnement;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
 import java.util.List;
-import java.util.Objects;
 
 public abstract class Entite {
 

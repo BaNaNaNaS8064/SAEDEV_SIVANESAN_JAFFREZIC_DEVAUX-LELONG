@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.entitesgeneriques.Zone;
+import fr.iut.virusdefense.modele.cellules.attaques.Zone;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
