@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1168.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40">
+  <tabs>
+    <Tab text="Maladies">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="502.0" prefWidth="1168.0">
+                     <center>
+                        <HBox prefHeight="289.0" prefWidth="1044.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="502.0" prefWidth="548.0">
+                                 <children>
+                                    <Label fx:id="titreMaladies" text="Titre">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="descMaladies" alignment="TOP_CENTER" prefHeight="463.0" prefWidth="523.0" text="Description" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="502.0" prefWidth="496.0">
+                                 <children>
+                                    <ImageView fx:id="imgMaladies" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/maladies/grand_champignon.gif" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </center>
+                     <left>
+                        <Button fx:id="prevMaladies" mnemonicParsing="false" text="&lt;" BorderPane.alignment="CENTER" />
+                     </left>
+                     <right>
+                        <Button fx:id="nextMaladies" mnemonicParsing="false" text="&gt;" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Cellules">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="502.0" prefWidth="1168.0">
+                     <center>
+                        <HBox prefHeight="289.0" prefWidth="1044.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="502.0" prefWidth="548.0">
+                                 <children>
+                                    <Label fx:id="titreCellules" text="Titre">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="descCellules" alignment="TOP_CENTER" prefHeight="463.0" prefWidth="523.0" text="Description" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="502.0" prefWidth="496.0">
+                                 <children>
+                                    <ImageView fx:id="imgCellules" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/maladies/grand_champignon.gif" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </center>
+                     <left>
+                        <Button fx:id="prevCellules" mnemonicParsing="false" text="&lt;" BorderPane.alignment="CENTER" />
+                     </left>
+                     <right>
+                        <Button fx:id="nextCellules" mnemonicParsing="false" text="&gt;" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
