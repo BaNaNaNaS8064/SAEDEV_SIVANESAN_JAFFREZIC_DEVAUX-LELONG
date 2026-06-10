@@ -6,7 +6,7 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.List;
 
-public class Rayon extends EntiteAtk {
+public class Rayon extends Attaque {
     private int age;
     private final int ageMaximal;
 

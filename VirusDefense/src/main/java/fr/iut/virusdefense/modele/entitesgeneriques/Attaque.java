@@ -7,16 +7,16 @@ import fr.iut.virusdefense.modele.maladies.Tumeur;
 
 import java.util.List;
 
-public abstract class EntiteAtk extends Entite{
+public abstract class Attaque extends Entite{
     private final List<Maladie> cibles;
     private final List<Alteration> alterations;
     private final double degats;
 
-    public EntiteAtk(Environnement environnement, double ligne, double colonne, double degats, List<Alteration> alterations, Maladie cible){
+    public Attaque(Environnement environnement, double ligne, double colonne, double degats, List<Alteration> alterations, Maladie cible){
         this(environnement, ligne, colonne, degats, alterations, List.of(cible));
     }
 
-    public EntiteAtk(Environnement environnement, double ligne, double colonne, double degats, List<Alteration> alterations, List<Maladie> cibles) {
+    public Attaque(Environnement environnement, double ligne, double colonne, double degats, List<Alteration> alterations, List<Maladie> cibles) {
         super(environnement, ligne, colonne);
         this.degats = degats;
         this.alterations = alterations;

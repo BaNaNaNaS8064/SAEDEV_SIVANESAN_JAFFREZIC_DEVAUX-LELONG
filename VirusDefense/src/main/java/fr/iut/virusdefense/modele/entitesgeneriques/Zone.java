@@ -7,7 +7,7 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Zone extends EntiteAtk{
+public class Zone extends Attaque {
     private int age;
     private final int ageMaximal;
     private final double rayonZone;

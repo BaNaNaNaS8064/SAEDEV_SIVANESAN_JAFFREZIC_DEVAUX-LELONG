@@ -6,7 +6,7 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.List;
 
-public class Projectile extends EntiteAtk {
+public class Projectile extends Attaque {
     private boolean cibleTouché;
 
     public Projectile(Environnement environnement, double ligne, double colonne, Maladie cible, double degats, int ageMaximal, List<Alteration> alterations){
