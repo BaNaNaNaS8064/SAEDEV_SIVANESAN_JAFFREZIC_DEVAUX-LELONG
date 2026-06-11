@@ -14,7 +14,7 @@ public class ZonePersistante extends Zone{
     public ZonePersistante(Environnement environnement, double ligne, double colonne, List<Maladie> cibles, double degats, int ageMaximal, List<Alteration> alterations, double rayonZone, Reconnaissance reconnaissance) {
         super(environnement, ligne, colonne, cibles, degats, ageMaximal, alterations, rayonZone);
         this.reconnaissance = reconnaissance;
-        this.delai = 10;
+        this.delai = 50;
     }
 
     public void actualiser(){
