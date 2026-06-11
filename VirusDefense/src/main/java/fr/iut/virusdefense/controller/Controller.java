@@ -30,6 +30,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     private Timeline gameLoop;
     private boolean pause = false;
+    private boolean pauseAvantEncyclopédie = false;
 
     // centre
     @FXML public Pane paneDessin;
@@ -142,7 +143,10 @@ public class Controller implements Initializable {
 
     @FXML
     public void toggleEncyclopedie(MouseEvent mouseEvent) throws IOException {
-        pause = !pause;
+        if(paneEncyclopedie.isDisable())
+            pauseAvantEncyclopédie = pause;
+        if((!pause || !pauseAvantEncyclopédie))
+            pauseJeu();
         paneEncyclopedie.setDisable(!paneEncyclopedie.isDisable());
         paneEncyclopedie.setVisible(!paneEncyclopedie.isVisible());
         FXMLLoader encyclopédieLoader = new FXMLLoader(Main.class.getResource("encyclopedie.fxml"));
@@ -165,7 +169,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void pauseJeu(ActionEvent actionEvent) {
+    public void pauseJeu() {
         if (environnement.getNiveau().getNumVague()>=0){
             if (pause) {
                 gameLoop.play();
