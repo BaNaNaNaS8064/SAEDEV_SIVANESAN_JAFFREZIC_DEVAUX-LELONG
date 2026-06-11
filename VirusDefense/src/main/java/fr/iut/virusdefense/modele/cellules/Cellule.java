@@ -2,10 +2,11 @@ package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Acteur;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaque;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
 
-public abstract class Cellule extends Acteur {
+public abstract class Cellule extends Positionnable implements Acteur {
     private Reconnaissance reconnaissance ;
     private GestionnaireAttaque gestionnaireAttaque;
 

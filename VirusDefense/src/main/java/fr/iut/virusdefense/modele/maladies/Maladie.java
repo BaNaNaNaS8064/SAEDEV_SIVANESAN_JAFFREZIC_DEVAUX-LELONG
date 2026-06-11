@@ -2,13 +2,14 @@ package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Acteur;
+import fr.iut.virusdefense.modele.Positionnable;
 
 import java.util.List;
 
 /**
  * Représente une maladie
  */
-public abstract class Maladie extends Acteur {
+public abstract class Maladie extends Positionnable implements Acteur {
     private double pv;
     private final double vitesse;
     private final int recompense;

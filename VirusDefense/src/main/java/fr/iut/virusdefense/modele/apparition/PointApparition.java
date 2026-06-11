@@ -2,12 +2,13 @@ package fr.iut.virusdefense.modele.apparition;
 
 import fr.iut.virusdefense.modele.Acteur;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
 import java.util.ArrayList;
 
-public class PointApparition extends Acteur {
+public class PointApparition extends Positionnable implements Acteur {
 
     private int delai;
     private ArrayList<ListeApparition> listes;
