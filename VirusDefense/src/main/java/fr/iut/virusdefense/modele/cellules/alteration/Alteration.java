@@ -1,13 +1,15 @@
 package fr.iut.virusdefense.modele.cellules.alteration;
 
 import fr.iut.virusdefense.modele.Acteur;
+import fr.iut.virusdefense.modele.Identifiable;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
-public abstract class Alteration implements Acteur {
+public abstract class Alteration extends Identifiable implements Acteur {
     private int duree;
     private Maladie maladie;
 
     public Alteration(int duree){
+        super();
         this.duree = duree;
     }
 
