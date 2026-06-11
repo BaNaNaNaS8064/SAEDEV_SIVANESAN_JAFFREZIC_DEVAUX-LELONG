@@ -20,7 +20,7 @@ public class Pouazon extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 3.0, 1));
     }
 
     @Override
