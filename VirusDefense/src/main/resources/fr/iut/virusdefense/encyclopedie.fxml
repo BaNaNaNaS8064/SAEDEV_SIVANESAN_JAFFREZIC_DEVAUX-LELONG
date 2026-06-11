@@ -7,11 +7,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerEncyclopedie">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerEncyclopedie">
    <right>
       <VBox prefHeight="398.0" prefWidth="208.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="413.0" prefWidth="208.0" style="-fx-background-color: #2d3d47;" vbarPolicy="ALWAYS">
+            <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #2d3d47;" vbarPolicy="ALWAYS">
                <content>
                   <AnchorPane style="-fx-background-color: #2d3d47;">
                      <children>
@@ -217,10 +217,10 @@
       </VBox>
    </right>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="labelTitre" alignment="TOP_CENTER" text="Titre" />
-            <Label fx:id="labelDesc" alignment="CENTER" prefHeight="16.0" prefWidth="131.0" text="Description" />
+            <Label fx:id="labelTitre" alignment="TOP_CENTER" text="Titre" textFill="WHITE" />
+            <Label fx:id="labelDesc" alignment="CENTER" prefHeight="16.0" prefWidth="131.0" text="Description" textFill="WHITE" />
          </children>
       </VBox>
    </center>
