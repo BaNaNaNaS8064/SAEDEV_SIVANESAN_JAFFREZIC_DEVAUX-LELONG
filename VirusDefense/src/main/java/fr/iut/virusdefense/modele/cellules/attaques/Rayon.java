@@ -15,8 +15,7 @@ public class Rayon extends Attaque {
         age = 0;
         this.ageMaximal = ageMaximal;
 
-        donnerAlterations();
-        infligerDegats();
+        attaquer();
     }
 
     public boolean aDepasseAgeMaximal(){

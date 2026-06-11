@@ -16,7 +16,8 @@ public enum CodeTuile {
     SNAIPEUR,
     RIZCOCHER,
     KONSANTRE,
-    POUAZON;
+    POUAZON,
+    BRULHURE;
 
     public boolean peutMarcher(){
         return this == CodeTuile.VIDE
@@ -63,6 +64,9 @@ public enum CodeTuile {
 
         if (c instanceof Pouazon)
             return POUAZON;
+
+        if (c instanceof Brulhure)
+            return BRULHURE;
 
         return CELLULEINCONNUE;
     }

@@ -9,7 +9,7 @@ import java.util.List;
 public class Projectile extends Attaque {
     private boolean cibleTouché;
 
-    public Projectile(Environnement environnement, double ligne, double colonne, Maladie cible, double degats, int ageMaximal, List<Alteration> alterations){
+    public Projectile(Environnement environnement, double ligne, double colonne, Maladie cible, double degats, List<Alteration> alterations){
         super(environnement, ligne, colonne, degats, alterations, cible);
 
         this.cibleTouché = false;
@@ -36,8 +36,7 @@ public class Projectile extends Attaque {
         }
 
         if(Math.abs(getCibles().get(0).getLigne() - getLigne()) <= 0.5 && Math.abs(getCibles().get(0).getColonne() - getColonne()) <= 0.5){
-            infligerDegats();
-            donnerAlterations();
+            attaquer();
             cibleTouché = true;
         }
     }

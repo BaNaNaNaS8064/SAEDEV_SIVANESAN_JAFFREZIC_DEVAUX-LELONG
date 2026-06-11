@@ -13,7 +13,7 @@ public class GestionnaireAttaqueProjectile extends GestionnaireAttaque {
     }
 
     public void attaque(Maladie m){
-        getEnvironnement().ajouterProjectile(new Projectile(getEnvironnement(), getLigne(), getColonne(), m, getDegats(), 2, getAlterations()));
+        getEnvironnement().ajouterProjectile(new Projectile(getEnvironnement(), getLigne(), getColonne(), m, getDegats(), getAlterations()));
     }
 
     public void attaqueCibles(){
