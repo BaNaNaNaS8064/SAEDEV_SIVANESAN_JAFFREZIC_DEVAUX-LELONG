@@ -217,11 +217,19 @@
       </VBox>
    </right>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="labelTitre" alignment="TOP_CENTER" text="Titre" textFill="WHITE" />
-            <Label fx:id="labelDesc" alignment="CENTER" prefHeight="16.0" prefWidth="131.0" text="Description" textFill="WHITE" />
-         </children>
-      </VBox>
+      <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane prefHeight="650.0" prefWidth="752.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="666.0" prefWidth="752.0" style="-fx-background-color: #2d3d47;">
+                     <children>
+                        <Label fx:id="labelTitre" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="752.0" text="Titre" textFill="WHITE" />
+                        <Label fx:id="labelDesc" alignment="TOP_CENTER" prefHeight="637.0" prefWidth="751.0" text="Description" textFill="WHITE" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </center>
 </BorderPane>
