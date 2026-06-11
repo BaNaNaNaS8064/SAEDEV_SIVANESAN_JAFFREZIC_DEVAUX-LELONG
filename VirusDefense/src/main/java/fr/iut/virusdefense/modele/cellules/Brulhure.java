@@ -19,7 +19,7 @@ public class Brulhure extends Cellule{
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecBrulure(getLigne(),getColonne(),getEnvironnement().getMaladies(),5,1));
+        setReconnaissance(new RecBrulure(getEnvironnement(), getLigne(),getColonne(), 5, 1));
     }
 
     @Override

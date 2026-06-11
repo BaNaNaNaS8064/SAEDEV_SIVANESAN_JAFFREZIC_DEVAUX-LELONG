@@ -17,7 +17,7 @@ public class RizCocher extends Cellule{
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecRicochet(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0, 3));
+        setReconnaissance(new RecRicochet(getEnvironnement(), getLigne(), getColonne(), 3.0, 3));
     }
 
     @Override

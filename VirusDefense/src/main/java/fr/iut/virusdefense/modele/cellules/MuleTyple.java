@@ -18,7 +18,7 @@ public class MuleTyple extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 3.0 , 3));
+        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 3.0 , 3));
     }
 
     @Override

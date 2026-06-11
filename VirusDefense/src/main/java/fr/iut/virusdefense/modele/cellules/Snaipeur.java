@@ -17,7 +17,7 @@ public class Snaipeur extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getLigne(), getColonne(), getEnvironnement().getMaladies(), 12.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 12.0, 1));
     }
 
     @Override

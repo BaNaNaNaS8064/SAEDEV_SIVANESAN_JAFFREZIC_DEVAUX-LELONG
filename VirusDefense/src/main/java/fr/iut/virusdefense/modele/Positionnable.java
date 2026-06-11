@@ -5,30 +5,23 @@ import javafx.beans.property.SimpleDoubleProperty;
 
 import java.util.List;
 
-public abstract class Entite {
-
-    private static int dernierID = 0;
-    private final String id;
+public abstract class Positionnable extends Identifiable{
 
     private final Environnement environnement;
 
     private final DoubleProperty ligneProperty;
     private final DoubleProperty colonneProperty;
 
-    public Entite(Environnement environnement, int ligne, int colonne){
+    public Positionnable(Environnement environnement, int ligne, int colonne){
         this(environnement, ligne + 0.5, colonne + 0.5);
     }
 
-    public Entite(Environnement environnement, double ligne, double colonne){
-        id = "" + ++dernierID;
+    public Positionnable(Environnement environnement, double ligne, double colonne){
+        super();
         this.environnement = environnement;
 
         ligneProperty = new SimpleDoubleProperty(ligne);
         colonneProperty = new SimpleDoubleProperty(colonne);
-    }
-
-    public String getId() {
-        return id;
     }
 
     public Environnement getEnvironnement() {
@@ -63,22 +56,7 @@ public abstract class Entite {
         return List.of((int) getLigne(), (int) getColonne());
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null)
-            return false;
-        else if (!(o instanceof Entite))
-            return false;
-        else
-            return ((Entite) o).getId().equals(id);
-    }
-
-    /**
-     * Retourne la distance euclidienne avec une autre Entite
-     * @param e une maladie
-     * @return distance euclidienne
-     */
-    public double distanceEuclidienne(Entite e){
+    public double distanceEuclidienne(Positionnable e){
         return distanceEuclidienne(e.getLigne(), e.getColonne());
     }
 
@@ -86,12 +64,7 @@ public abstract class Entite {
         return Math.sqrt(Math.pow((getLigne() - ligne), 2) + Math.pow((getColonne() - colonne), 2));
     }
 
-    /**
-     * Méthode exécutée à chaque tour
-     */
-    public abstract void agir();
-
-    public boolean voit(Entite e, boolean ignorerCellules){
+    public boolean voit(Positionnable e, boolean ignorerCellules){
         return voit(e.getLigne(), e.getColonne(), ignorerCellules);
     }
 
@@ -140,7 +113,8 @@ public abstract class Entite {
             if (!getEnvironnement().getCarte().peutVoirAuTravers(positionLigne, (int)getColonne(), ignorerCellules))
                 bloque = true;
         }
-        
+
         return !bloque;
     }
+
 }

@@ -1,14 +1,13 @@
 package fr.iut.virusdefense.modele.cellules.reconnaissance;
 
+import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
-
-import java.util.List;
 
 public class RecBrulure extends Reconnaissance{
 
 
-    public RecBrulure(double ligne, double colonne, List<Maladie> maladies, double portee, int nombreCiblesMax) {
-        super(ligne, colonne, maladies, portee, nombreCiblesMax);
+    public RecBrulure(Environnement environnement, double ligne, double colonne, double portee, int nombreCiblesMax) {
+        super(environnement, ligne, colonne, portee, nombreCiblesMax);
     }
 
     @Override

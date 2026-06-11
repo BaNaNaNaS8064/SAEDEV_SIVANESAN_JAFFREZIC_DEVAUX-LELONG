@@ -1,23 +1,19 @@
 package fr.iut.virusdefense.modele.cellules.reconnaissance;
 
+import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public abstract class Reconnaissance {
-    private final List<Maladie> maladies;
-    private double ligne, colonne;
-
+public abstract class Reconnaissance extends Positionnable {
     private double portee;
 
     private int nombreCiblesMax;
     private final ArrayList<Maladie> cibles;
 
-    public Reconnaissance(double ligne, double colonne, List<Maladie> maladies, double portee, int nombreCiblesMax){
-        this.ligne = ligne;
-        this.colonne = colonne;
-        this.maladies = maladies;
+    public Reconnaissance(Environnement environnement, double ligne, double colonne, double portee, int nombreCiblesMax){
+        super(environnement, ligne, colonne);
         this.portee = portee;
         this.nombreCiblesMax = nombreCiblesMax;
         cibles = new ArrayList<>();
@@ -31,22 +27,6 @@ public abstract class Reconnaissance {
         this.nombreCiblesMax = nombreCiblesMax;
     }
 
-    public double getLigne() {
-        return ligne;
-    }
-
-    public void setLigne(double ligne) {
-        this.ligne = ligne;
-    }
-
-    public double getColonne() {
-        return colonne;
-    }
-
-    public void setColonne(double colonne) {
-        this.colonne = colonne;
-    }
-
     public double getPortee() {
         return portee;
     }
@@ -55,12 +35,8 @@ public abstract class Reconnaissance {
         this.portee = portee;
     }
 
-    public List<Maladie> getMaladies() {
-        return maladies;
-    }
-
     public final boolean aPortee(Maladie m){
-        return m.distanceEuclidienne(ligne, colonne) <= portee;
+        return distanceEuclidienne(m) <= portee;
     }
 
     public final boolean aAuMoinsUneCible(){
@@ -87,8 +63,8 @@ public abstract class Reconnaissance {
 
         cibles.clear();
 
-        while (!aAssezDeCibles() && i < maladies.size()) {
-            m = maladies.get(i);
+        while (!aAssezDeCibles() && i < getEnvironnement().getMaladies().size()) {
+            m = getEnvironnement().getMaladies().get(i);
 
             if (estValide(m))
                 cibles.add(m);

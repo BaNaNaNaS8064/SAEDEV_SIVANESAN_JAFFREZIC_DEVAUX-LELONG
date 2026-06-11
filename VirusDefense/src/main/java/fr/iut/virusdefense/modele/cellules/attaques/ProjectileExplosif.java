@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules.attaques;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecBrulure;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
@@ -24,10 +25,10 @@ public class ProjectileExplosif extends Projectile {
 
     @Override
     public void attaquer(){
-        Reconnaissance reconnaissance = new RecBrulure(getLigne(),getColonne(),getEnvironnement().getMaladies(),rayonZonePortee,Integer.MAX_VALUE);
-        Zone explosion = new ZoneSimple(getEnvironnement(),getLigne(),getColonne(),getCibles(),degatsInstantane,30,getAlterations(),rayonInstantane);
+        Reconnaissance reconnaissance = new RecSimple(getEnvironnement(), getLigne(), getColonne(), 5, Integer.MAX_VALUE);
+        Zone explosion = new ZoneSimple(getEnvironnement(), getLigne(), getColonne(), getCibles(), degatsInstantane, 30, getAlterations(), rayonInstantane);
         getEnvironnement().ajouterZone(explosion);
-        Zone explosionDuree = new ZonePersistante(getEnvironnement(),getLigne(),getColonne(),getCibles(),getDegats(),tempsZone,getAlterations(),rayonZonePortee,reconnaissance);
+        Zone explosionDuree = new ZonePersistante(getEnvironnement(), getLigne(), getColonne(), getCibles(), getDegats(), tempsZone, getAlterations(), rayonZonePortee, reconnaissance);
         getEnvironnement().ajouterZone(explosionDuree);
     }
 

@@ -44,16 +44,16 @@ public class LecteurVague {
     }
 
     public void lire() throws FileNotFoundException {
-        sc = new Scanner(fichier).useDelimiter("\n");
+        sc = new Scanner(fichier);
         double[] maladiesInfo;
         String ligne;
 
-        nbVague = sc.nextInt();
+        nbVague = Integer.parseInt(sc.nextLine());
         vagues = new Vague[nbVague];
-        sc.next();
+        sc.nextLine();
         for (int indVague = 0; indVague < nbVague; indVague++) {
             vagues[indVague] = new Vague();
-            ligne = sc.next();
+            ligne = sc.nextLine();
             while(!ligne.equals("#")){
                 maladiesInfo = prochaineLigne(ligne);
                 for (int indPointApparition = 0; indPointApparition < nbPointsApparition; indPointApparition++) {
@@ -62,7 +62,7 @@ public class LecteurVague {
                         vagues[indVague].getListeApparitions().get(indPointApparition).ajouter(CodeMaladie.values()[(int)maladiesInfo[1]], (int)(maladiesInfo[2] *60));
                     }
                 }
-                ligne = sc.next();
+                ligne = sc.nextLine();
             }
         }
     }
