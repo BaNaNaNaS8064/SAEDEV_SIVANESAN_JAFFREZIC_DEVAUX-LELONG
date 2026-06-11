@@ -110,7 +110,7 @@ public class Controller implements Initializable {
         labelCoutRizCoCher.setText("" + RizCocher.getCoutBase());
         labelCoutKonsantre.setText("" + Konsantre.getCoutBase());
         labelCoutPouazon.setText("" + Pouazon.getCoutBase());
-        labelCoutBrulHure.setText("?");
+        labelCoutBrulHure.setText("" + Brulhure.getCoutBase());
     }
 
     /**

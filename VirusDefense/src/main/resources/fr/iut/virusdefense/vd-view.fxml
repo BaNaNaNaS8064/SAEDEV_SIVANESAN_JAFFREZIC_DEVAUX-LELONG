@@ -191,7 +191,7 @@
                                                 <Image url="@images/tuiles/cellules/brulhure.png" />
                                              </image>
                                           </ImageView>
-                                          <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="COMING SOON" textFill="WHITE" />
+                                          <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Brul-Hure" textFill="WHITE" />
                                           <Label fx:id="labelCoutBrulHure" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="?" textAlignment="RIGHT" textFill="WHITE" />
                                        </children>
                                     </HBox>

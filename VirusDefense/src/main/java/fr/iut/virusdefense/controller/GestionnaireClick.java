@@ -53,6 +53,7 @@ public class GestionnaireClick {
             case "RbRizCoCher" -> RizCocher.creer(environnement, ligne, colonne);
             case "RbKonsantre" -> Konsantre.creer(environnement, ligne, colonne);
             case "RbPouazon" -> Pouazon.creer(environnement, ligne, colonne);
+            case "RbBrulHure" -> Brulhure.creer(environnement,ligne,colonne);
             default -> null;
         };
 
