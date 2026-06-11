@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.attaques;
 
-import fr.iut.virusdefense.modele.Entite;
+import fr.iut.virusdefense.modele.Acteur;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -8,7 +8,7 @@ import fr.iut.virusdefense.modele.maladies.Tumeur;
 
 import java.util.List;
 
-public abstract class Attaque extends Entite {
+public abstract class Attaque extends Acteur {
     private final List<Maladie> cibles;
     private final List<Alteration> alterations;
     private final double degats;

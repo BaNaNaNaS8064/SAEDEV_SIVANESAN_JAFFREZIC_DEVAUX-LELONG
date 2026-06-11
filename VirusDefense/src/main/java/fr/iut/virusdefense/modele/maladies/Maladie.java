@@ -1,14 +1,14 @@
 package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.Entite;
+import fr.iut.virusdefense.modele.Acteur;
 
 import java.util.List;
 
 /**
  * Représente une maladie
  */
-public abstract class Maladie extends Entite {
+public abstract class Maladie extends Acteur {
     private double pv;
     private final double vitesse;
     private final int recompense;
