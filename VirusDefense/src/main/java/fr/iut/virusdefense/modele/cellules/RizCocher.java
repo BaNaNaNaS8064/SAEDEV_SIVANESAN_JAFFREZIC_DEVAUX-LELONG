@@ -44,21 +44,21 @@ public class RizCocher extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 0;
+        return 175;
     }
 
     @Override
     public int coutNiveau3() {
-        return 0;
+        return 300;
     }
 
     @Override
     public void ameliorerAuNiveau2() {
-
+        getReconnaissance().setPortee(getReconnaissance().getPortee()+0.5);
     }
 
     @Override
     public void ameliorerAuNiveau3() {
-
+        ((RecRicochet)getReconnaissance()).setNbRicochets(((RecRicochet)getReconnaissance()).getNbRicochets()+2);
     }
 }

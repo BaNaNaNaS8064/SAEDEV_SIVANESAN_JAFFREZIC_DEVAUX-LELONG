@@ -13,6 +13,14 @@ public class RecRicochet extends Reconnaissance{
         this.nbRicochets = nbRicochets;
     }
 
+    public int getNbRicochets() {
+        return nbRicochets;
+    }
+
+    public void setNbRicochets(int nbRicochets) {
+        this.nbRicochets = nbRicochets;
+    }
+
     @Override
     public boolean estValide(Maladie m) {
         return m.estVivant() && aPortee(m) && m.voit(getLigne(), getColonne(),true);
