@@ -37,7 +37,10 @@
             </Button>
             <Button fx:id="boutonEncyclopedie" minWidth="43.0" mnemonicParsing="false" onMousePressed="#toggleEncyclopedie" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="110.0" translateY="10.0">
                <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/utilitaires/encyclopedie.png" />
+                     </image></ImageView>
                </graphic>
             </Button>
           <Button minWidth="33.0" mnemonicParsing="false" onAction="#pauseJeu" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="130.0" translateY="10.0">
