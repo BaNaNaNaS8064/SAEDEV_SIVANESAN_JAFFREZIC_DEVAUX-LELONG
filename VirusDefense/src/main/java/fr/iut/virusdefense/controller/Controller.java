@@ -76,6 +76,14 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {}
 
     private void démarrerEnv(){
+        if (environnement != null)
+            environnement.toutVider();
+        GestionnaireMenuClick.fermerMenuActif();
+        pause = false;
+        imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/reprendre.png"))));
+        boutonVague.setText("Démarrer");
+        boutonVague.setOnMousePressed(this::démarrerVague);
+
         environnement = new Environnement(idNiveau);
 
         afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles, new AfficheurDeChemin(environnement, paneLignes));
@@ -150,21 +158,26 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void pauseJeu(ActionEvent actionEvent) {
-        if (environnement.getNiveau().getNumVague()>=0){
-            if (pause) {
-                gameLoop.play();
-                imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/reprendre.png"))));
-            }else{
-                gameLoop.pause();
-                imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/pause.png"))));
-            }
-            pause = !pause;
+    public void pauseJeu() {
+        if (pause) {
+            gameLoop.play();
+            imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/reprendre.png"))));
+        }else{
+            gameLoop.pause();
+            imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/pause.png"))));
         }
+        pause = !pause;
     }
+
 
     public void changerNiveauEtJouer(String id){
         idNiveau = id;
         démarrerEnv();
+    }
+
+    public void retourMenuPrincipal(){
+        Main.changerScene();
+        gameLoop.pause();
+
     }
 }

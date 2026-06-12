@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +17,9 @@ import java.util.ResourceBundle;
 public class ControllerMenuPrincipal implements Initializable {
     @FXML public Pane paneMenuPrincipal;
     @FXML public ChoiceBox<String> menuChoixNiveau;
+
+    public FXMLLoader fxmlLoaderJeu;
+    public Controller controller;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -27,13 +31,17 @@ public class ControllerMenuPrincipal implements Initializable {
         }
     }
 
-    public void commencerJeu() throws IOException {
+    public BorderPane creerPaneJeu() throws IOException{
+        fxmlLoaderJeu = new FXMLLoader(Main.class.getResource("vd-view.fxml"));
+        BorderPane paneJeu = new BorderPane(fxmlLoaderJeu.load());
+        controller = fxmlLoaderJeu.getController();
+        return paneJeu;
+    }
+
+    public void commencerJeu(){
         if (menuChoixNiveau.getValue() != null){
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("vd-view.fxml"));
-            BorderPane borderPane = new BorderPane(fxmlLoader.load());
-            ((Controller) fxmlLoader.getController()).changerNiveauEtJouer(menuChoixNiveau.getValue());
-            paneMenuPrincipal.getChildren().clear();
-            paneMenuPrincipal.getChildren().add(borderPane);
+            Main.changerScene();
+            controller.changerNiveauEtJouer(menuChoixNiveau.getValue());
         }
     }
 }
