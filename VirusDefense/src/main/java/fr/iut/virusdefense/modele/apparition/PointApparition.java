@@ -55,7 +55,7 @@ public class PointApparition extends Positionnable implements Acteur {
             case VIRUS:
                 getEnvironnement().ajouterMaladie(new Virus(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
-            case VIRUSCOMPOSE:
+            case VIRUSCOMPOSE_1:
                 getEnvironnement().ajouterMaladie(new VirusComposé(getEnvironnement(), (int) getLigne(), (int) getColonne()));
                 break;
             case PETITCHAMPIGNON:

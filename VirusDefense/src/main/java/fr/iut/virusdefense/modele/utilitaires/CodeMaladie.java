@@ -7,10 +7,12 @@ public enum CodeMaladie {
     BACTERIEBANALE,
     PARASITE,
     VIRUS,
-    VIRUSCOMPOSE,
+    VIRUSCOMPOSE_1,
     PETITCHAMPIGNON,
     GRANDCHAMPIGNON,
-    TUMEUR;
+    TUMEUR,
+    VIRUSCOMPOSE_2,
+    VIRUSCOMPOSE_3;
 
     public static CodeMaladie codeDe(Maladie m) {
         if (m instanceof BacterieBanale)
@@ -23,7 +25,7 @@ public enum CodeMaladie {
             return VIRUS;
 
         if (m instanceof VirusComposé)
-            return VIRUSCOMPOSE;
+            return CodeMaladie.valueOf("VIRUSCOMPOSE_"+ ((VirusComposé) m).getStade());
 
         if (m instanceof PetitChampignon)
             return PETITCHAMPIGNON;
@@ -42,7 +44,7 @@ public enum CodeMaladie {
             case 0 -> BACTERIEBANALE;
             case 1 -> PARASITE;
             case 2 -> VIRUS;
-            case 3 -> VIRUSCOMPOSE;
+            case 3 -> VIRUSCOMPOSE_1;
             case 4 -> PETITCHAMPIGNON;
             case 5 -> GRANDCHAMPIGNON;
 
