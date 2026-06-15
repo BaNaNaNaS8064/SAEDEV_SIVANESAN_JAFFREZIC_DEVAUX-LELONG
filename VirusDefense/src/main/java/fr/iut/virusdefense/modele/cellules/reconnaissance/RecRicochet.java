@@ -24,11 +24,11 @@ public class RecRicochet extends Reconnaissance{
 
     @Override
     public boolean estValide(Maladie m) {
-        return m.estVivant() && aPortee(m) && m.voit(getLigne(), getColonne(),true);
+        return m.estVivant() && aPortee(m) && voit(m,true);
     }
 
     public boolean ricochetValide(Maladie m){
-        return m.estVivant() && aPortee(m) && m.voit(getLigne(), getColonne(),false) && !getCibles().contains(m);
+        return !getCibles().contains(m) && m.estVivant() && aPortee(m) && voit(m,false);
     }
 
     private boolean aAssezDeRicochets(){
