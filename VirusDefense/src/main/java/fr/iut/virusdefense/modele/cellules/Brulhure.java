@@ -6,7 +6,7 @@ import fr.iut.virusdefense.modele.cellules.reconnaissance.RecBrulure;
 
 public class Brulhure extends Cellule{
     private static int coutBase = 300;
-    private int tempsZone;
+    private final int tempsZone;
 
     public static int getCoutBase() {
         return coutBase;

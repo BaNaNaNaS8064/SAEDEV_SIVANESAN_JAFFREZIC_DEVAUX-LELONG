@@ -3,7 +3,6 @@ package fr.iut.virusdefense.modele.cellules.reconnaissance;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
-import java.util.List;
 
 public class RecSimple extends Reconnaissance{
 

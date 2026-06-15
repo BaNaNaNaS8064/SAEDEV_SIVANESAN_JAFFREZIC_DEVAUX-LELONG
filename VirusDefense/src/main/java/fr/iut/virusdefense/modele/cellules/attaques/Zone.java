@@ -4,7 +4,6 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Zone extends Attaque {

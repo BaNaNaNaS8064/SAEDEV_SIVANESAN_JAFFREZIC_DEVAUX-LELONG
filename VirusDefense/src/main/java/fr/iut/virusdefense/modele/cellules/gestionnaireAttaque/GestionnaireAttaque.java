@@ -9,18 +9,22 @@ import java.util.ArrayList;
 
 public abstract class GestionnaireAttaque extends Positionnable {
     private final ArrayList<Maladie> cibles;
-    private double degats;
     private final ArrayList<Alteration> alterations;
+    private double degats;
 
     public GestionnaireAttaque(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
         super(environnement, ligne, colonne);
-        this.degats = degats;
-        this.alterations = new ArrayList<>();
         this.cibles = cibles;
+        this.alterations = new ArrayList<>();
+        this.degats = degats;
     }
 
     public ArrayList<Maladie> getCibles(){
         return cibles;
+    }
+
+    public ArrayList<Alteration> getAlterations() {
+        return alterations;
     }
 
     public double getDegats() {
@@ -29,10 +33,6 @@ public abstract class GestionnaireAttaque extends Positionnable {
 
     public void setDegats(double degats) {
         this.degats = degats;
-    }
-
-    public ArrayList<Alteration> getAlterations() {
-        return alterations;
     }
 
     public void ajouterAlteration(Alteration alt){

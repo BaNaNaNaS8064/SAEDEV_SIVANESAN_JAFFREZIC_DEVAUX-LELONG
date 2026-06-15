@@ -2,7 +2,6 @@ package fr.iut.virusdefense.modele.cellules.attaques;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
-import fr.iut.virusdefense.modele.cellules.reconnaissance.RecBrulure;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -11,9 +10,9 @@ import java.util.List;
 
 public class ProjectileExplosif extends Projectile {
     private final double rayonZonePortee;
-    private double degatsInstantane;
-    private double rayonInstantane;
-    private int tempsZone;
+    private final double degatsInstantane;
+    private final double rayonInstantane;
+    private final int tempsZone;
 
     public ProjectileExplosif(Environnement environnement, double ligne, double colonne, Maladie cible, double degats, List<Alteration> alterations, double rayonZonePortee, double degatsInstantane, double rayonInstantane, int tempsZone) {
         super(environnement, ligne, colonne, cible, degats, alterations);
