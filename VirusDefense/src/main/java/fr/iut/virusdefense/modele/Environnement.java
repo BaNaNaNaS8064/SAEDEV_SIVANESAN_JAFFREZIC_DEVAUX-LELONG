@@ -256,4 +256,11 @@ public class Environnement {
     public boolean maladieOuPointsApparitionsBloques(){
         return maladiesBloquees() || pointsApparitionBloques();
     }
+
+    public void toutVider(){
+        maladies.clear();
+        zones.clear();
+        rayons.clear();
+        projectiles.clear();
+    }
 }

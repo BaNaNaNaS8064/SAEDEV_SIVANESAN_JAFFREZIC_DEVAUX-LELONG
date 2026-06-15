@@ -19,8 +19,7 @@ public class GestionnaireMenuClick {
     private AfficheurDeCarte afficheurDeCarte;
 
     public GestionnaireMenuClick(int ligne, int colonne, Pane paneCentre, Environnement environnement , AfficheurDeCarte afficheurDeCarte){
-        if (menuActif != null)
-            menuActif.retirerMenu();
+        fermerMenuActif();
         menuActif = this;
         
         this.colonne = colonne;
@@ -76,5 +75,9 @@ public class GestionnaireMenuClick {
 
         if (menu.getTranslateY() + menu.getPrefHeight() > paneCentre.getHeight())
             menu.setTranslateY(menu.getTranslateY() - 128);
+    }
+    public static void fermerMenuActif(){
+        if (menuActif != null)
+            menuActif.retirerMenu();
     }
 }

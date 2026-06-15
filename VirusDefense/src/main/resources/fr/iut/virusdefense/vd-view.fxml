@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.Controller">
+<BorderPane fx:id="PaneJeu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.Controller">
    <top>
       <HBox prefHeight="55.0" prefWidth="1018.0" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
          <children>
@@ -30,7 +30,7 @@
                   <Label fx:id="labelPvMax" text="1000" translateX="55.0" />
                </children>
             </StackPane>
-            <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="90.0" translateY="10.0">
+            <Button mnemonicParsing="false" onAction="#retourMenuPrincipal" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="90.0" translateY="10.0">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
