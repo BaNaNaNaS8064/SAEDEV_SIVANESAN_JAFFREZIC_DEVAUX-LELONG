@@ -14,8 +14,11 @@ public class GestionnaireAttaqueRayonRicochet extends GestionnaireAttaqueRayon {
     @Override
     public void attaqueCibles() {
         double posLigne = getLigne(), posColonne = getColonne();
-        for (Maladie m : getCibles()) {
-            attaque(m, getDegats());
+        Maladie m;
+
+        for (int i=0; i < getCibles().size(); i++) {
+            m = getCibles().get(i);
+            attaque(m, getDegats() * Math.pow(0.66, i));
             setLigne(m.getLigne());
             setColonne(m.getColonne());
         }
