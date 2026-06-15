@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class GestionnaireAttaqueProjectileExplosif extends GestionnaireAttaque {
     private int tempsZone;
     private final double rayonZonePortee;
-    private double degatsInstantane;
-    private double rayonInstantane;
+    private final double degatsInstantane;
+    private final double rayonInstantane;
 
 
     public GestionnaireAttaqueProjectileExplosif(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles, double rayonZonePortee, double degatsInstantane, double rayonInstantane , int tempsZone){

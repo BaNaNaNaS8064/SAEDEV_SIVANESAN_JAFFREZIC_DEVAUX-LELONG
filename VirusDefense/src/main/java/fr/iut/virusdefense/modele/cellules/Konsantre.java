@@ -11,7 +11,6 @@ public class Konsantre extends Cellule{
         return coutBase;
     }
 
-
     private Konsantre(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne, 1, coutBase);
     }

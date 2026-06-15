@@ -22,8 +22,4 @@ public class GestionnaireAttaqueRayonRicochet extends GestionnaireAttaqueRayon {
         setLigne(posLigne);
         setColonne(posColonne);
     }
-
-//    public void attaqueRicochet(double ligne, double colonne, Maladie m){
-//        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), ligne, colonne, m, getDegats(), 2, getAlterations()));
-//    }
 }
