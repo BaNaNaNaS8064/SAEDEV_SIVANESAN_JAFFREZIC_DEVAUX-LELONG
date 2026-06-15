@@ -13,7 +13,7 @@ public class Brulhure extends Cellule{
     }
 
     public Brulhure(Environnement environnement, int ligne, int colonne) {
-        super(environnement, ligne, colonne, 400, coutBase);
+        super(environnement, ligne, colonne, 720, coutBase);
         tempsZone=200;
     }
 
@@ -24,7 +24,7 @@ public class Brulhure extends Cellule{
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getEnvironnement(),getLigne(),getColonne(),30,getReconnaissance().getCibles(),1.5,50,0.5 ,tempsZone));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getEnvironnement(),getLigne(),getColonne(),25,getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
     }
 
     public static Brulhure creer(Environnement env, int ligne, int colonne){
@@ -41,12 +41,12 @@ public class Brulhure extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 400;
+        return 700;
     }
 
     @Override
     public int coutNiveau3() {
-        return 600;
+        return 1000;
     }
 
     @Override

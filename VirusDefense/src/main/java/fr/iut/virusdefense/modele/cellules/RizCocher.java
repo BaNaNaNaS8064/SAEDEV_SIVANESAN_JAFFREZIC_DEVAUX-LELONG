@@ -5,14 +5,14 @@ import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaq
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecRicochet;
 
 public class RizCocher extends Cellule{
-    private static int coutBase = 100;
+    private static int coutBase = 900;
 
     public static int getCoutBase() {
         return coutBase;
     }
 
     private RizCocher(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 90, coutBase);
+        super(env, ligne, colonne, 120, coutBase);
     }
 
     @Override
@@ -39,12 +39,12 @@ public class RizCocher extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 175;
+        return 250;
     }
 
     @Override
     public int coutNiveau3() {
-        return 300;
+        return 400;
     }
 
     @Override
