@@ -139,7 +139,7 @@ public class Controller implements Initializable {
     public void démarrerVague(MouseEvent mouseEvent) {
         if (!pause){
             environnement.getNiveau().passerProchaineVague();
-            boutonVague.setText("Passer");
+            ((ImageView) boutonVague.getGraphic()).setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/next.png"))));
             boutonVague.setOnMousePressed(this::passerVague);
         }
     }
@@ -154,7 +154,7 @@ public class Controller implements Initializable {
         if (environnement.getNiveau().getNumVague()>=0){
             if (pause) {
                 gameLoop.play();
-                imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/reprendre.png"))));
+                imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/play.png"))));
             }else{
                 gameLoop.pause();
                 imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/pause.png"))));
