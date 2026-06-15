@@ -86,8 +86,9 @@ public class Controller implements Initializable {
             environnement.toutVider();
         GestionnaireMenuClick.fermerMenuActif();
         pause = false;
-        imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/reprendre.png"))));
-        boutonVague.setText("Démarrer");
+        imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/play.png"))));
+        ((ImageView) boutonVague.getGraphic()).setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/start.png"))));
+        boutonVague.setStyle("-fx-background-color: #79911B");
         boutonVague.setOnMousePressed(this::démarrerVague);
 
         environnement = new Environnement(idNiveau);
@@ -166,7 +167,8 @@ public class Controller implements Initializable {
     public void démarrerVague(MouseEvent mouseEvent) {
         if (!pause){
             environnement.getNiveau().passerProchaineVague();
-            boutonVague.setText("Passer");
+            ((ImageView) boutonVague.getGraphic()).setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/next.png"))));
+            boutonVague.setStyle("-fx-background-color: #2F4D1A");
             boutonVague.setOnMousePressed(this::passerVague);
         }
     }
@@ -180,7 +182,7 @@ public class Controller implements Initializable {
     public void pauseJeu() {
         if (pause) {
             gameLoop.play();
-            imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/reprendre.png"))));
+            imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/play.png"))));
         }else{
             gameLoop.pause();
             imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/pause.png"))));

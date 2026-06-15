@@ -47,10 +47,8 @@ public class AssociationImage {
      * @return le chemin vers l'image qui correspond à CodeTuile
      */
     public static String imageDe(CodeTuile codeTuile){
-        return String.valueOf(Main.class.getResource("images/tuiles/" + correspondanceTuile.getOrDefault(codeTuile, correspondanceTuile.get(CodeTuile.VIDE))));
+        return String.valueOf(Main.class.getResource("images/tuiles/" + correspondanceTuile.get(codeTuile)));
     }
-
-
 
     public static HashMap<CodeMaladie, String> correspondanceMaladie = creerMapMaladie();
 
@@ -60,10 +58,12 @@ public class AssociationImage {
         temp.put(CodeMaladie.BACTERIEBANALE, "bacterie_banale.gif");
         temp.put(CodeMaladie.PARASITE, "parasite.gif");
         temp.put(CodeMaladie.VIRUS, "virus.gif");
-        temp.put(CodeMaladie.VIRUSCOMPOSE, "virus_compose.png");
+        temp.put(CodeMaladie.VIRUSCOMPOSE_1, "virus_compose_1.gif");
+        temp.put(CodeMaladie.VIRUSCOMPOSE_2, "virus_compose_2.gif");
+        temp.put(CodeMaladie.VIRUSCOMPOSE_3, "virus_compose_3.gif");
         temp.put(CodeMaladie.PETITCHAMPIGNON, "petit_champignon.gif");
         temp.put(CodeMaladie.GRANDCHAMPIGNON, "grand_champignon.gif");
-        temp.put(CodeMaladie.TUMEUR, "tumeur.png");
+        temp.put(CodeMaladie.TUMEUR, "tumeur.gif");
 
         return temp;
     }

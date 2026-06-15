@@ -13,6 +13,10 @@ public class VirusComposé extends Maladie{
         this.stade = stade;
     }
 
+    public int getStade() {
+        return stade;
+    }
+
     @Override
     public void capaciteALaMort() {
         if(stade<3 && !aAtteintLObjectif())
