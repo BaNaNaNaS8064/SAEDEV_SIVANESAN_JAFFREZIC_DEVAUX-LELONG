@@ -1,8 +1,9 @@
 package fr.iut.virusdefense.vue;
 
+import fr.iut.virusdefense.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -12,9 +13,7 @@ public class GestionnaireEcranDeFin {
 
     private final Pane paneDessin;
 
-    private Rectangle fond;
-
-    private Label label;
+    private ImageView fond;
 
     private Timeline animation;
 
@@ -23,19 +22,10 @@ public class GestionnaireEcranDeFin {
         initAnimation();
     }
 
-    public void initFond(){
-        fond = new Rectangle(paneDessin.getWidth(), paneDessin.getHeight(), Color.BLACK);
+    public void initFond(String urlImage){
+        fond = new ImageView(String.valueOf(Main.class.getResource("images/utilitaires/" + urlImage)));
         fond.setOpacity(0);
         paneDessin.getChildren().add(fond);
-    }
-
-    public void initLabel(String texte){
-        label = new Label(texte);
-        label.setTextFill(Color.WHITE);
-        label.setOpacity(0);
-        label.setTranslateX((paneDessin.getWidth() - label.getWidth()) / 2);
-        label.setTranslateY((paneDessin.getHeight() - label.getHeight()) / 2);
-        paneDessin.getChildren().add(label);
     }
 
     public void initAnimation(){
@@ -43,21 +33,19 @@ public class GestionnaireEcranDeFin {
         animation.setCycleCount(10);
         animation.getKeyFrames().add(new KeyFrame(Duration.seconds(0.05), e ->{
                 fond.setOpacity(fond.getOpacity() + 0.1);
-                label.setOpacity(label.getOpacity() + 0.1);
         }));
     }
 
     public void demarrerAnimationDefaite(){
-        demarrerAnimation("Défaite");
+        demarrerAnimation("perdu.png");
     }
 
     public void demarrerAnimationVictoire(){
-        demarrerAnimation("Victoire");
+        demarrerAnimation("gagne.png");
     }
 
-    private void demarrerAnimation(String texte){
-        initFond();
-        initLabel(texte);
+    private void demarrerAnimation(String urlImage){
+        initFond(urlImage);
         animation.playFromStart();
     }
 
