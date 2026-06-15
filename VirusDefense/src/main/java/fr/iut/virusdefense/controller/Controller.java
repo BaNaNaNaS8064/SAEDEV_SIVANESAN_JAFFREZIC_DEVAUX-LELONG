@@ -140,6 +140,7 @@ public class Controller implements Initializable {
         if (!pause){
             environnement.getNiveau().passerProchaineVague();
             ((ImageView) boutonVague.getGraphic()).setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/next.png"))));
+            boutonVague.setStyle("-fx-background-color: #2F4D1A");
             boutonVague.setOnMousePressed(this::passerVague);
         }
     }

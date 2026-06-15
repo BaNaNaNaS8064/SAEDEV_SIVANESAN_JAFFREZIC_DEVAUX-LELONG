@@ -22,18 +22,6 @@ public class GestionnaireBarreDeVie {
 
     public void setPv(int montant){
         labelPvActuels.setText("" + montant);
-        changerProgressionBarre((double) montant / pvMax);
-    }
-
-    private void changerProgressionBarre(double progression){
-        barre.setProgress(progression);
-        barre.setStyle("-fx-accent: " + couleurBarre(progression));
-    }
-
-    private String couleurBarre(double valeur){
-        if (valeur < 0.25) return "red";
-        else if (valeur < 0.5) return "orange";
-        else if (valeur < 0.75) return "yellow";
-        else return "green";
+        barre.setProgress((double) montant / pvMax);
     }
 }
