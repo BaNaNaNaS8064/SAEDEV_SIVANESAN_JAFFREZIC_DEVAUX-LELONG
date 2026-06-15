@@ -35,9 +35,12 @@
                   <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
-            <Button minWidth="43.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="110.0" translateY="10.0">
+            <Button fx:id="boutonEncyclopedie" minWidth="43.0" mnemonicParsing="false" onMousePressed="#toggleEncyclopedie" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="110.0" translateY="10.0">
                <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/utilitaires/encyclopedie.png" />
+                     </image></ImageView>
                </graphic>
             </Button>
           <Button minWidth="33.0" mnemonicParsing="false" onAction="#pauseJeu" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #4d6b7d;" translateX="130.0" translateY="10.0">
@@ -48,10 +51,7 @@
                      </image></ImageView>
                </graphic>
             </Button>
-            <Button fx:id="boutonVague" layoutX="498.0" layoutY="10.0" minWidth="33.0" mnemonicParsing="false"
-                    onMousePressed="#démarrerVague" prefHeight="33.0" prefWidth="100"
-                    style="-fx-background-color: #4d6b7d;" textFill="white" text="Démarrer" textOverrun="CLIP"
-                    translateX="150.0" translateY="10.0"/>
+            <Button fx:id="boutonVague" layoutX="498.0" layoutY="10.0" minWidth="33.0" mnemonicParsing="false" onMousePressed="#démarrerVague" prefHeight="33.0" prefWidth="100" style="-fx-background-color: #4d6b7d;" text="Démarrer" textFill="white" textOverrun="CLIP" translateX="150.0" translateY="10.0" />
          </children>
          <BorderPane.margin>
             <Insets />
@@ -213,6 +213,7 @@
                <Pane fx:id="paneLignes" />
             </children>
          </Pane>
+         <Pane fx:id="paneEncyclopedie" disable="true" visible="false" />
       </Pane>
    </center>
 </BorderPane>

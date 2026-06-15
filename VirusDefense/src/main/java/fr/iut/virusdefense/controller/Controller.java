@@ -9,6 +9,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,21 +18,25 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     private Timeline gameLoop;
     private boolean pause = false;
+    private boolean pauseAvantEncyclopédie = false;
 
     // centre
     @FXML public Pane paneDessin;
     @FXML public Pane paneLignes;
     @FXML public Pane paneCentre;
+    @FXML public Pane paneEncyclopedie;
     @FXML public TilePane tuiles;
 
     // haut -> vagues
@@ -46,6 +51,7 @@ public class Controller implements Initializable {
     //haut button
     @FXML public Button boutonVague;
     @FXML public ImageView imagePause;
+    @FXML public Button boutonEncyclopedie;
 
     // droite
     @FXML public Label labelSolde;
@@ -136,6 +142,19 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    public void toggleEncyclopedie(MouseEvent mouseEvent) throws IOException {
+        if(paneEncyclopedie.isDisable())
+            pauseAvantEncyclopédie = pause;
+        if((!pause || !pauseAvantEncyclopédie))
+            pauseJeu();
+        paneEncyclopedie.setDisable(!paneEncyclopedie.isDisable());
+        paneEncyclopedie.setVisible(!paneEncyclopedie.isVisible());
+        FXMLLoader encyclopédieLoader = new FXMLLoader(Main.class.getResource("encyclopedie.fxml"));
+        BorderPane borderPaneEnc = new BorderPane(encyclopédieLoader.load());
+        paneEncyclopedie.getChildren().add(borderPaneEnc);
+    }
+
+    @FXML
     public void démarrerVague(MouseEvent mouseEvent) {
         if (!pause){
             environnement.getNiveau().passerProchaineVague();
@@ -150,7 +169,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void pauseJeu(ActionEvent actionEvent) {
+    public void pauseJeu() {
         if (environnement.getNiveau().getNumVague()>=0){
             if (pause) {
                 gameLoop.play();

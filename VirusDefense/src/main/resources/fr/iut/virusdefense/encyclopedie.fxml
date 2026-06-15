@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerEncyclopedie">
+   <right>
+      <VBox prefHeight="398.0" prefWidth="208.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #2d3d47;" vbarPolicy="ALWAYS">
+               <content>
+                  <AnchorPane style="-fx-background-color: #2d3d47;">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="191.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" prefHeight="16.0" prefWidth="188.0" text="Cellules" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncSainple" mnemonicParsing="false" selected="true" textFill="WHITE">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="toggleGrpEncyclopedie" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/tuiles/cellules/sainple.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Sainple" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncLasere" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/tuiles/cellules/lasere.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="L'asère" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncBrouaieuse" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/tuiles/cellules/brouaieuse.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Brouaïeuse" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncMuleTyple" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/tuiles/cellules/muletyple.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Mule-typle" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncSnaipeur" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/tuiles/cellules/snaipeur.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Snaï-peur" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncRizCoCher" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/tuiles/cellules/rizcocher.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Riz Co-cher" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncKonsantre" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/tuiles/cellules/konsantre.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Konsantré" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncPouazon" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/tuiles/cellules/pouazon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Pouazon" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncBrulHure" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/tuiles/cellules/brulhure.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="COMING SOON" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <Label alignment="TOP_CENTER" prefHeight="16.0" prefWidth="188.0" text="Maladies" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncBactBanale" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/maladies/bacterie_banale.gif" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="148.0" text="Bactérie Banale" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncParasite" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/maladies/parasite.gif" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="148.0" text="Parasite" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncVirus" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/maladies/virus.gif" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="148.0" text="Virus" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncPetitChamp" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/maladies/petit_champignon.gif" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="148.0" text="Petit Champignon" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncGrosChamp" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/maladies/grand_champignon.gif" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="148.0" text="Gros Champignon" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncVirusComp" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/maladies/virus_compose.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="148.0" text="Virus Composé" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="190.0">
+                                 <children>
+                                    <RadioButton id="RbEncTumeur" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/maladies/tumeur.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="148.0" text="Tumeur" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane prefHeight="650.0" prefWidth="752.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="666.0" prefWidth="752.0" style="-fx-background-color: #2d3d47;">
+                     <children>
+                        <Label fx:id="labelTitre" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="752.0" text="Titre" textFill="WHITE" />
+                        <Label fx:id="labelDesc" alignment="TOP_CENTER" prefHeight="637.0" prefWidth="751.0" text="Description" textFill="WHITE" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
