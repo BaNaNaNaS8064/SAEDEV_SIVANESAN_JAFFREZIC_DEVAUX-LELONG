@@ -151,7 +151,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void toggleEncyclopedie(MouseEvent mouseEvent) throws IOException {
+    public void toggleEncyclopedie() throws IOException {
         if(paneEncyclopedie.isDisable())
             pauseAvantEncyclopédie = pause;
         if((!pause || !pauseAvantEncyclopédie))

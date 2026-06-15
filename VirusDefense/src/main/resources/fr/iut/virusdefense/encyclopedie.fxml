@@ -11,9 +11,9 @@
    <right>
       <VBox prefHeight="398.0" prefWidth="208.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #2d3d47;" vbarPolicy="ALWAYS">
+            <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #1C320C;" vbarPolicy="ALWAYS">
                <content>
-                  <AnchorPane style="-fx-background-color: #2d3d47;">
+                  <AnchorPane style="-fx-background-color: #1C320C;">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="191.0">
                            <children>
@@ -190,7 +190,7 @@
                                     <RadioButton id="RbEncVirusComp" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
                                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images/maladies/virus_compose.png" />
+                                          <Image url="@images/maladies/virus_compose_1.gif" />
                                        </image>
                                     </ImageView>
                                     <Label alignment="CENTER" prefHeight="16.0" prefWidth="148.0" text="Virus Composé" textFill="WHITE" />
@@ -201,7 +201,7 @@
                                     <RadioButton id="RbEncTumeur" mnemonicParsing="false" textFill="WHITE" toggleGroup="$toggleGrpEncyclopedie" />
                                     <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images/maladies/tumeur.png" />
+                                          <Image url="@images/maladies/tumeur.gif" />
                                        </image>
                                     </ImageView>
                                     <Label alignment="CENTER" prefHeight="16.0" prefWidth="148.0" text="Tumeur" textFill="WHITE" />
@@ -217,11 +217,11 @@
       </VBox>
    </right>
    <center>
-      <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #2d3d47;" BorderPane.alignment="CENTER">
+      <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #1C320C;" BorderPane.alignment="CENTER">
         <content>
           <AnchorPane prefHeight="650.0" prefWidth="752.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="666.0" prefWidth="752.0" style="-fx-background-color: #2d3d47;">
+                  <VBox alignment="TOP_CENTER" prefHeight="666.0" prefWidth="752.0" style="-fx-background-color: #1C320C;">
                      <children>
                         <Label fx:id="labelTitre" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="752.0" text="Titre" textFill="WHITE" />
                         <Label fx:id="labelDesc" alignment="TOP_CENTER" prefHeight="637.0" prefWidth="751.0" text="Description" textFill="WHITE" />

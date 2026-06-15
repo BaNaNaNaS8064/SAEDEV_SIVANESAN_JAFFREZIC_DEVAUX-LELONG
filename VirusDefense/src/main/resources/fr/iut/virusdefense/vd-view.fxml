@@ -39,7 +39,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button minWidth="43.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #2F4D1A;" translateX="110.0" translateY="5.0">
+            <Button onAction="#toggleEncyclopedie" minWidth="43.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #2F4D1A;" translateX="110.0" translateY="5.0">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
