@@ -49,4 +49,7 @@ public class GestionnaireEcranDeFin {
         animation.playFromStart();
     }
 
+    public void retirerFond(){
+        paneDessin.getChildren().remove(fond);
+    }
 }

@@ -25,6 +25,9 @@ public class ObsStatutPartie implements ChangeListener<StatutPartie> {
     @Override
     public void changed(ObservableValue<? extends StatutPartie> observable, StatutPartie oldValue, StatutPartie newValue) {
         switch (newValue){
+            case PASTERMINEE:
+                gestionnaireEcranDeFin.retirerFond();
+                break;
             case GAGNEE :
                 gestionnaireEcranDeFin.demarrerAnimationVictoire();
                 break;
