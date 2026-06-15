@@ -34,7 +34,8 @@ public class ControllerEncyclopedie implements Initializable{
                 boutonSelectionne.equals("RbEncSnaipeur") ||
                 boutonSelectionne.equals("RbEncRizCoCher") ||
                 boutonSelectionne.equals("RbEncKonsantre") ||
-                boutonSelectionne.equals("RbEncPouazon"))
+                boutonSelectionne.equals("RbEncPouazon") ||
+                boutonSelectionne.equals("RbEncBrulHure"))
         {
             afficherCellule(boutonSelectionne);
         }else{
@@ -146,18 +147,21 @@ public class ControllerEncyclopedie implements Initializable{
                 cout[0] = "" + RizCocher.getCoutBase();
                 degat[0] = "75";
                 portee[0] = "3.0";
-                frequenceFrame[0] = "90";
+                frequenceFrame[0] = "120";
 
-                cout[1] = "175";
-                degat[1] = "";
-                portee[1] = "";
-                frequenceFrame[1] = "";
+                cout[1] = "250";
+                degat[1] = "75";
+                portee[1] = "3.5";
+                frequenceFrame[1] = "120";
 
-                cout[2] = "300";
-                degat[2] = "";
-                portee[2] = "";
-                frequenceFrame[2] = "";
-                special = "";
+                cout[2] = "400";
+                degat[2] = "75";
+                portee[2] = "3.5";
+                frequenceFrame[2] = "120";
+                special = "Special : \n" +
+                        "\nNiveau 1 :\n\t\tNombre de Ricochet : 3\n\t\tDegats réduit par ricochet : 1/3" +
+                        "\nNiveau 2 :\n\t\tNombre de Ricochet : 3\n\t\tDegats réduit par ricochet : 1/3"+
+                        "\nNiveau 3 :\n\t\tNombre de Ricochet : 5\n\t\tDegats réduit par ricochet : 1/3";
                 break;
             case "RbEncKonsantre":
                 labelTitre.setText("Konsantre");
@@ -202,6 +206,29 @@ public class ControllerEncyclopedie implements Initializable{
                         "\nNiveau 1 :\n\tPoison :\n\t\tDot : 4\n\t\tDurée (frame) : 15" +
                         "\nNiveau 2 :\n\tPoison :\n\t\tDot : 4\n\t\tDurée (frame) : 15" +
                         "\nNiveau 3 :\n\tPoison :\n\t\tDot : 4\n\t\tDurée (frame) : 15\n\tRalentissement :\n\t\t-10% par tire\n\t\tDurée (frame) : 5";
+                break;
+
+            case "RbEncBrulHure":
+                labelTitre.setText("Brul-hure");
+                cout[0] = "" + Brulhure.getCoutBase();
+                degat[0] = "400";
+                portee[0] = "5.0";
+                frequenceFrame[0] = "720";
+
+                cout[1] = "700";
+                degat[1] = "400";
+                portee[1] = "5.0";
+                frequenceFrame[1] = "720";
+
+                cout[2] = "1000";
+                degat[2] = "400";
+                portee[2] = "5.0";
+                frequenceFrame[2] = "570";
+
+                special = "Special :\n" +
+                        "\nNiveau 1 :\n\tZone Persistante :\n\t\tDegats : 25\n\t\tDurée (frame) : 200" +
+                        "\nNiveau 2 :\n\tZone Persistante :\n\t\tDegats : 25\n\t\tDurée (frame) : 300" +
+                        "\nNiveau 3 :\n\tZone Persistante :\n\t\tDegats : 25\n\t\tDurée (frame) : 300";
                 break;
         };
 

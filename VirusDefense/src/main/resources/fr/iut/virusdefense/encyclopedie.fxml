@@ -122,7 +122,7 @@
                                           <Image url="@images/tuiles/cellules/brulhure.png" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="COMING SOON" textFill="WHITE" />
+                                    <Label alignment="CENTER" prefHeight="16.0" prefWidth="96.0" text="Brul-hure" textFill="WHITE" />
                                  </children>
                               </HBox>
                               <Label alignment="TOP_CENTER" prefHeight="16.0" prefWidth="188.0" text="Maladies" textFill="WHITE" underline="true">
