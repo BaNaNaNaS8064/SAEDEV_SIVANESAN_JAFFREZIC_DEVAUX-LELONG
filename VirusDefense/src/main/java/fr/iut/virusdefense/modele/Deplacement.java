@@ -87,7 +87,7 @@ public class Deplacement {
      * dans le chemin optimal vers l'objectif
      *
      * @param coordsCase Une liste sous forme [ligne, colonne]
-     *               qui représente les coordonnées d'un case
+     *               qui représente les coordonnées d'une case
      *
      * @return Une liste sous forme [ligne, colonne]
      * qui représente les coordonnées de la prochaine case

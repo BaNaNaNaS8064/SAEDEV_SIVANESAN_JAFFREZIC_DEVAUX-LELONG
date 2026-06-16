@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Le Niveau se charge de ce qui touche aux vagues et aux apparitions <br>
- * Ce n'est pas son rôle de stocker les générateurs (rôle de {@code Carte})
+ * Ce n'est pas son rôle de stocker les points d'apparition (rôle de {@code Carte})
  * ni de faire apparaître les maladies (rôle de {@code PointApparition})
  */
 public class Niveau {
@@ -28,11 +28,6 @@ public class Niveau {
     /// le nombre restant de tours avant la prochain vague
     int delai;
 
-    /**
-     * Créé un nouveau niveau dans {@code environnement} <br>
-     * Le niveau sera automatiquement rempli de vagues et démarrera la première vague
-     * @param environnement l'environnement dans lequel le niveau sera
-     */
     public Niveau(Environnement environnement, String idNiveau){
         this.environnement = environnement;
         delaiEntreVagues = 600;
@@ -54,27 +49,17 @@ public class Niveau {
     }
 
     /**
-     * Créé toutes les vagues du niveau de façon semi-aléatoire <br>
+     * Créé toutes les vagues du niveau {@code idNiveau} <br>
      * Chaque vague aura autant de listes d'apparition
-     * que le nombre de générateurs dans la carte de {@code environnnement}
+     * que le nombre de points d'apparition dans la carte de {@code environnnement}
      */
     public void initVagues(String idNiveau){
-        /*vagues = new ArrayList<>();
-        for (int indVague=0; indVague<100; indVague++){
-            vagues.add(new Vague());
-            for (int indListeA=0; indListeA<environnement.getCarte().getPointsApparitions().size(); indListeA++) {
-                vagues.get(indVague).ajouter(new ListeApparition());
-                for (int indEnnemi = 0; indEnnemi < 4 * (indVague + 1); indEnnemi++)
-                    vagues.get(indVague).getListeApparitions().get(indListeA).ajouter(CodeMaladie.codeAleatoire(), (int) ((Math.random() * 90 + 30)) / (2 * (indVague + 1)));
-            }
-        }
-        vagues.get(vagues.size() - 1).getListeApparitions().get(0).ajouter(CodeMaladie.TUMEUR, 0);*/
         vagues = Arrays.asList(new LecteurVague(environnement.getCarte().getPointsApparitions().size(), idNiveau).getVagues());
     }
 
     /**
      * Démmare la prochaine vague,
-     * c'est à dire met à jour les listes d'apparitions des générateurs
+     * c'est à dire met à jour les listes d'apparitions des points d'apparition
      * de la carte de {@code environnement}
      */
     public void passerProchaineVague(){
@@ -113,8 +98,8 @@ public class Niveau {
     }
 
     /**
-     * Retourne le nombre de vagues total du niveau
-     * @return le nombre de vagues total du niveau
+     * Retourne le nombre de vagues du niveau
+     * @return le nombre de vagues du niveau
      */
     public int nombreDeVagues(){
         return vagues.size();

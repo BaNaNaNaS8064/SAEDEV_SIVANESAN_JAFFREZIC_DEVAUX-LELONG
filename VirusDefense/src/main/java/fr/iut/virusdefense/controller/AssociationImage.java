@@ -7,12 +7,12 @@ import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 import java.util.HashMap;
 
 /**
- * La classe AssociationImage gère l'association entre les codes de Tuiles et les images
+ * La classe AssociationImage gère l'association entre les codes de Tuiles et Maladies et les images
  */
 public class AssociationImage {
 
     /**
-     * Associe à un code tuile le chemin de son image (à partir de tuiles/ dans les ressources)
+     * Associe à un code tuile le chemin de son image (à partir de images/tuiles/ dans les ressources)
      */
     public static HashMap<CodeTuile, String> correspondanceTuile = creerMapTuile();
 
@@ -42,7 +42,6 @@ public class AssociationImage {
 
     /**
      * Fait le lien entre un code de tuile et son image.
-     * Si le code est invalide retourne l'image de VIDE
      * @param codeTuile le code de la tuile dont on cherche l'image (par exemple MUR)
      * @return le chemin vers l'image qui correspond à CodeTuile
      */

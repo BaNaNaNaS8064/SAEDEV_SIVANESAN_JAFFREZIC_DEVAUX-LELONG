@@ -6,23 +6,12 @@ import fr.iut.virusdefense.modele.Positionnable;
 
 import java.util.List;
 
-/**
- * Représente une maladie
- */
 public abstract class Maladie extends Positionnable implements Acteur {
     private double pv;
     private final double vitesse;
     private final int recompense;
     private double coefVitesse;
 
-    /**
-     * Créé un nouvelle maladie
-     * @param environnement le terrain dans lequel la maladie se trouve
-     * @param ligne sa position x dans {@code terrain}
-     * @param colonne sa position y dans {@code terrain}
-     * @param pv ses points de vie initiaux
-     * @param vitesse sa vitesse de déplacement
-     */
     public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense){
         super(environnement, (int) ligne, (int) colonne);
 
@@ -45,10 +34,6 @@ public abstract class Maladie extends Positionnable implements Acteur {
         this.pv = 0;
     }
 
-    /**
-     * Méthode qui calcule les PV de la maladie apres avoir subis des degats de la cellule
-     * @param degats degats subis par la maladie
-     */
     public void prendreDegats(double degats){
         if (degats > 0)
             pv -= degats;
@@ -72,10 +57,6 @@ public abstract class Maladie extends Positionnable implements Acteur {
         }
     }
 
-    /**
-     * Se déplace vers la prochaine case.
-     * La distance dépends de la vitesse
-     */
     public void bouger(){
         List<Integer> destination = getEnvironnement().getDeplacement().prochaineCase(position());
         if (destination != null) {

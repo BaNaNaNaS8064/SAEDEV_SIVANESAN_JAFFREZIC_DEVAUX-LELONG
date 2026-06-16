@@ -13,9 +13,6 @@ public class Joueur {
     /// Les pc (points de connaissance, monnaie du jeu) du joueur
     private final IntegerProperty pcProperty;
 
-    /**
-     * Créé un nouveau joueur avec 200pv et 100pc
-     */
     public Joueur(){
         pvProperty = new SimpleIntegerProperty(1000);
         pcProperty = new SimpleIntegerProperty(150);

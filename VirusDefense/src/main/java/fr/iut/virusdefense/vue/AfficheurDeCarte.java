@@ -6,7 +6,7 @@ import fr.iut.virusdefense.vue.sprites.Tuile;
 import javafx.scene.layout.TilePane;
 
 /**
- * Un afficheur de carte se charge de lire la carte dans le modèle puisde l'afficher
+ * Un afficheur de carte se charge de lire la carte dans le modèle puis de l'afficher
  * dans le TilePane dans la vue
  */
 public class AfficheurDeCarte {

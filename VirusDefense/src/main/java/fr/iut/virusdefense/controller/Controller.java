@@ -130,7 +130,7 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Créé et démmare la gameLoop
+     * Créé la gameLoop
      */
     private void initGameLoop(){
         gameLoop = new Timeline();

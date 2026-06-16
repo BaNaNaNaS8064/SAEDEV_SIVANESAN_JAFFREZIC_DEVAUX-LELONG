@@ -18,12 +18,8 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
-/**
- * Représente le terrain dans lequel il y aura les cellules et maladies
- */
 public class Environnement {
 
-    /// La carte, indique où sont les murs et emplacements vides
     private final Carte carte;
 
     private final Deplacement deplacement;
@@ -34,9 +30,6 @@ public class Environnement {
 
     private final ArrayList<Alteration> alterations;
 
-    /**
-     * La liste des maladies dans le terrain
-     */
     private final ObservableList<Maladie> maladies;
 
     private final ObservableList<Rayon> rayons;
@@ -45,7 +38,7 @@ public class Environnement {
 
     private final ObservableList<Projectile> projectiles;
 
-    private ObjectProperty<StatutPartie> statutPartieProperty;
+    private final ObjectProperty<StatutPartie> statutPartieProperty;
 
     /**
      * Créé un terrain sans maladies
