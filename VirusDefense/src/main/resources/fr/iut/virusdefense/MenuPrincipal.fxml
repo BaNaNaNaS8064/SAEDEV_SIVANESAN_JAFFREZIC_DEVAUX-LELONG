@@ -7,22 +7,23 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<BorderPane fx:id="paneMenuPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1168.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerMenuPrincipal">
+<BorderPane fx:id="paneMenuPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1168.0" style="-fx-background-color: #28420E;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerMenuPrincipal">
    <top>
-      <ImageView scaleX="2" scaleY="2" preserveRatio="true" BorderPane.alignment="CENTER" translateY="75">
+      <ImageView scaleX="2" scaleY="2" preserveRatio="true" BorderPane.alignment="CENTER" translateY="90">
          <Image url="@images/utilitaires/logo.png" />
       </ImageView>
    </top>
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <ChoiceBox fx:id="menuChoixNiveau" prefWidth="150.0" />
-            <Button mnemonicParsing="false" onMouseClicked="#commencerJeu" prefHeight="50.0" prefWidth="150.0" text="Jouer">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Button>
-         </children>
+         <ChoiceBox fx:id="menuChoixNiveau" prefWidth="150.0" translateY="20"/>
+
+         <Button mnemonicParsing="false" onMouseClicked="#commencerJeu" style="-fx-background-color: transparent" translateY="50">
+            <graphic>
+               <ImageView preserveRatio="true">
+                  <Image url="@images/utilitaires/jouer.png"/>
+               </ImageView>
+            </graphic>
+         </Button>
       </VBox>
    </center>
 </BorderPane>
