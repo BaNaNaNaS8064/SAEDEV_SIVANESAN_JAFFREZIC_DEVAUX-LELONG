@@ -33,7 +33,7 @@ public class PointApparition extends Positionnable implements Acteur {
             for (int i = listes.size() - 1; i >= 0; i--) {
                 liste = listes.get(i);
                 if (liste.resteProchain()) {
-                    ajouterMaladie(liste.prochaineMaladie());
+                    ajouterDansLEnvironnement(liste.prochaineMaladie());
                     delai = liste.prochainDelai();
                     liste.avancer();
                 }
@@ -44,7 +44,7 @@ public class PointApparition extends Positionnable implements Acteur {
         }
     }
 
-    public void ajouterMaladie(CodeMaladie codeMaladie){
+    private void ajouterDansLEnvironnement(CodeMaladie codeMaladie){
         switch (codeMaladie){
             case BACTERIEBANALE:
                 getEnvironnement().ajouterMaladie(new BacterieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
