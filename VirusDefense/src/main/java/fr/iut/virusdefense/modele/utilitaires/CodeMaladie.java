@@ -38,17 +38,4 @@ public enum CodeMaladie {
 
         return MALADIEINCONNUE;
     }
-
-    public static CodeMaladie codeAleatoire(){
-        return switch ((int) (Math.random() * CodeMaladie.values().length - 2)){
-            case 0 -> BACTERIEBANALE;
-            case 1 -> PARASITE;
-            case 2 -> VIRUS;
-            case 3 -> VIRUSCOMPOSE_1;
-            case 4 -> PETITCHAMPIGNON;
-            case 5 -> GRANDCHAMPIGNON;
-
-            default -> MALADIEINCONNUE;
-        };
-    }
 }

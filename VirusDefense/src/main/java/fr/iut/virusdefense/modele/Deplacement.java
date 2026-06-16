@@ -35,7 +35,7 @@ public class Deplacement {
         prochaineCase.clear();
 
         LinkedList<List<Integer>> fifo = new LinkedList<>();
-        List<Integer> caseActuelle = List.of(carte.getObjectif().get(0), carte.getObjectif().get(1));
+        List<Integer> caseActuelle = carte.getObjectif();
 
         fifo.add(caseActuelle);
         prochaineCase.put(caseActuelle, null);
