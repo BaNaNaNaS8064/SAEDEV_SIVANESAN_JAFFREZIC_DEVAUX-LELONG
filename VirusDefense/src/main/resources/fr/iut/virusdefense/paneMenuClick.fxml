@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="128.0" prefWidth="160.0" style="-fx-background-color: gray" xmlns="http://javafx.com/javafx/8.0.40"
+      prefHeight="128.0" prefWidth="160.0" style="-fx-background-color: #BEBD4B" xmlns="http://javafx.com/javafx/8.0.40"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.virusdefense.controller.ControllerMenuClick">
 
    <HBox alignment="CENTER_RIGHT">
@@ -12,7 +12,7 @@
       <Label text=" (Niveau "/>
       <Label fx:id="labelNiveau"/>
       <Label text=")   "/>
-      <Button text="X" onMouseClicked="#clickBoutonQuitter" mnemonicParsing="false"/>
+      <Button text="X" onMouseClicked="#clickBoutonQuitter" mnemonicParsing="false" style="-fx-background-color: #F0FFB5"/>
    </HBox>
 
    <VBox>
@@ -38,7 +38,7 @@
    </VBox>
 
    <HBox alignment="CENTER">
-      <Button text="Améliorer" fx:id="boutonAmelioration" onMouseClicked="#clickBoutonAmelioration" mnemonicParsing="false" />
-      <Button text="Supprimer" onMouseClicked="#clickBoutonSupprimer" mnemonicParsing="false"/>
+      <Button text="Améliorer" fx:id="boutonAmelioration" onMouseClicked="#clickBoutonAmelioration" mnemonicParsing="false" style="-fx-background-color: #F0FFB5"/>
+      <Button text="Supprimer" onMouseClicked="#clickBoutonSupprimer" mnemonicParsing="false" style="-fx-background-color: #F0FFB5"/>
    </HBox>
 </VBox>
