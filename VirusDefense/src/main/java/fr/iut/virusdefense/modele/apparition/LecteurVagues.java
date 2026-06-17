@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class LecteurVague {
+public class LecteurVagues {
     private File fichier;
     private Scanner sc;
     private Vague[] vagues;
@@ -15,7 +15,7 @@ public class LecteurVague {
     private int nbVague;
     private int nbPointsApparition;
 
-    public LecteurVague(int nbPointsApparition, String idNiveau){
+    public LecteurVagues(int nbPointsApparition, String idNiveau){
         try{
             fichier = new File(Main.class.getResource("niveaux/" + idNiveau + "/vagues.txt").toURI());
             this.nbPointsApparition = nbPointsApparition;

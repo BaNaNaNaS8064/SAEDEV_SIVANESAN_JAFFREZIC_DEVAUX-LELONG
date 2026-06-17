@@ -53,8 +53,8 @@ public class Niveau {
      * Chaque vague aura autant de listes d'apparition
      * que le nombre de points d'apparition dans la carte de {@code environnnement}
      */
-    public void initVagues(String idNiveau){
-        vagues = Arrays.asList(new LecteurVague(environnement.getCarte().getPointsApparitions().size(), idNiveau).getVagues());
+    private void initVagues(String idNiveau){
+        vagues = Arrays.asList(new LecteurVagues(environnement.getCarte().getPointsApparitions().size(), idNiveau).getVagues());
     }
 
     /**
