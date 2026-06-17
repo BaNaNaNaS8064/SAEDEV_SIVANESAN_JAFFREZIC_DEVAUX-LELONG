@@ -39,12 +39,12 @@ public class Konsantre extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 175;
+        return 1500;
     }
 
     @Override
     public int coutNiveau3() {
-        return 200;
+        return 2600;
     }
 
     @Override

@@ -39,12 +39,12 @@ public class RizCocher extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 250;
+        return 950;
     }
 
     @Override
     public int coutNiveau3() {
-        return 400;
+        return 1000;
     }
 
     @Override
