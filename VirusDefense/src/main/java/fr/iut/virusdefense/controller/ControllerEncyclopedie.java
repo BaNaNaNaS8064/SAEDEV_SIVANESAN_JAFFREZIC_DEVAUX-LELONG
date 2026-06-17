@@ -170,12 +170,12 @@ public class ControllerEncyclopedie implements Initializable{
                 portee[0] = "3.0";
                 frequenceFrame[0] = "1";
 
-                cout[1] = "1500";
+                cout[1] = "1300";
                 degat[1] = "1.5";
                 portee[1] = "3.0";
                 frequenceFrame[1] = "1";
 
-                cout[2] = "2600";
+                cout[2] = "1500";
                 degat[2] = "1.5";
                 portee[2] = "3.0";
                 frequenceFrame[2] = "1";
@@ -215,12 +215,12 @@ public class ControllerEncyclopedie implements Initializable{
                 portee[0] = "5.0";
                 frequenceFrame[0] = "720";
 
-                cout[1] = "1100";
+                cout[1] = "1600";
                 degat[1] = "400";
                 portee[1] = "5.0";
                 frequenceFrame[1] = "720";
 
-                cout[2] = "1300";
+                cout[2] = "2000";
                 degat[2] = "400";
                 portee[2] = "5.0";
                 frequenceFrame[2] = "570";
