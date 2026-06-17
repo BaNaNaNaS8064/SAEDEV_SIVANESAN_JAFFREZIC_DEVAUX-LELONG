@@ -1,6 +1,5 @@
-package fr.iut.virusdefense.test;
+package fr.iut.virusdefense.modele;
 
-import fr.iut.virusdefense.modele.Deplacement;
 import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.carte.Carte;
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,7 @@ class DeplacementTest {
 
     @Test
     void prochaineCase() {
-        carteStatique = new boolean[][]{ //possède un grand mur avec un passage qui sépare le point d'apparition et l'objectif
+        carteStatique = new boolean[][]{ //possède un grand mur avec un passage qui sépare le point d'apparition et l'objectif avec un chemin au milieu
                 {false, false, true, false, false},
                 {false, false, true, false, false},
                 {false, false, false, false, false},
