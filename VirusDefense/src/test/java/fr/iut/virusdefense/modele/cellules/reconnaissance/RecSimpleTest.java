@@ -1,7 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.reconnaissance;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.maladies.Virus;
 import org.junit.jupiter.api.Test;
 
@@ -31,44 +30,28 @@ class RecSimpleTest {
     @Test
     void aPortee(){
         Reconnaissance recSimple = new RecSimple(env, 2,2,3,1);
-        Maladie maladie = new Virus(env,2,3);
-        assertTrue(recSimple.aPortee(maladie),"La cible est a portée");
-
-        Maladie maladieEloigne = new Virus(env,2,9);
-        assertFalse(recSimple.aPortee(maladieEloigne), "La maladie est hors de portée");
-
-        Maladie maladieHorsCarte = new Virus(env,-1,2);
-        assertTrue(recSimple.aPortee(maladieHorsCarte), "La maladie est hors de la carte");
-
-        Maladie maladieDansMur = new Virus(env,1,2);
-        assertTrue(recSimple.aPortee(maladieDansMur), "La maladie est dans un Mur");
+        assertTrue(recSimple.aPortee(new Virus(env,2,3)),"La cible est a portée");
+        assertFalse(recSimple.aPortee(new Virus(env,2,9)), "La maladie est hors de portée");
+        assertTrue(recSimple.aPortee(new Virus(env,-1,2)), "La maladie est hors de la carte");
+        assertTrue(recSimple.aPortee(new Virus(env,1,2)), "La maladie est dans un Mur");
 
         Reconnaissance recSimpleHorsCarte = new RecSimple(env, -1,1,3,1);
-        Maladie maladie4 = new Virus(env,1,1);
-        assertTrue(recSimpleHorsCarte.aPortee(maladie4), "La reconnaissance est hors de la carte");
+        assertTrue(recSimpleHorsCarte.aPortee(new Virus(env,1,1)), "La reconnaissance est hors de la carte");
     }
 
     @Test
     void estValide(){
         Reconnaissance recSimple = new RecSimple(env, 2,2,3,1);
-        Maladie maladie = new Virus(env,2,3);
-        assertTrue(recSimple.estValide(maladie),"La Cellule voit la maladie");
-
-        Maladie maladieEloigne = new Virus(env,10,10);
-        assertFalse(recSimple.estValide(maladieEloigne),"Maladie hors de portée");
-
-        Maladie maladieHorsCarte = new Virus(env,-1,2);
-        assertFalse(recSimple.estValide(maladieHorsCarte),"Maladie hors de la carte");
-
-        Maladie maladieDansMur = new Virus(env,1,2);
-        assertFalse(recSimple.estValide(maladieDansMur), "La maladie est dans un Mur");
+        assertTrue(recSimple.estValide(new Virus(env,2,3)),"La Cellule voit la maladie");
+        assertFalse(recSimple.estValide(new Virus(env,10,10)),"Maladie hors de portée");
+        assertFalse(recSimple.estValide(new Virus(env,-1,2)),"Maladie hors de la carte");
+        assertFalse(recSimple.estValide(new Virus(env,1,2)), "La maladie est dans un Mur");
 
         Reconnaissance recSimple2 = new RecSimple(env,1,3,3,1);
-        Maladie maladie4 = new Virus(env,1,1);
-        assertFalse(recSimple2.estValide(maladie4), "Un mur separe la maladie et reconnaissance");
+        assertFalse(recSimple2.estValide(new Virus(env,1,1)), "Un mur separe la maladie et reconnaissance");
 
         Reconnaissance recSimpleHorsCarte = new RecSimple(env,-1,1,3,1);
-        assertFalse(recSimpleHorsCarte.estValide(maladie4), "Reconnaissance hors de la carte");
+        assertFalse(recSimpleHorsCarte.estValide(new Virus(env,1,1)), "Reconnaissance hors de la carte");
     }
 
     @Test
