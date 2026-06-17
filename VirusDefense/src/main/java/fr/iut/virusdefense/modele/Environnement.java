@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele;
 
-import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.apparition.Niveau;
+import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.carte.Carte;
 import fr.iut.virusdefense.modele.carte.LecteurDeCarte;
 import fr.iut.virusdefense.modele.cellules.Cellule;

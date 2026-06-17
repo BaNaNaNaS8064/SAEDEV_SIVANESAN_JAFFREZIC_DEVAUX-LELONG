@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.maladies;
 
-import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Acteur;
+import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 
 import java.util.List;

@@ -2,13 +2,12 @@ package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.controller.observateurs.*;
-import fr.iut.virusdefense.modele.cellules.*;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.cellules.*;
 import fr.iut.virusdefense.modele.utilitaires.StatutPartie;
 import fr.iut.virusdefense.vue.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

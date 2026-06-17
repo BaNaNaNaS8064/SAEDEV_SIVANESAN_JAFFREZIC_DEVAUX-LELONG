@@ -1,10 +1,8 @@
 package fr.iut.virusdefense.controller.observateurs;
 
-import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.vue.sprites.SpriteMaladie;
 import javafx.collections.ListChangeListener;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 /**
