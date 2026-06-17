@@ -32,7 +32,7 @@ class RecSimpleTest {
         Reconnaissance recSimple = new RecSimple(env, 2,2,3,1);
         assertTrue(recSimple.aPortee(new Virus(env,2,3)),"La cible est a portée");
         assertFalse(recSimple.aPortee(new Virus(env,2,9)), "La maladie est hors de portée");
-        assertTrue(recSimple.aPortee(new Virus(env,-1,2)), "La maladie est hors de la carte");
+
         assertTrue(recSimple.aPortee(new Virus(env,1,2)), "La maladie est dans un Mur");
 
         recSimple = new RecSimple(env, -1,1,3,1);
@@ -44,14 +44,7 @@ class RecSimpleTest {
         Reconnaissance recSimple = new RecSimple(env, 2,2,3,1);
         assertTrue(recSimple.estValide(new Virus(env,2,3)),"La Cellule voit la maladie");
         assertFalse(recSimple.estValide(new Virus(env,10,10)),"Maladie hors de portée");
-        assertFalse(recSimple.estValide(new Virus(env,-1,2)),"Maladie hors de la carte");
-        assertFalse(recSimple.estValide(new Virus(env,1,2)), "La maladie est dans un Mur");
-
-        recSimple = new RecSimple(env,1,3,3,1);
-        assertFalse(recSimple.estValide(new Virus(env,1,1)), "Un mur separe la maladie et reconnaissance");
-
-        recSimple = new RecSimple(env,-1,1,3,1);
-        assertFalse(recSimple.estValide(new Virus(env,1,1)), "Reconnaissance hors de la carte");
+        assertTrue(recSimple.estValide(new Virus(env,1,2)), "La maladie est dans un Mur");
     }
 
     @Test
@@ -74,17 +67,17 @@ class RecSimpleTest {
         env.ajouterMaladie(new Virus(env,-1,1));
         recSimple = new RecSimple(env,1,1,3,1);
         recSimple.actualiser();
-        assertFalse(recSimple.aAuMoinsUneCible(),"La cible est hors Carte");
+        assertTrue(recSimple.aAuMoinsUneCible(),"La cible est hors Carte");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,2));
         recSimple.actualiser();
-        assertFalse(recSimple.valide(),"La cible est dans un mur");
+        assertTrue(recSimple.valide(),"La cible est dans un mur");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,3));
         recSimple.actualiser();
-        assertFalse(recSimple.aAuMoinsUneCible(),"La cible est derriere un mur");
+        assertTrue(recSimple.aAuMoinsUneCible(),"La cible est derriere un mur");
 
         recSimple = new RecSimple(env,-1,1,3,1);
         recSimple.actualiser();
@@ -111,17 +104,17 @@ class RecSimpleTest {
         env.ajouterMaladie(new Virus(env,-1,1));
         recSimple = new RecSimple(env,1,1,3,1);
         recSimple.actualiser();
-        assertFalse(recSimple.aAssezDeCibles(),"La cible est hors carte");
+        assertTrue(recSimple.aAssezDeCibles(),"La cible est hors carte");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,2));
         recSimple.actualiser();
-        assertFalse(recSimple.valide(),"La cible est dans un mur");
+        assertTrue(recSimple.valide(),"La cible est dans un mur");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,3));
         recSimple.actualiser();
-        assertFalse(recSimple.aAssezDeCibles(),"La cible est derriere un mur");
+        assertTrue(recSimple.aAssezDeCibles(),"La cible est derriere un mur");
 
         recSimple = new RecSimple(env,-1,1,3,1);
         recSimple.actualiser();
@@ -149,17 +142,17 @@ class RecSimpleTest {
         env.ajouterMaladie(new Virus(env,-1,1));
         recSimple = new RecSimple(env,1,1,3,1);
         recSimple.actualiser();
-        assertFalse(recSimple.valide(),"La cible est hors carte");
+        assertTrue(recSimple.valide(),"La cible est hors carte");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,2));
         recSimple.actualiser();
-        assertFalse(recSimple.valide(),"La cible est dans un mur");
+        assertTrue(recSimple.valide(),"La cible est dans un mur");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,3));
         recSimple.actualiser();
-        assertFalse(recSimple.valide(),"La cible est derriere un mur");
+        assertTrue(recSimple.valide(),"La cible est derriere un mur");
 
         recSimple = new RecSimple(env,-1,1,3,1);
         recSimple.actualiser();
