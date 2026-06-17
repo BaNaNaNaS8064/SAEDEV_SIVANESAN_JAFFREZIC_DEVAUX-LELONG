@@ -39,12 +39,12 @@ public class Snaipeur extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 120;
+        return 550;
     }
 
     @Override
     public int coutNiveau3() {
-        return 175;
+        return 600;
     }
 
     @Override

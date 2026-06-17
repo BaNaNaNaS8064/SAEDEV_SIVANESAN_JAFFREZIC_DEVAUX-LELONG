@@ -39,12 +39,12 @@ public class Brouaileuse extends Cellule {
 
     @Override
     public int coutNiveau2() {
-        return 200;
+        return 350;
     }
 
     @Override
     public int coutNiveau3() {
-        return 275;
+        return 400;
     }
 
     @Override

@@ -40,12 +40,12 @@ public class MuleTyple extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 120;
+        return 650;
     }
 
     @Override
     public int coutNiveau3() {
-        return 250;
+        return 800;
     }
 
     @Override

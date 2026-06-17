@@ -76,12 +76,12 @@ public class ControllerEncyclopedie implements Initializable{
                 portee[0] = "3.0";
                 frequenceFrame[0] = "1";
 
-                cout[1] = "150";
+                cout[1] = "250";
                 degat[1] = "1.5";
                 portee[1] = "3.0";
                 frequenceFrame[1] = "1";
 
-                cout[2] = "175";
+                cout[2] = "275";
                 degat[2] = "1.5";
                 portee[2] = "4.0";
                 frequenceFrame[2] = "1";
@@ -93,12 +93,12 @@ public class ControllerEncyclopedie implements Initializable{
                 portee[0] = "1.5";
                 frequenceFrame[0] = "200";
 
-                cout[1] = "200";
+                cout[1] = "350";
                 degat[1] = "90";
                 portee[1] = "1.5";
                 frequenceFrame[1] = "150";
 
-                cout[2] = "275";
+                cout[2] = "400";
                 degat[2] = "90";
                 portee[2] = "2.5";
                 frequenceFrame[2] = "150";
@@ -110,12 +110,12 @@ public class ControllerEncyclopedie implements Initializable{
                 portee[0] = "3.0";
                 frequenceFrame[0] = "50";
 
-                cout[1] = "120";
+                cout[1] = "650";
                 degat[1] = "15";
                 portee[1] = "3.5";
                 frequenceFrame[1] = "50";
 
-                cout[2] = "250";
+                cout[2] = "800";
                 degat[2] = "15";
                 portee[2] = "3.5";
                 frequenceFrame[2] = "50";
@@ -132,12 +132,12 @@ public class ControllerEncyclopedie implements Initializable{
                 portee[0] = "12.0";
                 frequenceFrame[0] = "250";
 
-                cout[1] = "120";
+                cout[1] = "550";
                 degat[1] = "100";
                 portee[1] = "12.0";
                 frequenceFrame[1] = "225";
 
-                cout[2] = "175";
+                cout[2] = "600";
                 degat[2] = "100";
                 portee[2] = "12.0";
                 frequenceFrame[2] = "175";
@@ -149,12 +149,12 @@ public class ControllerEncyclopedie implements Initializable{
                 portee[0] = "3.0";
                 frequenceFrame[0] = "120";
 
-                cout[1] = "250";
+                cout[1] = "950";
                 degat[1] = "75";
                 portee[1] = "3.5";
                 frequenceFrame[1] = "120";
 
-                cout[2] = "400";
+                cout[2] = "1000";
                 degat[2] = "75";
                 portee[2] = "3.5";
                 frequenceFrame[2] = "120";
@@ -165,17 +165,17 @@ public class ControllerEncyclopedie implements Initializable{
                 break;
             case "RbEncKonsantre":
                 labelTitre.setText("Konsantre");
-                cout[0] = "" + Sainple.getCoutBase();
+                cout[0] = "" + Konsantre.getCoutBase();
                 degat[0] = "1";
                 portee[0] = "3.0";
                 frequenceFrame[0] = "1";
 
-                cout[1] = "175";
+                cout[1] = "1300";
                 degat[1] = "1.5";
                 portee[1] = "3.0";
                 frequenceFrame[1] = "1";
 
-                cout[2] = "200";
+                cout[2] = "1500";
                 degat[2] = "1.5";
                 portee[2] = "3.0";
                 frequenceFrame[2] = "1";
@@ -192,12 +192,12 @@ public class ControllerEncyclopedie implements Initializable{
                 portee[0] = "3.0";
                 frequenceFrame[0] = "50";
 
-                cout[1] = "170";
+                cout[1] = "950";
                 degat[1] = "30";
                 portee[1] = "3.0";
                 frequenceFrame[1] = "50";
 
-                cout[2] = "220";
+                cout[2] = "1100";
                 degat[2] = "30";
                 portee[2] = "3.0";
                 frequenceFrame[2] = "50";
@@ -215,12 +215,12 @@ public class ControllerEncyclopedie implements Initializable{
                 portee[0] = "5.0";
                 frequenceFrame[0] = "720";
 
-                cout[1] = "700";
+                cout[1] = "1600";
                 degat[1] = "400";
                 portee[1] = "5.0";
                 frequenceFrame[1] = "720";
 
-                cout[2] = "1000";
+                cout[2] = "2000";
                 degat[2] = "400";
                 portee[2] = "5.0";
                 frequenceFrame[2] = "570";

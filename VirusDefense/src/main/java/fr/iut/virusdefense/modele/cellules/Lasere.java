@@ -39,12 +39,12 @@ public class Lasere extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 150;
+        return 250;
     }
 
     @Override
     public int coutNiveau3() {
-        return 175;
+        return 275;
     }
 
     @Override

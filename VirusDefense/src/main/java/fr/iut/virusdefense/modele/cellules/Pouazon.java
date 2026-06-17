@@ -44,12 +44,12 @@ public class Pouazon extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 170;
+        return 950;
     }
 
     @Override
     public int coutNiveau3() {
-        return 220;
+        return 1100;
     }
 
     @Override

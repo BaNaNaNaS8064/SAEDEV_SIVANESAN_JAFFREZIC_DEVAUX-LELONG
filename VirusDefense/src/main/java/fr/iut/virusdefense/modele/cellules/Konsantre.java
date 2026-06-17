@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaq
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 
 public class Konsantre extends Cellule{
-    private static int coutBase = 1300;
+    private static int coutBase = 1000;
 
     public static int getCoutBase() {
         return coutBase;
@@ -39,12 +39,12 @@ public class Konsantre extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 175;
+        return 1300;
     }
 
     @Override
     public int coutNiveau3() {
-        return 200;
+        return 1500;
     }
 
     @Override

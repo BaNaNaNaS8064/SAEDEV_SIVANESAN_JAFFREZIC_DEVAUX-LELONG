@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaq
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecBrulure;
 
 public class Brulhure extends Cellule{
-    private static int coutBase = 300;
+    private static int coutBase = 1300;
     private final int tempsZone;
 
     public static int getCoutBase() {
@@ -41,12 +41,12 @@ public class Brulhure extends Cellule{
 
     @Override
     public int coutNiveau2() {
-        return 700;
+        return 1600;
     }
 
     @Override
     public int coutNiveau3() {
-        return 1000;
+        return 2000;
     }
 
     @Override
