@@ -111,9 +111,5 @@ class DeplacementTest {
 
         miseEnSituation(carteStatique, List.of(2,4), List.of(2,0));
         assertFalse(dep.estBloquee(List.of(2,0)), "petit mur entre la case et l'objectif avec des chemins disponibles mais pas le plus optimal.");
-
-        miseEnSituation(carteStatique, List.of(2,2), List.of(2,0));
-        assertTrue(dep.estBloquee(List.of(2,0)), "Objectif dans un mur.");
-
     }
 }

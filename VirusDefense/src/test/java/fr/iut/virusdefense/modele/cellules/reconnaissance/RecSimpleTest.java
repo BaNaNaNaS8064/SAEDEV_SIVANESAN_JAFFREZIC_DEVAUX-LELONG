@@ -35,8 +35,8 @@ class RecSimpleTest {
         assertTrue(recSimple.aPortee(new Virus(env,-1,2)), "La maladie est hors de la carte");
         assertTrue(recSimple.aPortee(new Virus(env,1,2)), "La maladie est dans un Mur");
 
-        Reconnaissance recSimpleHorsCarte = new RecSimple(env, -1,1,3,1);
-        assertTrue(recSimpleHorsCarte.aPortee(new Virus(env,1,1)), "La reconnaissance est hors de la carte");
+        recSimple = new RecSimple(env, -1,1,3,1);
+        assertTrue(recSimple.aPortee(new Virus(env,1,1)), "La reconnaissance est hors de la carte");
     }
 
     @Test
@@ -47,11 +47,11 @@ class RecSimpleTest {
         assertFalse(recSimple.estValide(new Virus(env,-1,2)),"Maladie hors de la carte");
         assertFalse(recSimple.estValide(new Virus(env,1,2)), "La maladie est dans un Mur");
 
-        Reconnaissance recSimple2 = new RecSimple(env,1,3,3,1);
-        assertFalse(recSimple2.estValide(new Virus(env,1,1)), "Un mur separe la maladie et reconnaissance");
+        recSimple = new RecSimple(env,1,3,3,1);
+        assertFalse(recSimple.estValide(new Virus(env,1,1)), "Un mur separe la maladie et reconnaissance");
 
-        Reconnaissance recSimpleHorsCarte = new RecSimple(env,-1,1,3,1);
-        assertFalse(recSimpleHorsCarte.estValide(new Virus(env,1,1)), "Reconnaissance hors de la carte");
+        recSimple = new RecSimple(env,-1,1,3,1);
+        assertFalse(recSimple.estValide(new Virus(env,1,1)), "Reconnaissance hors de la carte");
     }
 
     @Test
@@ -72,23 +72,23 @@ class RecSimpleTest {
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,-1,1));
-        Reconnaissance recSimple2 = new RecSimple(env,1,1,3,1);
-        recSimple2.actualiser();
-        assertFalse(recSimple2.aAuMoinsUneCible(),"La cible est hors Carte");
+        recSimple = new RecSimple(env,1,1,3,1);
+        recSimple.actualiser();
+        assertFalse(recSimple.aAuMoinsUneCible(),"La cible est hors Carte");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,2));
-        recSimple2.actualiser();
-        assertFalse(recSimple2.valide(),"La cible est dans un mur");
+        recSimple.actualiser();
+        assertFalse(recSimple.valide(),"La cible est dans un mur");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,3));
-        recSimple2.actualiser();
-        assertFalse(recSimple2.aAuMoinsUneCible(),"La cible est derriere un mur");
+        recSimple.actualiser();
+        assertFalse(recSimple.aAuMoinsUneCible(),"La cible est derriere un mur");
 
-        Reconnaissance recSimple3 = new RecSimple(env,-1,1,3,1);
-        recSimple3.actualiser();
-        assertFalse(recSimple3.aAuMoinsUneCible(),"La reconnaissance est en dehors de la carte");
+        recSimple = new RecSimple(env,-1,1,3,1);
+        recSimple.actualiser();
+        assertFalse(recSimple.aAuMoinsUneCible(),"La reconnaissance est en dehors de la carte");
     }
 
     @Test
@@ -109,23 +109,23 @@ class RecSimpleTest {
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,-1,1));
-        Reconnaissance recSimple2 = new RecSimple(env,1,1,3,1);
-        recSimple2.actualiser();
-        assertFalse(recSimple2.aAssezDeCibles(),"La cible est hors carte");
+        recSimple = new RecSimple(env,1,1,3,1);
+        recSimple.actualiser();
+        assertFalse(recSimple.aAssezDeCibles(),"La cible est hors carte");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,2));
-        recSimple2.actualiser();
-        assertFalse(recSimple2.valide(),"La cible est dans un mur");
+        recSimple.actualiser();
+        assertFalse(recSimple.valide(),"La cible est dans un mur");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,3));
-        recSimple2.actualiser();
-        assertFalse(recSimple2.aAssezDeCibles(),"La cible est derriere un mur");
+        recSimple.actualiser();
+        assertFalse(recSimple.aAssezDeCibles(),"La cible est derriere un mur");
 
-        Reconnaissance recSimple3 = new RecSimple(env,-1,1,3,1);
-        recSimple3.actualiser();
-        assertFalse(recSimple3.aAssezDeCibles(),"La reconnaissance est en dehors de la carte");
+        recSimple = new RecSimple(env,-1,1,3,1);
+        recSimple.actualiser();
+        assertFalse(recSimple.aAssezDeCibles(),"La reconnaissance est en dehors de la carte");
     }
 
 
@@ -147,23 +147,23 @@ class RecSimpleTest {
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,-1,1));
-        Reconnaissance recSimple2 = new RecSimple(env,1,1,3,1);
-        recSimple2.actualiser();
-        assertFalse(recSimple2.valide(),"La cible est hors carte");
+        recSimple = new RecSimple(env,1,1,3,1);
+        recSimple.actualiser();
+        assertFalse(recSimple.valide(),"La cible est hors carte");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,2));
-        recSimple2.actualiser();
-        assertFalse(recSimple2.valide(),"La cible est dans un mur");
+        recSimple.actualiser();
+        assertFalse(recSimple.valide(),"La cible est dans un mur");
 
         env.getMaladies().clear();
         env.ajouterMaladie(new Virus(env,1,3));
-        recSimple2.actualiser();
-        assertFalse(recSimple2.valide(),"La cible est derriere un mur");
+        recSimple.actualiser();
+        assertFalse(recSimple.valide(),"La cible est derriere un mur");
 
-        Reconnaissance recSimple3 = new RecSimple(env,-1,1,3,1);
-        recSimple3.actualiser();
-        assertFalse(recSimple3.valide(),"La reconnaissance est en dehors de la carte");
+        recSimple = new RecSimple(env,-1,1,3,1);
+        recSimple.actualiser();
+        assertFalse(recSimple.valide(),"La reconnaissance est en dehors de la carte");
     }
 
 
